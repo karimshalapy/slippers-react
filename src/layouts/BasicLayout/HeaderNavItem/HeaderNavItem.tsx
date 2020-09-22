@@ -1,10 +1,13 @@
 import React from 'react'
+import Backdrop from '../../../components/Backdrop/Backdrop';
+import NavDropdownMenu from '../NavDropdownMenu/NavDropdownMenu';
 import classes from './HeaderNavItem.module.css'
 
 interface Props {
     linkText: string,
     open: boolean,
-    clickHandler: () => void;
+    clickHandler: () => void,
+    reset: () => void,
 }
 
 const HeaderNavItem: React.FC<Props> = props => {
@@ -17,10 +20,18 @@ const HeaderNavItem: React.FC<Props> = props => {
         props.clickHandler();
     }
 
+    const backdropClickHandler = (_: React.MouseEvent) => {
+        props.reset()
+    }
+
     return (
-        <li className={classes.NavItem}>
-            <a href="/" className={dropDownClasses} onClick={linkClickHandler}>{props.linkText}</a>
-        </li>
+        <>
+            <li className={classes.NavItem}>
+                <a href="/" className={dropDownClasses} onClick={linkClickHandler}>{props.linkText}</a>
+                <NavDropdownMenu show={props.open} />
+            </li>
+            <Backdrop show={props.open} clickHandler={backdropClickHandler} />
+        </>
     )
 }
 

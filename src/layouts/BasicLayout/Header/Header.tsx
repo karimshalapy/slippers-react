@@ -4,17 +4,18 @@ import classes from './Header.module.css'
 import { Reducer, ClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
 
-interface Props {
-
-};
-
-const Header: React.FC<Props> = () => {
+const Header: React.FC = () => {
 
     const [state, dispatch] = useReducer<Reducer>(reducer, initialState)
 
     const changeDropDown = useCallback<ClickHandler>((actionType) => {
         dispatch({ type: actionType })
     }, [])
+
+    const resetState = useCallback(() => {
+        dispatch({ type: "init" })
+    }, [])
+
 
     return (
         <header className={classes.MainNavHeader}>
@@ -23,11 +24,13 @@ const Header: React.FC<Props> = () => {
                     linkText="men"
                     open={state.men}
                     clickHandler={changeDropDown.bind(null, "men")}
+                    reset={resetState}
                 />
                 <HeaderNavItem
                     linkText="women"
                     open={state.women}
                     clickHandler={changeDropDown.bind(null, "women")}
+                    reset={resetState}
                 />
             </ul>
             {/* <a href="/">home</a> */}
@@ -36,11 +39,13 @@ const Header: React.FC<Props> = () => {
                     linkText="gifting"
                     open={state.gift}
                     clickHandler={changeDropDown.bind(null, "gift")}
+                    reset={resetState}
                 />
                 <HeaderNavItem
                     linkText="discover more"
                     open={state.discover}
                     clickHandler={changeDropDown.bind(null, "discover")}
+                    reset={resetState}
                 />
             </ul>
         </header>

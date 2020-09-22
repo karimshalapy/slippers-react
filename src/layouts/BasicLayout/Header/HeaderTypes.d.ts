@@ -5,7 +5,7 @@ export interface State {
     discover: boolean,
 };
 
-type ActionTypeOptions = ("men" | "women" | "discover" | "gift");
+type ActionTypeOptions = ("men" | "women" | "discover" | "gift" | "init");
 
 interface Action {
     type: ActionTypeOptions
