@@ -4,7 +4,9 @@ import BasicLayout from './layouts/BasicLayout/BasicLayout';
 function App() {
   return (
     <div className="App">
-      <BasicLayout />
+      <BasicLayout>
+        <p>Hello World</p>
+      </BasicLayout>
     </div>
   );
 }
