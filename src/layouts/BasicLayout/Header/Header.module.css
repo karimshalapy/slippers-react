@@ -9,6 +9,7 @@
 }
 .NavRight, .NavLeft {
     list-style-type: none;
+    background-color: #fff;
     display: inline-block;
     width: 50%;
     margin: 0;
