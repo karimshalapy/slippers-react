@@ -13,6 +13,7 @@
 }
 .NavLeft {
     padding-right: 60px;
+    padding-left: 0px;
     text-align: right;
 }
 .NavRight {

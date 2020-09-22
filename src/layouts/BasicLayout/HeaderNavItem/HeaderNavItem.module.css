@@ -3,6 +3,8 @@
 }
 .NavLink {
     color: black;
+    font-weight: 400;
+    font-size: 14px;
     margin: 0;
     line-height: 70px;
     padding: 0 10px;
@@ -10,7 +12,7 @@
     text-decoration: none;
 }
 .NavLink:hover {
-    font-weight: bold;
+    font-weight: 600;
 }
 /*******dropdown arrow*********/
 .closed::after {
@@ -19,6 +21,7 @@
     font-style: normal !important;
     font-variant: normal !important;
     font-size: 8px;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transform: rotate(90deg);
@@ -28,11 +31,11 @@
     transition: all .2s ease;
 }
 .closed:hover::after {
-    font-weight: normal
+    font-weight: 400;
 }
 .open::after {
     transform: rotate(-90deg);
 }
 .open{
-    font-weight: bold;
+    font-weight: 600;
 }

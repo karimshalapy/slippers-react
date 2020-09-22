@@ -1,14 +1,18 @@
+/*font imports*/
 @font-face {
   font-family: mahabis-icons;
   src: url("//cdn.shopify.com/s/files/1/0238/5795/t/101/assets/mahabis-icons.eot?432620?#iefix") format("embedded-opentype"), url("//cdn.shopify.com/s/files/1/0238/5795/t/101/assets/mahabis-icons.woff?432620") format("woff"), url("//cdn.shopify.com/s/files/1/0238/5795/t/101/assets/mahabis-icons.ttf?432620") format("truetype"), url("//cdn.shopify.com/s/files/1/0238/5795/t/101/assets/mahabis-icons.svg?432620") format("svg");
   font-style: normal;
   font-weight: 400;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+/*****************************************************************************************************/
 body {
   margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
   background-color: #333;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Raleway', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
