@@ -1,0 +1,38 @@
+.NavItem {
+    display: inline-block;
+}
+.NavLink {
+    color: black;
+    margin: 0;
+    line-height: 70px;
+    padding: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.NavLink:hover {
+    font-weight: bold;
+}
+/*******dropdown arrow*********/
+.closed::after {
+    content: "\6a";
+    font-family: mahabis-icons !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-size: 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: rotate(90deg);
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    transition: all .2s ease;
+}
+.closed:hover::after {
+    font-weight: normal
+}
+.open::after {
+    transform: rotate(-90deg);
+}
+.open{
+    font-weight: bold;
+}

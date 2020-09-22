@@ -1,0 +1,21 @@
+.MainNavHeader {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    z-index: 5000;
+    position: fixed;
+}
+.NavRight, .NavLeft {
+    list-style-type: none;
+    display: inline-block;
+    width: 50%;
+    margin: 0;
+}
+.NavLeft {
+    padding-right: 60px;
+    text-align: right;
+}
+.NavRight {
+    padding-left: 60px;
+    text-align: left;
+}
