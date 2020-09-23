@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback } from 'react'
-import HeaderNavItem from '../HeaderNavItem/HeaderNavItem'
+import HeaderNavItem from './HeaderNavItem/HeaderNavItem'
 import classes from './Header.module.css'
 import { Reducer, ClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'

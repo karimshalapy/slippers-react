@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './NavDropdownMenu.module.css'
 import { CSSTransition } from "react-transition-group"
-import { ActionTypeOptions } from '../Header/HeaderTypes'
+import { ActionTypeOptions } from '../HeaderTypes'
 
 interface Props {
     show: boolean,
