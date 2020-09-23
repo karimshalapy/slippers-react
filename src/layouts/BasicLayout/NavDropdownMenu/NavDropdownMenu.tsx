@@ -1,9 +1,11 @@
 import React from 'react'
 import classes from './NavDropdownMenu.module.css'
 import { CSSTransition } from "react-transition-group"
+import { ActionTypeOptions } from '../Header/HeaderTypes'
 
 interface Props {
-    show: boolean
+    show: boolean,
+    type: ActionTypeOptions
 }
 
 const NavDropdownMenu: React.FC<Props> = props => {
@@ -17,6 +19,7 @@ const NavDropdownMenu: React.FC<Props> = props => {
                 exit: classes["DropdownNav-exit"],
                 exitActive: classes["DropdownNav-exit-active"],
             }}
+            mountOnEnter
             unmountOnExit
         >
             <ul className={classes.DropdownNav}>

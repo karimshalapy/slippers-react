@@ -23,14 +23,16 @@ const Header: React.FC = () => {
                 <HeaderNavItem
                     linkText="men"
                     open={state.men}
-                    clickHandler={changeDropDown.bind(null, "men")}
+                    clickHandler={changeDropDown}
                     reset={resetState}
+                    navType="men"
                 />
                 <HeaderNavItem
                     linkText="women"
                     open={state.women}
-                    clickHandler={changeDropDown.bind(null, "women")}
+                    clickHandler={changeDropDown}
                     reset={resetState}
+                    navType="women"
                 />
             </ul>
             {/* <a href="/">home</a> */}
@@ -38,14 +40,16 @@ const Header: React.FC = () => {
                 <HeaderNavItem
                     linkText="gifting"
                     open={state.gift}
-                    clickHandler={changeDropDown.bind(null, "gift")}
+                    clickHandler={changeDropDown}
                     reset={resetState}
+                    navType="gift"
                 />
                 <HeaderNavItem
                     linkText="discover more"
                     open={state.discover}
-                    clickHandler={changeDropDown.bind(null, "discover")}
+                    clickHandler={changeDropDown}
                     reset={resetState}
+                    navType="discover"
                 />
             </ul>
         </header>
