@@ -4,6 +4,7 @@ import { Reducer, ClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems'
+import SideNavMenu from './SideNavMenu/SideNavMenu'
 
 const Header: React.FC = () => {
 
@@ -25,6 +26,7 @@ const Header: React.FC = () => {
                 <span className={classes.LogoText}>mahabis</span>
             </a>
             <HeaderNavItems openState={state} reset={resetState} clickHandler={changeDropDown} />
+            <SideNavMenu />
         </header>
     )
 }
