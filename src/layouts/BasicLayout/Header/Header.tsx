@@ -3,6 +3,7 @@ import HeaderNavItem from './HeaderNavItem/HeaderNavItem'
 import classes from './Header.module.css'
 import { Reducer, ClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
+import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 
 const Header: React.FC = () => {
 
@@ -35,7 +36,10 @@ const Header: React.FC = () => {
                     navType="women"
                 />
             </ul>
-            {/* <a href="/">home</a> */}
+            <a href="/" className={classes.LogoLink}>
+                <Logo className={classes.Logo} />
+                <span className={classes.LogoText}>mahabis</span>
+            </a>
             <ul className={classes.NavRight}>
                 <HeaderNavItem
                     linkText="gifting"

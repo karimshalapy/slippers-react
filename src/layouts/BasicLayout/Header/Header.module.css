@@ -1,3 +1,4 @@
+/*Main nav container styling*/
 .MainNavHeader {
     background-color: #fff;
     height: 70px;
@@ -7,6 +8,7 @@
     top: 0;
     left: 0;
 }
+/*splitting main nav into two containers */
 .NavRight, .NavLeft {
     list-style-type: none;
     background-color: #fff;
@@ -22,4 +24,22 @@
 .NavRight {
     padding-left: 60px;
     text-align: left;
+}
+/*Logo styling*/
+.LogoLink {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-decoration: none;
+    color: #111;
+    font-size: 19px;
+    font-weight: 600;
+}
+.Logo {
+    display: block;
+    margin: auto;
+    width: 30px;
+    margin-bottom: -5px;
 }
