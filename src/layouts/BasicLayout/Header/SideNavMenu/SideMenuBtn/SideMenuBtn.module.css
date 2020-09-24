@@ -51,5 +51,5 @@
 }
 .Active .Line:nth-of-type(3) {
     top: -3px;
-    transform: rotate(-45deg);
+    transform: rotate(135deg);
 }
