@@ -30,7 +30,7 @@ const HeaderNavItem: React.FC<Props> = props => {
         <>
             <li className={classes.NavItem}>
                 <a href="/" className={dropDownClasses} onClick={linkClickHandler}>{props.linkText}</a>
-                <NavDropdownMenu show={props.open} type={props.navType} />
+                <NavDropdownMenu show={props.open} type={props.navType} reset={props.reset} />
             </li>
             <Backdrop show={props.open} clickHandler={backdropClickHandler} />
         </>

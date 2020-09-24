@@ -6,7 +6,8 @@ import DropdownContent from './DropdownContent/DropdownContent'
 
 interface Props {
     show: boolean,
-    type: ActionTypeOptions
+    type: ActionTypeOptions,
+    reset: () => void
 }
 
 const NavDropdownMenu: React.FC<Props> = props => {
@@ -28,6 +29,7 @@ const NavDropdownMenu: React.FC<Props> = props => {
             <div className={classes.DropdownNav} ref={nodeRef}>
                 <div className={classes.Container}>
                     <DropdownContent type={props.type} />
+                    <span className={classes.CloseBtn} onClick={() => props.reset()}></span>
                 </div>
             </div>
         </CSSTransition>

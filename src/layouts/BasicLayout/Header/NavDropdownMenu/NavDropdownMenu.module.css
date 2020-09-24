@@ -26,4 +26,21 @@
 .Container {
     max-width: 850px;
     margin: 0 auto;
+    position: relative;
+}
+
+/*Close button styling*/
+.CloseBtn::before {
+    position: absolute;
+    top: 35px;
+    right: 220px;
+    content: "\64";
+    font-family: mahabis-icons;
+    font-size: 14px;
+    line-height: 1;
+    color: #8a8a8a;
+    cursor: pointer;
+}
+.CloseBtn:hover::before {
+    color: black;
 }
