@@ -11,11 +11,6 @@
     transition: all 80ms ease;
     text-align: center;
 }
-@media (min-width: 1025px) {
-    .SideMenuBtn {
-        display: none;
-    }
-}
 /*doing the seperation with margin and relative with top property for the animation later in active classe to align them properly*/
 .Line {
     display: block;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import SideMenuBtn from './SideMenuBtn/SideMenuBtn'
 import SideNavMenuContainer from './SideNavMenuContainer/SideNavMenuContainer'
+import classes from './SideNavMenu.module.css'
 
 interface Props {
 
@@ -13,8 +14,10 @@ const SideNavMenu: React.FC<Props> = props => {
     }
     return (
         <>
-            <SideMenuBtn open={open} clickHandler={toggleBtn} />
-            <SideNavMenuContainer />
+            <div className={classes.Container}>
+                <SideMenuBtn open={open} clickHandler={toggleBtn} />
+            </div>
+            <SideNavMenuContainer open={open} />
         </>
     )
 }
