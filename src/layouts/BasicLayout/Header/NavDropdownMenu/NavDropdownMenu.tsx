@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import classes from './NavDropdownMenu.module.css'
 import { CSSTransition } from "react-transition-group"
 import { ActionTypeOptions } from '../HeaderTypes'
+import DropdownContent from './DropdownContent/DropdownContent'
 
 interface Props {
     show: boolean,
@@ -9,8 +10,10 @@ interface Props {
 }
 
 const NavDropdownMenu: React.FC<Props> = props => {
+    const nodeRef = useRef(null)
     return (
         <CSSTransition
+            nodeRef={nodeRef}
             in={props.show}
             timeout={300}
             classNames={{
@@ -22,9 +25,11 @@ const NavDropdownMenu: React.FC<Props> = props => {
             mountOnEnter
             unmountOnExit
         >
-            <ul className={classes.DropdownNav}>
-
-            </ul>
+            <div className={classes.DropdownNav} ref={nodeRef}>
+                <div className={classes.Container}>
+                    <DropdownContent type={props.type} />
+                </div>
+            </div>
         </CSSTransition>
     )
 }

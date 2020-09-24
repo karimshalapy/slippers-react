@@ -1,0 +1,110 @@
+/* Main container li spacing */
+.SectionListItem {
+    padding: 10px 30px 0;
+}
+.SectionListItem:first-of-type {
+    min-width: 285px;
+}
+.SectionListItem:last-of-type {
+    margin: 35px 0 0 auto;
+    padding: 0 0 0 15px;
+    border-left: solid #ddd 1px;
+}
+
+/* nested lists styling */
+.ImageList, .TextList, .ImageBlocks {
+    list-style-type: none;
+    padding: 0;
+}
+.ImageList li, .TextList li {
+    display: block;
+}
+
+/*Heading styling*/
+.ImgListHeading, .TextListHeading {
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: lowercase;
+    letter-spacing: .01em;
+    padding: 0 10px;
+    line-height: 45px;
+}
+
+.ImgListHeading {
+    margin: 10px 0 0;
+}
+
+.TextListHeading {
+    margin: 10px 0 25px;
+}
+
+/* Nested links styling */
+.Link {
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: lowercase;
+    text-decoration: none;
+    color: black;
+    display: block;
+    max-width: 190px;
+}
+.Link img {
+    vertical-align: middle;
+    mix-blend-mode: multiply;
+    width: 100%;
+    max-width: 100px;
+    display: inline-block;
+    margin: 0 5px 10px 0;
+    transition: transform 75ms ease-in-out;
+}
+.Link:hover,
+.Liink:active {
+    font-weight: 500;
+}
+.Link:hover img,
+.Liink:active img {
+    transform: scale(1.1);
+}
+/*anchor tags nested inside the text list override styling*/
+.TextList .Link {
+    padding: 0 10px;
+    margin: 0 0 10px
+}
+/*Image blocks override styling*/
+.ImageBlocks li {
+    margin: 0 0 15px
+}
+.ImageBlocks .Link img {
+    max-width: 190px;
+    margin: 0;
+    transition: transform .15s ease-in-out;
+}
+.ImageBlocks .Link {
+    display: block;
+    overflow: hidden;
+    margin: 0 0 10px;
+    position: relative;
+}
+.TextOverImage {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    background: rgba(0,0,0,.55);
+    min-height: 55px;
+    padding: 5px 10px;
+}
+.ImageBlocks .Link:hover {
+    font-weight: 400;
+}
+.ImageBlocks .Link:hover img {
+    transform: scale(1.05);
+
+}
