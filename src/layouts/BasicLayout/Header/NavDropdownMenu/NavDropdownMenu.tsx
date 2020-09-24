@@ -12,12 +12,7 @@ interface Props {
 
 const NavDropdownMenu: React.FC<Props> = props => {
     return (
-        <DropdownTransition show={props.show} transitionClassNames={{
-            enter: classes["DropdownNav-enter"],
-            enterActive: classes["DropdownNav-enter-active"],
-            exit: classes["DropdownNav-exit"],
-            exitActive: classes["DropdownNav-exit-active"],
-        }}>
+        <DropdownTransition show={props.show}>
             {(nodeRef) => (
                 <div className={classes.DropdownNav} ref={nodeRef}>
                     <div className={classes.Container}>

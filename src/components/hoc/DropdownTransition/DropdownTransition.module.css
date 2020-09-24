@@ -1,0 +1,14 @@
+.Dropdown-enter {
+    opacity: 1;
+    transform: translateY(-150%);
+}
+.Dropdown-enter-active {
+    transform: translateY(0);
+    transition: all 300ms ease
+}
+.Dropdown-exit-active {
+    transform: translateY(-150%);
+}
+.Dropdown-exit {
+    opacity: 1;
+}

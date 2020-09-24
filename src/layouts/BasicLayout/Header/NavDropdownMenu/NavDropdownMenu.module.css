@@ -8,20 +8,6 @@
     z-index: -1;
 
 }
-.DropdownNav-enter {
-    opacity: 1;
-    transform: translateY(-150%);
-}
-.DropdownNav-enter-active {
-    transform: translateY(0);
-    transition: all 300ms ease
-}
-.DropdownNav-exit-active {
-    transform: translateY(-150%);
-}
-.DropdownNav-exit {
-    opacity: 1;
-}
 
 .Container {
     max-width: 850px;
