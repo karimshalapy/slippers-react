@@ -1,9 +1,9 @@
 import React, { useReducer, useCallback } from 'react'
-import HeaderNavItem from './HeaderNavItem/HeaderNavItem'
 import classes from './Header.module.css'
 import { Reducer, ClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
+import HeaderNavItems from './HeaderNavItems/HeaderNavItems'
 
 const Header: React.FC = () => {
 
@@ -20,42 +20,11 @@ const Header: React.FC = () => {
 
     return (
         <header className={classes.MainNavHeader}>
-            <ul className={classes.NavLeft}>
-                <HeaderNavItem
-                    linkText="men"
-                    open={state.men}
-                    clickHandler={changeDropDown}
-                    reset={resetState}
-                    navType="men"
-                />
-                <HeaderNavItem
-                    linkText="women"
-                    open={state.women}
-                    clickHandler={changeDropDown}
-                    reset={resetState}
-                    navType="women"
-                />
-            </ul>
             <a href="/" className={classes.LogoLink}>
                 <Logo className={classes.Logo} />
                 <span className={classes.LogoText}>mahabis</span>
             </a>
-            <ul className={classes.NavRight}>
-                <HeaderNavItem
-                    linkText="gifting"
-                    open={state.gift}
-                    clickHandler={changeDropDown}
-                    reset={resetState}
-                    navType="gift"
-                />
-                <HeaderNavItem
-                    linkText="discover more"
-                    open={state.discover}
-                    clickHandler={changeDropDown}
-                    reset={resetState}
-                    navType="discover"
-                />
-            </ul>
+            <HeaderNavItems openState={state} reset={resetState} clickHandler={changeDropDown} />
         </header>
     )
 }

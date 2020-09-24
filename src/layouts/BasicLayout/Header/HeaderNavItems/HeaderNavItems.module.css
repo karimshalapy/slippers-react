@@ -1,0 +1,26 @@
+/*Main nav styling and media quries*/
+.Nav {
+    display: none;
+}
+@media (min-width: 1025px) {
+    .Nav{
+        display: block;
+    }
+}
+/*splitting main nav into two containers */
+.NavRight, .NavLeft {
+    list-style-type: none;
+    background-color: #fff;
+    display: inline-block;
+    width: 50%;
+    margin: 0;
+}
+.NavLeft {
+    padding-right: 60px;
+    padding-left: 0px;
+    text-align: right;
+}
+.NavRight {
+    padding-left: 60px;
+    text-align: left;
+}

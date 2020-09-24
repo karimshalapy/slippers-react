@@ -1,8 +1,8 @@
 import React from 'react'
-import Backdrop from '../../../../components/Backdrop/Backdrop';
-import NavDropdownMenu from '../NavDropdownMenu/NavDropdownMenu';
+import Backdrop from '../../../../../components/Backdrop/Backdrop';
+import NavDropdownMenu from '../../NavDropdownMenu/NavDropdownMenu';
 import classes from './HeaderNavItem.module.css'
-import { ActionTypeOptions, ClickHandler } from '../HeaderTypes'
+import { ActionTypeOptions, ClickHandler } from '../../HeaderTypes'
 
 interface Props {
     linkText: string,
