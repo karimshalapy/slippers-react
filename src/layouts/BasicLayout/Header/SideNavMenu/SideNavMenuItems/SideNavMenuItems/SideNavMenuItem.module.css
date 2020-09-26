@@ -1,0 +1,26 @@
+.SideMenuItem {
+    border-bottom: solid 1px #f5f5f5;
+    line-height: 70px;
+    font-weight: 400;
+    font-size: 12px;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: lowercase;
+    padding: 0 20px;
+    position: relative;
+}
+.SideMenuItem:hover {
+    background-color: #f5f5f5;
+}
+.SideMenuItem::after {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    content: "\6a";
+    font-family: mahabis-icons;
+    font-size: 13px;
+    color: #999;
+    line-height: 1;
+}
