@@ -1,6 +1,6 @@
 .SideMenuItem {
     border-bottom: solid 1px #f5f5f5;
-    line-height: 70px;
+    line-height: 60px;
     font-weight: 400;
     font-size: 12px;
     color: black;
@@ -9,10 +9,19 @@
     text-transform: lowercase;
     padding: 0 20px;
     position: relative;
+    transition: all 0.35s ease-in-out 0.15s;
 }
+
+@media (min-width: 810px) {
+    .SideMenuItem {
+        line-height: 70px;
+    }
+}
+
 .SideMenuItem:hover {
     background-color: #f5f5f5;
 }
+
 .SideMenuItem::after {
     position: absolute;
     top: 50%;
