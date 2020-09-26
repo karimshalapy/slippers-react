@@ -28,9 +28,9 @@ const SideNavMenu: React.FC<Props> = props => {
 
     return (
         <>
-            <div className={classes.Container}>
-                <SideMenuBtn open={open} clickHandler={toggleBtn} />
+            <div className={classes.Background}>
             </div>
+            <SideMenuBtn open={open} clickHandler={toggleBtn} />
             <SideMenuContext.Provider value={{ nextMenuFunction, activeMenu }}>
                 <SideNavMenuContainer open={open} />
             </SideMenuContext.Provider>

@@ -1,4 +1,4 @@
-.Container {
+.Background {
     width: 100%;
     height: 60px;
     background-color: white;
@@ -6,7 +6,7 @@
     z-index: -1;
 }
 @media (min-width: 1025px) {
-    .Container {
+    .Background {
         display: none;
     }
 }
