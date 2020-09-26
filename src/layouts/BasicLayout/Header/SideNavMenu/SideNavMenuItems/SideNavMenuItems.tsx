@@ -1,5 +1,5 @@
 import React from 'react'
-import SideNavMenuItem from './SideNavMenuItems/SideNavMenuItem'
+import SideNavMenuItem from './SideNavMenuItem/SideNavMenuItem'
 import { DataInfo } from '../SideNavMenuTypes'
 import { v4 } from 'uuid'
 
