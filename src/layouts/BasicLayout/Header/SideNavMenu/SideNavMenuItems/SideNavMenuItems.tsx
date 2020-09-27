@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import SideNavMenuItem from './SideNavMenuItem/SideNavMenuItem'
 import { DataInfo } from '../SideNavMenuTypes'
 import { v4 } from 'uuid'
@@ -7,9 +7,9 @@ interface Props {
     data: DataInfo[]
 }
 
-const SideNavMenuItems: React.FC<Props> = props => {
+const SideNavMenuItems = forwardRef<HTMLDivElement, Props>((props, ref) => {
     return (
-        <div>
+        <div ref={ref}>
             {
                 props.data.map(item => (
                     <SideNavMenuItem
@@ -20,6 +20,6 @@ const SideNavMenuItems: React.FC<Props> = props => {
             }
         </div>
     )
-}
+})
 
 export default SideNavMenuItems

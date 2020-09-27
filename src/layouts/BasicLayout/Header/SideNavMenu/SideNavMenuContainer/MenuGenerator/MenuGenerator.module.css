@@ -1,0 +1,47 @@
+/*main level */
+.MainLevel-enter {
+    width: 100%;
+    position: absolute;
+    transform: translateX(-100%);
+}
+.MainLevel-enter-active {
+    width: 100%;
+    transform: translateX(0);
+    transition: all 500ms ease
+}
+.MainLevel-exit {
+    width: 100%;
+    position: absolute;
+}
+.MainLevel-exit-active {
+    width: 100%;
+    transform: translateX(-100%);
+    transition: all 500ms ease
+
+}
+
+/*secondary level*/
+.SecondaryLevel-enter {
+    width: 100%;
+    position: absolute;
+    transform: translateX(100%);
+}
+.SecondaryLevel-enter-active {
+    width: 100%;
+    transform: translateX(0);
+    transition: all 500ms ease
+}
+.SecondaryLevel-exit {
+    width: 100%;
+    position: absolute;
+}
+.SecondaryLevel-exit-active {
+    width: 100%;
+    transform: translateX(100%);
+    transition: all 500ms ease
+}
+.SecondaryLevel-exit-active-rev {
+    width: 100%;
+    transform: translateX(-100%);
+    transition: all 500ms ease
+}

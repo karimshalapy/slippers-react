@@ -8,13 +8,8 @@
     padding: 11px 14px;
     line-height: 32px;
     cursor: pointer;
-    transition: all 80ms ease;
+    transition: left 500ms ease;
     text-align: center;
-}
-@media (min-width: 1025px) {
-    .SideMenuBtn {
-        display: none;
-    }
 }
 /*doing the seperation with margin and relative with top property for the animation later in active classe to align them properly*/
 .Line {
@@ -25,7 +20,7 @@
     border-radius: 1px;
     margin-top: 2px;
     position: relative;
-    transition: all 0.2s ease
+    transition: all 80ms ease
 }
 .Line:nth-of-type(2){
     top: 1px
@@ -35,11 +30,11 @@
 }
 
 /*Active sidemenu styling*/
-
-/* .Active {
-    left: auto;
+/*the left property is done with calc because the left:auto doesn't work with transition*/
+.Active {
+    left: calc(100% - 51px);
     right: 5px;
-} */
+}
 .Active .Line:nth-of-type(1) {
     top: 3px;
     transform: rotate(45deg);

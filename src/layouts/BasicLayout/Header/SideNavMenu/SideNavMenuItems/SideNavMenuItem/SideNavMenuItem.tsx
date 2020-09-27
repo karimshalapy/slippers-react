@@ -5,12 +5,12 @@ import { SideMenuContext } from '../../SideNavMenu'
 import classes from './SideNavMenuItem.module.css'
 
 const SideNavMenuItem: React.FC<DataInfo> = props => {
-    const { nextMenuFunction } = useContext(SideMenuContext)
+    const { navigateMenuFunction } = useContext(SideMenuContext)
 
     if (props.imgUrl) {
-        return null
-    } else if (props.isNext) {
-        return <li onClick={nextMenuFunction.bind(null, props.text)} className={classes.SideMenuItem}>
+        return <li className={classes.SideMenuItem}></li>
+    } else if (props.isNext && props.goTo) {
+        return <li onClick={navigateMenuFunction.bind(null, props.goTo)} className={classes.SideMenuItem}>
             {props.text}
         </li>
     } else if (!props.isNext && props.link) {
