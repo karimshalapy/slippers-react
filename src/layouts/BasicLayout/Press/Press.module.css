@@ -9,12 +9,18 @@
     text-transform: lowercase;
     margin: 3px 0 15px 0;
 }
+@media (max-width: 571px) {
+    .Press h2 {
+        margin: 15px 0;
+    }
+}
 .Press h2 span {
     font-family: "GT Haptik Bold";
 }
 .ImgsContainer{
     list-style-type: none;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 0;
     margin: 0;
