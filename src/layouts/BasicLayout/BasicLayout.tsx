@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header/Header'
 import classes from "./BasicLayout.module.css"
+import Gallery from './Gallery/Gallery'
 
 interface Props {
 
@@ -15,6 +16,7 @@ const BasicLayout: React.FC<Props> = props => {
                     {props.children}
                 </main>
             </div>
+            <Gallery />
         </>
     )
 }
