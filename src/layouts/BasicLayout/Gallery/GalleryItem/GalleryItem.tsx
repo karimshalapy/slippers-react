@@ -20,7 +20,7 @@ const GalleryItem: React.FC<GalleryData> =
                     return (
                         <>
                             <img src={imgUrl} alt={imgAlt} className={classes.GalleryMedia} />
-                            <p dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></p>
+                            <h2 dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></h2>
                             <p dangerouslySetInnerHTML={createTextMarkup(subText)} className={classes.SubText}></p>
                         </>
                     )
@@ -36,7 +36,7 @@ const GalleryItem: React.FC<GalleryData> =
                                 autoPlay
                                 loop
                             />
-                            <p dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></p>
+                            <h2 dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></h2>
                             <p dangerouslySetInnerHTML={createTextMarkup(subText)} className={classes.SubText}></p>
                         </>
                     )
