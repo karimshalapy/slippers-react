@@ -3,6 +3,7 @@ import Header from './Header/Header'
 import classes from "./BasicLayout.module.css"
 import Gallery from './Gallery/Gallery'
 import Press from './Press/Press'
+import InstagramPhotos from './InstagramPhotos/InstagramPhotos'
 
 interface Props {
 
@@ -19,6 +20,7 @@ const BasicLayout: React.FC<Props> = props => {
             </div>
             <Gallery />
             <Press />
+            <InstagramPhotos />
         </>
     )
 }

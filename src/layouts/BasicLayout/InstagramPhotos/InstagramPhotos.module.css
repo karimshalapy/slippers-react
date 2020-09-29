@@ -1,0 +1,49 @@
+.InstaContainer {
+    position: relative;
+    margin: 50px 0;
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(4, 21%);
+    justify-content: center;
+    justify-items: center;
+    gap: 6px;
+}
+@media (max-width: 810px) {
+    .InstaContainer {
+        grid-template-columns: repeat(2, 45%);
+        grid-auto-rows: 1fr;
+    }
+}
+.InstaItem, .InstaItem a {
+    width: 100%;
+    overflow: hidden;
+}
+.InstaPhoto {
+    display:block;
+    width: 100%;
+    height: auto;
+}
+.LogoContainer {
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(90deg);
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 1s ease;
+}
+.LogoImg {
+    position: absolute;
+    width: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Active {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateY(0);
+}
