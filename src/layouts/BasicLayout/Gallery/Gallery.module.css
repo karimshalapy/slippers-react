@@ -3,7 +3,7 @@
     /*box model properties*/
     max-width: 1107px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 0 35px 0;
     display: grid;
     /*grid properties*/
     grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
@@ -14,5 +14,6 @@
 @media (max-width: 570px) {
     .GalleryContainer {
         gap: 2px;
+        padding: 0;
     }
 }
