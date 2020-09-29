@@ -18,6 +18,9 @@
     justify-content: center;
     padding: 0;
     margin: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: none;
 }
 .PressImage {
     max-height: 25px;
