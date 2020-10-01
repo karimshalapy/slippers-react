@@ -1,0 +1,40 @@
+.FooterNavItemsContainer {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.FooterNavItem {
+    padding: 0 10px;
+    line-height: 52px;
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.FooterNavItem a {
+    text-decoration: none;
+}
+.FooterNavItem a:link,
+.FooterNavItem a:visited {
+    color: #333;
+}
+.FooterNavItem:hover {
+    opacity: 0.5;
+}
+@media (max-width: 810px) {
+    .FooterNavItemsContainer {
+        border-bottom: 0;
+        flex-direction: column;
+    }
+    .FooterNavItem {
+        border-bottom: 1px solid #eee;
+        line-height: 36px;
+        text-align: center;
+    }
+}
