@@ -1,3 +1,4 @@
+/*Newsletter section styling*/
 .Newsletter {
     text-align: center;
     padding: 65px 0;
@@ -17,6 +18,7 @@
     max-width: 320px;
     margin: 15px auto;
     font-size: 13px;
+    line-height: 20px;
 }
 .Disclaimer {
     margin: 10px 0;
@@ -36,10 +38,30 @@
     font-size: 11px;
     line-height: 22px;
     color: #666;
+    transition: all 0.5s ease;
 }
 .NewsletterInput::placeholder {
     color: #c2c2c2;
 }
 .NewsletterBtn {
     border-radius: 0 5px 5px 0 !important;
+}
+
+/*Error message styling*/
+.InputContainer {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+.ErrorMessage {
+    margin: 0;
+    font-size: 9px;
+    font-weight: 400;
+    color: red;
+    position: absolute;
+    bottom: 0;
+    left: 13px;
+}
+.IsError {
+    border: 1px solid red;
 }
