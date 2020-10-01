@@ -1,0 +1,13 @@
+.HomePrimaryBtn {
+    color: #fafafa;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    line-height: 41px;
+    padding: 0 2em;
+    background-color: black;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
