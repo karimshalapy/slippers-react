@@ -1,0 +1,64 @@
+/*Footer Main Container Styling*/
+.FooterContentContainer {
+    margin: 45px auto;
+    width: 84%;
+    max-width: 1180px;
+    text-align: center;
+}
+@media (max-width: 500px) {
+    .FooterContentContainer {
+        margin: 30px auto;
+    }
+}
+
+/*Moments # styling*/
+.Moments:link, 
+.Moments:visited {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+    margin: 7px auto 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    max-width: 320px;
+}
+
+/*Logo Styling*/
+.Logo {
+    display: block;
+    margin: 0 auto;
+    width: 21px;
+}
+/*Footer Main content styling*/
+.FooterMainContent {
+    margin: 20px auto 0;
+    font-size: 12px;
+    color: #aaa;
+    max-width: 320px;
+    line-height: 20px;
+    font-weight: 300;
+}
+.FooterMainContent a:link,
+.FooterMainContent a:visited {
+    color: #aaa;
+    text-decoration: none;
+}
+
+/*Payment Options styling*/
+.PaymentOptions {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  -webkit-user-drag: none;
+  -moz-window-dragging: none;
+}
+.PaymentOptions li {
+    margin: 0 4px;
+    opacity: 0.13;
+}
