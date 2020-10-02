@@ -4,6 +4,7 @@ import classes from './FadeSwitchTransition.module.css'
 
 interface Props {
     switch: boolean,
+    keyText: string,
     children: (x: React.RefObject<HTMLDivElement>) => ReactElement
 }
 
@@ -13,7 +14,7 @@ const FadeSwitchTransition: React.FC<Props> = props => {
     return (
         <SwitchTransition mode="out-in">
             <CSSTransition
-                key={props.switch ? "subscribed" : "not subscribed"}
+                key={props.switch ? props.keyText : `not ${props.keyText}`}
                 classNames={{
                     enter: classes["fade-enter"],
                     enterActive: classes["fade-enter-active"],

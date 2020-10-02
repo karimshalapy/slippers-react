@@ -55,7 +55,7 @@ const Newsletter: React.FC = () => {
     }, [handleSubmit, register, subscribed, errors])
     return (
         <section className={classes.Newsletter}>
-            <FadeSwitchTransition switch={subscribed}>
+            <FadeSwitchTransition switch={subscribed} keyText="subscribed">
                 {getSectionData}
             </FadeSwitchTransition>
         </section>
