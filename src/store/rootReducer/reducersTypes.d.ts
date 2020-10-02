@@ -13,5 +13,5 @@ export interface ResourcesState {
 }
 
 interface RootReducer {
-    resources: ResourcesState
+    mainResources: ResourcesState
 }
