@@ -18,7 +18,6 @@ const Newsletter: React.FC = () => {
     })
 
     const submitHandler = (data: Inputs) => {
-        console.log(data);
         setSubscribed(true);
     }
 

@@ -16,7 +16,6 @@ export default (state = initialState, action: ResourcesAction) => {
     switch (action.type) {
 
         case actionTypes.SET_RESOURCES:
-            console.log(action.resources)
             return { ...action.resources }
         default:
             return state

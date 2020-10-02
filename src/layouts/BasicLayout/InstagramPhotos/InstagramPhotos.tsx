@@ -34,7 +34,6 @@ const InstagramPhotos: React.FC = () => {
 
     //scroll handler function to add and remove Active class to logo container div
     const scrollHandler = useCallback((e: Event) => {
-        console.log(isInViewPort())
         if (logoContainerRef.current) {
             if (isInViewPort()) {
                 if (!logoContainerRef.current.classList.contains(classes.Active)) logoContainerRef.current.classList.add(classes.Active)
