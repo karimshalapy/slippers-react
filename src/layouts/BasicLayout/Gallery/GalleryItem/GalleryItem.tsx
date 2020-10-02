@@ -46,7 +46,7 @@ const GalleryItem: React.FC<GalleryData> =
             , [imgAlt, imgUrl, videoThumbnailUrl, videoUrl, mainText, subText])
 
         return (
-            <li className={classes.GalleryItem}>
+            <li className={[classes.GalleryItem, imgAlt === "loading" ? classes.Loading : ""].join(" ")}>
                 {getGalleryItem()}
             </li>
         )
