@@ -4,13 +4,11 @@ import { ResourcesAction } from '../../actionsIndex/actionTypes'
 
 
 const initialState: ResourcesState = {
-    resources: {
-        galleryData: undefined,
-        press: undefined,
-        insta: undefined,
-        footerNav: undefined,
-        socialNav: undefined,
-    }
+    galleryData: undefined,
+    press: undefined,
+    insta: undefined,
+    footerNav: undefined,
+    socialNav: undefined,
 }
 
 export default (state = initialState, action: ResourcesAction) => {
