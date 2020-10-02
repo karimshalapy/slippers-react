@@ -7,35 +7,20 @@ import mastercard from '../../../assets/mastercard.png'
 import paypal from '../../../assets/paypal.png'
 import visa from '../../../assets/visa.png'
 import { Link } from 'react-router-dom'
-import { FooterData } from './FooterTypes'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 
-interface Props {
+const Footer: React.FC = props => {
+    const [footerData, socialData] = useSelector((state: RootReducer) => [state.mainResources.footerNav, state.mainResources.socialNav])
 
-}
-
-const footerDummyData: FooterData[] = [
-    { text: "sizing chart", url: "/sizing-chart" },
-    { text: "delivery & returns", url: "/delivery-returns" },
-    { text: "gift cards", url: "/gift-cards" },
-    { text: "careers", url: "/careers" },
-]
-
-const socialDummyData: FooterData[] = [
-    { socialMediaIcon: "Twitter", url: "/" },
-    { socialMediaIcon: "Facebook", url: "/" },
-    { socialMediaIcon: "Pinterest", url: "/" },
-    { socialMediaIcon: "Instagram", url: "/" },
-]
-
-const Footer: React.FC<Props> = props => {
     return (
         <footer>
             <nav>
-                <FooterNavItems data={footerDummyData} type="nav" />
+                <FooterNavItems data={footerData} type="nav" />
             </nav>
             <section className={classes.FooterContentContainer}>
                 <nav>
-                    <FooterNavItems type="social" data={socialDummyData} />
+                    <FooterNavItems type="social" data={socialData} />
                 </nav>
                 <Link to="/" className={classes.Moments}>#mahabismoments</Link>
 
