@@ -47,3 +47,12 @@
     opacity: 1;
     transform: translate(-50%, -50%) rotateY(0);
 }
+.Loading {
+    position: relative;
+    background-color: #f4f4f4;
+    padding-top: 50%;
+    padding-bottom: 50%;
+}
+.Loading img {
+    transform: scale(0.5)
+}

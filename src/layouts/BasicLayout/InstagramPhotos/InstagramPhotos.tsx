@@ -4,35 +4,20 @@ import { v4 } from 'uuid'
 import classes from './InstagramPhotos.module.css'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import { InstagramData } from './InstagramPhotosTypes'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../store/rootReducer/reducersTypes'
+import loading from '../../../assets/loading.gif'
 
-interface Props {
+const InstagramPhotos: React.FC = () => {
+    //get instaData from redux store
+    const instaData = useSelector((state: RootReducer) => state.mainResources.insta)
+    //render loading gifs untill the async gallery data fetch resolves
+    let renderedData: InstagramData[] = instaData ? instaData : new Array(4).fill({
+        imgUrl: loading,
+        imgAlt: "loading",
+        url: "/"
+    });
 
-}
-
-const InstaDummyData: InstagramData[] = [
-    {
-        imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/insta-bar%2F1_5.jpg?alt=media",
-        imgAlt: "mahabis canvas // jutland stone",
-        url: "/slippers"
-    },
-    {
-        imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/insta-bar%2F2_4.jpg?alt=media",
-        imgAlt: "mahabis classic // light grey",
-        url: "/slippers"
-    },
-    {
-        imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/insta-bar%2F3_3.jpg?alt=media",
-        imgAlt: "mahabis classic // dark grey",
-        url: "/slippers"
-    },
-    {
-        imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/insta-bar%2F4_3.jpg?alt=media",
-        imgAlt: "mahabis canvas // dalarna khaki",
-        url: "/slippers"
-    }
-]
-
-const InstagramPhotos: React.FC<Props> = props => {
     //reference to the logo container div
     const logoContainerRef = useRef<HTMLDivElement>(null)
 
@@ -75,8 +60,8 @@ const InstagramPhotos: React.FC<Props> = props => {
         <section>
             <ul className={classes.InstaContainer}>
                 {
-                    InstaDummyData.map(item => (
-                        <li key={v4()} className={classes.InstaItem}>
+                    renderedData.map(item => (
+                        <li key={v4()} className={[classes.InstaItem, item.imgAlt === "loading" ? classes.Loading : ""].join(" ")}>
                             <Link to={item.url}>
                                 <img src={item.imgUrl} alt={item.imgAlt} className={classes.InstaPhoto} />
                             </Link>
