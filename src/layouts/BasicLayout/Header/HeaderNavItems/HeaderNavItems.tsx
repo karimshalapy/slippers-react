@@ -1,11 +1,11 @@
 import React from 'react'
 import classes from './HeaderNavItems.module.css'
 import HeaderNavItem from './HeaderNavItem/HeaderNavItem'
-import { ClickHandler, State } from '../HeaderTypes'
+import { HeaderClickHandler, HeaderState } from '../HeaderTypes'
 
 interface Props {
-    openState: State
-    clickHandler: ClickHandler
+    openState: HeaderState
+    clickHandler: HeaderClickHandler
     reset: () => void
 }
 

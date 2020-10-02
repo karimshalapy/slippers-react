@@ -2,11 +2,11 @@ import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import classes from './FooterNavItems.module.css'
-import { Data } from '../FooterTypes'
+import { FooterData } from '../FooterTypes'
 
 interface Props {
     type: "social" | "nav",
-    data: Data
+    data: FooterData[]
 }
 
 

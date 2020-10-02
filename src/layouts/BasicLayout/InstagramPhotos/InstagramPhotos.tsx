@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import classes from './InstagramPhotos.module.css'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
+import { InstagramData } from './InstagramPhotosTypes'
 
 interface Props {
 
 }
 
-const InstaDummyData = [
+const InstaDummyData: InstagramData[] = [
     {
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/insta-bar%2F1_5.jpg?alt=media",
         imgAlt: "mahabis canvas // jutland stone",

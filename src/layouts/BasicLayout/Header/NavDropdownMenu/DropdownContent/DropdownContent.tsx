@@ -1,10 +1,10 @@
 import React from 'react'
-import { ActionTypeOptions } from '../../HeaderTypes'
+import { HeaderActionTypeOptions } from '../../HeaderTypes'
 import DropdownGender from './DropdownGender/DropdownGender'
 import classes from './DropdownContent.module.css'
 
 interface Props {
-    type: ActionTypeOptions
+    type: HeaderActionTypeOptions
 }
 
 const DropdownContent: React.FC<Props> = props => {

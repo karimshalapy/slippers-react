@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from './NavDropdownMenu.module.css'
 import DropdownTransition from '../../../../components/hoc/DropdownTransition/DropdownTransition'
-import { ActionTypeOptions } from '../HeaderTypes'
+import { HeaderActionTypeOptions } from '../HeaderTypes'
 import DropdownContent from './DropdownContent/DropdownContent'
 
 interface Props {
     show: boolean,
-    type: ActionTypeOptions,
+    type: HeaderActionTypeOptions,
     reset: () => void
 }
 

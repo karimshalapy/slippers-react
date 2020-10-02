@@ -1,16 +1,18 @@
-export interface State {
+import React from 'react'
+
+export interface HeaderState {
     men: boolean,
     women: boolean,
     gift: boolean,
     discover: boolean,
 };
 
-type ActionTypeOptions = ("men" | "women" | "discover" | "gift" | "init");
+export type HeaderActionTypeOptions = ("men" | "women" | "discover" | "gift" | "init");
 
 interface Action {
-    type: ActionTypeOptions
+    type: HeaderActionTypeOptions
 }
 
-export type Reducer = React.Reducer<State, Action>;
+export type HeaderReducer = React.Reducer<HeaderState, Action>;
 
-export type ClickHandler = (x: ActionTypeOptions) => void
+export type HeaderClickHandler = (x: ActionTypeOptions) => void

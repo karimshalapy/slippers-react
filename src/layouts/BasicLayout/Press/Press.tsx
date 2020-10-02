@@ -1,12 +1,13 @@
 import React from 'react'
 import { v4 } from 'uuid'
 import classes from './Press.module.css'
+import { PressData } from './PressTypes'
 
 interface Props {
 
 }
 
-const pressDummyData = [
+const pressDummyData: PressData[] = [
     {
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/press%2Flogo-independent.jpg?alt=media",
         imgAlt: "independent logo"

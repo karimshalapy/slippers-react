@@ -1,7 +1,7 @@
-import { State, Reducer } from './HeaderTypes'
+import { HeaderState, HeaderReducer } from './HeaderTypes'
 
 //reducer definition
-export const initialState: State = {
+export const initialState: HeaderState = {
     men: false,
     women: false,
     gift: false,
@@ -9,7 +9,7 @@ export const initialState: State = {
 };
 
 
-export const reducer: Reducer = (state, action) => {
+export const reducer: HeaderReducer = (state, action) => {
     switch (action.type) {
         case "init":
             return initialState

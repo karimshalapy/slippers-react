@@ -7,20 +7,20 @@ import mastercard from '../../../assets/mastercard.png'
 import paypal from '../../../assets/paypal.png'
 import visa from '../../../assets/visa.png'
 import { Link } from 'react-router-dom'
-import { Data } from './FooterTypes'
+import { FooterData } from './FooterTypes'
 
 interface Props {
 
 }
 
-const footerDummyData: Data = [
+const footerDummyData: FooterData[] = [
     { text: "sizing chart", url: "/sizing-chart" },
     { text: "delivery & returns", url: "/delivery-returns" },
     { text: "gift cards", url: "/gift-cards" },
     { text: "careers", url: "/careers" },
 ]
 
-const socialDummyData: Data = [
+const socialDummyData: FooterData[] = [
     { socialMediaIcon: "Twitter", url: "/" },
     { socialMediaIcon: "Facebook", url: "/" },
     { socialMediaIcon: "Pinterest", url: "/" },

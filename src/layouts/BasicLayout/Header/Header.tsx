@@ -1,6 +1,6 @@
 import React, { useReducer, useCallback } from 'react'
 import classes from './Header.module.css'
-import { Reducer, ClickHandler } from './HeaderTypes'
+import { HeaderReducer, HeaderClickHandler } from './HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems'
@@ -8,9 +8,9 @@ import SideNavMenu from './SideNavMenu/SideNavMenu'
 
 const Header: React.FC = () => {
 
-    const [state, dispatch] = useReducer<Reducer>(reducer, initialState)
+    const [state, dispatch] = useReducer<HeaderReducer>(reducer, initialState)
 
-    const changeDropDown = useCallback<ClickHandler>((actionType) => {
+    const changeDropDown = useCallback<HeaderClickHandler>((actionType) => {
         dispatch({ type: actionType })
     }, [])
 
