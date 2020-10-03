@@ -2,14 +2,14 @@ import React from 'react'
 import Backdrop from '../../../../../components/Backdrop/Backdrop';
 import NavDropdownMenu from '../../NavDropdownMenu/NavDropdownMenu';
 import classes from './HeaderNavItem.module.css'
-import { HeaderActionTypeOptions, HeaderClickHandler } from '../../HeaderTypes'
+import { DropdownMenusTypes, HeaderClickHandler } from '../../HeaderTypes'
 
 interface Props {
     linkText: string,
     open: boolean,
     clickHandler: HeaderClickHandler,
     reset: () => void,
-    navType: HeaderActionTypeOptions,
+    navType: DropdownMenusTypes,
 }
 
 const HeaderNavItem: React.FC<Props> = props => {

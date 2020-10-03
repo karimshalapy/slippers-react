@@ -8,8 +8,10 @@ export interface HeaderState {
     discover: boolean,
 };
 
+//DropdownMenus types permitted
+export type DropdownMenusTypes = "men" | "women" | "discover" | "gift"
 //actions permitted for the header reducer to be dispatched
-export type HeaderActionTypeOptions = ("men" | "women" | "discover" | "gift" | "init")
+export type HeaderActionTypeOptions = (DropdownMenusTypes | "init")
 
 //header useReducer action type
 interface Action {
@@ -35,5 +37,3 @@ export interface DropdownSectionData {
 
 //DropdownSection types permitted 
 export type DropdownSectionTypes = "textList" | "imageList" | "imageBlocks"
-//DropdownMenus types permitted
-export type DropdownMenusTypes = "menDropdown" | "womenDropdown" | "giftDropdown" | "discoverDropdown"
