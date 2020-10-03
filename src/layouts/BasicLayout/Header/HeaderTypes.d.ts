@@ -1,11 +1,8 @@
 import React from 'react'
 
 //header state in useReducer interface
-export interface HeaderState {
-    men: boolean,
-    women: boolean,
-    gift: boolean,
-    discover: boolean,
+export type HeaderState = {
+    [type in DropdownMenusTypes]: boolean
 };
 
 //DropdownMenus types permitted
