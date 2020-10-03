@@ -1,21 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
+import { DropdownSectionData, DropdownSectionTypes } from '../../../HeaderTypes'
 import classes from './DropdownSection.module.css'
 
 interface Props {
-    type: "textList" | "imageList" | "imageBlocks"
-    payload: {
-        heading?: string,
-        data: {
-            img?: {
-                url: string,
-                alt: string
-            },
-            link: string,
-            text: string,
-        }[],
-    }
+    type: DropdownSectionTypes,
+    payload: DropdownSectionData
 }
 
 const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) => {
@@ -30,8 +21,8 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={classes.ImageList}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.link} className={classes.Link}>
-                                        <img src={item.img?.url} alt={item.img?.alt} />
+                                    <Link to={item.url} className={classes.Link}>
+                                        <img src={item.imgUrl} alt={item.imgAlt} />
                                         <span>{item.text}</span>
                                     </Link>
                                 </li>
@@ -47,7 +38,7 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={classes.TextList}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.link} className={classes.Link}>{item.text}</Link>
+                                    <Link to={item.url} className={classes.Link}>{item.text}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -59,8 +50,8 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={classes.ImageBlocks}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.link} className={classes.Link}>
-                                        <img src={item.img?.url} alt={item.img?.alt} />
+                                    <Link to={item.url} className={classes.Link}>
+                                        <img src={item.imgUrl} alt={item.imgAlt} />
                                         <div className={classes.TextOverImage}>
                                             <span>{item.text}</span>
                                         </div>
