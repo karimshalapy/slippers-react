@@ -45,27 +45,10 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                     </li>
                 )
             case "2_imageBlocks":
-                return (
-                    <li className={classes.SectionListItem}>
-                        <ul className={classes.ImageBlocks}>
-                            {data.map(item => (
-                                <li key={v4()}>
-                                    <Link to={item.url} className={classes.Link}>
-                                        <img src={item.imgUrl} alt={item.imgAlt} />
-                                        <div className={classes.TextOverImage}>
-                                            <span>{item.text}</span>
-                                        </div>
-                                    </Link>
-                                </li>
-                            ))
-                            }
-                        </ul>
-                    </li>
-                )
             case "3_imageBlocksOnly":
                 return (
-                    <li className={classes.ImagesBlocksOnlySection}>
-                        <ul className={classes.ImageBlocksOnly}>
+                    <li className={type === "2_imageBlocks" ? classes.SectionListItem : classes.ImagesBlocksOnlySection}>
+                        <ul className={type === "2_imageBlocks" ? classes.ImageBlocks : classes.ImageBlocksOnly}>
                             {data.map(item => (
                                 <li key={v4()}>
                                     <Link to={item.url} className={classes.Link}>
