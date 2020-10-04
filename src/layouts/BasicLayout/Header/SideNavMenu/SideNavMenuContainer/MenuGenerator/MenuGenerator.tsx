@@ -1,11 +1,11 @@
 import React, { useCallback, useRef } from 'react'
-import { DataInfo } from '../../SideNavMenuTypes'
+import { sideNavDataInfo } from '../../SideNavMenuTypes'
 import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
 import classes from './MenuGenerator.module.css'
 
 interface Props {
-    data: DataInfo[],
+    data: sideNavDataInfo[],
     level: "first" | "second" | "secondRev" | "third",
     enter: boolean
 }

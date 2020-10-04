@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classes from './SideNavMenuContainer.module.css'
 import DropdownTransition from '../../../../../components/hoc/DropdownTransition/DropdownTransition'
-import { DataInfo } from '../SideNavMenuTypes'
+import { sideNavDataInfo } from '../SideNavMenuTypes'
 import MenuGenerator from './MenuGenerator/MenuGenerator'
 import { SideMenuContext } from '../SideNavMenu'
 
@@ -9,7 +9,7 @@ interface Props {
     open: boolean,
 }
 
-const mainMenuData: DataInfo[] = [
+const mainMenuData: sideNavDataInfo[] = [
     {
         goTo: "men",
         text: "men",
@@ -31,7 +31,7 @@ const mainMenuData: DataInfo[] = [
         isNext: true,
     },
 ]
-const menData: DataInfo[] = [
+const menData: sideNavDataInfo[] = [
     {
         text: "slippers",
         isNext: false,
@@ -48,7 +48,7 @@ const menData: DataInfo[] = [
         link: "/"
     },
 ]
-const discoverMenuData: DataInfo[] = [
+const discoverMenuData: sideNavDataInfo[] = [
     {
         goTo: "about",
         text: "about us",
@@ -60,7 +60,7 @@ const discoverMenuData: DataInfo[] = [
         isNext: true,
     },
 ]
-const helpMenuData: DataInfo[] = [
+const helpMenuData: sideNavDataInfo[] = [
     {
         text: "LOLOLOLOL",
         isNext: false,

@@ -1,6 +1,8 @@
-export type MenuTypes = "main" | "men" | "women" | "gift" | "discover" | "discoverBack" | "help" | "about" | "customers"
+import { DropdownMenusTypes } from '../HeaderTypes'
 
-export interface DataInfo {
+export type MenuTypes = DropdownMenusTypes | "main" | "discoverBack" | "help" | "about" | "customers"
+
+export interface sideNavDataInfo {
     imgUrl?: string,
     goTo?: MenuTypes,
     text: string,
@@ -8,7 +10,7 @@ export interface DataInfo {
     link?: string,
 }
 
-export interface ContextValues {
+export interface sideNavContextValues {
     navigateMenuFunction: (menu: MenuTypes) => void,
     activeMenu: MenuTypes
 }

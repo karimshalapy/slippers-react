@@ -3,13 +3,13 @@ import SideMenuBtn from './SideMenuBtn/SideMenuBtn'
 import GoBackBtn from './GoBackBtn/GoBackBtn'
 import SideNavMenuContainer from './SideNavMenuContainer/SideNavMenuContainer'
 import classes from './SideNavMenu.module.css'
-import { MenuTypes, ContextValues } from './SideNavMenuTypes'
+import { MenuTypes, sideNavContextValues } from './SideNavMenuTypes'
 
 interface Props {
 
 }
 
-export const SideMenuContext = createContext<ContextValues>({
+export const SideMenuContext = createContext<sideNavContextValues>({
     navigateMenuFunction: () => { },
     activeMenu: "main",
 })
