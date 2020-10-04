@@ -17,7 +17,7 @@ const NavDropdownMenu: React.FC<Props> = props => {
                 <div className={classes.DropdownNav} ref={nodeRef}>
                     <div className={classes.Container}>
                         <DropdownContent type={props.type} />
-                        <span className={classes.CloseBtn} onClick={() => props.reset()}></span>
+                        <span className={props.type !== "gift" ? classes.CloseBtn : ""} onClick={() => props.reset()}></span>
                     </div>
                 </div>
             )}
