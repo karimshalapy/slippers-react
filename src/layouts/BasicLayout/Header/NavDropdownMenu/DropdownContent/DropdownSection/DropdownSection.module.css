@@ -2,7 +2,7 @@
 .SectionListItem {
     padding: 10px 30px 0;
 }
-.SectionListItem:first-of-type {
+.SectionListItem.HasImageList {
     min-width: 285px;
 }
 .SectionListItem:last-of-type {
@@ -49,7 +49,8 @@
     display: block;
     max-width: 190px;
 }
-.Link img {
+/*image lists images styling*/
+.ImageListImages {
     vertical-align: middle;
     mix-blend-mode: multiply;
     width: 100%;
@@ -57,6 +58,10 @@
     display: inline-block;
     margin: 0 5px 10px 0;
     transition: transform 75ms ease-in-out;
+}
+/*line height for image list text to perserve the images height until it loads*/
+.ImageList span {
+    line-height: 75px;
 }
 .Link:hover,
 .Liink:active {
@@ -76,15 +81,18 @@
     margin: 0 0 15px
 }
 .ImageBlocks .Link img {
-    max-width: 190px;
+    width: 100%;
     margin: 0;
     transition: transform .15s ease-in-out;
 }
 .ImageBlocks .Link {
+    width: 190px;
+    height: 190px;
     display: block;
     overflow: hidden;
     margin: 0 0 10px;
     position: relative;
+    background-color: rgba(0,0,0,.05);
 }
 .TextOverImage {
     position: absolute;

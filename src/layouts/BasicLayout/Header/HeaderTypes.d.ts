@@ -33,4 +33,4 @@ export interface DropdownSectionData {
 }
 
 //DropdownSection types permitted 
-export type DropdownSectionTypes = "textList" | "imageList" | "imageBlocks"
+export type DropdownSectionTypes = "1_textList" | "0_imageList" | "2_imageBlocks" | "3_imageBlocksOnly"

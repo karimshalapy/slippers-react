@@ -14,26 +14,26 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
     //a helper function to do data mutation to transform the data into unordered lists with the content properly rendered
     const sectionContent = () => {
         switch (type) {
-            case "imageList":
+            case "0_imageList":
                 return (
-                    <>
+                    <li className={[classes.SectionListItem, classes.HasImageList].join(" ")}>
                         {heading ? <h2 className={classes.ImgListHeading}>{heading}</h2> : null}
                         <ul className={classes.ImageList}>
                             {data.map(item => (
                                 <li key={v4()}>
                                     <Link to={item.url} className={classes.Link}>
-                                        <img src={item.imgUrl} alt={item.imgAlt} />
+                                        <img className={classes.ImageListImages} src={item.imgUrl} alt={item.imgAlt} />
                                         <span>{item.text}</span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    </>
+                    </li>
                 )
 
-            case "textList":
+            case "1_textList":
                 return (
-                    <>
+                    <li className={classes.SectionListItem}>
                         {heading ? <h2 className={classes.TextListHeading}>{heading}</h2> : null}
                         <ul className={classes.TextList}>
                             {data.map(item => (
@@ -42,11 +42,11 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                                 </li>
                             ))}
                         </ul>
-                    </>
+                    </li>
                 )
-            case "imageBlocks":
+            case "2_imageBlocks":
                 return (
-                    <>
+                    <li className={classes.SectionListItem}>
                         <ul className={classes.ImageBlocks}>
                             {data.map(item => (
                                 <li key={v4()}>
@@ -60,7 +60,25 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                             ))
                             }
                         </ul>
-                    </>
+                    </li>
+                )
+            case "3_imageBlocksOnly":
+                return (
+                    <li className={classes.ImagesBlocksOnlySection}>
+                        <ul className={classes.ImageBlocksOnly}>
+                            {data.map(item => (
+                                <li key={v4()}>
+                                    <Link to={item.url} className={classes.Link}>
+                                        <img src={item.imgUrl} alt={item.imgAlt} />
+                                        <div className={classes.TextOverImage}>
+                                            <span>{item.text}</span>
+                                        </div>
+                                    </Link>
+                                </li>
+                            ))
+                            }
+                        </ul>
+                    </li>
                 )
             default:
                 return null;
@@ -68,9 +86,9 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
     }
     //main return statement
     return (
-        <li className={classes.SectionListItem}>
+        <>
             {sectionContent()}
-        </li>
+        </>
     )
 }
 
