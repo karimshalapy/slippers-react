@@ -2,7 +2,7 @@ import React, { memo, useCallback } from 'react'
 import { v4 } from 'uuid'
 import { dropdownSectionsData } from '../../../../../../store/rootReducer/reducersTypes'
 import { DropdownSectionTypes, DropdownSectionData } from '../../../HeaderTypes'
-import DropdownSection from '../DropdownSection/DropdownSection'
+import DropdownSection from './DropdownSection/DropdownSection'
 
 interface Props {
     dropdownSectionData?: dropdownSectionsData

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-import { DropdownSectionData, DropdownSectionTypes } from '../../../HeaderTypes'
+import { DropdownSectionData, DropdownSectionTypes } from '../../../../HeaderTypes'
 import classes from './DropdownSection.module.css'
 
 interface Props {
