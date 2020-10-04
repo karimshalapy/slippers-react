@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import SideNavMenuItem from './SideNavMenuItem/SideNavMenuItem'
-import { DataInfo } from '../SideNavMenuTypes'
+import { DataInfo } from '../../../SideNavMenuTypes'
 import { v4 } from 'uuid'
 
 interface Props {

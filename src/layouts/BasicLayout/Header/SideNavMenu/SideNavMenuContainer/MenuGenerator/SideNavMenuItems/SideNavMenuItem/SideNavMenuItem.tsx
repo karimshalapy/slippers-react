@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { DataInfo } from '../../SideNavMenuTypes'
-import { SideMenuContext } from '../../SideNavMenu'
+import { DataInfo } from '../../../../SideNavMenuTypes'
+import { SideMenuContext } from '../../../../SideNavMenu'
 import classes from './SideNavMenuItem.module.css'
 
 const SideNavMenuItem: React.FC<DataInfo> = props => {

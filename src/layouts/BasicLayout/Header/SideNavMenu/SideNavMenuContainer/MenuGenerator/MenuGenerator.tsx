@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { DataInfo } from '../../SideNavMenuTypes'
-import SideNavMenuItems from '../../SideNavMenuItems/SideNavMenuItems'
+import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
 import classes from './MenuGenerator.module.css'
 
