@@ -10,9 +10,13 @@
     padding: 0 0 0 15px;
     border-left: solid #ddd 1px;
 }
+.ImagesBlocksOnlySection {/***Image blocks only styling... present only in the gifting dropdown***/
+    margin: 0;
+    padding: 10px 0 0;
+}
 
 /* nested lists styling */
-.ImageList, .TextList, .ImageBlocks {
+.ImageList, .TextList, .ImageBlocks, .ImageBlocksOnly {
     list-style-type: none;
     padding: 0;
 }
@@ -47,7 +51,6 @@
     text-decoration: none;
     color: black;
     display: block;
-    max-width: 190px;
 }
 /*image lists images styling*/
 .ImageListImages {
@@ -80,19 +83,44 @@
 .ImageBlocks li {
     margin: 0 0 15px
 }
-.ImageBlocks .Link img {
+.ImageBlocks .Link img,
+.ImageBlocksOnly .Link img {
     width: 100%;
     margin: 0;
     transition: transform .15s ease-in-out;
 }
+/*ImageBlocks links spacing and size to perserve size till images load*/
 .ImageBlocks .Link {
     width: 190px;
     height: 190px;
+    margin: 0 0 10px;
+}
+.ImageBlocksOnly .Link{
+    margin: 0 10px 0;
+    width: 220px;
+    height: 176px;
+}
+/*ImageBlocks and ImageBlocksOnly links shared */
+.ImageBlocks .Link,
+.ImageBlocksOnly .Link {
     display: block;
     overflow: hidden;
-    margin: 0 0 10px;
     position: relative;
     background-color: rgba(0,0,0,.05);
+}
+.ImageBlocksOnly {
+    display: flex;
+    justify-content: center;
+}
+
+.ImageBlocks .Link:hover ,
+.ImageBlocksOnly .Link:hover {
+    font-weight: 400;
+}
+.ImageBlocks .Link:hover img ,
+.ImageBlocksOnly .Link:hover img {
+    transform: scale(1.05);
+
 }
 .TextOverImage {
     position: absolute;
@@ -108,11 +136,4 @@
     background: rgba(0,0,0,.55);
     min-height: 55px;
     padding: 5px 10px;
-}
-.ImageBlocks .Link:hover {
-    font-weight: 400;
-}
-.ImageBlocks .Link:hover img {
-    transform: scale(1.05);
-
 }
