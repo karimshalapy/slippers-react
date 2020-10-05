@@ -14,7 +14,7 @@ interface Props {
 
 
 const MainMenu: React.FC<Props> = props => {
-    const nodeRef = useRef(null)
+    const nodeRef = useRef<HTMLDivElement>(null)
     // destructuring the dependencies from Props
     const { level } = props
     const getTransitionClasses = useCallback(() => {
@@ -54,7 +54,9 @@ const MainMenu: React.FC<Props> = props => {
             mountOnEnter
             unmountOnExit
         >
-            <SideNavMenuItems data={props.data} ref={nodeRef} />
+            <div ref={nodeRef}>
+                <SideNavMenuItems data={props.data} />
+            </div>
         </CSSTransition>
     )
 }
