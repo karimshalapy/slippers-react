@@ -10,17 +10,18 @@ export interface sideNavDataInfo {
     isNext: boolean,
     url?: string,
 }
+export interface ImageBlock {
+    imgUrl: string,
+    imgAlt: string,
+    url: string,
+    text: string,
+}
 
 export type sideNavMenusDataType = {
     [menu in MenuTypes]: {
         level: "first" | "second" | "second & secondRev" | "third",
         data: sideNavDataInfo[],
-        imageBlocks?: {
-            imgUrl: string,
-            imgAlt: string,
-            url: string,
-            text: string,
-        }[]
+        imageBlocks?: ImageBlock[]
     }
 }
 
