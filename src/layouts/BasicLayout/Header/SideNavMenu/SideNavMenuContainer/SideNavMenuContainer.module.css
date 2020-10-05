@@ -11,7 +11,12 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    overflow: scroll;
+    scrollbar-width: none;
 }
+.SideMenuContainer::-webkit-scrollbar {
+    width: 0;
+  }
 
 /*media query to hide it in big screens*/
 @media (min-width: 1025px) {
