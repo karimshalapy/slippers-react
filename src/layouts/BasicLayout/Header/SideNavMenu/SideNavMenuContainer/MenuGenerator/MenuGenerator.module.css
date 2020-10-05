@@ -1,3 +1,4 @@
+/******CSS TRANSITIONS CLASSNAMES********/ 
 /*main level */
 .MainLevel-enter {
     width: 100%;
@@ -44,4 +45,38 @@
     width: 100%;
     transform: translateX(-100%);
     transition: all 500ms ease
+}
+
+/*Image blocks*/
+.imageBlocksContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.imageBlocksContainer a:link,
+.imageBlocksContainer a:visited {
+    text-decoration: none;
+    position: relative;
+    margin: 5px;
+    color: white;
+    background-color: black;
+}
+.imageBlocksContainer img {
+    display: block;
+    width: 100%;
+}
+.imageBlocksContainer span{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.55);
+    min-height: 55px;
+    padding: calc(0.3* 55px) 10px;
+    text-align: center;
+}
+.imageBlocksContainer a:hover img {
+    opacity: 0.9;
 }
