@@ -1,13 +1,16 @@
 import React, { useCallback, useRef } from 'react'
-import { sideNavDataInfo } from '../../SideNavMenuTypes'
+import { sideNavDataInfo, ImageBlock } from '../../SideNavMenuTypes'
 import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
 import classes from './MenuGenerator.module.css'
+import { Link } from 'react-router-dom'
+import { v4 } from 'uuid'
 
 interface Props {
-    data: sideNavDataInfo[],
+    data?: sideNavDataInfo[],
     level: "first" | "second" | "secondRev" | "third",
-    enter: boolean
+    enter: boolean,
+    imageBlocks?: ImageBlock[]
 }
 
 
@@ -49,7 +52,23 @@ const MainMenu: React.FC<Props> = props => {
             unmountOnExit
         >
             <div ref={nodeRef}>
-                <SideNavMenuItems data={props.data} />
+                <div>
+                    {props.data ? <SideNavMenuItems data={props.data} /> : null}
+                    {
+                        props.imageBlocks
+                            ?
+                            <div className={classes.imageBlocksContainer}>
+                                {props.imageBlocks.map(item => (
+                                    <Link to={item.url} key={v4()}>
+                                        <img src={item.imgUrl} alt={item.imgAlt} />
+                                        <span>{item.text}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                            :
+                            null
+                    }
+                </div>
             </div>
         </CSSTransition>
     )

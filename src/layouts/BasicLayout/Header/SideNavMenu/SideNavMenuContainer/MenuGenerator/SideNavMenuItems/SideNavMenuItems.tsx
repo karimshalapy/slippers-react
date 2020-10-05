@@ -16,34 +16,39 @@ const SideNavMenuItems: React.FC<Props> = props => {
         <>
             {
                 props.data.map(item => {
-                    if (item.imgUrl) {
-                        return (
-                            <li
-                                key={v4()}
-                                className={classes.SideMenuItem}
-                            >
-
-                            </li>
-                        )
-                    } else if (item.isNext && item.goTo) {
+                    if (item.isNext && item.goTo) {
                         return (
                             <li
                                 key={v4()}
                                 onClick={navigateMenuFunction.bind(null, item.goTo)}
                                 className={classes.SideMenuItem}
                             >
-                                {item.text}
+                                <span>{item.text}</span>
                             </li>
                         )
-                    } else if (!item.isNext && item.link) {
-                        return (
-                            <li
-                                key={v4()}
-                                className={classes.SideMenuItem}
-                            >
-                                <Link to={item.link} onClick={toggleMenu}>{item.text}</Link>
-                            </li>
-                        )
+                    } else if (!item.isNext && item.url) {
+                        if (item.imgUrl && item.imgAlt) {
+                            return (
+                                <li
+                                    key={v4()}
+                                    className={classes.SideMenuItem}
+                                >
+                                    <Link to={item.url} onClick={toggleMenu}>
+                                        <img src={item.imgUrl} alt={item.imgAlt} />
+                                        {item.text}
+                                    </Link>
+                                </li>
+                            )
+                        } else {
+                            return (
+                                <li
+                                    key={v4()}
+                                    className={classes.SideMenuItem}
+                                >
+                                    <Link to={item.url} onClick={toggleMenu}>{item.text}</Link>
+                                </li>
+                            )
+                        }
                     } else {
                         return null
                     }

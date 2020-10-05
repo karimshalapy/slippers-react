@@ -20,7 +20,7 @@ export interface ImageBlock {
 export type sideNavMenusDataType = {
     [menu in MenuTypes]: {
         level: "first" | "second" | "second & secondRev" | "third",
-        data: sideNavDataInfo[],
+        data?: sideNavDataInfo[],
         imageBlocks?: ImageBlock[]
     }
 }
