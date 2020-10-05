@@ -21,7 +21,7 @@ export type HeaderReducer = React.Reducer<HeaderState, Action>
 //header onClick function type
 export type HeaderClickHandler = (x: ActionTypeOptions) => void
 
-//dropdownSection data type
+//dropdown section data type
 export interface DropdownSectionData {
     heading?: string,
     data: {
@@ -31,6 +31,13 @@ export interface DropdownSectionData {
         text: string,
     }[]
 }
-
+//dropdown section"s" type
+export type DropdownSectionsData = {
+    [sectionType in DropdownSectionTypes]: DropdownSectionData | DropdownSectionData[]
+}
+//dropdown menus data types
+export type DropdownMenusData = {
+    [menuType in DropdownMenusTypes]: DropdownSectionsData
+}
 //DropdownSection types permitted 
 export type DropdownSectionTypes = "1_textList" | "0_imageList" | "2_imageBlocks" | "3_imageBlocksOnly"

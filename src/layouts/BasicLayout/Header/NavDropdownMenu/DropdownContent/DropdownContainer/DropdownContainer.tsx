@@ -1,11 +1,10 @@
 import React, { memo, useCallback } from 'react'
 import { v4 } from 'uuid'
-import { dropdownSectionsData } from '../../../../../../store/rootReducer/reducersTypes'
-import { DropdownSectionTypes, DropdownSectionData } from '../../../HeaderTypes'
+import { DropdownSectionTypes, DropdownSectionData, DropdownSectionsData } from '../../../HeaderTypes'
 import DropdownSection from './DropdownSection/DropdownSection'
 
 interface Props {
-    dropdownSectionData?: dropdownSectionsData
+    dropdownSectionData?: DropdownSectionsData
 }
 
 const DropdownContainer: React.FC<Props> = ({ dropdownSectionData }) => {

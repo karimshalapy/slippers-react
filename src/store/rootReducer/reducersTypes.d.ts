@@ -2,11 +2,7 @@ import { GalleryData } from '../../layouts/BasicLayout/Gallery/GalleryTypes'
 import { PressData } from '../../layouts/BasicLayout/Press/PressTypes'
 import { InstagramData } from '../../layouts/BasicLayout/InstagramPhotos/InstagramPhotosTypes'
 import { FooterData } from '../../layouts/BasicLayout/Footer/FooterTypes'
-import { DropdownSectionData, DropdownSectionTypes, DropdownMenusTypes } from '../../layouts/BasicLayout/Header/HeaderTypes'
-
-type dropdownSectionsData = {
-    [sectionType in DropdownSectionTypes]: DropdownSectionData | DropdownSectionData[]
-}
+import { DropdownMenusData } from '../../layouts/BasicLayout/Header/HeaderTypes'
 
 
 export interface ResourcesState {
@@ -15,9 +11,7 @@ export interface ResourcesState {
     insta?: InstagramData[],
     footerNav?: FooterData[],
     socialNav?: FooterData[],
-    dropdown?: {
-        [menuType in DropdownMenusTypes]: dropdownSectionsData
-    }
+    dropdown?: DropdownMenusData
 }
 
 interface RootReducer {
