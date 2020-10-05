@@ -47,3 +47,17 @@
     color: #999;
     line-height: 1;
 }
+/*Images in the sidenav list styling*/
+.SideMenuItem img {
+    vertical-align: middle;
+    padding-right: 15px;
+    mix-blend-mode: multiply;
+    width: 190px;
+    height: 127px;
+}
+@media (max-width: 500px) {
+    .SideMenuItem img {
+        width: 90px;
+        height: 60px;
+    }
+}
