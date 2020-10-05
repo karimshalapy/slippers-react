@@ -12,5 +12,6 @@ export interface sideNavDataInfo {
 
 export interface sideNavContextValues {
     navigateMenuFunction: (menu: MenuTypes) => void,
-    activeMenu: MenuTypes
+    activeMenu: MenuTypes,
+    toggleMenu: () => void
 }

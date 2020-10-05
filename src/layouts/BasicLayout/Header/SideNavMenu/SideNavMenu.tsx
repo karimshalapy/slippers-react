@@ -12,6 +12,7 @@ interface Props {
 export const SideMenuContext = createContext<sideNavContextValues>({
     navigateMenuFunction: () => { },
     activeMenu: "main",
+    toggleMenu: () => { },
 })
 
 const SideNavMenu: React.FC<Props> = props => {
@@ -24,11 +25,12 @@ const SideNavMenu: React.FC<Props> = props => {
 
     const toggleBtn = () => {
         setOpen(prevOpen => !prevOpen)
+        setActiveMenu("main")
     }
 
     return (
         <>
-            <SideMenuContext.Provider value={{ navigateMenuFunction, activeMenu }}>
+            <SideMenuContext.Provider value={{ navigateMenuFunction, activeMenu, toggleMenu: toggleBtn }}>
                 <div className={classes.Background}>
                     <SideMenuBtn open={open} clickHandler={toggleBtn} />
                     <GoBackBtn show={open && activeMenu !== "main"} />

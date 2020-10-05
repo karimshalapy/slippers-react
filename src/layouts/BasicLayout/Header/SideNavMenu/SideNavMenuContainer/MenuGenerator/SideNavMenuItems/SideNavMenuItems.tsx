@@ -10,7 +10,7 @@ interface Props {
 }
 
 const SideNavMenuItems: React.FC<Props> = props => {
-    const { navigateMenuFunction } = useContext(SideMenuContext)
+    const { navigateMenuFunction, toggleMenu } = useContext(SideMenuContext)
 
     return (
         <>
@@ -41,7 +41,7 @@ const SideNavMenuItems: React.FC<Props> = props => {
                                 key={v4()}
                                 className={classes.SideMenuItem}
                             >
-                                <Link to={item.link}>{item.text}</Link>
+                                <Link to={item.link} onClick={toggleMenu}>{item.text}</Link>
                             </li>
                         )
                     } else {
