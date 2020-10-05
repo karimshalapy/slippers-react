@@ -4,10 +4,24 @@ export type MenuTypes = DropdownMenusTypes | "main" | "discoverBack" | "help" | 
 
 export interface sideNavDataInfo {
     imgUrl?: string,
+    imgAlt?: string,
     goTo?: MenuTypes,
     text: string,
     isNext: boolean,
-    link?: string,
+    url?: string,
+}
+
+export type sideNavMenusDataType = {
+    [menu in MenuTypes]: {
+        level: "first" | "second" | "second & secondRev" | "third",
+        data: sideNavDataInfo[],
+        imageBlocks?: {
+            imgUrl: string,
+            imgAlt: string,
+            url: string,
+            text: string,
+        }[]
+    }
 }
 
 export interface sideNavContextValues {
