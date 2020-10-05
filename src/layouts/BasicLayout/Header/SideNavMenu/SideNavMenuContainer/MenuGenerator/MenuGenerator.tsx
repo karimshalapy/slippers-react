@@ -18,29 +18,23 @@ const MainMenu: React.FC<Props> = props => {
     // destructuring the dependencies from Props
     const { level } = props
     const getTransitionClasses = useCallback(() => {
-        if (level === "first") {
-            return {
-                enter: classes["MainLevel-enter"],
-                enterActive: classes["MainLevel-enter-active"],
-                exit: classes["MainLevel-exit"],
-                exitActive: classes["MainLevel-exit-active"],
-            }
-        }
-        if (level === "second" || level === "secondRev") {
-            return {
-                enter: classes["SecondaryLevel-enter"],
-                enterActive: classes["SecondaryLevel-enter-active"],
-                exit: classes["SecondaryLevel-exit"],
-                exitActive: level === "second" ? classes["SecondaryLevel-exit-active"] : classes["SecondaryLevel-exit-active-rev"],
-            }
-        }
-        if (level === "third") {
-            return {
-                enter: classes["ThirdLevel-enter"],
-                enterActive: classes["ThirdLevel-enter-active"],
-                exit: classes["ThirdLevel-exit"],
-                exitActive: classes["ThirdLevel-exit-active"],
-            }
+        switch (level) {
+            case "first":
+                return {
+                    enter: classes["MainLevel-enter"],
+                    enterActive: classes["MainLevel-enter-active"],
+                    exit: classes["MainLevel-exit"],
+                    exitActive: classes["MainLevel-exit-active"],
+                }
+            case "second":
+            case "secondRev":
+            case "third":
+                return {
+                    enter: classes["SecondaryLevel-enter"],
+                    enterActive: classes["SecondaryLevel-enter-active"],
+                    exit: classes["SecondaryLevel-exit"],
+                    exitActive: level === "secondRev" ? classes["SecondaryLevel-exit-active-rev"] : classes["SecondaryLevel-exit-active"],
+                }
         }
     },
         [level]);
