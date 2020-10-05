@@ -1,3 +1,4 @@
+/*SideMenuItem container styling*/
 .SideMenuItem {
     border-bottom: solid 1px #f5f5f5;
     line-height: 60px;
@@ -7,7 +8,6 @@
     cursor: pointer;
     text-decoration: none;
     text-transform: lowercase;
-    padding: 0 20px;
     position: relative;
     transition: all 0.35s ease-in-out;
 }
@@ -18,6 +18,20 @@
     }
 }
 
+/*Links styling*/
+.SideMenuItem a,
+.SideMenuItem span {
+    display: block;
+    padding: 0 20px;
+}
+
+.SideMenuItem a:link,
+.SideMenuItem a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+/*Hovering effects*/
 .SideMenuItem:hover {
     background-color: #f5f5f5;
 }
