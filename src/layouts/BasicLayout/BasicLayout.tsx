@@ -15,11 +15,9 @@ const BasicLayout: React.FC<Props> = props => {
     return (
         <>
             <Header />
-            <div>
-                <main className={classes.MainContent}>
-                    {props.children}
-                </main>
-            </div>
+            <main className={classes.MainContent}>
+                {props.children}
+            </main>
             <Gallery />
             <Press />
             <InstagramPhotos />
