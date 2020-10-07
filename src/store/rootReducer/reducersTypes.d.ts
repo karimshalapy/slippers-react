@@ -1,4 +1,4 @@
-import { GalleryData } from '../../layouts/BasicLayout/Gallery/GalleryTypes'
+import { GalleryData } from '../../pages/Home/Gallery/GalleryTypes'
 import { PressData } from '../../layouts/BasicLayout/Press/PressTypes'
 import { InstagramData } from '../../layouts/BasicLayout/InstagramPhotos/InstagramPhotosTypes'
 import { FooterData } from '../../layouts/BasicLayout/Footer/FooterTypes'
