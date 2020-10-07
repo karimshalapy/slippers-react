@@ -35,3 +35,29 @@
         background-position: 50vw 0
     }
 }
+@media (max-width: 810px) {
+    .HeroSlide {
+        min-height:  350px;
+    }
+    .SlideContentContainer {
+        top: auto;
+        bottom: 15%;
+        right: 50%;
+        transform: translateX(50%);
+    }
+}
+@media(max-width: 500px) {
+    .HeroSlide {
+        min-height:  430px;
+        background-position: 43% 10px;
+    }
+    .HeroSlide h2 {
+        padding-bottom: 7.0em;
+        color: white
+    }
+}
+@media(max-width: 400px) {
+    .HeroSlide {
+        font-size: 13px;
+    }
+}
