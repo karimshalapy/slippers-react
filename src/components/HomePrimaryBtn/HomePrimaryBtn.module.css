@@ -11,3 +11,9 @@
     border-radius: 2px;
     cursor: pointer;
 }
+.HomePrimaryBtn a:link,
+.HomePrimaryBtn a:visited {
+    display: block;
+    color: #fafafa;
+    text-decoration: none;
+}
