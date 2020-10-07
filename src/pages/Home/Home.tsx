@@ -1,4 +1,5 @@
 import React from 'react'
+import Hero from './Hero/Hero'
 
 interface Props {
 
@@ -6,9 +7,9 @@ interface Props {
 
 const Home: React.FC<Props> = props => {
     return (
-        <p>
-            Hello World!!
-        </p>
+        <>
+            <Hero />
+        </>
     )
 }
 
