@@ -1,0 +1,64 @@
+.Avatars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1;
+}
+.Avatar {
+    display: block;
+    max-width: 160px;
+    margin: 0 25px;
+    width: 100%;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.Avatar img {
+    max-width: 100%;
+}
+.AvatarText{
+    display: block;
+    margin-top: -25%;
+    margin-bottom: 1.5em;
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: lowercase;
+    position: relative;
+    transition: all 0.15s ease;
+    color: #111;
+}
+.Avatar a:link, 
+.Avatar a:visited {
+    text-decoration: none;
+    color: #111
+}
+.AvatarText::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 7px;
+    height: 7px;
+    background: #000;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.15s ease;
+}
+.Avatar:hover {
+    transform: translateY(-2%);
+}
+.ActiveAvatar {
+    transform: translateY(-2%);
+}
+.ActiveAvatar .AvatarText {
+    font-weight: 500;
+}
+.ActiveAvatar .AvatarText::after{
+    opacity: 1;
+}
