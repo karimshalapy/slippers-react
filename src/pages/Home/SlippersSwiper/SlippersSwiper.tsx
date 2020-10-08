@@ -1,5 +1,6 @@
 import React from 'react'
 import SlipperImageSwiper from './SlipperImageSwiper/SlipperImageSwiper'
+import SlippersFeaturesSwitcher from './SlippersFeaturesSwitcher/SlippersFeaturesSwitcher'
 import SlippersSwiperAvatars from './SlippersSwiperAvatars/SlippersSwiperAvatars'
 import classes from './SlipperSwiper.module.css'
 
@@ -13,6 +14,7 @@ const SlippersSwiper: React.FC<Props> = props => {
             <SlippersSwiperAvatars />
             <section className={classes.SlipperSwiper}>
                 <SlipperImageSwiper />
+                <SlippersFeaturesSwitcher />
             </section>
         </>
     )
