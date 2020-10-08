@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './SlippersFeaturesSwitcher.module.css'
 import { SlipperImageSwiperData, SlippersTypesEnum } from '../SlippersSwiperTypes.d'
 import HomePrimaryBtn from '../../../../components/HomePrimaryBtn/HomePrimaryBtn'
@@ -7,7 +7,7 @@ import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransitio
 import { Link } from 'react-router-dom'
 
 interface Props {
-
+    activeSlide: number
 }
 
 
@@ -95,18 +95,16 @@ const featuresDummyData: SlipperImageSwiperData[] = [
 ]
 
 const SlippersFeaturesSwitcher: React.FC<Props> = props => {
-    const [active, setActive] = useState(0)
 
     return (
-        <FadeSwitchTransition transitionKey={`slide-${active}-active`}>
+        <FadeSwitchTransition transitionKey={`slide-${props.activeSlide}-active`} fast>
             {(nodeRef) => (
                 <div
-                    onClick={() => setActive(state => state + 1)}
                     ref={nodeRef}
                     className={classes.FeaturesSwitcher}
                 >
                     {featuresDummyData.map(item => {
-                        if (item.type === SlippersTypesEnum[active]) return (
+                        if (item.type === SlippersTypesEnum[props.activeSlide]) return (
                             <article key={item.type}>
                                 <h2 className={classes.FeatureSlideHeader}>mahabis <span>{item.type}</span></h2>
                                 <ul className={classes.FeaturesContainer}>

@@ -1,11 +1,16 @@
 import React from 'react'
+import SwiperCore, { Controller } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
 import classes from './SlipperImageSwiper.module.css'
 
 interface Props {
-
+    controlledSwiper: SwiperCore | undefined,
+    setControlledSwiper: React.Dispatch<React.SetStateAction<SwiperCore | undefined>>
+    setActiveSlide: React.Dispatch<React.SetStateAction<number>>
 }
+
+SwiperCore.use([Controller])
 
 const SlipperImageSwiper: React.FC<Props> = props => {
     return (
@@ -18,7 +23,17 @@ const SlipperImageSwiper: React.FC<Props> = props => {
                 nextEl: ".home-slippers-slider-nextEl-btn",
                 prevEl: ".home-slippers-slider-prevEl-btn",
             }}
+            onSwiper={swiper => props.setControlledSwiper(swiper)}
+            controller={{ control: props.controlledSwiper }}
+            onSlideChange={swiper => props.setActiveSlide(swiper.activeIndex)}
         >
+            <SwiperSlide className={classes.SlipperBigImageSlideContainer}>
+                <img
+                    className={classes.SlipperBigImage}
+                    src="https://cdn.shopify.com/s/files/1/0238/5795/files/MC-F-LG-SY-A2-1-_1.png?448123"
+                    alt=""
+                />
+            </SwiperSlide>
             <SwiperSlide className={classes.SlipperBigImageSlideContainer}>
                 <img
                     className={classes.SlipperBigImage}

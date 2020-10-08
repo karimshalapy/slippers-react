@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import SwiperCore from 'swiper'
 import { v4 } from 'uuid'
-import { SlipperSwiperAvatarData, SlippersTypesEnum } from '../SlippersSwiperTypes.d'
+import { SlipperSwiperAvatarData, SlippersTypesEnum, AvatarNavTypes, SlippersTypes } from '../SlippersSwiperTypes.d'
 import classes from './SlippersSwiperAvatars.module.css'
 
 interface Props {
-
+    controlledSwiper: SwiperCore | undefined,
+    activeSlide: number
 }
 const avatarsDummyData: SlipperSwiperAvatarData[] = [
     {
@@ -36,30 +38,38 @@ const avatarsDummyData: SlipperSwiperAvatarData[] = [
     }
 ]
 
+const isSlippersTypes = (item: AvatarNavTypes): item is SlippersTypes => {
+    return item !== "view all"
+}
+
 const SlippersSwiperAvatars: React.FC<Props> = props => {
-    const [activeSlipper, setActiveSlipper] = useState(SlippersTypesEnum.classic)
+
     return (
         <ul className={classes.Avatars}>
             {
-                avatarsDummyData.map(item => (
-                    <li
-                        className={[classes.Avatar, item.type !== "view all" && activeSlipper === SlippersTypesEnum[item.type] ? classes.ActiveAvatar : ""].join(" ")} key={v4()}
-                        onClick={item.type !== "view all" ? setActiveSlipper.bind(null, SlippersTypesEnum[item.type]) : () => { }}
-                    >
-                        {item.url
-                            ?
-                            <Link to={item.url}>
-                                <img src={item.imgUrl} alt={item.imgAlt} />
-                                <span className={classes.AvatarText}>{item.type}</span>
-                            </Link>
-                            :
-                            <>
-                                <img src={item.imgUrl} alt={item.imgAlt} />
-                                <p className={classes.AvatarText}>{item.type}</p>
-                            </>
-                        }
-                    </li>
-                ))
+                avatarsDummyData.map(item => {
+                    const { type } = item
+
+                    return (
+                        <li
+                            className={[classes.Avatar, isSlippersTypes(type) && props.activeSlide === SlippersTypesEnum[type] ? classes.ActiveAvatar : ""].join(" ")} key={v4()}
+                            onClick={isSlippersTypes(type) && props.controlledSwiper ? () => { props.controlledSwiper?.slideTo(SlippersTypesEnum[type]) } : () => { }}
+                        >
+                            {item.url
+                                ?
+                                <Link to={item.url}>
+                                    <img src={item.imgUrl} alt={item.imgAlt} />
+                                    <span className={classes.AvatarText}>{type}</span>
+                                </Link>
+                                :
+                                <>
+                                    <img src={item.imgUrl} alt={item.imgAlt} />
+                                    <p className={classes.AvatarText}>{type}</p>
+                                </>
+                            }
+                        </li>
+                    )
+                })
             }
         </ul>
     )
