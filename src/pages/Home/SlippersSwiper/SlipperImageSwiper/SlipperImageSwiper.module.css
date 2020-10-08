@@ -1,6 +1,5 @@
 .SlipperSwiper {
     overflow: visible;
-    background: #f7f7f7;
     min-height: 380px;
     margin-bottom:  90px;
 }
@@ -12,7 +11,7 @@
     max-width: 600px;
     position: absolute;
     top: -40px;
-    right: 0;
+    right: 5%;
     pointer-events: none;
 }
 @media(max-width:1024px) {
