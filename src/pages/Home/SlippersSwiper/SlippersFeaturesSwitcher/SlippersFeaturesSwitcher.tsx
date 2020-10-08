@@ -4,6 +4,7 @@ import { SlipperImageSwiperData, SlippersTypesEnum } from '../SlippersSwiperType
 import HomePrimaryBtn from '../../../../components/HomePrimaryBtn/HomePrimaryBtn'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
+import { Link } from 'react-router-dom'
 
 interface Props {
 
@@ -28,7 +29,8 @@ const featuresDummyData: SlipperImageSwiperData[] = [
         ],
         imgAlt: "mahabis classic in larvik light grey large image",
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slippers-lrg-imgs%2Fclassic-lrg.png?alt=media",
-        type: "classic"
+        type: "classic",
+        url: "/"
     },
     {
         features: [
@@ -47,7 +49,8 @@ const featuresDummyData: SlipperImageSwiperData[] = [
         ],
         imgAlt: "Koge Grey Mahabis Canvas Slipper large image",
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slippers-lrg-imgs%2Fcanvas-lrg.png?alt=media",
-        type: "canvas"
+        type: "canvas",
+        url: "/"
     },
     {
         features: [
@@ -66,7 +69,8 @@ const featuresDummyData: SlipperImageSwiperData[] = [
         ],
         imgAlt: "mahabis flow in nora navy large image",
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slippers-lrg-imgs%2Fflow-lrg.png?alt=media",
-        type: "flow"
+        type: "flow",
+        url: "/"
     },
     {
         features: [
@@ -85,7 +89,8 @@ const featuresDummyData: SlipperImageSwiperData[] = [
         ],
         imgAlt: "mahabis luxe in borsen beige large image",
         imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slippers-lrg-imgs%2Fluxe-lrg.png?alt=media",
-        type: "luxe"
+        type: "luxe",
+        url: "/"
     }
 ]
 
@@ -114,7 +119,7 @@ const SlippersFeaturesSwitcher: React.FC<Props> = props => {
                                         </li>
                                     ))}
                                 </ul>
-                                <HomePrimaryBtn>LEARN MORE</HomePrimaryBtn>
+                                <HomePrimaryBtn><Link to={item.url}>LEARN MORE</Link></HomePrimaryBtn>
                             </article>
                         )
                         return null

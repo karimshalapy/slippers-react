@@ -25,4 +25,5 @@ export interface SlipperImageSwiperData {
     imgUrl: string,
     imgAlt: string,
     features: SlippersFeaturesType[],
+    url: string
 }
