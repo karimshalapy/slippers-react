@@ -4,6 +4,7 @@ import classes from './FadeSwitchTransition.module.css'
 
 interface Props {
     transitionKey: string,
+    fast?: boolean
     children: (x: React.RefObject<HTMLDivElement>) => ReactElement,
 }
 
@@ -16,9 +17,9 @@ const FadeSwitchTransition: React.FC<Props> = props => {
                 key={props.transitionKey}
                 classNames={{
                     enter: classes["fade-enter"],
-                    enterActive: classes["fade-enter-active"],
+                    enterActive: classes[props.fast ? "fade-enter-active-fast" : "fade-enter-active"],
                     exit: classes["fade-exit"],
-                    exitActive: classes["fade-exit-active"],
+                    exitActive: classes[props.fast ? "fade-exit-active-fast" : "fade-exit-active"],
                 }}
                 addEndListener={done => nodeRef.current?.addEventListener("transitionend", done, false)}
                 nodeRef={nodeRef}
