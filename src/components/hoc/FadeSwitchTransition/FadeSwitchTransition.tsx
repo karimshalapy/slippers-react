@@ -3,9 +3,8 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import classes from './FadeSwitchTransition.module.css'
 
 interface Props {
-    switch: boolean,
-    keyText: string,
-    children: (x: React.RefObject<HTMLDivElement>) => ReactElement
+    transitionKey: string,
+    children: (x: React.RefObject<HTMLDivElement>) => ReactElement,
 }
 
 const FadeSwitchTransition: React.FC<Props> = props => {
@@ -14,7 +13,7 @@ const FadeSwitchTransition: React.FC<Props> = props => {
     return (
         <SwitchTransition mode="out-in">
             <CSSTransition
-                key={props.switch ? props.keyText : `not ${props.keyText}`}
+                key={props.transitionKey}
                 classNames={{
                     enter: classes["fade-enter"],
                     enterActive: classes["fade-enter-active"],
