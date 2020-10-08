@@ -1,0 +1,36 @@
+.SlipperSwiper {
+    overflow: visible;
+    background: #f7f7f7;
+    min-height: 380px;
+    margin-bottom:  90px;
+}
+.SlipperBigImageSlideContainer {
+    position: relative;
+}
+.SlipperBigImage {
+    display: block;
+    max-width: 600px;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    pointer-events: none;
+}
+@media(max-width:1024px) {
+    .SlipperBigImage{
+        max-width: 444px;
+        top: -260px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .SlipperSwiper {
+        margin-top: 200px;
+    }
+}
+@media(max-width:500px) {
+    .SlipperBigImage{
+        max-width: 350px;
+        top: -200px;
+
+    }
+}
