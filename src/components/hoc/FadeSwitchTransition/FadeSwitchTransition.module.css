@@ -1,13 +1,17 @@
 /*fading transition styling*/
+.fade-enter-fast,
 .fade-enter{
     opacity: 0;
  }
+ .fade-enter-active-fast,
  .fade-enter-active{
     opacity: 1;
  }
+ .fade-exit-fast,
  .fade-exit{
     opacity: 1;
  }
+ .fade-exit-active-fast,
  .fade-exit-active{
     opacity: 0;
  }

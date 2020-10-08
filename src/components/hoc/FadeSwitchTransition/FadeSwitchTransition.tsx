@@ -11,15 +11,18 @@ interface Props {
 const FadeSwitchTransition: React.FC<Props> = props => {
     const nodeRef = useRef<HTMLDivElement>(null)
 
+    const getClassName = (className: string) => props.fast ? className.concat("-fast") : className
+
+
     return (
         <SwitchTransition mode="out-in">
             <CSSTransition
                 key={props.transitionKey}
                 classNames={{
-                    enter: classes["fade-enter"],
-                    enterActive: classes[props.fast ? "fade-enter-active-fast" : "fade-enter-active"],
-                    exit: classes["fade-exit"],
-                    exitActive: classes[props.fast ? "fade-exit-active-fast" : "fade-exit-active"],
+                    enter: classes[getClassName("fade-enter")],
+                    enterActive: classes[getClassName("fade-enter-active")],
+                    exit: classes[getClassName("fade-exit")],
+                    exitActive: classes[getClassName("fade-exit-active")],
                 }}
                 addEndListener={done => nodeRef.current?.addEventListener("transitionend", done, false)}
                 nodeRef={nodeRef}
