@@ -13,7 +13,6 @@ const SlipperImageSwiper: React.FC<Props> = props => {
             className={classes.SlipperSwiper}
             spaceBetween={50}
             speed={300}
-            loop
             loopPreventsSlide={false}
             navigation={{
                 nextEl: ".home-slippers-slider-nextEl-btn",
@@ -41,7 +40,6 @@ const SlipperImageSwiper: React.FC<Props> = props => {
                     alt=""
                 />
             </SwiperSlide>
-
             <SliderBtn type="next" sliderBtnClass="home-slippers-slider-nextEl-btn" />
             <SliderBtn type="prev" sliderBtnClass="home-slippers-slider-prevEl-btn" />
         </Swiper>
