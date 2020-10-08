@@ -17,6 +17,16 @@
     cursor: pointer;
     transition: all 0.15s ease;
 }
+@media(max-width: 600px) {
+    .Avatar{
+        margin: 0 15px;
+    }
+}
+@media(max-width: 500px) {
+    .Avatar{
+        margin: 0 5px;
+    }
+}
 .Avatar img {
     max-width: 100%;
 }
