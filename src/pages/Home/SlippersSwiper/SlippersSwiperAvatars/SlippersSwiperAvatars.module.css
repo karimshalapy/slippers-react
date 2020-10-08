@@ -28,7 +28,6 @@
     font-weight: 300;
     text-transform: lowercase;
     position: relative;
-    transition: all 0.15s ease;
     color: #111;
 }
 .Avatar a:link, 
@@ -48,7 +47,6 @@
     background: #000;
     border-radius: 50%;
     opacity: 0;
-    transition: all 0.15s ease;
 }
 .Avatar:hover {
     transform: translateY(-2%);
@@ -60,5 +58,10 @@
     font-weight: 500;
 }
 .ActiveAvatar .AvatarText::after{
-    opacity: 1;
+    animation: fade 0.5s forwards;
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
