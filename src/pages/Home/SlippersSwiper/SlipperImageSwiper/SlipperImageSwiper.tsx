@@ -22,6 +22,7 @@ const SlipperImageSwiper: React.FC<Props> = props => {
             navigation={{
                 nextEl: ".home-slippers-slider-nextEl-btn",
                 prevEl: ".home-slippers-slider-prevEl-btn",
+                disabledClass: "hidden"
             }}
             onSwiper={swiper => props.setControlledSwiper(swiper)}
             controller={{ control: props.controlledSwiper }}

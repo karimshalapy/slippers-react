@@ -34,3 +34,6 @@ img {
 .App {
   overflow-x: hidden;
 }
+.hidden {
+  visibility: hidden;
+}
