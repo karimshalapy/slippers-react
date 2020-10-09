@@ -24,19 +24,26 @@
 @media(max-width:1024px) {
     .SlipperBigImage{
         max-width: 444px;
-        top: -260px;
+        top: -60px;
         left: 0;
         right: 0;
         margin: auto;
     }
+    .SlipperBigImageSlideContainer {
+        top: -200px;
+    }
     .SlipperSwiper {
         margin-top: 200px;
+    }
+    .sliderNextElBtn, 
+    .sliderPrevElBtn {
+        top: 0;
     }
 }
 @media(max-width:500px) {
     .SlipperBigImage{
         max-width: 350px;
-        top: -200px;
+        top: -40px;
 
     }
 }

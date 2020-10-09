@@ -23,40 +23,42 @@ const SlipperImageSwiper: React.FC<Props> = props => {
     useEffect(() => { controlledSwiper?.update() }, [controlledSwiper, slippersTypeSwiperData])
 
     return (
-        <Swiper
-            className={classes.SlipperSwiper}
-            spaceBetween={50}
-            speed={300}
-            loopPreventsSlide={false}
-            navigation={{
-                nextEl: ".home-slippers-slider-nextEl-btn",
-                prevEl: ".home-slippers-slider-prevEl-btn",
-                disabledClass: "hidden"
-            }}
-            onSwiper={swiper => props.setControlledSwiper(swiper)}
-            controller={{ control: props.controlledSwiper }}
-            onSlideChange={swiper => props.setActiveSlide(swiper.activeIndex)}
-        >
-            {slippersTypeSwiperData ? slippersTypeSwiperData.map(item => (
-                <SwiperSlide className={classes.SlipperBigImageSlideContainer} key={item.type}>
-                    <img
-                        className={classes.SlipperBigImage}
-                        src={item.imgUrl}
-                        alt={item.imgAlt}
-                    />
-                </SwiperSlide>
-            )) : (
-                    <SwiperSlide className={classes.SlipperBigImageSlideContainer}>
+        <>
+            <Swiper
+                className={classes.SlipperSwiper}
+                spaceBetween={50}
+                speed={300}
+                loopPreventsSlide={false}
+                navigation={{
+                    nextEl: `.${classes.sliderNextElBtn}`,
+                    prevEl: `.${classes.sliderPrevElBtn}`,
+                    disabledClass: "hidden"
+                }}
+                onSwiper={swiper => props.setControlledSwiper(swiper)}
+                controller={{ control: props.controlledSwiper }}
+                onSlideChange={swiper => props.setActiveSlide(swiper.activeIndex)}
+            >
+                {slippersTypeSwiperData ? slippersTypeSwiperData.map(item => (
+                    <SwiperSlide className={classes.SlipperBigImageSlideContainer} key={item.type}>
                         <img
-                            className={`${classes.SlipperBigImage} ${classes.Loading}`}
-                            src={loading}
-                            alt="loading"
+                            className={classes.SlipperBigImage}
+                            src={item.imgUrl}
+                            alt={item.imgAlt}
                         />
                     </SwiperSlide>
-                )}
-            <SliderBtn type="next" sliderBtnClass="home-slippers-slider-nextEl-btn" />
-            <SliderBtn type="prev" sliderBtnClass="home-slippers-slider-prevEl-btn" />
-        </Swiper>
+                )) : (
+                        <SwiperSlide className={classes.SlipperBigImageSlideContainer}>
+                            <img
+                                className={`${classes.SlipperBigImage} ${classes.Loading}`}
+                                src={loading}
+                                alt="loading"
+                            />
+                        </SwiperSlide>
+                    )}
+            </Swiper>
+            <SliderBtn type="next" sliderBtnClass={classes.sliderNextElBtn} />
+            <SliderBtn type="prev" sliderBtnClass={classes.sliderPrevElBtn} />
+        </>
     )
 }
 
