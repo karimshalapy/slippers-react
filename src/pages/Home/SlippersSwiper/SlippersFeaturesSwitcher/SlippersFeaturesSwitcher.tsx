@@ -117,7 +117,11 @@ const SlippersFeaturesSwitcher: React.FC<Props> = props => {
                                         </li>
                                     ))}
                                 </ul>
-                                <HomePrimaryBtn><Link to={item.url}>LEARN MORE</Link></HomePrimaryBtn>
+                                <HomePrimaryBtn>
+                                    {
+                                        item.url ? <Link to={item.url}>LEARN MORE</Link> : "LEARN MORE"
+                                    }
+                                </HomePrimaryBtn>
                             </article>
                         )
                         return null

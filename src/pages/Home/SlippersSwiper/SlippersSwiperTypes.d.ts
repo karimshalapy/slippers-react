@@ -11,19 +11,15 @@ export enum SlippersTypesEnum {
     flow,
     luxe
 }
-
-
-export interface SlipperSwiperAvatarData {
-    imgAlt: string,
+interface SwiperImage<T> {
+    type: T,
     imgUrl: string,
-    type: AvatarNavTypes,
-    url?: string,
+    imgAlt: string,
+    url?: string
 }
 
-export interface SlipperImageSwiperData {
-    type: SlippersTypes,
-    imgUrl: string,
-    imgAlt: string,
+export interface SlipperSwiperAvatarData extends SwiperImage<AvatarNavTypes> { }
+
+export interface SlipperImageSwiperData extends SwiperImage<SlippersTypes> {
     features: SlippersFeaturesType[],
-    url: string
 }
