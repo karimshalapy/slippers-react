@@ -51,6 +51,16 @@
     color: #8a8a8a;
     margin-bottom: 25px;
 }
+@media (max-width: 1024px) {
+    .FeaturesSwitcher {
+        margin: auto;
+        left: 0;
+        right: 0;
+    }
+    .FeatureSlideHeader {
+        display: none;
+    }
+}
 /*features content css glyphs*/
 .slipper::before {
     content: "\e90c";
