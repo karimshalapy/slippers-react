@@ -26,7 +26,7 @@ code {
 body * {
   box-sizing: border-box;
 }
-img {
+img, figure {
   user-select: none;
   -webkit-user-drag: none;
   -moz-window-dragging: none;
