@@ -4,15 +4,19 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
     line-height: 42px;
-    padding: 0 2em;
+    padding: 0;
     background-color: black;
     outline: none;
     border: none;
     border-radius: 2px;
     cursor: pointer;
 }
+.NoLink {
+    padding: 0 2em;
+}
 .HomePrimaryBtn a:link,
 .HomePrimaryBtn a:visited {
+    padding: 0 2em;
     display: block;
     color: #fafafa;
     text-decoration: none;

@@ -37,7 +37,7 @@ const SlippersFeaturesSwitcher: React.FC<Props> = props => {
                                         </li>
                                     ))}
                                 </ul>
-                                <HomePrimaryBtn>
+                                <HomePrimaryBtn hasLink>
                                     {
                                         item.url ? <Link to={item.url}>LEARN MORE</Link> : "LEARN MORE"
                                     }

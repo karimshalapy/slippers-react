@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import classes from './HomePrimaryBtn.module.css'
 
 interface Props {
     classNames?: string[],
+    hasLink?: boolean
     clickHandler?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-const HomePrimaryBtn: React.FC<Props> = props => {
-    const btnClasses = props.classNames ? [classes.HomePrimaryBtn, ...props.classNames].join(" ") : classes.HomePrimaryBtn
+const HomePrimaryBtn: React.FC<Props> = ({ classNames, hasLink, clickHandler, children }) => {
+
+    const getBtnClasses = useCallback(() => {
+        const classesArr = [classes.HomePrimaryBtn]
+        if (!hasLink) classesArr.push(classes.NoLink)
+        if (classNames) classesArr.push(...classNames)
+
+        return classesArr.join(" ")
+    }, [classNames, hasLink])
+
     return (
-        <button className={btnClasses} onClick={props.clickHandler}>
-            {props.children}
+        <button className={getBtnClasses()} onClick={clickHandler}>
+            {children}
         </button>
     )
 }

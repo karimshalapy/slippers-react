@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
                     >
                         <div className={classes.SlideContentContainer}>
                             <h2 dangerouslySetInnerHTML={{ __html: item.heroText }}></h2>
-                            <HomePrimaryBtn><Link to="/slippers">SHOP NOW</Link></HomePrimaryBtn>
+                            <HomePrimaryBtn hasLink><Link to="/slippers">SHOP NOW</Link></HomePrimaryBtn>
                         </div>
                     </SwiperSlide>
                 ))
