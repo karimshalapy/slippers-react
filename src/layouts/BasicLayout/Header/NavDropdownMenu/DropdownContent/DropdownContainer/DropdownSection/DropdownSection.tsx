@@ -7,9 +7,10 @@ import classes from './DropdownSection.module.css'
 interface Props {
     type: DropdownSectionTypes,
     payload: DropdownSectionData
+    reset: () => void
 }
 
-const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) => {
+const DropdownSection: React.FC<Props> = ({ type, reset, payload: { heading, data } }) => {
 
     //a helper function to do data mutation to transform the data into unordered lists with the content properly rendered
     const sectionContent = () => {
@@ -21,7 +22,7 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={classes.ImageList}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.url} className={classes.Link}>
+                                    <Link to={item.url} className={classes.Link} onClick={reset}>
                                         <img className={classes.ImageListImages} src={item.imgUrl} alt={item.imgAlt} />
                                         <span>{item.text}</span>
                                     </Link>
@@ -38,7 +39,7 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={classes.TextList}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.url} className={classes.Link}>{item.text}</Link>
+                                    <Link to={item.url} className={classes.Link} onClick={reset}>{item.text}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -51,7 +52,7 @@ const DropdownSection: React.FC<Props> = ({ type, payload: { heading, data } }) 
                         <ul className={type === "2_imageBlocks" ? classes.ImageBlocks : classes.ImageBlocksOnly}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.url} className={classes.Link}>
+                                    <Link to={item.url} className={classes.Link} onClick={reset}>
                                         <img src={item.imgUrl} alt={item.imgAlt} />
                                         <div className={classes.TextOverImage}>
                                             <span>{item.text}</span>

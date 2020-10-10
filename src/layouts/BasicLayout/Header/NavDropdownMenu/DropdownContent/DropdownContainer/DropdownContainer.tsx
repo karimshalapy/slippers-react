@@ -5,9 +5,10 @@ import DropdownSection from './DropdownSection/DropdownSection'
 
 interface Props {
     dropdownSectionData?: DropdownSectionsData
+    reset: () => void
 }
 
-const DropdownContainer: React.FC<Props> = ({ dropdownSectionData }) => {
+const DropdownContainer: React.FC<Props> = ({ dropdownSectionData, reset }) => {
 
     //use-defined type guard to tell whether the data is array or object
     const isArray = useCallback((item: DropdownSectionData | DropdownSectionData[]): item is DropdownSectionData[] => {
@@ -32,6 +33,7 @@ const DropdownContainer: React.FC<Props> = ({ dropdownSectionData }) => {
                             key={v4()}
                             type={section}
                             payload={item}
+                            reset={reset}
                         />
                     )
                 })
@@ -43,6 +45,7 @@ const DropdownContainer: React.FC<Props> = ({ dropdownSectionData }) => {
                         key={v4()}
                         type={section}
                         payload={dropdownSectionItem}
+                        reset={reset}
                     />
                 )
             }

@@ -7,6 +7,7 @@ import { RootReducer } from '../../../../../store/rootReducer/reducersTypes'
 
 interface Props {
     type: DropdownMenusTypes
+    reset: () => void
 }
 
 const DropdownContent: React.FC<Props> = props => {
@@ -14,7 +15,7 @@ const DropdownContent: React.FC<Props> = props => {
 
     return (
         <ul className={classes.DropdownContent}>
-            <DropdownContainer dropdownSectionData={dropdownData ? dropdownData[props.type] : undefined} />
+            <DropdownContainer reset={props.reset} dropdownSectionData={dropdownData ? dropdownData[props.type] : undefined} />
         </ul>
     )
 }
