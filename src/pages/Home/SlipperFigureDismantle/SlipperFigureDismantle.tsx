@@ -104,6 +104,7 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
                 {
                     figureLayerData.map(layer => (
                         <SlipperFigureLayer
+                            key={layer.layerType}
                             {...layer}
                         />
                     ))
