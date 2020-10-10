@@ -61,14 +61,14 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
 
     const figureLayerData: LayerData[] = [
         {
-            imgUrl: "https://cdn.shopify.com/s/files/1/0238/5795/files/parallax-classic-upper-1.png?421403",
+            imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-dismantled%2Fparallax-classic-upper.png?alt=media",
             imgAlt: "slipper top part",
             layerType: "SlipperTop",
             title: "soft felt upper",
             text: "gently compresses tired feet",
         },
         {
-            imgUrl: "https://cdn.shopify.com/s/files/1/0238/5795/files/parallax-classic-wool-5.png?421403",
+            imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-dismantled%2Fparallax-classic-wool.png?alt=media",
             imgAlt: "slipper wool lining",
             layerType: "SlipperWool",
             title: "100% wool lining",
@@ -76,7 +76,7 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
             style: { transform: `translateY(${woolDisplacement}px)` },
         },
         {
-            imgUrl: "https://cdn.shopify.com/s/files/1/0238/5795/files/parallax-classic-insole-5.png?421403",
+            imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-dismantled%2Fparallax-classic-insole.png?alt=media",
             imgAlt: "slipper footbed part",
             layerType: "SlipperFootbed",
             title: "adaptable foam footbed",
@@ -84,7 +84,7 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
             style: { transform: `translateY(${footbedDisplacement}px)` },
         },
         {
-            imgUrl: "https://cdn.shopify.com/s/files/1/0238/5795/files/parallax-classic-sole-5.png?421403",
+            imgUrl: "https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-dismantled%2Fparallax-classic-sole.png?alt=media",
             imgAlt: "slipper sole part",
             layerType: "SlipperSole",
             title: "durable hybrid sole",
