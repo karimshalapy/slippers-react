@@ -1,0 +1,58 @@
+/*Text block above figures styling*/
+.FigureDismantleTextContainer {
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+}
+.FigureDismantleTextContainer p {
+    max-width: 450px;
+    margin: 10px auto 0;
+    line-height: 1.6;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #8a8a8a;
+}
+.FigureDismantleTextContainer h2 {
+    font-size: 40px;
+    letter-spacing: .04em;
+    margin: 0;
+}
+.FigureDismantleTextContainer h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: -2px;
+    margin-bottom: 20px;
+}
+
+/*Figures div styling*/
+.FigureDismantleFiguresContainer {
+    width: 500px;
+    min-height: 350px;
+    margin: 100px auto 350px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.FigureDismantleFiguresContainer figure {
+    margin: 0;
+    position: absolute;
+}
+.FigureDismantleFiguresContainer img {
+    max-width: 100%;
+}
+
+.ShowText {
+    opacity: 1 !important;
+}
+
+
+@media(max-width: 950px) {
+    .FigureDismantleFiguresContainer {
+        max-width: 400px;
+    }
+}
+
+@media(max-width: 550px) {
+    .FigureDismantleFiguresContainer {
+        width: 300px;
+    }
+}

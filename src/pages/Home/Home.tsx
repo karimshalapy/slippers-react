@@ -1,4 +1,5 @@
 import React from 'react'
+import SlipperFigureDismantle from './SlipperFigureDismantle/SlipperFigureDismantle'
 import Gallery from './Gallery/Gallery'
 import Hero from './Hero/Hero'
 import SlippersSwiper from './SlippersSwiper/SlippersSwiper'
@@ -12,6 +13,7 @@ const Home: React.FC<Props> = props => {
         <>
             <Hero />
             <SlippersSwiper />
+            <SlipperFigureDismantle />
             <Gallery />
         </>
     )
