@@ -67,8 +67,13 @@
     line-height: 75px;
 }
 .Link:hover,
-.Liink:active {
+.Link:active {
     font-weight: 500;
+}
+.TextList .Link:active,
+.TextList .Link:hover {
+    font-weight: 400;
+    text-shadow: 0 0.00001em #c4c4c4, 0 -0.00001em #c4c4c4, 0.00001em 0 #c4c4c4, -0.00001em 0 #c4c4c4;
 }
 .Link:hover img,
 .Liink:active img {
