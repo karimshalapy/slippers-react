@@ -15,7 +15,8 @@
     }
 }
 .Press h2 span {
-    font-family: "GT Haptik Bold";
+    font-weight: 700;
+    text-shadow: 0 0.00001em #c4c4c4, 0 -0.00001em #c4c4c4, 0.00001em 0 #c4c4c4, -0.00001em 0 #c4c4c4;
 }
 .ImgsContainer{
     list-style-type: none;
