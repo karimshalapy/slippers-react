@@ -1,44 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Slippers React <!-- omit in toc -->
 
-In the project directory, you can run:
+A Typescript React website replicating the design of a famous E-commerce store.
 
-### `yarn start`
+Table of content:  
+- [1. Getting Started](#1-getting-started)
+  - [1.1. Prerequisites](#11-prerequisites)
+  - [1.2. Installing](#12-installing)
+  - [1.3. Database](#13-database)
+- [2. Built With](#2-built-with)
+- [3. Git Style](#3-git-style)
+  - [3.1. Message Structure](#31-message-structure)
+    - [3.1.1. The Type](#311-the-type)
+    - [3.1.2. The Subject](#312-the-subject)
+    - [3.1.3. The Body](#313-the-body)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1. Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+These instructions will get you a copy of the project up and running on your local machine for development purposes.
 
-### `yarn test`
+### 1.1. Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Check the package.json for all the packages required for this project
 
-### `yarn build`
+### 1.2. Installing
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone this repo, open the terminal and navigate to the repo directory on your local machine, and then run:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+npm install
+```
+wait until it's done and you're good to go  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1.3. Database
 
-### `yarn eject`
+In order for this project to work properly you will need a REST API *(in my case I made my own using Firebase)* that provides data matching the data types in the RootReducer interface.
+You can find the RootReducer type in ` ./store/rootReducer/reducersTypes.d.ts`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 2. Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [TypeScript](https://www.typescriptlang.org/) - The main language used.
+* [React](https://reactjs.org/) - The web library used.
+* [Redux](https://redux.js.org/) - For state management *(in coordination with redux-thunk & react-redux)*.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 3. Git Style
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 3.1. Message Structure
+A commit messages consists of three distinct parts separated by a blank line: the title, an optional body and an optional footer. The layout looks like this:
+```
+type: subject
 
-## Learn More
+body
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 3.1.1. The Type
+The type is contained within the title and can be one of these types:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **feat:** a new feature
+* **fix:** a bug fix
+* **docs:** changes to documentation
+* **style:** formatting, missing semi colons, etc; no code change
+* **refactor:** refactoring production code
+* **test:** adding tests, refactoring test; no production code change
+* **chore:** updating build tasks, package manager configs, etc; no production code change
+
+#### 3.1.2. The Subject
+Subjects should be no greater than 50 characters, should begin with a capital letter and do not end with a period.
+
+Use an imperative tone to describe what a commit does, rather than what it did. For example, use change; not changed or changes.
+
+#### 3.1.3. The Body
+Not all commits are complex enough to warrant a body, therefore it is optional and only used when a commit requires a bit of explanation and context. Use the body to explain the what and why of a commit, not the how.
+
+When writing a body, the blank line between the title and the body is required and you should limit the length of each line to no more than 72 characters.
+
+For more information about the style guide for Git and programming Languages check: [Udacity's Code Style Guide](https://udacity.github.io/git-styleguide/)
+
