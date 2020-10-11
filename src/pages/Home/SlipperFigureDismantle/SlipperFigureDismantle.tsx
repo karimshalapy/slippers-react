@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import classes from './SlipperFigureDismantle.module.css'
 import SlipperFigureLayer from './SlipperFigureLayer/SlipperFigureLayer'
 import { LayerData } from './SlipperFigureDismantleTypes.d'
+import HomePrimaryBtn from '../../../components/HomePrimaryBtn/HomePrimaryBtn'
+import { Link } from 'react-router-dom'
 
 interface Props {
 
@@ -110,6 +112,7 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
                     ))
                 }
             </div>
+            <HomePrimaryBtn hasLink classNames={[classes.FigureDismantleBtn]}><Link to="/slippers">LEARN MORE</Link></HomePrimaryBtn>
         </section>
     )
 }

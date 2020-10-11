@@ -1,3 +1,7 @@
+.FigureDismantleBtn {
+    display: block;
+    margin: -100px auto 60px;
+}
 /*Text block above figures styling*/
 .FigureDismantleTextContainer {
     margin: 0 auto;
