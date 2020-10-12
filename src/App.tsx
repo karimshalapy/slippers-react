@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import BasicLayout from './layouts/BasicLayout/BasicLayout';
 import Home from './pages/Home/Home';
+import Slippers from './pages/Slippers/Slippers';
 import _404 from './pages/_404/_404';
 import { getResources } from './store/actionsIndex/actionIndex'
 
@@ -19,6 +20,7 @@ function App() {
         <BasicLayout>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/slippers" exact component={Slippers} />
             <Route path="/404" exact component={_404} />
             <Redirect from="/" to="/404" />
           </Switch>
