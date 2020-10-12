@@ -1,0 +1,55 @@
+.FilterSectionHeader {
+    margin: 20px 0 5px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #111;
+    text-transform: lowercase;
+}
+
+.CheckboxLabel {
+    display: block;
+    position: relative;
+    text-align: left;
+    font-weight: 300;
+    font-size: 13px;
+    color: #676767;
+    padding: 5px 0 0 20px;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    user-select: none;
+}
+.CheckboxLabel::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    font-size: 9px;
+    font-family: mahabis-icons;
+    text-align: right;
+    transition: all .1s ease-in-out;
+}
+.CheckboxLabel:hover::before {
+    border-color: #676767;
+}
+.DefaultCheckBox:checked + .CheckboxLabel::before {
+    content: "\6d";
+    border-color: #676767;
+}
+/*Hiding the default checkbox and replacing it with the custom checkbox above*/
+.DefaultCheckBox {
+    position:absolute; 
+    z-index:-1000; 
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
