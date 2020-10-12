@@ -1,0 +1,15 @@
+.FilterSection {
+    display: block;
+    padding-right: 1.5%;
+    border-right: 1px solid #f5f5f5;
+}
+.FilterSection h2 {
+    font-weight: 600;
+    display: block;
+    padding: 10px 0 15px;
+    margin: 0;
+    font-size: 14px;
+    color: #111;
+    border-bottom: 1px solid #f5f5f5;
+    text-transform: lowercase;
+}
