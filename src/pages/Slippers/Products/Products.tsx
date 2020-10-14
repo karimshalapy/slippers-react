@@ -1,5 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import classes from './Products.module.css'
 
 interface Props {
@@ -7,6 +9,9 @@ interface Props {
 }
 
 const Products: React.FC<Props> = props => {
+
+    const productsData = useSelector((state: RootReducer) => state.mainResources.slippers?.productsData)
+
     return (
         <>
             <article className={classes.SlipperArticle}>
@@ -21,18 +26,18 @@ const Products: React.FC<Props> = props => {
                 </p>
             </article>
             <ul className={classes.ProductsList}>
-                {
-                    [...Array(25)].map(() => (
+                {productsData ?
+                    productsData.map(item => (
                         <li className={classes.Product}>
-                            <Link to="/slipper">
-                                <img src="https://cdn.mahabis.com/website/plp/images/MC-F-LG-SY-2.jpg?23" alt="" className={classes.MainImage} />
-                                <img src="https://cdn.mahabis.com/website/plp/imagesHovered/MC-F-LG-SY.jpg" alt="" className={classes.SecondaryImage} />
-                                <h3>mahabis classic</h3>
-                                <p>light grey &amp; skane yellow</p>
-                                <data value={109}>$109.00</data>
+                            <Link to={`/${item.type}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
+                                <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
+                                <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
+                                <h3>mahabis {item.type}</h3>
+                                <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
+                                <data value={item.price.usd}>${item.price.usd}</data>
                             </Link>
                         </li>
-                    ))
+                    )) : null
                 }
             </ul>
         </>
