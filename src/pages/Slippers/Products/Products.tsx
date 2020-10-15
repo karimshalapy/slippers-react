@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { v4 } from 'uuid'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import classes from './Products.module.css'
 
@@ -28,7 +29,7 @@ const Products: React.FC<Props> = props => {
             <ul className={classes.ProductsList}>
                 {productsData ?
                     productsData.map(item => (
-                        <li className={classes.Product}>
+                        <li className={classes.Product} key={v4()}>
                             <Link to={`/${item.type}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
                                 <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
                                 <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
