@@ -6,7 +6,7 @@ import { DropdownMenusData } from '../../layouts/BasicLayout/Header/HeaderTypes'
 import { sideNavMenusDataType } from '../../layouts/BasicLayout/Header/SideNavMenu/SideNavMenuTypes'
 import { HeroData } from '../../pages/Home/Hero/HeroTypes'
 import { SlipperImageSwiperData, SlipperSwiperAvatarData } from '../../pages/Home/SlippersSwiper/SlippersSwiperTypes'
-import { SlippersData } from '../../pages/Slippers/SlippersTypes'
+import { SlipperFilterState, SlippersData } from '../../pages/Slippers/SlippersTypes'
 
 
 export interface ResourcesState {
@@ -24,5 +24,6 @@ export interface ResourcesState {
 }
 
 interface RootReducer {
-    mainResources: ResourcesState
+    mainResources: ResourcesState,
+    filterState: SlipperFilterState
 }

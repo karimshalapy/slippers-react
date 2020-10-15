@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { v4 } from 'uuid'
+import { updateFilterState } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
-import { FilterSectionTypes, SlipperFilterState } from '../SlippersTypes'
+import { FilterSectionTypes } from '../SlippersTypes'
 import FilterSection from './FilterSection/FilterSection'
 import classes from './FliterProducts.module.css'
 
@@ -12,25 +13,12 @@ interface Props {
 
 const FliterProducts: React.FC<Props> = props => {
 
-    const filterData = useSelector((state: RootReducer) => state.mainResources.slippers?.filterData)
+    const filterData = useSelector((state: RootReducer) => (state.mainResources.slippers?.filterData))
+    const dispatch = useDispatch()
 
-    const [filterSectionsState, setFilterSectionsState] = useState<SlipperFilterState>({
-        sizes: null,
-        collection: null,
-        gender: null,
-        soleColor: null,
-        upperColor: null
-    })
 
     const changeHandler = (type: FilterSectionTypes, value: string) => {
-        console.log(type, value)
-        setFilterSectionsState(prevFilterState => {
-            return {
-                ...prevFilterState,
-                sizes: type === "gender" ? null : prevFilterState.sizes,
-                [type]: prevFilterState[type] === value ? null : value,
-            }
-        })
+        dispatch(updateFilterState(type, value))
     }
 
     return (
@@ -45,7 +33,6 @@ const FliterProducts: React.FC<Props> = props => {
                             title={item.title}
                             filterItems={item.filterItems}
                             type={item.type}
-                            state={filterSectionsState}
                             changeHandler={changeHandler}
                         />
                     ))

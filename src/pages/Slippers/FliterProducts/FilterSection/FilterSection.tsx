@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react'
-import { FilterItemsTypes, FilterSectionTypes, GenderSizeFilterTypes, GenderSizes, SlipperFilterState } from '../../SlippersTypes.d'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { FilterItemsTypes, FilterSectionTypes, GenderSizeFilterTypes, GenderSizes } from '../../SlippersTypes.d'
 import classes from './FilterSection.module.css'
 
 interface Props {
@@ -8,14 +10,15 @@ interface Props {
     loading?: boolean,
     type?: FilterSectionTypes,
     changeHandler?: (type: FilterSectionTypes, value: string) => void,
-    state?: SlipperFilterState
 }
 
-const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, state, changeHandler }) => {
+const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, changeHandler }) => {
 
     const isSizesSection = useCallback((filterItems: FilterItemsTypes): filterItems is GenderSizeFilterTypes => {
         return typeof filterItems[0] !== "string"
     }, [])
+
+    const state = useSelector((state: RootReducer) => state.filterState)
 
     const getSectionJsx = useCallback((value: string, extraData?: string) => {
         return (
