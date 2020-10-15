@@ -1,52 +1,73 @@
 import React, { useCallback } from 'react'
-import { FilterItemsTypes, GenderSizeFilterTypes } from '../../SlippersTypes.d'
+import { FilterItemsTypes, FilterSectionTypes, GenderSizeFilterTypes, GenderSizes, SlipperFilterState } from '../../SlippersTypes.d'
 import classes from './FilterSection.module.css'
 
 interface Props {
     title?: string,
     filterItems?: FilterItemsTypes,
-    loading?: boolean
+    loading?: boolean,
+    type?: FilterSectionTypes,
+    changeHandler?: (type: FilterSectionTypes, value: string) => void,
+    state?: SlipperFilterState
 }
 
-const FilterSection: React.FC<Props> = ({ title, filterItems, loading }) => {
+const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, state, changeHandler }) => {
 
-    const isGenderSection = useCallback((filterItems: FilterItemsTypes): filterItems is GenderSizeFilterTypes => {
+    const isSizesSection = useCallback((filterItems: FilterItemsTypes): filterItems is GenderSizeFilterTypes => {
         return typeof filterItems[0] !== "string"
     }, [])
 
-    const getRenderData = useCallback(() => {
-        if (filterItems && !loading) {
-            if (!isGenderSection(filterItems)) {
-                return (
-                    <>
-                        <h3 className={classes.FilterSectionHeader}>{title}</h3>
-                        {
-                            filterItems.map(item => (
-                                <React.Fragment key={item}>
-                                    <input
-                                        type="checkbox"
-                                        id={`${title}-${item}`}
-                                        name={item}
-                                        className={classes.DefaultCheckBox}
-                                    />
-                                    <label
-                                        htmlFor={`${title}-${item}`}
-                                        className={classes.CheckboxLabel}
-                                    >
-                                        {item}
-                                    </label>
-                                </React.Fragment>
-                            ))
+    const getSectionJsx = useCallback((value: string, extraData?: string) => {
+        return (
+            <React.Fragment key={value}>
+                <input
+                    type="checkbox"
+                    id={`${title}-${value}`}
+                    name={type}
+                    className={classes.DefaultCheckBox}
+                    value={value}
+                    checked={state![type!] === value}
+                    onChange={e => changeHandler!(type!, e.target.value)}
+                />
+                <label
+                    htmlFor={`${title}-${value}`}
+                    className={classes.CheckboxLabel}
+                >
+                    {type === "sizes"
+                        ?
+                        <>
+                            {extraData!} <span>(EU {value})</span>
+                        </>
+                        :
+                        value
+                    }
+                </label>
+            </React.Fragment>
+        )
+    }, [changeHandler, state, title, type])
 
-                        }
-                    </>
-                )
-            } else {
-                return null
-            }
+    const getRenderData = useCallback(() => {
+        if (filterItems && !loading && changeHandler && state && type) {
+            return (
+                <>
+                    <h3 className={classes.FilterSectionHeader}>{title}</h3>
+                    { !isSizesSection(filterItems)
+                        ?
+                        filterItems.map(item => getSectionJsx(item))
+                        :
+                        state.gender
+                            ?
+                            filterItems[GenderSizes[state.gender as "men" | "women"]].map(item => getSectionJsx(item.eu.toString(), item.us))
+                            :
+                            <label className={`${classes.CheckboxLabel} ${classes.ChooseAbove}`}>please select men or women above to see available sizes</label>
+
+                    }
+                </>
+            )
+
         }
         return null
-    }, [filterItems, loading, title, isGenderSection])
+    }, [filterItems, loading, title, type, isSizesSection, changeHandler, state, getSectionJsx])
 
     return (
         <div>

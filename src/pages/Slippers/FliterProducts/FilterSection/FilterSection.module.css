@@ -40,6 +40,12 @@
     content: "\6d";
     border-color: #676767;
 }
+.ChooseAbove {
+    cursor: default;
+}
+.ChooseAbove::before {
+    visibility: hidden;
+}
 /*Hiding the default checkbox and replacing it with the custom checkbox above*/
 .DefaultCheckBox {
     position:absolute; 
