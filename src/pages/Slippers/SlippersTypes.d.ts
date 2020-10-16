@@ -13,6 +13,10 @@ export type Prices = {
     gbp: number,
     usd: number
 }
+export interface ItemGenderSize {
+    eu: number[],
+    us: string[]
+}
 export type GenderSizeFilterTypes = [Size[], Size[]]
 export enum GenderSizes { men, women }
 export type FilterItemsTypes = string[] | GenderSizeFilterTypes
@@ -28,20 +32,20 @@ export interface SlippersFilterData {
 }
 
 export interface SlippersProductData {
-    type: SlippersTypes,
+    collection: SlippersTypes,
     mainImageUrl: string,
     mainImageAlt: string,
     secondaryImageUrl: string,
     secondaryImageAlt: string,
     colorText: string,
-    upperColor: string,
-    soleColor: string,
-    upperColorFilterText: UpperColorFilterTypes[],
-    soleColorFilterText: SoleColorFilterTypes[],
+    upperColorLongText: string,
+    soleColorLongText: string,
+    upperColor: UpperColorFilterTypes[],
+    soleColor: SoleColorFilterTypes[],
     upperColorShortened: ShortColorsTypes,
     soleColorShortened: ShortColorsTypes,
-    menSizes: Size[],
-    wommenSizes: Size[]
+    menSizes: ItemGenderSize,
+    womenSizes: ItemGenderSize,
     price: Prices,
 }
 
