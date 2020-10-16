@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
-import { getProdcuts } from '../../store/actionsIndex/actions/filteredActions'
+import { filterProducts, getProdcuts } from '../../store/actionsIndex/actionIndex'
+import { RootReducer } from '../../store/rootReducer/reducersTypes'
 import FliterProducts from './FliterProducts/FliterProducts'
 import Products from './Products/Products'
 import classes from './Slippers.module.css'
@@ -12,10 +13,16 @@ interface Props {
 
 const Slippers: React.FC<Props> = props => {
     const dispatch = useDispatch()
+    const { filterState, productsData } = useSelector((state: RootReducer) => ({ filterState: state.filterState, productsData: state.productsData.original?.productsData }))
 
     useEffect(() => {
         dispatch(getProdcuts())
-    }, [dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        dispatch(filterProducts(filterState))
+    }, [dispatch, filterState, productsData])
 
     return (
         <>

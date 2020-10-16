@@ -8,3 +8,8 @@ export {
     setParams,
     setfilterStateWParams
 } from './actions/filterActions'
+
+export {
+    filterProducts,
+    getProdcuts
+} from './actions/filteredActions'

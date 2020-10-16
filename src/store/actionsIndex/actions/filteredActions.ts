@@ -1,4 +1,4 @@
-import { SlippersData } from "../../../pages/Slippers/SlippersTypes";
+import { SlipperFilterState, SlippersData } from "../../../pages/Slippers/SlippersTypes";
 import { FilteredAction } from "../actionTypes";
 import * as actions from '../actionNames'
 import asyncThunkGet from "../../../helpers/asyncThunkGet";
@@ -9,3 +9,8 @@ const setProducts: (x: SlippersData) => FilteredAction = (products) => ({
 })
 
 export const getProdcuts = asyncThunkGet<SlippersData, FilteredAction>("slippers.json", setProducts)
+
+export const filterProducts = (filterState: SlipperFilterState) => ({
+    type: actions.FILTER,
+    filterState
+})
