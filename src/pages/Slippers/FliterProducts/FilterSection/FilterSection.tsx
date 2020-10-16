@@ -26,7 +26,7 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
             <React.Fragment key={value}>
                 <input
                     type="checkbox"
-                    id={`${title}-${value}`}
+                    id={`${type}-${value}`}
                     name={type}
                     className={classes.DefaultCheckBox}
                     value={value}
@@ -34,7 +34,7 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
                     onChange={e => changeHandler!(type!, e.target.value)}
                 />
                 <label
-                    htmlFor={`${title}-${value}`}
+                    htmlFor={`${type}-${value}`}
                     className={classes.CheckboxLabel}
                 >
                     {type === "sizes"
@@ -48,7 +48,7 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
                 </label>
             </React.Fragment>
         )
-    }, [changeHandler, state, title, type])
+    }, [changeHandler, state, type])
 
     const getRenderData = useCallback(() => {
         if (filterItems && !loading && changeHandler && state && type) {
