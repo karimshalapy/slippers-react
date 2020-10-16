@@ -3,6 +3,7 @@ import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import * as actionTypes from './actionNames'
 import { FilterSectionTypes } from "../../pages/Slippers/SlippersTypes";
+import * as H from 'history'
 
 //resources action types
 export interface ResourcesAction {
@@ -15,7 +16,8 @@ export type AppThunk<State> = () => ThunkAction<void, State, unknown, Action<str
 
 //filter action types
 export interface FilterAction {
-    type: actionTypes.UPDATE_FILTER_STATE | actionTypes.RESET_FILTER_STATE,
+    type: actionTypes.UPDATE_FILTER_STATE | actionTypes.RESET_FILTER_STATE | actionTypes.SET_PARAMS | actionTypes.UPDATE_FILTER_STATE_W_PARAMS,
     value?: string,
-    filterSectionType?: FilterSectionTypes
+    filterSectionType?: FilterSectionTypes,
+    history?: H.History<unknown>,
 }

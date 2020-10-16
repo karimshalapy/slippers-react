@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { v4 } from 'uuid'
-import { updateFilterState } from '../../../store/actionsIndex/actionIndex'
+import { setParams, updateFilterState } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import { FilterSectionTypes } from '../SlippersTypes'
 import FilterSection from './FilterSection/FilterSection'
@@ -15,10 +16,11 @@ const FliterProducts: React.FC<Props> = props => {
 
     const filterData = useSelector((state: RootReducer) => (state.mainResources.slippers?.filterData))
     const dispatch = useDispatch()
-
+    const history = useHistory()
 
     const changeHandler = (type: FilterSectionTypes, value: string) => {
         dispatch(updateFilterState(type, value))
+        dispatch(setParams(history))
     }
 
     return (
