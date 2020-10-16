@@ -15,3 +15,8 @@ export const setParams = (history: H.History<unknown>) => ({
     type: actions.SET_PARAMS,
     history
 })
+
+export const setfilterStateWParams = (params: string) => ({
+    type: actions.UPDATE_FILTER_STATE_W_PARAMS,
+    params
+})

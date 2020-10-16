@@ -5,5 +5,6 @@ export {
 export {
     updateFilterState,
     resetFilterState,
-    setParams
+    setParams,
+    setfilterStateWParams
 } from './actions/filterActions'
