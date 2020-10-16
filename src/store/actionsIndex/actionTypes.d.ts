@@ -2,7 +2,7 @@ import { ResourcesState } from "../rootReducer/reducersTypes";
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import * as actionTypes from './actionNames'
-import { FilterSectionTypes, SlippersData } from "../../pages/Slippers/SlippersTypes";
+import { FilterSectionTypes, SlipperFilterState, SlippersData } from "../../pages/Slippers/SlippersTypes";
 import * as H from 'history'
 
 //resources action types
@@ -26,5 +26,6 @@ export interface FilterAction {
 //filtered action types
 export interface FilteredAction {
     type: actionTypes.SET_PRODCUTS | actionTypes.FILTER,
-    products?: SlippersData
+    products?: SlippersData,
+    filterState?: SlipperFilterState
 }
