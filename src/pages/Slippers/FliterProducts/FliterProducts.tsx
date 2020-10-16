@@ -37,7 +37,7 @@ const FliterProducts: React.FC<Props> = props => {
                         />
                     ))
                     :
-                    [...Array(5)].map(() => (
+                    [...Array(3)].map(() => (
                         <FilterSection key={v4()} loading />
                     ))
             }

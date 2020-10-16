@@ -59,3 +59,17 @@
     padding:0;
     border:0;
 }
+h3.Loading {
+    width: 50%;
+    padding-top: 5px;
+}
+.Loading {
+    display:block;
+    color: #f3f3f3;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.Loading::before{
+    visibility: hidden;
+}

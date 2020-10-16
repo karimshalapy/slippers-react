@@ -69,7 +69,19 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
             )
 
         }
-        return null
+
+        //rendering blank grey blocks when loading
+        return (
+            <>
+                <h3 className={`${classes.FilterSectionHeader} ${classes.Loading}`}>Loading</h3>
+                {[...Array(5)].map(() => (
+                    <>
+                        <input type="checkbox" className={classes.DefaultCheckBox} />
+                        <label className={`${classes.CheckboxLabel} ${classes.Loading} `}>Loading</label>
+                    </>
+                ))}
+            </>
+        )
     }, [filterItems, loading, title, type, isSizesSection, changeHandler, state, getSectionJsx])
 
     return (
