@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { v4 } from 'uuid'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { FilterItemsTypes, FilterSectionTypes, GenderSizeFilterTypes, GenderSizes } from '../../SlippersTypes.d'
 import classes from './FilterSection.module.css'
@@ -75,10 +76,10 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
             <>
                 <h3 className={`${classes.FilterSectionHeader} ${classes.Loading}`}>Loading</h3>
                 {[...Array(5)].map(() => (
-                    <>
+                    <React.Fragment key={v4()}>
                         <input type="checkbox" className={classes.DefaultCheckBox} />
                         <label className={`${classes.CheckboxLabel} ${classes.Loading} `}>Loading</label>
-                    </>
+                    </React.Fragment>
                 ))}
             </>
         )
