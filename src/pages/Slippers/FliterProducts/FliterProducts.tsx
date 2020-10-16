@@ -14,7 +14,7 @@ interface Props {
 
 const FliterProducts: React.FC<Props> = props => {
 
-    const filterData = useSelector((state: RootReducer) => (state.mainResources.slippers?.filterData))
+    const filterData = useSelector((state: RootReducer) => (state.productsData.original?.filterData))
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()

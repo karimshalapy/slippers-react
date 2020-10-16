@@ -9,6 +9,7 @@ export default (state = initialState, action: FilteredAction) => {
         case actions.SET_PRODCUTS:
             return {
                 ...state,
+                filteredProducts: action.products?.productsData,
                 original: action.products
             }
         default:

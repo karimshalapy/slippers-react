@@ -20,7 +20,6 @@ export interface ResourcesState {
     hero?: HeroData[],
     slippersTypeSwiperAvatarImgs?: SlipperSwiperAvatarData[],
     slippersTypeSwiper?: SlipperImageSwiperData[],
-    slippers?: SlippersData,
 }
 
 interface ProductsData {

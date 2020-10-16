@@ -11,7 +11,7 @@ interface Props {
 
 const Products: React.FC<Props> = props => {
 
-    const productsData = useSelector((state: RootReducer) => state.mainResources.slippers?.productsData)
+    const productsData = useSelector((state: RootReducer) => state.productsData.filteredProducts)
 
     return (
         <>
