@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
+import { getProdcuts } from '../../store/actionsIndex/actions/filteredActions'
 import FliterProducts from './FliterProducts/FliterProducts'
 import Products from './Products/Products'
 import classes from './Slippers.module.css'
@@ -9,6 +11,12 @@ interface Props {
 }
 
 const Slippers: React.FC<Props> = props => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getProdcuts())
+    }, [dispatch])
+
     return (
         <>
             <ScrollToTopOnPathChange />

@@ -3,13 +3,7 @@ import { ResourcesState } from '../reducersTypes'
 import { ResourcesAction } from '../../actionsIndex/actionTypes'
 
 
-const initialState: ResourcesState = {
-    galleryData: undefined,
-    press: undefined,
-    insta: undefined,
-    footerNav: undefined,
-    socialNav: undefined,
-}
+const initialState: ResourcesState = {}
 
 export default (state = initialState, action: ResourcesAction) => {
 

@@ -14,3 +14,11 @@ export const SET_PARAMS = "SET_PARAMS"
 
 export type UPDATE_FILTER_STATE_W_PARAMS = "UPDATE_FILTER_STATE_W_PARAMS"
 export const UPDATE_FILTER_STATE_W_PARAMS = "UPDATE_FILTER_STATE_W_PARAMS"
+
+//filtered action names
+
+export type SET_PRODCUTS = "SET_PRODCUTS"
+export const SET_PRODCUTS = "SET_PRODCUTS"
+
+export type FILTER = "FILTER"
+export const FILTER = "FILTER"
