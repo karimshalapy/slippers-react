@@ -1,11 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { v4 } from 'uuid'
-import FadeSwitchTransition from '../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import FiltersSelected from './FiltersSelected/FiltersSelected'
 import classes from './Products.module.css'
+import ProductsList from './ProductsList/ProductsList'
 
 interface Props {
 
@@ -30,35 +28,7 @@ const Products: React.FC<Props> = props => {
             </article>
 
             <FiltersSelected />
-
-            <ul className="axe">
-                {
-                    <FadeSwitchTransition transitionKey={`products-${v4()}-filtered`} fast>
-                        {
-                            (nodeRef) => (
-                                <div ref={nodeRef} className={classes.ProductsList}>
-                                    {
-                                        productsData
-                                            ?
-                                            productsData.map(item => (
-                                                <li className={classes.Product} key={v4()}>
-                                                    <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
-                                                        <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
-                                                        <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
-                                                        <h3>mahabis {item.collection}</h3>
-                                                        <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
-                                                        <data value={item.price.usd}>${item.price.usd}</data>
-                                                    </Link>
-                                                </li>
-                                            ))
-                                            : null
-                                    }
-                                </div>
-                            )
-                        }
-                    </FadeSwitchTransition>
-                }
-            </ul>
+            <ProductsList productsData={productsData} />
         </>
     )
 }
