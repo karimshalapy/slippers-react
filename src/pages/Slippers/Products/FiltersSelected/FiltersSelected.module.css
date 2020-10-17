@@ -1,0 +1,36 @@
+.SelectedFiltersList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.SelectedFilter {
+    margin: 5px 10px 0;
+}
+.SelectedFilter button{
+    display: block;
+    padding: 5px 25px 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #fff;
+    font: inherit;
+    font-size: 11px;
+    color: #7b7b7b;
+    cursor: pointer;
+    position: relative;
+}
+.SelectedFilter button::after {
+    font-family: mahabis-icons;
+    content: "\64";
+    color: #ddd;
+    font-size: 9px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-30%);
+    transition: all 0.2s ease;
+}
+.SelectedFilter button:hover::after {
+    color: #7b7b7b;
+}

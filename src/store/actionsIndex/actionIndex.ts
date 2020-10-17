@@ -6,7 +6,8 @@ export {
     updateFilterState,
     resetFilterState,
     setParams,
-    setfilterStateWParams
+    setfilterStateWParams,
+    resetClickedItem
 } from './actions/filterActions'
 
 export {

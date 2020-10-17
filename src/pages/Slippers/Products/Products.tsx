@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
+import FiltersSelected from './FiltersSelected/FiltersSelected'
 import classes from './Products.module.css'
 
 interface Props {
@@ -26,6 +27,7 @@ const Products: React.FC<Props> = props => {
                     take your time browsing.<br />
                 </p>
             </article>
+            <FiltersSelected />
             <ul className={classes.ProductsList}>
                 {productsData ?
                     productsData.map(item => (

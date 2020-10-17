@@ -20,7 +20,8 @@ export interface FilterAction {
     value?: string,
     filterSectionType?: FilterSectionTypes,
     history?: H.History<unknown>,
-    params?: sring
+    params?: sring,
+    filterItemType?: keyof SlipperFilterState
 }
 
 //filtered action types
