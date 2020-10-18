@@ -44,3 +44,25 @@
 .Product a:hover .SecondaryImage {
     opacity: 1;
 }
+
+.NoProducts {
+    display: block;
+}
+.OutOfStock {
+    border: 1px solid #ddd;
+    font-size: 12px;
+    border-radius: 7px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 50px 25px;
+    list-style-type: none;
+}
+.OutOfStock a:link,
+.OutOfStock a:visited {
+    color: #f64c3f;
+    text-decoration: none;
+}
+.OutOfStock a:hover,
+.OutOfStock a:focus {
+    text-decoration: underline;
+}

@@ -17,21 +17,25 @@ const ProductsList: React.FC<Props> = props => {
                 <FadeSwitchTransition transitionKey={`products-${v4()}-filtered`} fast>
                     {
                         (nodeRef) => (
-                            <div ref={nodeRef} className={classes.ProductsList}>
+                            <div ref={nodeRef} className={[classes.ProductsList, props.productsData?.length === 0 ? classes.NoProducts : ""].join(" ")}>
                                 {
                                     props.productsData
                                         ?
-                                        props.productsData.map(item => (
-                                            <li className={classes.Product} key={v4()}>
-                                                <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
-                                                    <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
-                                                    <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
-                                                    <h3>mahabis {item.collection}</h3>
-                                                    <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
-                                                    <data value={item.price.usd}>${item.price.usd}</data>
-                                                </Link>
-                                            </li>
-                                        ))
+                                        props.productsData.length === 0
+                                            ?
+                                            <li className={classes.OutOfStock}>we are sorry we are out of stock, please check our <a href="/slippers">main collection</a> to view the full range</li>
+                                            :
+                                            props.productsData.map(item => (
+                                                <li className={classes.Product} key={v4()}>
+                                                    <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
+                                                        <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
+                                                        <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
+                                                        <h3>mahabis {item.collection}</h3>
+                                                        <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
+                                                        <data value={item.price.usd}>${item.price.usd}</data>
+                                                    </Link>
+                                                </li>
+                                            ))
                                         : null
                                 }
                             </div>
