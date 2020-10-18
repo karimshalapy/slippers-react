@@ -25,7 +25,7 @@ export default (state = initialState, action: FilterAction) => {
                 .filter(item => item[1])
                 .map(item => item.join("="))
                 .join("&")
-            action.history!.push({
+            action.history!.replace({
                 search: `?${params}`
             })
             return state

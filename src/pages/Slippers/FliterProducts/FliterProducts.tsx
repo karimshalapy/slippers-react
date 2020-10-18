@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { v4 } from 'uuid'
-import { setParams, updateFilterState, setfilterStateWParams } from '../../../store/actionsIndex/actionIndex'
+import { updateFilterState, setfilterStateWParams } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import { FilterSectionTypes } from '../SlippersTypes'
 import FilterSection from './FilterSection/FilterSection'
@@ -16,12 +16,10 @@ const FliterProducts: React.FC<Props> = props => {
 
     const filterData = useSelector((state: RootReducer) => (state.productsData.original?.filterData))
     const dispatch = useDispatch()
-    const history = useHistory()
     const location = useLocation()
 
     const changeHandler = (type: FilterSectionTypes, value: string) => {
         dispatch(updateFilterState(type, value))
-        dispatch(setParams(history))
     }
 
     useEffect(() => { //setting the state according to the search params when the component renders

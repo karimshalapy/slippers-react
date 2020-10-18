@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { resetFilterState, setParams, updateFilterState } from '../../../../store/actionsIndex/actionIndex'
+import { resetFilterState, updateFilterState } from '../../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { SlipperFilterState } from '../../SlippersTypes'
 import classes from './FiltersSelected.module.css'
@@ -22,7 +21,6 @@ const FiltersSelected: React.FC<Props> = props => {
 
     const filterState = useSelector((state: RootReducer) => state.filterState)
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const clickHandler = useCallback((e: React.MouseEvent) => {
         const targetClicked = e.target as HTMLButtonElement
@@ -32,8 +30,7 @@ const FiltersSelected: React.FC<Props> = props => {
         if (typeClicked === "viewAll") dispatch(resetFilterState())
         else if (valueClicked) dispatch(updateFilterState(typeClicked, valueClicked))
 
-        dispatch(setParams(history))
-    }, [dispatch, history])
+    }, [dispatch])
 
     return (
         <ul className={classes.SelectedFiltersList}>
