@@ -4,7 +4,8 @@ import FilterProducts from '../FliterProducts/FliterProducts'
 import classes from './FilterSidebar.module.css'
 
 interface Props {
-
+    open: boolean
+    changeOpen: () => void
 }
 
 const FilterSidebar: React.FC<Props> = props => {
@@ -13,6 +14,7 @@ const FilterSidebar: React.FC<Props> = props => {
     return (
         <>
             <CSSTransition
+                in={props.open}
                 timeout={500}
                 classNames={{
                     enter: classes["FilterSidebar-enter"],
@@ -27,7 +29,7 @@ const FilterSidebar: React.FC<Props> = props => {
             >
                 <aside className={classes.FilterSidebar} ref={nodeRef}>
                     <FilterProducts />
-                    <button className={classes.CloseBtn}>d</button>
+                    <button className={classes.CloseBtn} onClick={props.changeOpen}>d</button>
                 </aside>
 
             </CSSTransition>

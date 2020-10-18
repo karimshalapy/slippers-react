@@ -9,7 +9,7 @@ import ProductArticle from './ProductArticle/ProductArticle'
 import ProductsList from './ProductsList/ProductsList'
 
 interface Props {
-
+    changeOpen: () => void
 }
 
 const Products: React.FC<Props> = props => {
@@ -30,7 +30,7 @@ const Products: React.FC<Props> = props => {
         <>
             <ProductArticle />
             <FiltersSelected />
-            <MobileFilterButton />
+            <MobileFilterButton changeOpen={props.changeOpen} />
             <ProductsList productsData={productsData} />
         </>
     )
