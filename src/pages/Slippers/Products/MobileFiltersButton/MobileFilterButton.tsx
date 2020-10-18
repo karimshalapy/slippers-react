@@ -7,16 +7,14 @@ interface Props {
 
 const MobileFilterButton: React.FC<Props> = props => {
     return (
-        <p className={classes.FiltersButton}>
+        <button className={classes.FiltersButton}>
+            filters
             <div>
-                filters
-                <div>
-                    <span>
-                        1
-                    </span>
-                </div>
+                <span>
+                    1
+                </span>
             </div>
-        </p>
+        </button>
     )
 }
 
