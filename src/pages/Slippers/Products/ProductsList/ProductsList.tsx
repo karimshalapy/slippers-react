@@ -1,7 +1,9 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
+import { resetFilterState } from '../../../../store/actionsIndex/actionIndex'
 import { SlippersProductData } from '../../SlippersTypes'
 import classes from './ProductsList.module.css'
 
@@ -10,6 +12,14 @@ interface Props {
 }
 
 const ProductsList: React.FC<Props> = props => {
+
+    const dispatch = useDispatch()
+
+    const linkClickHandler = (e: React.MouseEvent) => {
+        e.preventDefault()
+        dispatch(resetFilterState())
+    }
+
     return (
 
         <ul>
@@ -23,7 +33,7 @@ const ProductsList: React.FC<Props> = props => {
                                         ?
                                         props.productsData.length === 0
                                             ?
-                                            <li className={classes.OutOfStock}>we are sorry we are out of stock, please check our <a href="/slippers">main collection</a> to view the full range</li>
+                                            <li className={classes.OutOfStock}>we are sorry we are out of stock, please check our <a href="/slippers" onClick={linkClickHandler}>main collection</a> to view the full range</li>
                                             :
                                             props.productsData.map(item => (
                                                 <li className={classes.Product} key={v4()}>
