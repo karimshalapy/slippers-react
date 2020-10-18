@@ -29,10 +29,10 @@ const Slippers: React.FC<Props> = props => {
             <ScrollToTopOnPathChange />
             <h1 className={classes.PageHeader}>slippers</h1>
             <div className={classes.SlippersPageWrapper}>
-                <aside>
+                <aside className={classes.Filter}>
                     <FliterProducts />
                 </aside>
-                <section>
+                <section className={classes.Products}>
                     <Products />
                 </section>
             </div>
