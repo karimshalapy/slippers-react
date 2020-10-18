@@ -49,7 +49,16 @@ export interface SlippersProductData {
     price: Prices,
 }
 
+export type ProductArticles = {
+    [item in SlippersTypes]: {
+        articleText: string,
+        imgUrl: string,
+        imgAlt: string
+    }
+}
+
 export interface SlippersData {
     filterData: SlippersFilterData[],
     productsData: SlippersProductData[],
+    productArticles: ProductArticles,
 }
