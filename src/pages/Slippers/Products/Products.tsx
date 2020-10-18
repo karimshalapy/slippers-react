@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { setParams } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import FiltersSelected from './FiltersSelected/FiltersSelected'
+import MobileFilterButton from './MobileFiltersButton/MobileFilterButton'
 import ProductArticle from './ProductArticle/ProductArticle'
 import ProductsList from './ProductsList/ProductsList'
 
@@ -29,6 +30,7 @@ const Products: React.FC<Props> = props => {
         <>
             <ProductArticle />
             <FiltersSelected />
+            <MobileFilterButton />
             <ProductsList productsData={productsData} />
         </>
     )
