@@ -24,8 +24,8 @@ export default (state = initialState, action: FilteredAction) => {
                 filtersArray.forEach(([key, value]) => {
                     if (key !== "sizes") condition = condition && item[key] === value
                     else { //when we filter sizes we will need to determine which gender and check if the item has this size available
-                        const genderText = `${action.filterState?.gender}Sizes` as "menSizes" | "womenSizes"
-                        condition = condition && item[genderText].eu.includes(+value)
+                        const genderText = `${action.filterState?.gender}Sizes`
+                        if (genderText === "menSizes" || genderText === "womenSizes") condition = condition && item[genderText].eu.includes(+value)
                     }
                 })
                 return condition

@@ -7,7 +7,6 @@ export {
     resetFilterState,
     setParams,
     setfilterStateWParams,
-    resetClickedItem
 } from './actions/filterActions'
 
 export {

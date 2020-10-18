@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { resetClickedItem, resetFilterState, setParams } from '../../../../store/actionsIndex/actionIndex'
+import { resetFilterState, setParams, updateFilterState } from '../../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { SlipperFilterState } from '../../SlippersTypes'
 import classes from './FiltersSelected.module.css'
@@ -27,9 +27,10 @@ const FiltersSelected: React.FC<Props> = props => {
     const clickHandler = useCallback((e: React.MouseEvent) => {
         const targetClicked = e.target as HTMLButtonElement
         const typeClicked = targetClicked.dataset.type as keyof SlipperFilterState | "viewAll"
+        const valueClicked = targetClicked.dataset.value
 
         if (typeClicked === "viewAll") dispatch(resetFilterState())
-        else dispatch(resetClickedItem(typeClicked))
+        else if (valueClicked) dispatch(updateFilterState(typeClicked, valueClicked))
 
         dispatch(setParams(history))
     }, [dispatch, history])
@@ -43,6 +44,7 @@ const FiltersSelected: React.FC<Props> = props => {
                         <li key={`${key}-${value}`} className={classes.SelectedFilter} >
                             <button
                                 data-type={key}
+                                data-value={value}
                                 onClick={clickHandler}
                             >
                                 {mapFilterStateToText[key]}: {value}

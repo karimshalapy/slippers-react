@@ -45,11 +45,6 @@ export default (state = initialState, action: FilterAction) => {
                 ...state,
                 ...paramsObj
             }
-        case !!(actions.RESET_FILTER_ITEM && action.filterItemType):
-            return {
-                ...state,
-                [action.filterItemType!]: null
-            }
         case !!(action.type === actions.RESET_FILTER_STATE):
             return initialState
         default:

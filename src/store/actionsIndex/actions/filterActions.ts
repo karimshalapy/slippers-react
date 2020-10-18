@@ -1,4 +1,4 @@
-import { FilterSectionTypes, SlipperFilterState } from "../../../pages/Slippers/SlippersTypes";
+import { FilterSectionTypes } from "../../../pages/Slippers/SlippersTypes";
 import * as actions from "../actionNames";
 import { FilterAction } from "../actionTypes";
 import * as H from 'history'
@@ -19,9 +19,4 @@ export const setParams = (history: H.History<unknown>) => ({
 export const setfilterStateWParams = (params: string) => ({
     type: actions.UPDATE_FILTER_STATE_W_PARAMS,
     params
-})
-
-export const resetClickedItem = (filterItemType: keyof SlipperFilterState) => ({
-    type: actions.RESET_FILTER_ITEM,
-    filterItemType
 })
