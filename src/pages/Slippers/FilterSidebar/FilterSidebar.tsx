@@ -28,7 +28,7 @@ const FilterSidebar: React.FC<Props> = props => {
                 unmountOnExit
             >
                 <aside className={classes.FilterSidebar} ref={nodeRef}>
-                    <FilterProducts />
+                    <FilterProducts inSideBar />
                     <button className={classes.CloseBtn} onClick={props.changeOpen}>d</button>
                 </aside>
 
