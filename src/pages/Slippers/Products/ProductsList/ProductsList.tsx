@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
@@ -67,4 +67,4 @@ const ProductsList: React.FC<Props> = props => {
     )
 }
 
-export default ProductsList
+export default memo(ProductsList)
