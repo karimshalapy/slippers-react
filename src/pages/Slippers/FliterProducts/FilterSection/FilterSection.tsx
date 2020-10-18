@@ -74,11 +74,10 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
         //rendering blank grey blocks when loading
         return (
             <>
-                <h3 className={`${classes.FilterSectionHeader} ${classes.Loading}`}>Loading</h3>
+                <h3 className={`${classes.FilterSectionHeader} ${classes.Loading}`}>&nbsp;</h3>
                 {[...Array(5)].map(() => (
                     <React.Fragment key={v4()}>
-                        <input type="checkbox" className={classes.DefaultCheckBox} />
-                        <label className={`${classes.CheckboxLabel} ${classes.Loading} `}>Loading</label>
+                        <label className={`${classes.CheckboxLabel} ${classes.Loading} `}>&nbsp;</label>
                     </React.Fragment>
                 ))}
             </>

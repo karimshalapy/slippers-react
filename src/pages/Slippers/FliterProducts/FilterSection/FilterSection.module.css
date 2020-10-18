@@ -65,11 +65,28 @@ h3.Loading {
 }
 .Loading {
     display:block;
-    color: #f3f3f3;
-    background-color: #f3f3f3;
     border-radius: 5px;
     margin-bottom: 5px;
+    cursor: default;
+    width: 90%;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #bebebe;
+    background: linear-gradient(to right, #f5f4f4 8%, #f0f0f0 38%, #f5f5f5 54%);
+    background-size: 100vw 640px;
+    position: relative;
 }
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -50vw 0
+    }
+    100%{
+        background-position: 50vw 0
+    }
+}    
 .Loading::before{
     visibility: hidden;
 }

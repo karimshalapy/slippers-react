@@ -31,11 +31,11 @@ const ProductsList: React.FC<Props> = props => {
                                 {
                                     props.productsData
                                         ?
-                                        props.productsData.length === 0
+                                        props.productsData.length === 0 //render "we're out of stock" when there're no available products"
                                             ?
                                             <li className={classes.OutOfStock}>we are sorry we are out of stock, please check our <a href="/slippers" onClick={linkClickHandler}>main collection</a> to view the full range</li>
                                             :
-                                            props.productsData.map(item => (
+                                            props.productsData.map(item => ( //render data when there're any available
                                                 <li className={classes.Product} key={v4()}>
                                                     <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
                                                         <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
@@ -46,7 +46,15 @@ const ProductsList: React.FC<Props> = props => {
                                                     </Link>
                                                 </li>
                                             ))
-                                        : null
+
+                                        : [...Array(10)].map(() => ( //render loading placeholder blocks when the data is getting fetched from the server
+                                            <li className={`${classes.Product} ${classes.Loading}`} key={v4()}>
+                                                <div></div>
+                                                <h3>&nbsp; </h3>
+                                                <p>&nbsp; </p>
+                                                <span>&nbsp; </span>
+                                            </li>
+                                        ))
                                 }
                             </div>
                         )
