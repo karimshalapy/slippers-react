@@ -38,8 +38,10 @@ const ProductsList: React.FC<Props> = props => {
                                             props.productsData.map(item => ( //render data when there're any available
                                                 <li className={classes.Product} key={v4()}>
                                                     <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
-                                                        <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
-                                                        <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
+                                                        <div className={classes.Images}>
+                                                            <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
+                                                            <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
+                                                        </div>
                                                         <h3>mahabis {item.collection}</h3>
                                                         <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
                                                         <data value={item.price.usd}>${item.price.usd}</data>

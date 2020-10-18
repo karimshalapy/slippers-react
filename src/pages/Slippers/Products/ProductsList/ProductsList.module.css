@@ -24,14 +24,19 @@
     position: relative;
     font-size: 13px;
 }
+.Images {
+    position: relative;
+    width: 100%;
+    padding: 50% 0; /*used to perserve the height of the images until they load */
+}
 .MainImage, .SecondaryImage {
     transition: all 0.3s ease;    
     mix-blend-mode: multiply;
-}
-.MainImage {
     position: absolute;
     top: 0;
     left: 0;
+}
+.MainImage {
     opacity: 1;  
 }
 .Product a:hover .MainImage {
@@ -45,6 +50,7 @@
     opacity: 1;
 }
 
+/*We're out of stock block styling*/
 .NoProducts {
     display: block;
 }
