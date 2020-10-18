@@ -5,6 +5,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+@media (max-width: 600px) {
+    .SelectedFiltersList {
+        display: none;
+    }
+}
 .SelectedFilter {
     margin: 5px 10px 0;
 }

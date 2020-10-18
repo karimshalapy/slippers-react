@@ -25,3 +25,13 @@
     width: 75%;
     margin-left: 2%;
 }
+
+@media(max-width: 600px) {
+    .SlippersPageWrapper aside {
+        display: none;
+    }
+    .SlippersPageWrapper section {
+        width:auto;
+        margin: 0 10px;
+    }
+}

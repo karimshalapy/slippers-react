@@ -22,12 +22,12 @@ const ProductsList: React.FC<Props> = props => {
 
     return (
 
-        <ul>
+        <ul className={classes.ProductsList}>
             {
                 <FadeSwitchTransition transitionKey={`products-${v4()}-filtered`} fast>
                     {
                         (nodeRef) => (
-                            <div ref={nodeRef} className={[classes.ProductsList, props.productsData?.length === 0 ? classes.NoProducts : ""].join(" ")}>
+                            <div ref={nodeRef} className={[classes.ProductsContainer, props.productsData?.length === 0 ? classes.NoProducts : ""].join(" ")}>
                                 {
                                     props.productsData
                                         ?

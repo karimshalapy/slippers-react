@@ -1,6 +1,14 @@
 .ProductsList {
+    padding: 0;
+}
+.ProductsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+@media(max-width: 600px) {
+    .ProductsContainer {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
 }
 .Product {
     list-style-type: none;
