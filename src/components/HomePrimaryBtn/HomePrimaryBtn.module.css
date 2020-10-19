@@ -1,15 +1,22 @@
-.HomePrimaryBtn {
-    color: #fafafa;
+.PrimaryButtonOutlined, .HomePrimaryBtn {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     line-height: 42px;
     padding: 0;
-    background-color: black;
     outline: none;
     border: none;
     border-radius: 2px;
     cursor: pointer;
+}
+.HomePrimaryBtn {
+    color: #fafafa;
+    background-color: black;
+}
+.PrimaryButtonOutlined {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
 }
 .NoLink {
     padding: 0 2em;
