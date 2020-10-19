@@ -11,6 +11,11 @@
     box-shadow: -15px 0 10px 5px rgba(0,0,0,.2), -3px 0 10px 5px rgba(0,0,0,.2);
     transition: all 500ms ease;
 }
+@media (min-width: 600px) {
+    .FilterSidebar {
+        display: none;
+    }
+}
 
 .FilterSidebar-enter {
     transform: translateX(100%)
