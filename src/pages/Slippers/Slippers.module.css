@@ -27,9 +27,6 @@
 }
 
 @media(max-width: 600px) {
-    .Filter {
-        display: none;
-    }
     .Products {
         width: 100%;
         margin: 0;

@@ -16,6 +16,7 @@ const Slippers: React.FC<Props> = props => {
     const dispatch = useDispatch()
     const { filterState, productsData } = useSelector((state: RootReducer) => ({ filterState: state.filterState, productsData: state.productsData.original?.productsData }))
     const [filterSidebarIsOpen, setFilterSidebarIsOpen] = useState(false)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     const filterBtnClickHandler = useCallback(() => { setFilterSidebarIsOpen(prevOpen => !prevOpen) }, [])
 
@@ -28,15 +29,29 @@ const Slippers: React.FC<Props> = props => {
         dispatch(filterProducts(filterState))
     }, [dispatch, filterState, productsData])
 
+    //using window.innerHeight in state and updating it by using an event listener on the window resize and updating it accordingly
+    const updateWindowSizeOnResize = useCallback(() => setWindowWidth(window.innerWidth), [])
+    useEffect(() => {
+        window.addEventListener("resize", updateWindowSizeOnResize);
+        return () => {
+            window.removeEventListener("resize", updateWindowSizeOnResize);
+        }
+    }, [updateWindowSizeOnResize])
+
     return (
         <>
             <ScrollToTopOnPathChange />
             <h1 className={classes.PageHeader}>slippers</h1>
             <div className={classes.SlippersPageWrapper}>
                 <FilterSidebar open={filterSidebarIsOpen} changeOpen={filterBtnClickHandler} />
-                <aside className={classes.Filter}>
-                    <FliterProducts />
-                </aside>
+                {
+                    windowWidth > 600
+                        ?
+                        <aside className={classes.Filter}>
+                            <FliterProducts />
+                        </aside>
+                        : null
+                }
                 <section className={classes.Products}>
                     <Products changeOpen={filterBtnClickHandler} />
                 </section>
