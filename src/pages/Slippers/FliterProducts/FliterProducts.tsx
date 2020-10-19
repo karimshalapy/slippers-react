@@ -32,7 +32,7 @@ const FliterProducts: React.FC<Props> = props => {
     useEffect(props.inSideBar ? disableScrollOnModalOpen : () => { }, []) //this is needed to disable and enable scrolling ONLY if the FilterProducts is rendered in a sidebar not in main content
 
     return (
-        <form className={[classes.FilterSection, props.inSideBar ? classes.InSideBar : ""].join(" ")}> //adding the class name with the styling for when it renders in a sidebar
+        <form className={[classes.FilterSection, props.inSideBar ? classes.InSideBar : ""].join(" ")}> {/*adding the class name with the styling for when it renders in a sidebar*/}
             <h2>filters</h2>
             <div className={classes.FiltersWrapper}>
                 {
