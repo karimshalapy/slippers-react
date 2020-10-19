@@ -26,8 +26,13 @@
 .InSideBar .FiltersWrapper {
     max-height: 90vh;
     overflow: auto;
-    padding: 0 25px;
+    padding: 0 25px 15px;
+    transition: all 500ms ease;
 }
 .InSideBar * {
     font-size: 95%;
+}
+/*decreasing height when the animation of the sidebar is done*/
+.AnimationDone .FiltersWrapper{
+    max-height: 77vh;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { v4 } from 'uuid'
@@ -10,12 +10,13 @@ import FilterSection from './FilterSection/FilterSection'
 import classes from './FliterProducts.module.css'
 
 interface Props {
-    inSideBar?: boolean
+    inSideBar?: boolean,
 }
 
 const FliterProducts: React.FC<Props> = props => {
 
     const filterData = useSelector((state: RootReducer) => (state.productsData.original?.filterData))
+    const [isAnimationDone, setIsAnimationDone] = useState(false)
     const dispatch = useDispatch()
     const location = useLocation()
 
@@ -29,10 +30,22 @@ const FliterProducts: React.FC<Props> = props => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
+    useEffect(() => { //this useEffect is to initiate the animation of the buttons on bottom of sidebar when sidebar is done animating to slide in the buttons at the bottom.
+        const timeout = setTimeout(() => {
+            console.log("changed")
+            setIsAnimationDone(true)
+        }, 500)
+        return () => {
+            setIsAnimationDone(false)
+            clearTimeout(timeout)
+        }
+    }, [])
+
     useEffect(props.inSideBar ? disableScrollOnModalOpen : () => { }, []) //this is needed to disable and enable scrolling ONLY if the FilterProducts is rendered in a sidebar not in main content
 
     return (
-        <form className={[classes.FilterSection, props.inSideBar ? classes.InSideBar : ""].join(" ")}> {/*adding the class name with the styling for when it renders in a sidebar*/}
+        <form className={[classes.FilterSection, props.inSideBar ? classes.InSideBar : "", isAnimationDone ? classes.AnimationDone : ""].join(" ")}> {/*adding the class name with the styling for when it renders in a sidebar*/}
             <h2>filters</h2>
             <div className={classes.FiltersWrapper}>
                 {
