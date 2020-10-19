@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import classes from './HomePrimaryBtn.module.css'
+import classes from './Button.module.css'
 
 interface Props {
     classNames?: string[],
@@ -11,7 +11,7 @@ interface Props {
 const HomePrimaryBtn: React.FC<Props> = ({ classNames, hasLink, clickHandler, children, outlined }) => {
 
     const getBtnClasses = useCallback(() => {
-        const classesArr = [outlined ? classes.PrimaryButtonOutlined : classes.HomePrimaryBtn]
+        const classesArr = [outlined ? classes.ButtonOutlined : classes.ButtonPrimary]
         if (!hasLink) classesArr.push(classes.NoLink)
         if (classNames) classesArr.push(...classNames)
 

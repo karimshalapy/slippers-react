@@ -1,7 +1,7 @@
 import React, { useCallback, useState, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Newsletter.module.css'
-import HomePrimaryBtn from '../../../components/HomePrimaryBtn/HomePrimaryBtn'
+import Button from '../../../components/Button/Button'
 import { useForm } from 'react-hook-form'
 import { Inputs, schema } from './newsletterValidation'
 import FadeSwitchTransition from '../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
@@ -45,7 +45,7 @@ const Newsletter: React.FC = () => {
                             />
                             {errors.newsletterMail ? <p className={classes.ErrorMessage}>{errors.newsletterMail.message}</p> : null}
                         </div>
-                        <HomePrimaryBtn classNames={[classes.NewsletterBtn]}>sign up</HomePrimaryBtn>
+                        <Button classNames={[classes.NewsletterBtn]}>sign up</Button>
                     </form>
                     <p className={classes.Disclaimer}>by signing up to our newsletter you are agreeing to our <Link to="/privacy" target="_blank">privacy policy</Link><br />please note: only new subscribers and customers will receive an email</p>
                 </div>

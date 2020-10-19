@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './SlippersFeaturesSwitcher.module.css'
-import HomePrimaryBtn from '../../../../components/HomePrimaryBtn/HomePrimaryBtn'
+import Button from '../../../../components/Button/Button'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { Link } from 'react-router-dom'
@@ -37,11 +37,11 @@ const SlippersFeaturesSwitcher: React.FC<Props> = props => {
                                         </li>
                                     ))}
                                 </ul>
-                                <HomePrimaryBtn hasLink>
+                                <Button hasLink>
                                     {
                                         item.url ? <Link to={item.url}>LEARN MORE</Link> : "LEARN MORE"
                                     }
-                                </HomePrimaryBtn>
+                                </Button>
                             </article>
                             : null
                     }

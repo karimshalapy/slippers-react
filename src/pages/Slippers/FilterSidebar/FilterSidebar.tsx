@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
-import HomePrimaryBtn from '../../../components/HomePrimaryBtn/HomePrimaryBtn'
+import Button from '../../../components/Button/Button'
 import { resetFilterState } from '../../../store/actionsIndex/actionIndex'
 import FilterProducts from '../FliterProducts/FliterProducts'
 import classes from './FilterSidebar.module.css'
@@ -37,15 +37,15 @@ const FilterSidebar: React.FC<Props> = props => {
                 <button className={classes.CloseBtn} onClick={props.changeOpen}>d</button>
 
                 <div className={classes.FilterButtonsContainer}>
-                    <HomePrimaryBtn
+                    <Button
                         outlined
                         classNames={[classes.WideBtn]}
                         clickHandler={clearFilters}
-                    >CLEAR</HomePrimaryBtn>
-                    <HomePrimaryBtn
+                    >CLEAR</Button>
+                    <Button
                         classNames={[classes.WideBtn]}
                         clickHandler={props.changeOpen}
-                    >APPLY</HomePrimaryBtn>
+                    >APPLY</Button>
                 </div>
             </aside>
 

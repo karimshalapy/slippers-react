@@ -1,4 +1,4 @@
-.PrimaryButtonOutlined, .HomePrimaryBtn {
+.ButtonOutlined, .ButtonPrimary {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -9,11 +9,11 @@
     border-radius: 2px;
     cursor: pointer;
 }
-.HomePrimaryBtn {
+.ButtonPrimary {
     color: #fafafa;
     background-color: black;
 }
-.PrimaryButtonOutlined {
+.ButtonOutlined {
     color: black;
     background-color: white;
     border: 1px solid black;
@@ -21,8 +21,10 @@
 .NoLink {
     padding: 0 2em;
 }
-.HomePrimaryBtn a:link,
-.HomePrimaryBtn a:visited {
+.ButtonOutlined a:link,
+.ButtonOutlined a:visited,
+.ButtonPrimary a:link,
+.ButtonPrimary a:visited {
     padding: 0 2em;
     display: block;
     color: #fafafa;
