@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import classes from './MobileFiltersButton.module.css'
 
 interface Props {
@@ -6,14 +8,22 @@ interface Props {
 }
 
 const MobileFilterButton: React.FC<Props> = props => {
+
+    const filtersCount = useSelector((state: RootReducer) => Object.values(state.filterState).filter(item => item).length)
+
     return (
         <button className={classes.FiltersButton} onClick={props.changeOpen}>
             filters
-            <div>
-                <span>
-                    1
-                </span>
-            </div>
+            {
+                filtersCount > 0
+                    ?
+                    <div>
+                        <span>
+                            {filtersCount}
+                        </span>
+                    </div>
+                    : null
+            }
         </button>
     )
 }
