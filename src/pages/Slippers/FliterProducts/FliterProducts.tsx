@@ -33,7 +33,6 @@ const FliterProducts: React.FC<Props> = props => {
 
     useEffect(() => { //this useEffect is to initiate the animation of the buttons on bottom of sidebar when sidebar is done animating to slide in the buttons at the bottom.
         const timeout = setTimeout(() => {
-            console.log("changed")
             setIsAnimationDone(true)
         }, 500)
         return () => {
@@ -51,15 +50,17 @@ const FliterProducts: React.FC<Props> = props => {
                 {
                     filterData
                         ?
-                        filterData.map(item => (
-                            <FilterSection
-                                key={item.title}
-                                title={item.title}
-                                filterItems={item.filterItems}
-                                type={item.type}
-                                changeHandler={changeHandler}
-                            />
-                        ))
+                        Object.entries(filterData)
+                            .sort(([_, value1], [_2, value2]) => value1.sortNumber - value2.sortNumber) //sortNumbers are provided in the filterData to sort the sections according to them
+                            .map(([key, value]) => (
+                                <FilterSection
+                                    key={value.title}
+                                    title={value.title}
+                                    filterItems={value.filterItems}
+                                    type={key as FilterSectionTypes}
+                                    changeHandler={changeHandler}
+                                />
+                            ))
                         :
                         [...Array(5)].map(() => (
                             <FilterSection key={v4()} loading />

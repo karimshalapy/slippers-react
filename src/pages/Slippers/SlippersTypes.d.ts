@@ -26,9 +26,12 @@ export type SlipperFilterState = {
 }
 
 export interface SlippersFilterData {
-    type: FilterSectionTypes,
+    sortNumber: number,
     title: string,
     filterItems: FilterItemsTypes
+}
+export type AvailableFilters = {
+    [key in FilterSectionTypes]: SlippersFilterData
 }
 
 export interface SlippersProductData {
@@ -58,7 +61,7 @@ export type ProductArticles = {
 }
 
 export interface SlippersData {
-    filterData: SlippersFilterData[],
+    filterData: AvailableFilters,
     productsData: SlippersProductData[],
     productArticles: ProductArticles,
 }
