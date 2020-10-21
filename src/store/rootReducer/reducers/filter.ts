@@ -31,16 +31,13 @@ export default (state = initialState, action: FilterAction) => {
             return state
 
         case !!(action.type === actions.UPDATE_FILTER_STATE_W_PARAMS && action.params):
-            //create an opject from the params
-            const paramsObj: SlipperFilterState = action.params
-                .substring(1)
-                .split("&")
-                .map((item: string) => item.split("="))
-                .reduce((obj: { [x in keyof SlipperFilterState]: string | null }, [key, value]: [keyof SlipperFilterState, string]) => {
-                    obj[key] = value
-                    return obj
-                }, {})
-
+            //create an object from the params
+            const paramsObj: SlipperFilterState = Object.fromEntries(
+                action.params!
+                    .substring(1)
+                    .split("&")
+                    .map((item: string) => item.split("="))
+            )
             return {
                 ...state,
                 ...paramsObj
