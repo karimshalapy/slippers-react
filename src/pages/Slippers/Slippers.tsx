@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
-import { filterProducts, getProdcuts } from '../../store/actionsIndex/actionIndex'
+import { filterProducts, getProdcuts, setfilterStateWParams } from '../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../store/rootReducer/reducersTypes'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
 import FliterProducts from './FliterProducts/FliterProducts'
@@ -21,11 +22,14 @@ const Slippers: React.FC<Props> = props => {
     }))
     const [filterSidebarIsOpen, setFilterSidebarIsOpen] = useState(false)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const location = useLocation()
 
     const filterBtnClickHandler = useCallback(() => { setFilterSidebarIsOpen(prevOpen => !prevOpen) }, [])
 
     useEffect(() => {
+        dispatch(setfilterStateWParams(location.search))
         dispatch(getProdcuts())
+        //the next comment is sued to disable the dependency requirement because I want this to run only on first load not when everytime the deps change
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
