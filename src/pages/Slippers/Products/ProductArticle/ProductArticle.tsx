@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { isSlipperType } from '../../../../helpers/typeCheckers'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
-import { SlippersTypes } from '../../../Home/SlippersSwiper/SlippersSwiperTypes'
 import classes from './ProductArticle.module.css'
 
 interface Props {
@@ -11,7 +11,9 @@ interface Props {
 const ProductArticle: React.FC<Props> = props => {
 
     const { activeSlipper, productArticles } = useSelector((state: RootReducer) => ({
-        activeSlipper: state.filterState.collection ? state.filterState.collection as SlippersTypes : "classic",
+        activeSlipper: state.filterState.collection && isSlipperType(state.filterState.collection)
+            ? state.filterState.collection
+            : "classic",
         productArticles: state.productsData.original?.productArticles
     }))
 

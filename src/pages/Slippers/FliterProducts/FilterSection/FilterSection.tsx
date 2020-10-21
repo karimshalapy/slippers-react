@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { v4 } from 'uuid'
+import { isSizesFilterSection } from '../../../../helpers/typeCheckers'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
-import { FilterItemsTypes, FilterSectionTypes, GenderSizeFilterTypes, GenderSizes } from '../../SlippersTypes.d'
+import { FilterItemsTypes, FilterSectionTypes, GenderSizes } from '../../SlippersTypes.d'
 import classes from './FilterSection.module.css'
 
 interface Props {
@@ -14,10 +15,6 @@ interface Props {
 }
 
 const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, changeHandler }) => {
-
-    const isSizesSection = useCallback((filterItems: FilterItemsTypes): filterItems is GenderSizeFilterTypes => {
-        return typeof filterItems[0] !== "string"
-    }, [])
 
     const state = useSelector((state: RootReducer) => state.filterState)
 
@@ -55,17 +52,16 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
             return (
                 <>
                     <h3 className={classes.FilterSectionHeader}>{title}</h3>
-                    { !isSizesSection(filterItems)
+                    { !isSizesFilterSection(filterItems)
                         ?
                         filterItems.map(item => getSectionJsx(item))
-                        :
-                        state.gender
-                            ?
-                            filterItems[GenderSizes[state.gender as "men" | "women"]].map(item => getSectionJsx(item.eu.toString(), item.us))
-                            :
-                            <label className={`${classes.CheckboxLabel} ${classes.ChooseAbove}`}>please select men or women above to see available sizes</label>
-
-                    }
+                        : (
+                            state.gender === "men" || state.gender === "women"
+                                ?
+                                filterItems[GenderSizes[state.gender]].map(item => getSectionJsx(item.eu.toString(), item.us))
+                                :
+                                <label className={`${classes.CheckboxLabel} ${classes.ChooseAbove}`}>please select men or women above to see available sizes</label>
+                        )}
                 </>
             )
 
@@ -82,7 +78,7 @@ const FilterSection: React.FC<Props> = ({ title, filterItems, loading, type, cha
                 ))}
             </>
         )
-    }, [filterItems, loading, title, type, isSizesSection, changeHandler, state, getSectionJsx])
+    }, [filterItems, loading, title, type, changeHandler, state, getSectionJsx])
 
     return (
         <div>
