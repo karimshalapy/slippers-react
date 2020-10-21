@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "slippers-react"
+  },
+  "targets": {
+    "slippers-react": {
+      "hosting": {
+        "app": [
+          "slippers-react"
+        ]
+      }
+    }
   }
 }
