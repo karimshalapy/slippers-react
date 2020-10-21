@@ -14,7 +14,11 @@ interface Props {
 
 const Slippers: React.FC<Props> = props => {
     const dispatch = useDispatch()
-    const { filterState, productsData } = useSelector((state: RootReducer) => ({ filterState: state.filterState, productsData: state.productsData.original?.productsData }))
+    const { filterState, productsData, filterData } = useSelector((state: RootReducer) => ({
+        filterState: state.filterState,
+        productsData: state.productsData.original?.productsData,
+        filterData: state.productsData.original?.filterData
+    }))
     const [filterSidebarIsOpen, setFilterSidebarIsOpen] = useState(false)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -26,8 +30,8 @@ const Slippers: React.FC<Props> = props => {
     }, [])
 
     useEffect(() => {
-        dispatch(filterProducts(filterState))
-    }, [dispatch, filterState, productsData])
+        if (filterData) dispatch(filterProducts(filterState, filterData))
+    }, [dispatch, filterState, productsData, filterData])
 
     //using window.innerHeight in state and updating it by using an event listener on the window resize and updating it accordingly
     const updateWindowSizeOnResize = useCallback(() => setWindowWidth(window.innerWidth), [])
