@@ -1,0 +1,28 @@
+import React from 'react'
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
+import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
+
+interface Props {
+
+}
+
+const Slipper: React.FC<Props> = props => {
+
+    console.log(useHistory())
+
+    return (
+        <div>
+            <ScrollToTopOnPathChange />
+            <Switch>
+                <Route path="/slipper/classic" exact render={() => <div>classic</div>} />
+                <Route path="/slipper/luxe" exact render={() => <div>luxe</div>} />
+                <Route path="/slipper/flow" exact render={() => <div>flow</div>} />
+                <Route path="/slipper/canvas" exact render={() => <div>canvas</div>} />
+                <Redirect from="/slipper" to="/slipper/classic" />
+            </Switch>
+
+        </div>
+    )
+}
+
+export default Slipper
