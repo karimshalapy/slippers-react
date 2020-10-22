@@ -1,9 +1,10 @@
 import React, { memo, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { resetFilterState } from '../../../../store/actionsIndex/actionIndex'
+import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { SlippersProductData } from '../../SlippersTypes'
 import classes from './ProductsList.module.css'
 
@@ -14,6 +15,7 @@ interface Props {
 const ProductsList: React.FC<Props> = ({ productsData }) => {
 
     const dispatch = useDispatch()
+    const { gender, sizes } = useSelector((state: RootReducer) => state.filterState)
 
     const linkClickHandler = useCallback((e: React.MouseEvent) => {
         e.preventDefault()
@@ -30,7 +32,15 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
 
                 return productsData.map(item => (
                     <li className={classes.Product} key={v4()}>
-                        <Link to={`/${item.collection}-slipper?upper=${item.upperColorShortened}&sole=${item.soleColorShortened}`}>
+                        <Link
+                            to={//this template literal is to create the search query params for the slipper page according to the current item chosen and the filter state of the user
+                                `/slipper/${item.collection}` +
+                                `?upper=${item.upperColorShortened}` +
+                                `&sole=${item.soleColorShortened}` +
+                                `${gender ? `&gender=${gender}` : ""}` +
+                                `${sizes ? `&size=${sizes}` : ""}`
+                            }
+                        >
                             <div className={classes.Images}>
                                 <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
                                 <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
@@ -54,7 +64,7 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
             ))
         }
 
-    }, [linkClickHandler, productsData])
+    }, [linkClickHandler, productsData, gender, sizes])
 
 
     return (
