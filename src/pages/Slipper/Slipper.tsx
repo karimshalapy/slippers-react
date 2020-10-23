@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
+import ProductShowcase from './ProductShowcase/ProductShowcase'
 
 interface Props {
 
@@ -11,8 +12,9 @@ const Slipper: React.FC<Props> = props => {
     console.log(useHistory())
 
     return (
-        <div>
+        <>
             <ScrollToTopOnPathChange />
+            <ProductShowcase />
             <Switch>
                 <Route path="/slipper/classic" exact render={() => <div>classic</div>} />
                 <Route path="/slipper/luxe" exact render={() => <div>luxe</div>} />
@@ -21,7 +23,7 @@ const Slipper: React.FC<Props> = props => {
                 <Redirect from="/slipper" to="/slipper/classic" />
             </Switch>
 
-        </div>
+        </>
     )
 }
 
