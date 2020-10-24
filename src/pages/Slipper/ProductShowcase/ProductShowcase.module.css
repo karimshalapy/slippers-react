@@ -2,4 +2,8 @@
     max-width: 1180px;
     width: 84%;
     margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
 }

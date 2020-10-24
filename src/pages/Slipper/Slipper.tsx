@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import ProductShowcase from './ProductShowcase/ProductShowcase'
 
@@ -9,7 +9,6 @@ interface Props {
 
 const Slipper: React.FC<Props> = props => {
 
-    console.log(useHistory())
 
     return (
         <>
