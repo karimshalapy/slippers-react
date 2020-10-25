@@ -70,7 +70,9 @@ const ProductShowcase: React.FC<Props> = props => {
 
     return (
         <section className={classes.ProductShowcase}>
-            <ProductImages />
+            <ProductImages
+                activeSlipperData={activeSlipperData}
+            />
             <ProductDetails
                 activeSoleColor={activeSoleColor}
                 activeUpperColor={activeUpperColor}

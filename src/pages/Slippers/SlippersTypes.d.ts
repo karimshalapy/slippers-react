@@ -33,6 +33,12 @@ export interface SlippersFilterData {
 export type AvailableFilters = {
     [key in FilterSectionTypes]: SlippersFilterData
 }
+export interface ProductShowcase {
+    [image: string]: {
+        imgUrl: string,
+        imgAlt: string,
+    }
+}
 
 export interface SlippersProductData {
     collection: SlippersTypes,
@@ -50,6 +56,7 @@ export interface SlippersProductData {
     menSizes: ItemGenderSize,
     womenSizes: ItemGenderSize,
     price: Prices,
+    productShowcase: ProductShowcase
 }
 
 export type ProductArticles = {

@@ -1,27 +1,28 @@
 import React from 'react'
-import { v4 } from 'uuid'
+import { ProductShowcase } from '../../../../Slippers/SlippersTypes'
 import classes from './ProductSmallImages.module.css'
 
 interface Props {
-    clickHandler: (index: number) => void,
-    activeImage: number,
-    images: string[]
+    clickHandler: (key: string) => void,
+    activeImage: string,
+    images: ProductShowcase
 }
 
 const ProductSmallImages: React.FC<Props> = props => {
     return (
         <ul className={classes.SmallImagesContainer}>
             {
-                props.images.map((item, i) => (
+                Object.entries(props.images)
+                    .map(([itemKey, itemValue], i) => (
 
-                    <li
-                        key={v4()}
-                        className={[classes.SmallImagesItem, i === props.activeImage ? classes.Active : ""].join(" ")}
-                        onClick={props.clickHandler.bind(null, i)}
-                    >
-                        <img src={item} alt="" />
-                    </li>
-                ))
+                        <li
+                            key={itemKey}
+                            className={[classes.SmallImagesItem, itemKey === props.activeImage ? classes.Active : ""].join(" ")}
+                            onClick={props.clickHandler.bind(null, itemKey)}
+                        >
+                            <img src={itemValue.imgUrl} alt={itemValue.imgAlt} />
+                        </li>
+                    ))
             }
         </ul>
     )
