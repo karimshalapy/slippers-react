@@ -7,17 +7,6 @@
         padding-left: 60px;
     }
 }
-.Wrapper, .ImageContainer {
+.Wrapper{
     width: 66.67%;
-}
-.ProductBigImage {
-    max-width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.ImageContainer {
-    position: relative;
-    padding: 35% 15px;
-    margin: 0 auto;
 }
