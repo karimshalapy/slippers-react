@@ -18,14 +18,14 @@ const ProductArticle: React.FC<Props> = props => {
     }))
 
     return (
-        <article className={[classes.SlipperArticle, productArticles ? "" : classes.Loading].join(" ")}>
-            <div className={classes.ImageContainer}>
+        <article className={[classes.SlipperArticle, productArticles ? "" : classes.PerserveWidthWhileLoading].join(" ")}>
+            <div className={`${classes.ImageContainer} Loading`}>
                 <img
                     src={productArticles ? productArticles[activeSlipper].imgUrl : ""}
                     alt={productArticles ? productArticles[activeSlipper].imgAlt : ""}
                 />
             </div>
-            <p dangerouslySetInnerHTML={{ __html: productArticles ? productArticles[activeSlipper].articleText : "&nbsp;<br/><br/><br/>" }}></p>
+            <p className={productArticles ? "" : "Loading"} dangerouslySetInnerHTML={{ __html: productArticles ? productArticles[activeSlipper].articleText : "&nbsp;<br/><br/><br/>" }}></p>
         </article>
     )
 }

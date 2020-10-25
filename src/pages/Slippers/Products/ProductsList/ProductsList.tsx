@@ -55,11 +55,11 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
         } else { //render loading placeholder blocks when the data is getting fetched from the server
 
             return [...Array(10)].map(() => (
-                <li className={`${classes.Product} ${classes.Loading}`} key={v4()}>
-                    <div></div>
-                    <h3>&nbsp; </h3>
-                    <p>&nbsp; </p>
-                    <span>&nbsp; </span>
+                <li className={`${classes.Product} ${classes.PerserveWidthWhileLoading}`} key={v4()}>
+                    <div className="Loading"></div>
+                    <h3 className="Loading">&nbsp; </h3>
+                    <p className="Loading">&nbsp; </p>
+                    <span className="Loading">&nbsp; </span>
                 </li>
             ))
         }

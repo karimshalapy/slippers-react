@@ -36,3 +36,27 @@ img, figure {
 .hidden {
   visibility: hidden;
 }
+.Loading {
+  border-radius: 10px;
+  margin-bottom: 5px;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f0f0f0;
+  background: linear-gradient(to right, #f5f4f4 8%, #f0f0f0 38%, #f5f5f5 54%);
+  background-size: 100vw 640px !important;
+  background-repeat: repeat !important;
+  position: relative !important;
+      
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+      background-position: -50vw 0
+  }
+  100%{
+      background-position: 50vw 0
+  }
+}

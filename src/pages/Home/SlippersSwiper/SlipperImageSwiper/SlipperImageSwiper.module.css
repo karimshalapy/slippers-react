@@ -15,12 +15,6 @@
     right: 5%;
     pointer-events: none;
 }
-.Loading {
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate(-50%, -50%);
-}
 @media(max-width:1024px) {
     .SlipperBigImage{
         max-width: 444px;

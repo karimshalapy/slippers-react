@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
                 :
                 <SwiperSlide
                     tag="article"
-                    className={`${classes.HeroSlide} swiper-no-swiping ${classes.Loading}`}
+                    className={`${classes.HeroSlide} swiper-no-swiping Loading`}
                 ></SwiperSlide>
             }
 

@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import classes from './SlipperImageSwiper.module.css'
-import loading from '../../../../assets/loading.gif'
 
 interface Props {
     controlledSwiper: SwiperCore | undefined,
@@ -47,13 +46,7 @@ const SlipperImageSwiper: React.FC<Props> = props => {
                         />
                     </SwiperSlide>
                 )) : (
-                        <SwiperSlide className={classes.SlipperBigImageSlideContainer}>
-                            <img
-                                className={`${classes.SlipperBigImage} ${classes.Loading}`}
-                                src={loading}
-                                alt="loading"
-                            />
-                        </SwiperSlide>
+                        <SwiperSlide className={`${classes.SlipperBigImageSlideContainer} Loading`}></SwiperSlide>
                     )}
             </Swiper>
             <SliderBtn type="next" sliderBtnClass={classes.sliderNextElBtn} />
