@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 } from 'uuid'
 import { ProductShowcase } from '../../../../Slippers/SlippersTypes'
 import classes from './ProductSmallImages.module.css'
 
@@ -25,7 +26,13 @@ const ProductSmallImages: React.FC<Props> = props => {
                                 <img src={itemValue.imgUrl} alt={itemValue.imgAlt} />
                             </li>
                         ))
-                    : null
+                    :
+                    [...Array(5)].map(() => (
+                        <li
+                            key={v4()}
+                            className={`${classes.SmallImagesItem} Loading`}
+                        ></li>
+                    ))
             }
         </ul>
     )
