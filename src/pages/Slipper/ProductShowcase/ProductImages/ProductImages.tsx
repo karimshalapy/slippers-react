@@ -20,15 +20,11 @@ const PrdouctImages: React.FC<Props> = ({ activeSlipperData }) => {
 
     return (
         <div className={classes.Wrapper}>
-            {
-                activeSlipperData && activeImage ?
-                    <ProductSmallImages
-                        images={activeSlipperData?.productShowcase}
-                        clickHandler={clickHandler}
-                        activeImage={activeImage}
-                    />
-                    : null
-            }
+            <ProductSmallImages
+                images={activeSlipperData?.productShowcase}
+                clickHandler={clickHandler}
+                activeImage={activeImage}
+            />
             <ProductBigImage activeSlipperData={activeSlipperData} activeImage={activeImage} />
         </div>
     )

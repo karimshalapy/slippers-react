@@ -4,25 +4,28 @@ import classes from './ProductSmallImages.module.css'
 
 interface Props {
     clickHandler: (key: string) => void,
-    activeImage: string,
-    images: ProductShowcase
+    activeImage?: string,
+    images?: ProductShowcase
 }
 
 const ProductSmallImages: React.FC<Props> = props => {
     return (
         <ul className={classes.SmallImagesContainer}>
             {
-                Object.entries(props.images)
-                    .map(([itemKey, itemValue], i) => (
+                props.images
+                    ?
+                    Object.entries(props.images)
+                        .map(([itemKey, itemValue], i) => (
 
-                        <li
-                            key={itemKey}
-                            className={[classes.SmallImagesItem, itemKey === props.activeImage ? classes.Active : ""].join(" ")}
-                            onClick={props.clickHandler.bind(null, itemKey)}
-                        >
-                            <img src={itemValue.imgUrl} alt={itemValue.imgAlt} />
-                        </li>
-                    ))
+                            <li
+                                key={itemKey}
+                                className={[classes.SmallImagesItem, itemKey === props.activeImage ? classes.Active : ""].join(" ")}
+                                onClick={props.clickHandler.bind(null, itemKey)}
+                            >
+                                <img src={itemValue.imgUrl} alt={itemValue.imgAlt} />
+                            </li>
+                        ))
+                    : null
             }
         </ul>
     )
