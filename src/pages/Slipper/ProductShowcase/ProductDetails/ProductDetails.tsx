@@ -18,7 +18,6 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = props => {
 
-
     const detailsDummyData: { [item in SlippersTypes]: string } = {
         classic: "WARM. VERSATILE. COMFORTABLE.",
         canvas: "WOOL-LINED SLIPPERS",
@@ -32,21 +31,32 @@ const ProductDetails: React.FC<Props> = props => {
             <h2>mahabis {props.slipper}</h2>
             <data value={props.activeSlipperData?.price.usd}>$ {props.activeSlipperData?.price.usd}</data>
             <p>active color is: {props.activeUpperColor} &amp; {props.activeSoleColor}</p>
-            <legend>choose your upper color:</legend>
-            {
-                props.upperColorsAvailable.map(item => (
-                    <UpperColor
-                        key={item}
+            <form>
+                <fieldset>
+                    <legend>choose your upper color:</legend>
+                    {
+                        props.upperColorsAvailable.map(item => (
+                            <UpperColor
+                                key={item}
+                                pageProductsData={props.pageProductsData}
+                                updateGlobalActiveColorState={props.updateGlobalActiveColorState}
+                                activeUpperColor={props.activeUpperColor}
+                                activeSoleColor={props.activeSoleColor}
+                                upperColor={item}
+                            />
+                        ))
+                    }
+                </fieldset>
+                <fieldset>
+                    <legend>choose your sole color:</legend>
+                    <SoleColors
                         pageProductsData={props.pageProductsData}
                         updateGlobalActiveColorState={props.updateGlobalActiveColorState}
                         activeUpperColor={props.activeUpperColor}
                         activeSoleColor={props.activeSoleColor}
-                        upperColor={item}
                     />
-                ))
-            }
-            <legend>choose your sole color:</legend>
-            <SoleColors pageProductsData={props.pageProductsData} updateGlobalActiveColorState={props.updateGlobalActiveColorState} activeUpperColor={props.activeUpperColor} />
+                </fieldset>
+            </form>
 
         </div>
     )

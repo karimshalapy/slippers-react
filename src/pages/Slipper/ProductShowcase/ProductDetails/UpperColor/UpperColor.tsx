@@ -41,8 +41,14 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
 
     return (
         <div>
-            <button onClick={clickHandler}>{upperColor}</button>
-            <p style={{ display: "inline" }}>local: {activeLocalSoleColor}</p>
+            <input
+                type="radio"
+                id={`upper-${upperColor}`}
+                name="upperColor" value={upperColor}
+                checked={activeUpperColor === upperColor}
+                onChange={clickHandler}
+            />
+            <label htmlFor={`upper-${upperColor}`}>{upperColor} &nbsp; - &nbsp; local: {activeLocalSoleColor}</label>
         </div>
     )
 }

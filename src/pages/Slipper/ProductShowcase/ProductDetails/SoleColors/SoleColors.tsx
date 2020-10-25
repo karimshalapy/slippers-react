@@ -4,7 +4,8 @@ import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
 interface Props {
     pageProductsData?: SlippersProductData[],
     updateGlobalActiveColorState: (color: string, type: "upper" | "sole") => void,
-    activeUpperColor?: string
+    activeUpperColor?: string,
+    activeSoleColor?: string,
 }
 
 const SoleColors: React.FC<Props> = props => {
@@ -14,7 +15,17 @@ const SoleColors: React.FC<Props> = props => {
                 props.pageProductsData && props.activeUpperColor
                     ?
                     props.pageProductsData.filter(item => item.upperColorLongText === props.activeUpperColor).map(item => (
-                        <button key={item.colorText} onClick={props.updateGlobalActiveColorState.bind(null, item.soleColorLongText, "sole")}>{item.soleColorLongText}</button>
+                        <React.Fragment key={item.soleColorLongText}>
+                            <input
+                                type="radio"
+                                name="soleColor"
+                                id={`sole-${item.soleColorLongText}`}
+                                value={item.soleColorLongText}
+                                checked={props.activeSoleColor === item.soleColorLongText}
+                                onChange={props.updateGlobalActiveColorState.bind(null, item.soleColorLongText, "sole")}
+                            />
+                            <label htmlFor={`sole-${item.soleColorLongText}`}>{item.soleColorLongText}</label>
+                        </React.Fragment>
                     ))
                     :
                     null
