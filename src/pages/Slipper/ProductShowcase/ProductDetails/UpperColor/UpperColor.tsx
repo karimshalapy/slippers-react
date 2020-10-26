@@ -7,10 +7,18 @@ interface Props {
     updateGlobalActiveColorState: (x: string, type: "sole" | "upper") => void,
     activeUpperColor?: string,
     activeSoleColor?: string,
-    upperColor: string
+    upperColor: string,
+    loading?: boolean
 }
 
-const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColorState, activeUpperColor, activeSoleColor, upperColor }) => {
+const UpperColor: React.FC<Props> = ({
+    pageProductsData,
+    updateGlobalActiveColorState,
+    activeUpperColor,
+    activeSoleColor,
+    upperColor,
+    loading
+}) => {
 
     const [activeLocalSoleColor, setActiveLocalSoleColor] = useState<string>()
     const [localProductsData, setLocalProductsData] = useState<SlippersProductData[]>()
@@ -59,7 +67,7 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
                 checked={activeUpperColor === upperColor}
                 onChange={changeHandler}
             />
-            <label className={classes.ProductLabel} htmlFor={`upper-${upperColor}`}>
+            <label className={[classes.ProductLabel, loading ? "Loading" : ""].join(" ")} htmlFor={`upper-${upperColor}`}>
                 <div className={classes.ProductLabelImageContainer}>
                     <img src={localActiveProduct?.mainImageUrl} alt={localActiveProduct?.mainImageAlt} />
                 </div>

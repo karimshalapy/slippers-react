@@ -67,3 +67,19 @@
     color: #8a8a8a;
     vertical-align: baseline;
 }
+.PerserveWidthWhenLoading {
+    min-height: 15px;
+}
+h2.PerserveWidthWhenLoading  {
+    width: 80%;
+}
+p.PerserveWidthWhenLoading  {
+    width: 65%;
+    margin-bottom: 5px;
+}
+data.PerserveWidthWhenLoading{
+    width: 30%;
+}
+legend.PerserveWidthWhenLoading {
+    width: 50%;
+}

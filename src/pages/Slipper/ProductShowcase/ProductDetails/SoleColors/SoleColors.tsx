@@ -30,7 +30,9 @@ const SoleColors: React.FC<Props> = props => {
                         </React.Fragment>
                     ))
                     :
-                    null
+                    [...Array(3)].map(() => (
+                        <label className={`${classes.SoleColor} Loading`}>&nbsp;</label>
+                    ))
             }
         </div>
     )
