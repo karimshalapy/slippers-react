@@ -27,13 +27,14 @@ const ProductDetails: React.FC<Props> = props => {
 
     return (
         <div className={classes.ProductDetails}>
-            <p>{detailsDummyData[props.slipper]}</p>
-            <h2>mahabis {props.slipper}</h2>
-            <data value={props.activeSlipperData?.price.usd}>$ {props.activeSlipperData?.price.usd}</data>
-            <p>active color is: {props.activeUpperColor} &amp; {props.activeSoleColor}</p>
-            <form>
+            <div className={classes.ProductDetailsHeadingWrapper}>
+                <p>{detailsDummyData[props.slipper]}</p>
+                <h2>mahabis {props.slipper}</h2>
+                <data value={props.activeSlipperData?.price.usd}>{"$" + props.activeSlipperData?.price.usd}</data>
+            </div>
+            <form className={classes.ColorsForm}>
                 <fieldset>
-                    <legend>choose your upper color:</legend>
+                    <legend>choose your upper color <span className={classes.ActiveColorSpan}> &nbsp;| &nbsp;{props.activeUpperColor}</span></legend>
                     {
                         props.upperColorsAvailable.map(item => (
                             <UpperColor
@@ -48,7 +49,7 @@ const ProductDetails: React.FC<Props> = props => {
                     }
                 </fieldset>
                 <fieldset>
-                    <legend>choose your sole color:</legend>
+                    <legend>choose your sole color <span className={classes.ActiveColorSpan}> &nbsp;| &nbsp;{props.activeSoleColor}</span></legend>
                     <SoleColors
                         pageProductsData={props.pageProductsData}
                         updateGlobalActiveColorState={props.updateGlobalActiveColorState}

@@ -1,0 +1,54 @@
+.ProductDetails{
+    width: 33%;
+    color: #333;
+    font-weight: 400;
+}
+@media (min-width: 1180px) {
+    .ProductDetails{
+        width: 25%;
+    }
+}
+.ProductDetailsHeadingWrapper{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e2e1;
+}
+.ProductDetailsHeadingWrapper p {
+    margin: 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-weight: 500;
+    color: #7d7b7c;
+}
+.ProductDetailsHeadingWrapper h2 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 31px;
+    letter-spacing: -.02em;
+    font-weight: 700;
+}
+.ProductDetailsHeadingWrapper data {
+    display: inline-block;
+    margin-top: 7px;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+}
+.ColorsForm fieldset{
+    border: none;
+    margin: 20px 0 0; 
+    padding: 0;
+}
+.ColorsForm legend {
+    letter-spacing: .05em;
+    font-size: 10px;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ActiveColorSpan{
+    text-transform: none;
+    font-weight: 400;
+    color: #8a8a8a;
+}
