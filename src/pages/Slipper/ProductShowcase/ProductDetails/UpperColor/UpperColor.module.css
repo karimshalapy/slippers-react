@@ -2,6 +2,9 @@
     border: solid 1px #ddd;
     border-radius: 2px;
 }
+.RadioButton:checked + .ProductLabel img {
+    opacity: 1;
+}
 .ProductLabel{
     width: 25%;
 }
