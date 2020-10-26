@@ -46,9 +46,12 @@
     color: #000;
     font-weight: 600;
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 .ActiveColorSpan{
+    font-size: 9px;
     text-transform: none;
     font-weight: 400;
     color: #8a8a8a;
+    vertical-align: baseline;
 }

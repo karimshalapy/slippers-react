@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { SlippersProductData } from '../../../../Slippers/SlippersTypes';
+import classes from './UpperColor.module.css'
 
 interface Props {
     pageProductsData?: SlippersProductData[],
@@ -13,6 +14,7 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
 
     const [activeLocalSoleColor, setActiveLocalSoleColor] = useState<string>()
     const [localProductsData, setLocalProductsData] = useState<SlippersProductData[]>()
+    const [localActiveProduct, setLocalActiveProduct] = useState<SlippersProductData>()
 
     useEffect(() => { //useEffect to run once the component mount and set the local active sole to a default color
         if (pageProductsData) {
@@ -22,7 +24,8 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
         }
     }, [pageProductsData, upperColor])
 
-    useEffect(() => { //useEffect to run when the global sole color changes to update the local one if available
+    //useEffect to run when the global sole color changes to update the local one if available
+    useEffect(() => {
         if (
             localProductsData
             && activeSoleColor
@@ -32,7 +35,14 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
         }
     }, [activeSoleColor, localProductsData])
 
-    const clickHandler = useCallback(() => {
+    //useEffect to set the local active product to use its image in the label and this will update if the global sole color is available with the component upper color
+    useEffect(() => {
+        if (localProductsData && activeLocalSoleColor) {
+            setLocalActiveProduct(localProductsData.filter(item => item.soleColorLongText === activeLocalSoleColor)[0])
+        }
+    }, [activeLocalSoleColor, localProductsData])
+
+    const changeHandler = useCallback(() => {
         if (activeUpperColor && activeLocalSoleColor) {
             updateGlobalActiveColorState(upperColor, "upper")
             updateGlobalActiveColorState(activeLocalSoleColor, "sole")
@@ -40,16 +50,21 @@ const UpperColor: React.FC<Props> = ({ pageProductsData, updateGlobalActiveColor
     }, [activeLocalSoleColor, updateGlobalActiveColorState, activeUpperColor, upperColor])
 
     return (
-        <div>
+        <>
             <input
+                className={classes.RadioButton}
                 type="radio"
                 id={`upper-${upperColor}`}
                 name="upperColor" value={upperColor}
                 checked={activeUpperColor === upperColor}
-                onChange={clickHandler}
+                onChange={changeHandler}
             />
-            <label htmlFor={`upper-${upperColor}`}>{upperColor} &nbsp; - &nbsp; local: {activeLocalSoleColor}</label>
-        </div>
+            <label className={classes.ProductLabel} htmlFor={`upper-${upperColor}`}>
+                <div className={classes.ProductLabelImageContainer}>
+                    <img src={localActiveProduct?.mainImageUrl} alt={localActiveProduct?.mainImageAlt} />
+                </div>
+            </label>
+        </>
     )
 }
 
