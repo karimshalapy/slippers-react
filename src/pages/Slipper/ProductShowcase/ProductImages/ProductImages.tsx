@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import ProductSmallImages from './ProductSmallImages/ProductSmallImages'
 import classes from './ProductImages.module.css'
-import { SlippersProductData } from '../../../Slippers/SlippersTypes'
+import { SlippersProductData, SlippersTypes } from '../../../Slippers/SlippersTypes'
 import ProductBigImage from './ProductBigImage/ProductBigImage'
 
 interface Props {
     activeSlipperData?: SlippersProductData
-
+    slipper: SlippersTypes
 }
 
-const PrdouctImages: React.FC<Props> = ({ activeSlipperData }) => {
+const PrdouctImages: React.FC<Props> = ({ activeSlipperData, slipper }) => {
 
     const [activeImage, setActiveImage] = useState<string>()
     const clickHandler = (key: string) => { setActiveImage(key) }
@@ -21,6 +21,7 @@ const PrdouctImages: React.FC<Props> = ({ activeSlipperData }) => {
     return (
         <div className={classes.Wrapper}>
             <ProductSmallImages
+                slipper={slipper}
                 images={activeSlipperData?.productShowcase}
                 clickHandler={clickHandler}
                 activeImage={activeImage}

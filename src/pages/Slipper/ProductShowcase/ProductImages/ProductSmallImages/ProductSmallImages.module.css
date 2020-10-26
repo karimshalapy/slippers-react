@@ -38,3 +38,12 @@
     left: 0;
     max-width: 100%;
 }
+.PlayIcon {
+    top: 50% !important;
+    left: 50% !important;
+    width: 40%;
+    transform: translate(-50%, -50%);
+}
+.VideoThumbnail {
+    opacity: 50%;
+}

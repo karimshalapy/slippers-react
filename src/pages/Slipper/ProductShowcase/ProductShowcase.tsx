@@ -73,6 +73,7 @@ const ProductShowcase: React.FC<Props> = props => {
             <div className={classes.ProductShowcaseWrapper}>
                 <ProductImages
                     activeSlipperData={activeSlipperData}
+                    slipper={slipper}
                 />
                 <ProductDetails
                     activeSoleColor={activeSoleColor}
