@@ -1,5 +1,5 @@
 .RadioButton:checked + .ProductLabel {
-    border: solid 1px #ddd;
+    box-shadow: 0 0 0 1px #ddd;
     border-radius: 2px;
 }
 .RadioButton:checked + .ProductLabel img {
@@ -7,6 +7,7 @@
 }
 .ProductLabel{
     width: 25%;
+    transition: all .15s ease;
 }
 .ProductLabel:hover img{
     opacity: .75;
