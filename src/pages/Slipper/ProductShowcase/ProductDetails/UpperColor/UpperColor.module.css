@@ -1,19 +1,9 @@
-.RadioButton{ /*hiding the radio button*/
-    position: absolute!important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    margin: 0;
-}
 .RadioButton:checked + .ProductLabel {
     border: solid 1px #ddd;
     border-radius: 2px;
 }
 .ProductLabel{
-    display: inline-block;
     width: 25%;
-    cursor: pointer;
 }
 .ProductLabel:hover img{
     opacity: .75;

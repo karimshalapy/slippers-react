@@ -48,6 +48,18 @@
     text-transform: uppercase;
     margin-bottom: 10px;
 }
+.ColorsForm input {/*hiding the radio button*/
+    position: absolute!important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+    margin: 0;
+}
+.ColorsForm label {
+    display: inline-block;
+    cursor: pointer;
+}
 .ActiveColorSpan{
     font-size: 9px;
     text-transform: none;
