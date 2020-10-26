@@ -1,0 +1,82 @@
+.RadioButton:checked + .SoleColor {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #333;
+    opacity: 1;
+}
+.SoleColor {
+    width: 38px;
+    height: 38px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: all 0.15s ease;
+}
+.SoleColor:hover {
+    opacity: .75;
+}
+.SoleColrosContainer {
+    margin-top: 15px;
+}
+.ii {
+    background-color: #EEE7DC;
+}
+.hp {
+    background-color: #E1C1BE;
+}
+.fg {
+    background-color: #B2C3B3;
+}
+.as {
+    background-color: #F0EEE9;
+}
+.ks {
+    background-color:#55585D;
+}
+.ln {
+    background-color: #4f5a7d;
+}
+.kg {
+    background-color: #d2d4d3;
+}
+.kb {
+    background-color: #EDE6DC;
+}
+.bg {
+    background-color: #DDD6CC;
+}
+.lag {
+    background-color:#D2D4D3;
+}
+.js {
+    background-color:#c1bbb4;
+}
+.dk {
+    background-color: #4c4a1f;
+}
+.aw {
+    background-color: #eeeeee;
+}
+.lw {
+    background-color: #F1F1F0;
+}
+.on {
+    background-color:#373947;
+}
+.sb {
+    background-color:#312d2c;
+}
+.dg {
+    background-color: #565656;
+}
+.pp {
+    background-color:#632A45;
+}
+.lig {
+    background-color:#A2A4A7;    
+}
+.sy {
+    background-color: #fdd770;
+}
+.ss {
+    background-color: #D0C09E;
+}
