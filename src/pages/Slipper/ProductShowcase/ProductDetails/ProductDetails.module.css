@@ -8,33 +8,6 @@
         width: 25%;
     }
 }
-.ProductDetailsHeadingWrapper{
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e5e2e1;
-}
-.ProductDetailsHeadingWrapper p {
-    margin: 0;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .02em;
-    font-weight: 500;
-    color: #7d7b7c;
-}
-.ProductDetailsHeadingWrapper h2 {
-    margin: 0;
-    padding-bottom: 5px;
-    font-size: 31px;
-    letter-spacing: -.02em;
-    font-weight: 700;
-}
-.ProductDetailsHeadingWrapper data {
-    display: inline-block;
-    margin-top: 7px;
-    font-size: 17px;
-    line-height: 20px;
-    font-weight: 400;
-    vertical-align: middle;
-}
 .ColorsForm fieldset{
     border: none;
     margin: 20px 0 0; 
@@ -75,7 +48,7 @@ h2.PerserveWidthWhenLoading  {
 }
 p.PerserveWidthWhenLoading  {
     width: 65%;
-    margin-bottom: 5px;
+    margin-bottom: 5px !important; /*important is added to override the margin 0 in the child component*/
 }
 data.PerserveWidthWhenLoading{
     width: 30%;

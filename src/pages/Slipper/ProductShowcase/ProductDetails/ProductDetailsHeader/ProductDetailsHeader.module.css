@@ -1,0 +1,28 @@
+
+.ProductDetailsHeaderWrapper{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e2e1;
+}
+.ProductDetailsHeaderWrapper p {
+    margin: 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-weight: 500;
+    color: #7d7b7c;
+}
+.ProductDetailsHeaderWrapper h2 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-size: 31px;
+    letter-spacing: -.02em;
+    font-weight: 700;
+}
+.ProductDetailsHeaderWrapper data {
+    display: inline-block;
+    margin-top: 7px;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+}
