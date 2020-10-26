@@ -1,10 +1,9 @@
 import React, { memo } from 'react'
-import { v4 } from 'uuid'
 import { SlippersTypes } from '../../../Home/SlippersSwiper/SlippersSwiperTypes'
 import { SlippersProductData } from '../../../Slippers/SlippersTypes'
 import classes from './ProductDetails.module.css'
 import SoleColors from './SoleColors/SoleColors'
-import UpperColor from './UpperColor/UpperColor'
+import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
 
 interface Props {
     slipper: SlippersTypes,
@@ -46,41 +45,14 @@ const ProductDetails: React.FC<Props> = props => {
                 }
             </div>
             <form className={classes.ColorsForm}>
-                <fieldset>
-                    {
-                        props.pageProductsData
-                            ?
-                            <>
-                                <legend>choose your upper color <span className={classes.ActiveColorSpan}> &nbsp;| &nbsp;{props.activeUpperColor}</span></legend>
-                                {
-                                    props.upperColorsAvailable.map(item => (
-                                        <UpperColor
-                                            key={item}
-                                            pageProductsData={props.pageProductsData}
-                                            updateGlobalActiveColorState={props.updateGlobalActiveColorState}
-                                            activeUpperColor={props.activeUpperColor}
-                                            activeSoleColor={props.activeSoleColor}
-                                            upperColor={item}
-                                        />
-                                    ))
-                                }
-                            </>
-                            :
-                            <>
-                                <legend className={`${classes.PerserveWidthWhenLoading} Loading`}>&nbsp;</legend>
-                                {
-                                    [...Array(5)].map(() => (
-                                        <UpperColor
-                                            key={v4()}
-                                            updateGlobalActiveColorState={props.updateGlobalActiveColorState}
-                                            upperColor=""
-                                            loading
-                                        />
-                                    ))
-                                }
-                            </>
-                    }
-                </fieldset>
+                <UpperColorsFieldset
+                    updateGlobalActiveColorState={props.updateGlobalActiveColorState}
+                    upperColorsAvailable={props.upperColorsAvailable}
+                    activeSoleColor={props.activeSoleColor}
+                    activeUpperColor={props.activeUpperColor}
+                    pageProductsData={props.pageProductsData}
+                    PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
+                />
                 <fieldset>
                     {
                         props.pageProductsData
