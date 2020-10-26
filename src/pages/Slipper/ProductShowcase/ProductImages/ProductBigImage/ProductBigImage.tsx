@@ -18,7 +18,7 @@ const ProductBigImage: React.FC<Props> = ({ activeSlipperData, activeImage }) =>
         ) {
             if (activeImage === "classicVideo" || activeImage === "flowVideo") {
                 return (
-                    <div className={classes.ImageContainer}>
+                    <div className={`${classes.ImageContainer} ${classes.BackgroundFix}`}>
                         <video className={classes.ProductBigImage} autoPlay>
                             <source type="video/mp4" src={
                                 activeImage === "classicVideo"
@@ -32,7 +32,7 @@ const ProductBigImage: React.FC<Props> = ({ activeSlipperData, activeImage }) =>
                 )
             } else if (Object.keys(activeSlipperData.productShowcase).includes(activeImage)) {
                 return (
-                    <div className={classes.ImageContainer}>
+                    <div className={`${classes.ImageContainer} ${classes.BackgroundFix}`}>
                         <img
                             src={activeSlipperData.productShowcase[activeImage].imgUrl}
                             alt={activeSlipperData.productShowcase[activeImage].imgAlt}

@@ -38,8 +38,8 @@ img, figure {
 }
 .Loading {
   border-radius: 10px;
-  margin-bottom: 5px;
-  animation-duration: 1s;
+  margin: 5px;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: placeHolderShimmer;
@@ -49,7 +49,7 @@ img, figure {
   background-size: 100vw 640px !important;
   background-repeat: repeat !important;
   position: relative !important;
-      
+  opacity: 1 !important;
 }
 
 @keyframes placeHolderShimmer{

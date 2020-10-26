@@ -12,5 +12,7 @@
     position: relative;
     padding: 33.3% 15px;
     margin: 0 auto;
+}
+.BackgroundFix {
     background: #f9f9f8;
 }
