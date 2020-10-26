@@ -1,5 +1,5 @@
 import React from 'react'
-import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
+import { SlippersProductData } from '../../../../../Slippers/SlippersTypes'
 import classes from './SoleColors.module.css'
 
 interface Props {

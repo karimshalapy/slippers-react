@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { SlippersTypes } from '../../../Home/SlippersSwiper/SlippersSwiperTypes'
 import { SlippersProductData } from '../../../Slippers/SlippersTypes'
 import classes from './ProductDetails.module.css'
-import SoleColors from './SoleColors/SoleColors'
+import SoleColorsFieldset from './SoleColorsFieldset/SoleColorsFieldset'
 import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
 
 interface Props {
@@ -53,30 +53,14 @@ const ProductDetails: React.FC<Props> = props => {
                     pageProductsData={props.pageProductsData}
                     PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
                 />
-                <fieldset>
-                    {
-                        props.pageProductsData
-                            ?
-                            <>
-                                <legend>choose your sole color <span className={classes.ActiveColorSpan}> &nbsp;| &nbsp;{props.activeSoleColor}</span></legend>
-                                <SoleColors
-                                    pageProductsData={props.pageProductsData}
-                                    updateGlobalActiveColorState={props.updateGlobalActiveColorState}
-                                    activeUpperColor={props.activeUpperColor}
-                                    activeSoleColor={props.activeSoleColor}
-                                />
-                            </>
-                            :
-                            <>
-                                <legend className={`${classes.PerserveWidthWhenLoading} Loading`}>&nbsp;</legend>
-                                <SoleColors
-                                    updateGlobalActiveColorState={props.updateGlobalActiveColorState}
-                                />
-                            </>
-                    }
-                </fieldset>
+                <SoleColorsFieldset
+                    updateGlobalActiveColorState={props.updateGlobalActiveColorState}
+                    activeSoleColor={props.activeSoleColor}
+                    activeUpperColor={props.activeUpperColor}
+                    pageProductsData={props.pageProductsData}
+                    PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
+                />
             </form>
-
         </div>
     )
 }
