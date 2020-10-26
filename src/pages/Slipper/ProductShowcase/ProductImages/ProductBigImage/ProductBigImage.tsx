@@ -13,18 +13,23 @@ const ProductBigImage: React.FC<Props> = props => {
     return (
         <FadeSwitchTransition fast transitionKey={`active-image-${v4()}-changed`}>
             {nodeRef => (
-                <div className={`${classes.ImageContainer} Loading`} ref={nodeRef}>
+                <div ref={nodeRef}>
                     {
                         props.activeSlipperData
                             && props.activeImage
                             && Object.keys(props.activeSlipperData.productShowcase).includes(props.activeImage)
                             ?
-                            <img
-                                src={props.activeSlipperData.productShowcase[props.activeImage].imgUrl}
-                                alt={props.activeSlipperData.productShowcase[props.activeImage].imgAlt}
-                                className={classes.ProductBigImage}
-                            />
-                            : null
+                            <div className={classes.ImageContainer}>
+                                <img
+                                    src={props.activeSlipperData.productShowcase[props.activeImage].imgUrl}
+                                    alt={props.activeSlipperData.productShowcase[props.activeImage].imgAlt}
+                                    className={classes.ProductBigImage}
+                                />
+                            </div>
+                            :
+                            <div className={`${classes.ImageContainer} Loading`}>
+
+                            </div>
                     }
                 </div>
             )}

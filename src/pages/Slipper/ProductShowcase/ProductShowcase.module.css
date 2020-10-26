@@ -1,4 +1,4 @@
-.ProductShowcase {
+.ProductShowcaseWrapper{
     max-width: 1180px;
     width: 84%;
     margin: auto;
@@ -6,4 +6,7 @@
     align-items: flex-start;
     justify-content: center;
     flex-wrap: nowrap;
+}
+.ProductShowcase {
+    background: #f9f9f8;
 }

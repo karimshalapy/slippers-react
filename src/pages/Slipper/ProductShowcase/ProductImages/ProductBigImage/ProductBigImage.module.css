@@ -2,6 +2,7 @@
     width: 66.67%;
 }
 .ProductBigImage {
+    mix-blend-mode: multiply;
     max-width: 100%;
     position: absolute;
     top: 0;
@@ -11,4 +12,5 @@
     position: relative;
     padding: 33.3% 15px;
     margin: 0 auto;
+    background: #f9f9f8;
 }

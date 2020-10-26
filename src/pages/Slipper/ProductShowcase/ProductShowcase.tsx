@@ -70,18 +70,20 @@ const ProductShowcase: React.FC<Props> = props => {
 
     return (
         <section className={classes.ProductShowcase}>
-            <ProductImages
-                activeSlipperData={activeSlipperData}
-            />
-            <ProductDetails
-                activeSoleColor={activeSoleColor}
-                activeUpperColor={activeUpperColor}
-                pageProductsData={pageProductsData}
-                slipper={slipper}
-                updateGlobalActiveColorState={updateGlobalActiveColorState}
-                upperColorsAvailable={upperColorsAvailable}
-                activeSlipperData={activeSlipperData}
-            />
+            <div className={classes.ProductShowcaseWrapper}>
+                <ProductImages
+                    activeSlipperData={activeSlipperData}
+                />
+                <ProductDetails
+                    activeSoleColor={activeSoleColor}
+                    activeUpperColor={activeUpperColor}
+                    pageProductsData={pageProductsData}
+                    slipper={slipper}
+                    updateGlobalActiveColorState={updateGlobalActiveColorState}
+                    upperColorsAvailable={upperColorsAvailable}
+                    activeSlipperData={activeSlipperData}
+                />
+            </div>
         </section>
     )
 }
