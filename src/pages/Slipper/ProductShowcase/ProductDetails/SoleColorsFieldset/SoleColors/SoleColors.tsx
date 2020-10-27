@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 } from 'uuid'
 import { SlippersProductData } from '../../../../../Slippers/SlippersTypes'
 import classes from './SoleColors.module.css'
 
@@ -31,7 +32,7 @@ const SoleColors: React.FC<Props> = props => {
                     ))
                     :
                     [...Array(3)].map(() => (
-                        <label className={`${classes.SoleColor} Loading`}>&nbsp;</label>
+                        <label key={v4()} className={`${classes.SoleColor} Loading`}>&nbsp;</label>
                     ))
             }
         </div>
