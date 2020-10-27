@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback } from 'react'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
@@ -58,4 +58,4 @@ const ProductBigImage: React.FC<Props> = ({ activeSlipperData, activeImage }) =>
     )
 }
 
-export default ProductBigImage
+export default memo(ProductBigImage)
