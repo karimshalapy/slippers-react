@@ -54,6 +54,7 @@ const ProductDetails: React.FC<Props> = props => {
                     activeSize={props.activeSize}
                     setActiveSize={props.setActiveSize}
                     activeSlipperData={props.activeSlipperData}
+                    PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
                 />
             </form>
         </div>

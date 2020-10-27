@@ -21,6 +21,7 @@
     box-shadow: 0 0 0 1px #ddd;
     text-align: center;
     transition: all 0.15s ease;
+    margin: 0;
 }
 .GendersField label:hover, .SizesField label:hover {
     background-color: #fefefe;

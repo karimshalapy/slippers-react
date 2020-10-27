@@ -1,5 +1,6 @@
 import React, { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { v4 } from 'uuid'
 import { isSizesFilterSection } from '../../../../../helpers/typeCheckers'
 import { RootReducer } from '../../../../../store/rootReducer/reducersTypes'
 import { GenderSizes, SlippersProductData } from '../../../../Slippers/SlippersTypes.d'
@@ -11,15 +12,16 @@ interface Props {
     activeSize?: number,
     setActiveSize: React.Dispatch<React.SetStateAction<number | undefined>>,
     activeSlipperData?: SlippersProductData,
+    PerserveWidthWhenLoadingClass: string,
 }
 
-const ProductSizes: React.FC<Props> = ({ activeGender, setActiveGender, activeSize, setActiveSize, activeSlipperData }) => {
+const ProductSizes: React.FC<Props> = ({ activeGender, setActiveGender, activeSize, setActiveSize, activeSlipperData, PerserveWidthWhenLoadingClass }) => {
 
     const filterData = useSelector((state: RootReducer) => state.productsData.original?.filterData)
 
     //function to return genders to show for the user and when a gender is chosen returns the available sizes
-    const getRenderData = useCallback(() => {
-        if (filterData && activeSlipperData) {
+    const getFieldsetsRenderData = useCallback(() => {
+        if (filterData && activeSlipperData) { // render this when the data is fetched successfully
             if (!activeGender && !isSizesFilterSection(filterData.gender.filterItems)) {
                 return filterData.gender.filterItems.map((item) => {
                     if (item === "men" || item === "women") {
@@ -61,26 +63,45 @@ const ProductSizes: React.FC<Props> = ({ activeGender, setActiveGender, activeSi
                     </React.Fragment>
                 ))
             }
+        } else { //render this when loading
+            return [...Array(2)].map(() => (
+                <React.Fragment key={v4()}>
+                    <label className="Loading">&nbsp;</label>
+                </React.Fragment>
+            ))
         }
     }, [activeGender, filterData, setActiveGender, activeSize, setActiveSize, activeSlipperData])
 
+    const getFiledsetHeaderRenderData = useCallback(
+        () => {
+            if (activeSlipperData) {
+                return (
+                    <legend>
+                        choose size
+                        {
+                            activeGender
+                                ?
+                                <>
+                                    <span> &nbsp;|&nbsp; {activeGender} sizes </span>
+                                    <span className={classes.ChangeGender} onClick={() => {
+                                        setActiveGender(undefined)
+                                        setActiveSize(undefined)
+                                    }}>change</span>
+                                </>
+                                : null
+                        }
+                    </legend>
+
+                )
+            } else return <legend className={`${PerserveWidthWhenLoadingClass} Loading`}>&nbsp;</legend>
+        }, [PerserveWidthWhenLoadingClass, activeSlipperData, activeGender, setActiveSize, setActiveGender])
+
     return (
         <fieldset>
-            <legend>
-                choose size
-                {activeGender
-                    ? <>
-                        <span> &nbsp;|&nbsp; {activeGender} sizes </span>
-                        <span className={classes.ChangeGender} onClick={() => {
-                            setActiveGender(undefined)
-                            setActiveSize(undefined)
-                        }}>change</span>
-                    </>
-                    : null}
-            </legend>
-            <div className={classes[activeGender ? "SizesField" : "GendersField"]}>
+            { getFiledsetHeaderRenderData()}
+            <div className={classes[activeGender && activeSlipperData ? "SizesField" : "GendersField"]}>
                 {
-                    getRenderData()
+                    getFieldsetsRenderData()
                 }
             </div>
         </fieldset>
