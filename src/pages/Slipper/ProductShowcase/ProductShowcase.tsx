@@ -23,6 +23,8 @@ const ProductShowcase: React.FC<Props> = props => {
     const [activeUpperColor, setActiveUpperColor] = useState<string>()
     const [activeSoleColor, setActiveSoleColor] = useState<string>()
     const [activeSlipperData, setActiveSlipperData] = useState<SlippersProductData>()
+    const [activeGender, setActiveGender] = useState<"men" | "women">()
+    const [activeSize, setActiveSize] = useState<number>()
 
     const duplicatesSet = new Set(); //has to be axcluded from the useCallback deps because this is initiated each render cycle and it's only for the duplicates so no need for a state for that, in other words that's the expected behavior
     //a function that filters and maps the full data array into a string array of available upper colors without duplicates using the set above
@@ -83,6 +85,10 @@ const ProductShowcase: React.FC<Props> = props => {
                     updateGlobalActiveColorState={updateGlobalActiveColorState}
                     upperColorsAvailable={upperColorsAvailable}
                     activeSlipperData={activeSlipperData}
+                    activeGender={activeGender}
+                    setActiveGender={setActiveGender}
+                    activeSize={activeSize}
+                    setActiveSize={setActiveSize}
                 />
             </div>
         </section>
