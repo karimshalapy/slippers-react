@@ -29,12 +29,19 @@
     clip: rect(1px,1px,1px,1px);
     margin: 0;
 }
+.ColorsForm input:disabled,
+.ColorsForm input:disabled + label,
+.ColorsForm input:disabled + label *{
+    cursor: not-allowed;
+    color: #d4d4d3;
+    background-color: inherit;
+}
 .ColorsForm label {
     display: inline-block;
     cursor: pointer;
 }
 .ColorsForm legend span{
-    font-size: 9px;
+    font-size: 10px;
     text-transform: none;
     font-weight: 400;
     color: #8a8a8a;

@@ -70,14 +70,19 @@ const ProductSizes: React.FC<Props> = ({ activeGender, setActiveGender, activeSi
                 choose size
                 {activeGender
                     ? <>
-                        <span> &nbsp;|&nbsp; {activeGender} sizes</span>
-                        <span className={classes.ChangeGender} onClick={setActiveGender.bind(null, undefined)}> change</span>
+                        <span> &nbsp;|&nbsp; {activeGender} sizes </span>
+                        <span className={classes.ChangeGender} onClick={() => {
+                            setActiveGender(undefined)
+                            setActiveSize(undefined)
+                        }}>change</span>
                     </>
                     : null}
             </legend>
-            {
-                getRenderData()
-            }
+            <div className={classes[activeGender ? "SizesField" : "GendersField"]}>
+                {
+                    getRenderData()
+                }
+            </div>
         </fieldset>
 
     )
