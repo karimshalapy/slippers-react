@@ -8,6 +8,7 @@ import { SlippersTypes } from '../../Home/SlippersSwiper/SlippersSwiperTypes'
 import { SlippersProductData } from '../../Slippers/SlippersTypes'
 import ProductDetails from './ProductDetails/ProductDetails'
 import ProductImages from './ProductImages/ProductImages'
+import ProductImagesSwiper from './ProductImagesSwiper/ProductImagesSwiper'
 import classes from './ProductShowcase.module.css'
 
 interface Props {
@@ -84,6 +85,13 @@ const ProductShowcase: React.FC<Props> = props => {
 
     return (
         <section className={classes.ProductShowcase}>
+            {windowWidth && windowWidth <= 800
+                ?
+                <ProductImagesSwiper
+                    activeSlipperData={activeSlipperData}
+                    slipper={slipper}
+                />
+                : null}
             <div className={classes.ProductShowcaseWrapper}>
                 {
                     windowWidth && windowWidth > 800

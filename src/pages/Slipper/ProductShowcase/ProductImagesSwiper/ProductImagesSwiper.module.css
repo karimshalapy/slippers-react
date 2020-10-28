@@ -1,0 +1,23 @@
+.SwiperSlide {
+    background-color: #f9f9f8;
+    position: relative;
+    padding: 50% 0;
+}
+.SwiperSlide img,
+.SwiperSlide video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+    width: 100%;
+    display: block;
+}
+.sliderNextElBtn, .sliderPrevElBtn {
+    color: black;
+}
+.ActiveBullet{
+    background-color: #F34C3F;
+    opacity: 1;
+    transform: scale(1.2);
+    transition: all 0.15s ease;
+}
