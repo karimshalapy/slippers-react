@@ -1,11 +1,11 @@
 import React from 'react'
 import classes from './SlippersFeaturesSwitcher.module.css'
 import Button from '../../../../components/Button/Button'
-import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import SlipperFeatures from '../../../../components/SlipperFeatures/SlipperFeatures'
 
 interface Props {
     activeSlide: number
@@ -27,16 +27,7 @@ const SlippersFeaturesSwitcher: React.FC<Props> = props => {
                             ?
                             <article>
                                 <h2 className={classes.FeatureSlideHeader}>mahabis <span>{item.type}</span></h2>
-                                <ul className={classes.FeaturesContainer}>
-                                    {item.features.map(feature => (
-                                        <li
-                                            key={v4()}
-                                            className={`${classes[feature.featureIcon]} ${classes.Feature}`}
-                                        >
-                                            {feature.featureText}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <SlipperFeatures features={item.features} />
                                 <Button hasLink>
                                     {
                                         item.url ? <Link to={item.url}>LEARN MORE</Link> : "LEARN MORE"

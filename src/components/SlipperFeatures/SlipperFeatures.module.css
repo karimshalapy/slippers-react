@@ -1,0 +1,51 @@
+/*the features flex container*/
+.FeaturesContainer {
+    list-style-type: none;
+    margin: 45px 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+/*each feature styling*/
+.Feature {
+    width: 105px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #343434;
+    font-weight: 500;
+    line-height: 15px;
+    text-transform: uppercase;
+}
+.Feature::before {
+    content: "";
+    font-family: mahabis-icons;
+    line-height: 1;
+    display: block;
+    font-size: 40px;
+    color: #8a8a8a;
+    margin-bottom: 25px;
+}
+/*features content css glyphs*/
+.slipper::before {
+    content: "\e90c";
+}
+.wool::before {
+    content: "\e911";
+}
+.sole::before {
+    content: "\e908";
+}
+.water::before {
+    content: "\e911";
+}
+.wooven::before {
+    content: "\e912";
+}
+.foot::before {
+    content: "\e909";
+}
+.leather::before {
+    content: "\e90a";
+}
