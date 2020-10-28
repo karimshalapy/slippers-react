@@ -36,7 +36,7 @@ const ProductImagesSwiper: React.FC<Props> = ({ activeSlipperData, slipper }) =>
         <>
             <Swiper
                 className={classes.ProductImagesSwiper}
-                loop={false}
+                loopPreventsSlide={false}
                 navigation={{
                     nextEl: `.${classes.sliderNextElBtn}`,
                     prevEl: `.${classes.sliderPrevElBtn}`,
