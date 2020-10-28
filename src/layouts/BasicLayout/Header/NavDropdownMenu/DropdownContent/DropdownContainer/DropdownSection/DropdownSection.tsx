@@ -22,10 +22,10 @@ const DropdownSection: React.FC<Props> = ({ type, reset, payload: { heading, dat
                         <ul className={classes.ImageList}>
                             {data.map(item => (
                                 <li key={v4()}>
-                                    <Link to={item.url} className={classes.Link} onClick={reset}>
+                                    <a href={item.url} className={classes.Link} onClick={reset}>
                                         <img className={classes.ImageListImages} src={item.imgUrl} alt={item.imgAlt} />
                                         <span>{item.text}</span>
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>

@@ -112,7 +112,7 @@ const SlipperFigureDismantle: React.FC<Props> = props => {
                     ))
                 }
             </div>
-            <Button hasLink classNames={[classes.FigureDismantleBtn]}><Link to="/slippers">LEARN MORE</Link></Button>
+            <Button hasLink classNames={[classes.FigureDismantleBtn]}><Link to="/slipper/classic">LEARN MORE</Link></Button>
         </section>
     )
 }

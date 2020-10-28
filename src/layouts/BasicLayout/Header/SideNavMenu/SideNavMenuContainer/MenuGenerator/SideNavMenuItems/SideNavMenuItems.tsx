@@ -33,10 +33,10 @@ const SideNavMenuItems: React.FC<Props> = props => {
                                     key={v4()}
                                     className={classes.SideMenuItem}
                                 >
-                                    <Link to={item.url} onClick={toggleMenu}>
+                                    <a href={item.url} onClick={toggleMenu}>
                                         <img src={item.imgUrl} alt={item.imgAlt} />
                                         {item.text}
-                                    </Link>
+                                    </a>
                                 </li>
                             )
                         } else {
