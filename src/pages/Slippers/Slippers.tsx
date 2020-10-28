@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
+import useWindowWidth from '../../hooks/useWindowWidth'
 import { filterProducts, getProdcuts, setfilterStateWParams } from '../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../store/rootReducer/reducersTypes'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
@@ -21,7 +22,7 @@ const Slippers: React.FC<Props> = props => {
         filterData: state.productsData.original?.filterData
     }))
     const [filterSidebarIsOpen, setFilterSidebarIsOpen] = useState(false)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const windowWidth = useWindowWidth()
     const location = useLocation()
 
     const filterBtnClickHandler = useCallback(() => { setFilterSidebarIsOpen(prevOpen => !prevOpen) }, [])
@@ -37,15 +38,6 @@ const Slippers: React.FC<Props> = props => {
         if (filterData) dispatch(filterProducts(filterState, filterData))
     }, [dispatch, filterState, productsData, filterData])
 
-    //using window.innerHeight in state and updating it by using an event listener on the window resize and updating it accordingly
-    const updateWindowSizeOnResize = useCallback(() => setWindowWidth(window.innerWidth), [])
-    useEffect(() => {
-        window.addEventListener("resize", updateWindowSizeOnResize);
-        return () => {
-            window.removeEventListener("resize", updateWindowSizeOnResize);
-        }
-    }, [updateWindowSizeOnResize])
-
     return (
         <>
             <ScrollToTopOnPathChange />
@@ -53,7 +45,7 @@ const Slippers: React.FC<Props> = props => {
             <div className={classes.SlippersPageWrapper}>
                 <FilterSidebar open={filterSidebarIsOpen} changeOpen={filterBtnClickHandler} />
                 {
-                    windowWidth > 600
+                    windowWidth && windowWidth > 600
                         ?
                         <aside className={classes.Filter}>
                             <FliterProducts />
