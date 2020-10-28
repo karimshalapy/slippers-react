@@ -8,5 +8,7 @@
     flex-wrap: nowrap;
 }
 .ProductShowcase {
+    padding: 25px 0;
+    margin-bottom: 25px;
     background: #f9f9f8;
 }

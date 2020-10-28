@@ -15,10 +15,10 @@ const Slipper: React.FC<Props> = props => {
             <ScrollToTopOnPathChange />
             <ProductShowcase />
             <Switch>
-                <Route path="/slipper/classic" exact render={() => <div>classic</div>} />
-                <Route path="/slipper/luxe" exact render={() => <div>luxe</div>} />
-                <Route path="/slipper/flow" exact render={() => <div>flow</div>} />
-                <Route path="/slipper/canvas" exact render={() => <div>canvas</div>} />
+                <Route path="/slipper/classic" exact render={() => <div></div>} />
+                <Route path="/slipper/luxe" exact render={() => <div></div>} />
+                <Route path="/slipper/flow" exact render={() => <div></div>} />
+                <Route path="/slipper/canvas" exact render={() => <div></div>} />
                 <Redirect from="/slipper" to="/slipper/classic" />
             </Switch>
 
