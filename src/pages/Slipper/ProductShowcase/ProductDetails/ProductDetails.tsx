@@ -1,4 +1,7 @@
 import React, { memo } from 'react'
+import { useSelector } from 'react-redux'
+import SlipperFeatures from '../../../../components/SlipperFeatures/SlipperFeatures'
+import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { SlippersTypes } from '../../../Home/SlippersSwiper/SlippersSwiperTypes'
 import { SlippersProductData } from '../../../Slippers/SlippersTypes'
 import classes from './ProductDetails.module.css'
@@ -25,6 +28,10 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = props => {
 
+    const slipperFeaturesArray = useSelector((state: RootReducer) => {
+        return state.mainResources.slippersTypeSwiper
+            ?.filter(item => item.type === props.slipper)[0].features
+    })
     const formIsValid = () => {
         return !!(props.activeGender && props.activeSize && props.activeUpperColor && props.activeSoleColor)
     }
@@ -67,8 +74,8 @@ const ProductDetails: React.FC<Props> = props => {
                     :
                     null
                 }
-
             </form>
+            <SlipperFeatures features={slipperFeaturesArray} wrapperClassname={classes.SlipperFeaturesWrapper} featureClassname={classes.FeatureOverride} />
         </div>
     )
 }

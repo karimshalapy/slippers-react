@@ -89,3 +89,14 @@ legend.PerserveWidthWhenLoading {
     font-weight: 300;
     margin: 2px 0 0;
 }
+.SlipperFeaturesWrapper {
+    margin: 25px 0;
+}
+.FeatureOverride {
+    font-size: 9px;
+    color: #525252;
+}
+.FeatureOverride::before {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
