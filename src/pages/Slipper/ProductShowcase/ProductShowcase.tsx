@@ -64,6 +64,16 @@ const ProductShowcase: React.FC<Props> = props => {
             )
         }
     }, [activeUpperColor, activeSoleColor, pageProductsData])
+    //useEffect to clear the selected size if the current slipper data changed and it doesn't have that size available
+    useEffect(() => {
+        if (
+            activeSize
+            && activeSlipperData
+            && !activeSlipperData[`${activeGender}Sizes` as "menSizes" | "womenSizes"].eu.includes(activeSize)
+        ) {
+            setActiveSize(undefined)
+        }
+    }, [activeSize, activeSlipperData, activeGender])
 
     const updateGlobalActiveColorState = useCallback((color: string, type: "sole" | "upper") => {
         if (type === "upper") setActiveUpperColor(color)
