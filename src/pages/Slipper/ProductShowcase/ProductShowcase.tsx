@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import useWindowWidth from '../../../hooks/useWindowWidth'
 import { getProdcuts } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import { SlippersTypes } from '../../Home/SlippersSwiper/SlippersSwiperTypes'
@@ -25,6 +26,7 @@ const ProductShowcase: React.FC<Props> = props => {
     const [activeSlipperData, setActiveSlipperData] = useState<SlippersProductData>()
     const [activeGender, setActiveGender] = useState<"men" | "women">()
     const [activeSize, setActiveSize] = useState<number>()
+    const windowWidth = useWindowWidth()
 
     const duplicatesSet = new Set(); //has to be axcluded from the useCallback deps because this is initiated each render cycle and it's only for the duplicates so no need for a state for that, in other words that's the expected behavior
     //a function that filters and maps the full data array into a string array of available upper colors without duplicates using the set above
@@ -83,10 +85,15 @@ const ProductShowcase: React.FC<Props> = props => {
     return (
         <section className={classes.ProductShowcase}>
             <div className={classes.ProductShowcaseWrapper}>
-                <ProductImages
-                    activeSlipperData={activeSlipperData}
-                    slipper={slipper}
-                />
+                {
+                    windowWidth && windowWidth > 800
+                        ?
+                        <ProductImages
+                            activeSlipperData={activeSlipperData}
+                            slipper={slipper}
+                        />
+                        : null
+                }
                 <ProductDetails
                     activeSoleColor={activeSoleColor}
                     activeUpperColor={activeUpperColor}

@@ -1,7 +1,12 @@
 .ProductDetails{
-    width: 33%;
+    width: 100%;
     color: #333;
     font-weight: 400;
+}
+@media (min-width: 800px) {
+    .ProductDetails {
+        width: 33%;
+    }
 }
 @media (min-width: 1180px) {
     .ProductDetails{
