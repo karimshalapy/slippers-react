@@ -63,3 +63,29 @@ data.PerserveWidthWhenLoading{
 legend.PerserveWidthWhenLoading {
     width: 50%;
 }
+.addToCartBtn {
+    background: #F34C3F;
+    color: #fafafa;
+    font-size: 13px;
+    width: 100%;
+    padding: 15px 0;
+    margin: 30px 0 0;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.addToCartBtn:hover {
+    background-color:#dd3a2d;
+}
+.addToCartBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: #F34C3F;
+}
+.addToCartBtn + p {
+    font-size: 10px;
+    color: #8a8a8a;
+    font-weight: 300;
+    margin: 2px 0 0;
+}

@@ -25,6 +25,10 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = props => {
 
+    const formIsValid = () => {
+        return !!(props.activeGender && props.activeSize && props.activeUpperColor && props.activeSoleColor)
+    }
+
     return (
         <div className={classes.ProductDetails}>
             <ProductDetailsHeader
@@ -32,7 +36,7 @@ const ProductDetails: React.FC<Props> = props => {
                 activeSlipperData={props.activeSlipperData}
                 PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
             />
-            <form className={classes.ColorsForm}>
+            <form className={classes.ColorsForm} onSubmit={e => e.preventDefault()}>
                 <UpperColorsFieldset
                     updateGlobalActiveColorState={props.updateGlobalActiveColorState}
                     upperColorsAvailable={props.upperColorsAvailable}
@@ -56,6 +60,14 @@ const ProductDetails: React.FC<Props> = props => {
                     activeSlipperData={props.activeSlipperData}
                     PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
                 />
+                <button className={classes.addToCartBtn} disabled={!formIsValid()}> add to cart </button>
+                {!formIsValid()
+                    ?
+                    <p>You have to select all fields above to add to cart</p>
+                    :
+                    null
+                }
+
             </form>
         </div>
     )
