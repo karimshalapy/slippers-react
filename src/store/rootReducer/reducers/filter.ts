@@ -1,3 +1,4 @@
+import queryParamsFromEntries from "../../../helpers/queryParamsFromEntries"
 import queryParamsSplitIntoArray from "../../../helpers/queryParamsSplitIntoArray"
 import { SlipperFilterState } from "../../../pages/Slippers/SlippersTypes"
 import * as actions from '../../actionsIndex/actionNames'
@@ -22,10 +23,7 @@ export default (state = initialState, action: FilterAction) => {
 
         case !!(action.type === actions.SET_PARAMS && action.history): //Setting Params on change
             //getting the params from the filter state
-            const params = Object.entries(state)
-                .filter(item => item[1])
-                .map(item => item.join("="))
-                .join("&")
+            const params = queryParamsFromEntries(Object.entries(state))
             action.history!.replace({
                 search: `?${params}`
             })
