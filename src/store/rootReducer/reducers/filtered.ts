@@ -1,7 +1,7 @@
 import { ProductsData } from "../reducersTypes";
 import * as actions from '../../actionsIndex/actionNames'
 import { FilteredAction } from "../../actionsIndex/actionTypes";
-import { GenderSizes, SlipperFilterState, SlippersProductData } from '../../../pages/Slippers/SlippersTypes.d'
+import { SlipperFilterState, SlippersProductData } from '../../../pages/Slippers/SlippersTypes.d'
 import { isSizesFilterSection } from "../../../helpers/typeCheckers";
 
 const initialState: ProductsData = {}
@@ -28,17 +28,17 @@ export default (state = initialState, action: FilteredAction) => {
                     let condition = true
                     //running each filter in filters Array on the item of SlipperProductData
                     filtersArray.forEach(([key, value]) => {
-                        if (action.filterData && Object.keys(action.filterData).includes(key)) {// checking if the filterdata is available and also that the key we have in filtersArray is present in the filtersData to prevent wrong inputs
+                        if (action.filterData && action.filterData.hasOwnProperty(key)) {// checking if the filterdata is available and also that the key we have in filtersArray is present in the filtersData to prevent wrong inputs
                             const filterItems = action.filterData[key].filterItems
                             if (key !== "sizes" && !isSizesFilterSection(filterItems) && filterItems.includes(value)) { //filtering logic for all sections except sizes filter section
                                 condition = condition && item[key] === value
 
                             } else if (key === "sizes" && isSizesFilterSection(filterItems)) { //when we filter sizes we will need to determine which gender and check if the item has this size available
-                                const sizes = filterItems.map(item => item.map(size => size.eu)) // switch the data from [[{eu, us},...],[{eu, us},...]] to [[eu,eu,eu,...], [eu,eu,eu,...]]
                                 const availableGenders = action.filterData.gender.filterItems as string[]
-                                condition = action.filterState?.gender && availableGenders.includes(action.filterState.gender)
-                                    ? condition && sizes[GenderSizes[action.filterState.gender as "men" | "women"]].includes(+value)
-                                    : false
+                                if (action.filterState?.gender && availableGenders.includes(action.filterState.gender)) {
+                                    const sizes = item[`${action.filterState.gender}Sizes` as "menSizes" | "womenSizes"]
+                                    condition = condition && sizes.eu.includes(+value)
+                                } else condition = false
                             } else condition = false
                         } else condition = false
                     })
