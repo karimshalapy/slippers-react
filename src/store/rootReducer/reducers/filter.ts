@@ -1,3 +1,4 @@
+import queryParamsSplitIntoArray from "../../../helpers/queryParamsSplitIntoArray"
 import { SlipperFilterState } from "../../../pages/Slippers/SlippersTypes"
 import * as actions from '../../actionsIndex/actionNames'
 import { FilterAction } from "../../actionsIndex/actionTypes"
@@ -32,12 +33,7 @@ export default (state = initialState, action: FilterAction) => {
 
         case !!(action.type === actions.UPDATE_FILTER_STATE_W_PARAMS && action.params):
             //create an object from the params
-            const paramsObj: SlipperFilterState = Object.fromEntries(
-                action.params!
-                    .substring(1)
-                    .split("&")
-                    .map((item: string) => item.split("="))
-            )
+            const paramsObj: SlipperFilterState = Object.fromEntries(queryParamsSplitIntoArray(action.params!))
             return {
                 ...state,
                 ...paramsObj
