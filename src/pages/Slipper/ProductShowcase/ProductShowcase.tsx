@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
+import queryParamsFromEntries from '../../../helpers/queryParamsFromEntries'
 import useWindowWidth from '../../../hooks/useWindowWidth'
 import { getProdcuts } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
@@ -28,6 +29,7 @@ const ProductShowcase: React.FC<Props> = props => {
     const [activeGender, setActiveGender] = useState<"men" | "women">()
     const [activeSize, setActiveSize] = useState<number>()
     const windowWidth = useWindowWidth()
+    const history = useHistory()
 
     const duplicatesSet = new Set(); //has to be axcluded from the useCallback deps because this is initiated each render cycle and it's only for the duplicates so no need for a state for that, in other words that's the expected behavior
     //a function that filters and maps the full data array into a string array of available upper colors without duplicates using the set above
@@ -77,6 +79,20 @@ const ProductShowcase: React.FC<Props> = props => {
             setActiveSize(undefined)
         }
     }, [activeSize, activeSlipperData, activeGender])
+    //useEffect to set the search params with the current state
+    useEffect(() => {
+        const queryParamsObj = {
+            gender: activeGender || undefined,
+            size: activeSize?.toString() || undefined,
+            upper: activeUpperColor ? activeSlipperData?.upperColorShortened : undefined,
+            lower: activeSoleColor ? activeSlipperData?.soleColorShortened : undefined,
+        }
+        const queryParams = queryParamsFromEntries(Object.entries(queryParamsObj))
+
+        history.replace({
+            search: `?${queryParams}`
+        })
+    }, [activeGender, activeSize, activeSoleColor, activeUpperColor, activeSlipperData, history])
 
     const updateGlobalActiveColorState = useCallback((color: string, type: "sole" | "upper") => {
         if (type === "upper") setActiveUpperColor(color)
