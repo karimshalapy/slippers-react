@@ -51,11 +51,11 @@ const UpperColor: React.FC<Props> = ({
     }, [activeLocalSoleColor, localProductsData])
 
     const changeHandler = useCallback(() => {
-        if (activeUpperColor && activeLocalSoleColor) {
+        if (activeLocalSoleColor) {
             updateGlobalActiveColorState(upperColor, "upper")
             updateGlobalActiveColorState(activeLocalSoleColor, "sole")
         }
-    }, [activeLocalSoleColor, updateGlobalActiveColorState, activeUpperColor, upperColor])
+    }, [activeLocalSoleColor, updateGlobalActiveColorState, upperColor])
 
     return (
         <>

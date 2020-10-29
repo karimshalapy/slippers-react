@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
+import mapColors from '../../../helpers/mapColors'
 import queryParamsFromEntries from '../../../helpers/queryParamsFromEntries'
+import queryParamsSplitIntoArray from '../../../helpers/queryParamsSplitIntoArray'
 import useWindowWidth from '../../../hooks/useWindowWidth'
 import { getProdcuts } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
@@ -54,10 +56,23 @@ const ProductShowcase: React.FC<Props> = props => {
     useEffect(() => {
         if (pageProductsData) {
             setUpperColorsAvailable(getUpperColorsAvailable())
-            setActiveUpperColor(pageProductsData[0].upperColorLongText)
-            setActiveSoleColor(pageProductsData[0].soleColorLongText)
+            const params = queryParamsSplitIntoArray(history.location.search).filter(([key]) => (
+                key === "upper" || key === "sole" || key === "gender" || key === "size"
+            ))
+
+            if (params.length > 0) {
+                queryParamsSplitIntoArray(history.location.search).forEach(([key, value]) => {
+                    if (key === "upper" && value in mapColors) setActiveUpperColor(mapColors[value])
+                    else if (key === "sole" && value in mapColors) setActiveSoleColor(mapColors[value])
+                    else if (key === "gender" && (value === "men" || value === "women")) setActiveGender(value)
+                    else if (key === "size" && +value) setActiveSize(+value)
+                })
+            } else {
+                setActiveUpperColor(pageProductsData[0].upperColorLongText)
+                setActiveSoleColor(pageProductsData[0].soleColorLongText)
+            }
         }
-    }, [pageProductsData, getUpperColorsAvailable])
+    }, [pageProductsData, getUpperColorsAvailable, history])
     //useEffect to set the active slipper data state whenever the colors change
     useEffect(() => {
         if (pageProductsData) {
@@ -82,17 +97,18 @@ const ProductShowcase: React.FC<Props> = props => {
     //useEffect to set the search params with the current state
     useEffect(() => {
         const queryParamsObj = {
-            gender: activeGender || undefined,
-            size: activeSize?.toString() || undefined,
-            upper: activeUpperColor ? activeSlipperData?.upperColorShortened : undefined,
-            lower: activeSoleColor ? activeSlipperData?.soleColorShortened : undefined,
+            gender: activeGender || null,
+            size: activeSize?.toString() || null,
+            upper: activeUpperColor && mapColors.hasOwnProperty(activeUpperColor) ? mapColors[activeUpperColor as keyof mapColors] : null,
+            sole: activeSoleColor && mapColors.hasOwnProperty(activeSoleColor) ? mapColors[activeSoleColor as keyof mapColors] : null,
         }
         const queryParams = queryParamsFromEntries(Object.entries(queryParamsObj))
-
-        history.replace({
-            search: `?${queryParams}`
-        })
-    }, [activeGender, activeSize, activeSoleColor, activeUpperColor, activeSlipperData, history])
+        if (queryParams) {
+            history.replace({
+                search: `?${queryParams}`
+            })
+        }
+    }, [activeGender, activeSize, activeSoleColor, activeUpperColor, history])
 
     const updateGlobalActiveColorState = useCallback((color: string, type: "sole" | "upper") => {
         if (type === "upper") setActiveUpperColor(color)
