@@ -31,7 +31,8 @@ export default (state = initialState, action: FilterAction) => {
 
         case !!(action.type === actions.UPDATE_FILTER_STATE_W_PARAMS && action.params):
             //create an object from the params
-            const paramsObj: SlipperFilterState = Object.fromEntries(queryParamsSplitIntoArray(action.params!))
+            const paramsObj: SlipperFilterState = Object.fromEntries(queryParamsSplitIntoArray(action.params!)
+                .filter(([key]) => key in initialState))
             return {
                 ...state,
                 ...paramsObj
