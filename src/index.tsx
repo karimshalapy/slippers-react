@@ -15,7 +15,7 @@ declare global {
 }
 
 //compose Enhancers for redux devtools tweaked to work in development environment only
-const composeEnhancers = process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
+const composeEnhancers = process.env.NODE_ENV === "development" && typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
 
 //main store creation
 const store = createStore(
