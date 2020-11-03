@@ -1,0 +1,77 @@
+.OverlayContainer {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.RightPanelActive.OverlayContainer {
+	transform: translateX(-100%);
+}
+
+.Overlay {
+	background: #FF416C;
+	background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+				url("https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-article-images%2Fbanner-canvas.jpg?alt=media");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 20% 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.RightPanelActive.OverlayContainer  .Overlay {
+  	transform: translateX(50%);
+}
+.BackgroundBlur {
+	backdrop-filter: blur(3px);
+	height: 100%;
+
+}
+.OverlayPanel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	padding: 0 5%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.OverlayLeft {
+	transform: translateX(-20%);
+}
+
+.RightPanelActive.OverlayContainer .OverlayLeft {
+	transform: translateX(0);
+}
+
+.OverlayRight {
+	left: 50%;
+	transform: translateX(0);
+}
+
+.RightPanelActive.OverlayContainer .OverlayRight {
+	transform: translateX(20%);
+}
+
+button.Ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+	color: #fff;
+	font-weight: bold;
+}

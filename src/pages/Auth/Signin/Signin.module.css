@@ -1,0 +1,18 @@
+.SigninContainer {
+	left: 0;
+	width: 100%;
+}
+
+.RightPanelActive.SigninContainer {
+	transform: translateX(-100%);
+}
+@media(min-width: 500px) {
+	.SigninContainer {
+		width: 50%;
+		z-index: 2;
+	}
+	
+	.RightPanelActive.SigninContainer {
+		transform: translateX(100%);
+	}
+}

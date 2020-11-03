@@ -1,0 +1,97 @@
+
+.AuthContainer  {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	margin: 120px auto 50px;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.AuthContainer h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+.AuthContainer h2 {
+	text-align: center;
+}
+
+.AuthContainer p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+.AuthContainer span {
+	font-size: 12px;
+}
+
+.AuthContainer a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+.AuthContainer button {
+	font-size: 12px;
+	transition: transform 80ms ease-in;
+}
+
+.AuthContainer button:active {
+	transform: scale(0.95);
+}
+
+.AuthContainer button:focus {
+	outline: none;
+}
+
+.Switcher {
+	position: absolute;
+	z-index: 10;
+	bottom: 10px
+}
+.AuthContainer form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 10px;
+	height: 100%;
+	text-align: center;
+}
+@media(min-width: 350px) {
+	.AuthContainer form {
+		padding: 0 50px;
+	}
+}
+.AuthContainer input {
+	margin: 8px 0;
+	width: 100%;
+	padding: 9px 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    font-size: 11px;
+    line-height: 22px;
+    color: #666;
+    transition: all 0.5s ease;
+}
+.AuthContainer label {
+	left: 12px;
+    font-size: 11px;
+}
+
+.AuthContainer > div {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
