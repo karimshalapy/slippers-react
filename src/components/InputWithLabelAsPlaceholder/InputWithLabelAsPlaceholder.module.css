@@ -1,0 +1,21 @@
+.InputContainer {
+    position: relative;
+    width: 100%;
+}
+.InputField {
+    padding: 0 .2em;
+}
+.Label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    font-size: 13.3px;
+    color:#8f8f8f;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+    
+}
+.InputField:not(:placeholder-shown) ~ .Label{
+    z-index: -1;
+}
