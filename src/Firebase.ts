@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import { ProviderId } from "./pages/Auth/AuthTypes";
 
 const config = {
     apiKey: "AIzaSyAdwnFOhI279kHXnBDKySpKvUpAYP46ETg",
@@ -21,3 +22,11 @@ export const {
     TwitterAuthProvider,
     EmailAuthProvider
 } = firebase.auth
+
+export const getProviderId = (providerType: ProviderId) => {
+    console.log(providerType)
+    if (providerType === "facebook.com") return new FacebookAuthProvider()
+    if (providerType === "twitter.com") return new TwitterAuthProvider()
+    if (providerType === "github.com") return new GithubAuthProvider()
+    if (providerType === "google.com") return new GoogleAuthProvider()
+}
