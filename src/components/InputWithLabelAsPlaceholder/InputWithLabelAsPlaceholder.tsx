@@ -4,13 +4,16 @@ import classes from './InputWithLabelAsPlaceholder.module.css'
 interface Props {
     inputType: string,
     labelText: string,
+    inputName: string,
+    error?: string
 }
 
 const InputWithLabelAsPlaceholder = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
     return (
         <div className={classes.InputContainer}>
-            <input className={classes.InputField} type={props.inputType} ref={nodeRef} placeholder=" " />
+            <input className={[classes.InputField, props.error ? classes.Error : ""].join(" ")} type={props.inputType} ref={nodeRef} name={props.inputName} placeholder=" " />
             <label className={classes.Label}>{props.labelText}</label>
+            <span className={classes.ErrorMessage}>{props.error}</span>
         </div>
     )
 })

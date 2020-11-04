@@ -1,9 +1,17 @@
 .InputContainer {
     position: relative;
     width: 100%;
+    margin: 5px 0;
 }
 .InputField {
     padding: 0 .2em;
+    outline: none;
+}
+.InputField:focus {
+    border: 1px solid black;
+}
+.InputField.Error {
+    border: 1px solid red;
 }
 .Label {
     position: absolute;
@@ -15,6 +23,13 @@
     pointer-events: none;
     user-select: none;
     
+}
+span.ErrorMessage {
+    position: absolute;
+    bottom: -8.5px;
+    left: 15px;
+    color: red;
+    font-size: 10px;
 }
 .InputField:not(:placeholder-shown) ~ .Label{
     z-index: -1;
