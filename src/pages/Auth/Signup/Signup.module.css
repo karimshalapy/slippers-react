@@ -3,7 +3,12 @@
 	width: 100%;
 	transition:  all 0.3s ease;
 }
-
+p.SubmitErrorMessage {
+	font-size: 13px;
+	color: red;
+	line-height: 1.2;
+	margin: 5px 0;
+}
 .RightPanelActive.SignupContainer {
 	transform: translateX(-100%);
 }
