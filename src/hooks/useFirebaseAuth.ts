@@ -16,7 +16,7 @@ export const useFirebaseAuth = () => {
         return () => {
             unlisten();
         }
-    });
+    }, []);
 
     return authUser
 }
