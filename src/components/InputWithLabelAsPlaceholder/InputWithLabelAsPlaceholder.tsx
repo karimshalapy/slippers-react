@@ -10,11 +10,13 @@ interface Props {
 
 const InputWithLabelAsPlaceholder = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
     return (
-        <div className={classes.InputContainer}>
-            <input className={[classes.InputField, props.error ? classes.Error : ""].join(" ")} type={props.inputType} ref={nodeRef} name={props.inputName} placeholder=" " />
-            <label className={classes.Label}>{props.labelText}</label>
+        <>
+            <div className={classes.InputContainer}>
+                <input className={[classes.InputField, props.error ? classes.Error : ""].join(" ")} type={props.inputType} ref={nodeRef} name={props.inputName} placeholder=" " />
+                <label className={classes.Label}>{props.labelText}</label>
+            </div>
             <span className={classes.ErrorMessage}>{props.error}</span>
-        </div>
+        </>
     )
 })
 

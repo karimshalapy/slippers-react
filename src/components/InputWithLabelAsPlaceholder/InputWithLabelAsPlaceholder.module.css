@@ -25,9 +25,10 @@
     
 }
 span.ErrorMessage {
-    position: absolute;
-    bottom: -8.5px;
-    left: 15px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin-top: -8.5px;
     color: red;
     font-size: 10px;
 }
