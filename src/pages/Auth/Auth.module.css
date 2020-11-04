@@ -43,6 +43,7 @@
 .AuthContainer button {
 	font-size: 12px;
 	transition: transform 80ms ease-in;
+	margin-top: 5px;
 }
 
 .AuthContainer button:active {
@@ -74,7 +75,7 @@
 	}
 }
 .AuthContainer input {
-	margin: 8px 0;
+	margin: 5px 0;
 	width: 100%;
 	padding: 9px 12px;
     border-radius: 5px;
