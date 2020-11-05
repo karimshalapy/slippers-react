@@ -7,7 +7,6 @@ import { SignupFormInputs, SigninFormInputs, AuthFormTypes, ProviderId } from '.
 import { auth, EmailAuthProvider, getProviderId } from '../../../Firebase'
 import { DeepMap, FieldError, Resolver, useForm } from 'react-hook-form'
 import { singinSchema, singupSchema } from '../AuthFormsValidation'
-import firebase from 'firebase/app'
 import SocialSignin from '../SocialSignin/SocialSignin'
 
 interface Props {
