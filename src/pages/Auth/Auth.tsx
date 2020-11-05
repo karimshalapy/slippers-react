@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './Auth.module.css';
-import Signup from './Signup/Signup';
-import Signin from './Signin/Signin';
+import AuthForms from './AuthForms/AuthForms'
 import Overlay from './Overlay/Overlay';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -92,8 +91,8 @@ const Auth: React.FC<Props> = props => {
     return (
         <>
             <div className={classes.AuthContainer}>
-                <Signup isSignup={isSignup} switchPanelHandler={switchPanelHandler} />
-                <Signin isSignup={isSignup} switchPanelHandler={switchPanelHandler} />
+                <AuthForms isSignup={isSignup} switchPanelHandler={switchPanelHandler} formType="signup" />
+                <AuthForms isSignup={isSignup} switchPanelHandler={switchPanelHandler} formType="signin" />
                 {
                     windowWidth && windowWidth > 500
                         ?
