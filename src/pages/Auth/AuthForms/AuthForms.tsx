@@ -3,11 +3,12 @@ import InputWithLabelAsPlaceholder from '../../../components/InputWithLabelAsPla
 import Button from '../../../components/Button/Button'
 import classes from './AuthForms.module.css'
 import MobileSwitchPanelButton from '../MobileSwitchPanelButton/MobileSwitchPanelButton'
-import { SignupFormInputs, SigninFormInputs, AuthFormTypes } from '../AuthTypes'
-import { auth } from '../../../Firebase'
+import { SignupFormInputs, SigninFormInputs, AuthFormTypes, ProviderId } from '../AuthTypes'
+import { auth, EmailAuthProvider, getProviderId } from '../../../Firebase'
 import { DeepMap, FieldError, Resolver, useForm } from 'react-hook-form'
 import { singinSchema, singupSchema } from '../AuthFormsValidation'
 import firebase from 'firebase/app'
+import SocialSignin from '../SocialSignin/SocialSignin'
 
 interface Props {
     formType: AuthFormTypes,
@@ -24,23 +25,41 @@ const Signup: React.FC<Props> = props => {
         resolver: (props.formType === "signup" ? singupSchema : singinSchema) as Resolver<SignupFormInputs | SigninFormInputs, object>
     })
 
-    const catchFormSubmitError = (promise: Promise<void | firebase.auth.UserCredential | undefined>) => {
-        promise
-            .then(() => setFormSubmitError(undefined))
-            .catch(err => setFormSubmitError(err.message))
-    }
-
     const formSubmitHandler = (data: SignupFormInputs | SigninFormInputs) => {
         if (props.formType === "signin") {
-            catchFormSubmitError(
-                auth.signInWithEmailAndPassword(data.email, data.password)
-            )
+            auth.signInWithEmailAndPassword(data.email, data.password)
+                .then(() => setFormSubmitError(undefined))
+                .catch(err => setFormSubmitError(err.message))
 
         } else if (props.formType === "signup" && "name" in data) {
-            catchFormSubmitError(
-                auth.createUserWithEmailAndPassword(data.email, data.password)
-                    .then(userData => userData.user?.updateProfile({ displayName: data.name }))
-            )
+            //creating account with email and password
+            auth.createUserWithEmailAndPassword(data.email, data.password)
+                .then(userData => { //setting display name for account after successfully creating it
+                    userData.user?.updateProfile({ displayName: data.name })
+                    setFormSubmitError(undefined)
+                })
+                .catch(err => { //handling the error incase the Email is in use
+                    if (err.code === "auth/email-already-in-use") {
+                        auth.fetchSignInMethodsForEmail(data.email)
+                            .then(providers => {
+                                if (providers.includes("password")) {
+                                    setFormSubmitError("The email address is already in use by another account.")
+                                } else {
+                                    const provider = getProviderId(providers[0] as ProviderId);
+                                    const pendingCred = EmailAuthProvider.credential(data.email, data.password)
+                                    auth.signInWithPopup(provider!)
+                                        .then((result) => {
+                                            if (result.user?.email === data.email) result.user?.linkWithCredential(pendingCred).then((usercred) => {
+                                                console.log("oauth linked");
+                                                setFormSubmitError(undefined)
+                                            })
+                                            else throw new Error()
+                                        })
+                                        .catch(() => { setFormSubmitError("Account Link Failed.") })
+                                }
+                            })
+                    } else setFormSubmitError(err.messasge)
+                })
         }
     }
 
@@ -55,7 +74,7 @@ const Signup: React.FC<Props> = props => {
 
             <form onSubmit={handleSubmit(formSubmitHandler)}>
                 <h1>{isSignupForm() ? "Create Account" : "Sign in"}</h1>
-
+                <SocialSignin />
                 <span>{isSignupForm() ? "or use your email for registration" : "or use your account"}</span>
                 {
                     isSignupForm() && isSignupErrorsType(errors)
@@ -84,7 +103,7 @@ const Signup: React.FC<Props> = props => {
                     ref={register}
                 />
                 {formSubmitError ? <p className={classes.SubmitErrorMessage}>{formSubmitError}</p> : null}
-                {isSignupForm() ? null : <a href="#">Forgot your password?</a>}
+                {isSignupForm() ? null : <a href="#forgot">Forgot your password?</a>}
                 <Button>{isSignupForm() ? "Sign Up" : "Sign In"}</Button>
                 <MobileSwitchPanelButton switchPanelHandler={props.switchPanelHandler} panelType={isSignupForm() ? "signup" : "signin"} />
             </form>
