@@ -1,5 +1,6 @@
 export type FooterData = {
     text?: string,
     url: string,
-    socialMediaIcon?: "Twitter" | "Facebook" | "Pinterest" | "Instagram",
+    socialMediaIcon?: SocialMediaTypes
 }
+export type SocialMediaTypes = "facebook" | "twitter" | "instagram" | "github" | "pinterest" | "google"

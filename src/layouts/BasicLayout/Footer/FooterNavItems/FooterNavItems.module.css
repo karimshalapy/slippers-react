@@ -43,30 +43,12 @@
     }
 }
 /*Social navitems*/
-.Social::before {
-    font-family: mahabis-icons;
-    text-transform: none;
-    line-height: 1;
-    margin: 0 2px;
+.SocialNavItem {
+    width: 20px;
 }
-.Social:link,
-.Social:visited {
-    color: #333;
-    text-decoration: none;
-    transition: all 0.3s ease;
+.Social svg{
+    height: 15px;
 }
-.Social:hover {
-    opacity: 0.5;
-}
-.Twitter::before {
-    content: "\74";
-}
-.Facebook::before {
-    content: "\66";
-}
-.Pinterest::before {
-    content: "\70";
-}
-.Instagram::before {
-    content: "\ea92";
+.Social:hover path {
+    fill-opacity: 0.7;
 }

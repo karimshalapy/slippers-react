@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import classes from './FooterNavItems.module.css'
 import { FooterData } from '../FooterTypes'
+import SocialMediaIcon from '../../../../components/SocialMediaIcon/SocialMediaIcon'
 
 interface Props {
     type: "social" | "nav",
@@ -29,12 +30,16 @@ const FooterNavItems: React.FC<Props> = ({ type, data }) => {
                 <ul className={classes.SocialNavItemsContainer}>
                     {data.map(item => (
                         <li key={v4()} className={classes.SocialNavItem}>
-                            <a
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={item.socialMediaIcon ? [classes[item.socialMediaIcon], classes.Social].join(" ") : ""}
-                            > </a>
+                            {
+                                item.socialMediaIcon
+                                    ?
+                                    <SocialMediaIcon
+                                        type={item.socialMediaIcon}
+                                        url={item.url}
+                                        classNames={classes.Social}
+                                    />
+                                    : null
+                            }
                         </li>
                     ))}
                 </ul>
