@@ -14,12 +14,6 @@
 }
 
 .Overlay {
-	background: #FF416C;
-	background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
-				url("https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-article-images%2Fbanner-canvas.jpg?alt=media");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 20% 0;
 	color: #FFFFFF;
 	position: relative;
 	left: -100%;
@@ -32,10 +26,13 @@
 .RightPanelActive.OverlayContainer  .Overlay {
   	transform: translateX(50%);
 }
-.BackgroundBlur {
-	backdrop-filter: blur(3px);
-	height: 100%;
-
+.FormBackgroundImage {
+	display: block;
+	height: 110%;
+	position: absolute;
+	top: -5%;
+	left: -20%;
+	filter: blur(3px) brightness(0.5);
 }
 .OverlayPanel {
 	position: absolute;

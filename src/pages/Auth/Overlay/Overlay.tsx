@@ -11,17 +11,16 @@ const Overlay: React.FC<Props> = props => {
     return (
         <div className={[classes.OverlayContainer, props.isSignup ? classes.RightPanelActive : ""].join(" ")}>
             <div className={classes.Overlay}>
-                <div className={classes.BackgroundBlur}>
-                    <div className={`${classes.OverlayPanel} ${classes.OverlayLeft}`}>
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <Button classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign In</Button>
-                    </div>
-                    <div className={`${classes.OverlayPanel} ${classes.OverlayRight}`}>
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <Button classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign Up</Button>
-                    </div>
+                <img className={classes.FormBackgroundImage} src="https://firebasestorage.googleapis.com/v0/b/slippers-react.appspot.com/o/slipper-article-images%2Fbanner-canvas.jpg?alt=media" alt="form background" />
+                <div className={`${classes.OverlayPanel} ${classes.OverlayLeft}`}>
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <Button classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign In</Button>
+                </div>
+                <div className={`${classes.OverlayPanel} ${classes.OverlayRight}`}>
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <Button classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign Up</Button>
                 </div>
             </div>
         </div>
