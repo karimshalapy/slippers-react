@@ -21,50 +21,6 @@ const Auth: React.FC<Props> = props => {
     //     if (user) history.push("/")
 
     // }, [user, history])
-
-
-
-    // const clickHandler = (providerType: ProviderId) => {
-    //     const provider = getProviderId(providerType)
-    //     auth.signInWithPopup(provider!)
-    //         .then(user => {
-    //             if (providerType === "google.com") {
-    //                 const tempCreds = EmailAuthProvider.credential(user.user?.email!, prompt("re-enter your password")!)
-    //                 user.user?.linkWithCredential(tempCreds)
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.log(error.code)
-    //             if (error.code === 'auth/account-exists-with-different-credential') {
-
-    //                 const pendingCred = error.credential;
-    //                 const email = error.email;
-    //                 // Get sign-in methods for this email.
-    //                 auth.fetchSignInMethodsForEmail(email)
-    //                     .then((methods) => {
-    //                         if (methods[0] === 'password') {
-    //                             const password = prompt("input your E-mail password"); // TODO: implement promptUserForPassword.
-    //                             auth.signInWithEmailAndPassword(email, password || "")
-    //                                 .then((user) => {
-    //                                     // Step 4a.
-    //                                     return user.user?.linkWithCredential(pendingCred);
-    //                                 })
-    //                                 .then(() => {
-    //                                     console.log("linked")
-    //                                 });
-    //                         } else {
-    //                             const provider = getProviderId(methods[0] as ProviderId);
-    //                             auth.signInWithPopup(provider!)
-    //                                 .then((result) => {
-    //                                     result.user?.linkWithCredential(pendingCred).then((usercred) => {
-    //                                         console.log("oauth linked");
-    //                                     });
-    //                                 });
-    //                         }
-    //                     });
-    //             }
-    //         });
-    // }
     const switchPanelHandler = (e: React.MouseEvent) => {
         e.preventDefault()
         setIsSignup(prev => !prev)

@@ -1,0 +1,16 @@
+.socialContainer {
+	margin: 15px 0;
+}
+
+.socialContainer a {
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+}
+.socialContainer a svg,.socialContainer a  {
+	width: 20px;
+	height: 20px;
+}
+.socialContainer a:hover path {
+    fill-opacity: 0.7;
+}
