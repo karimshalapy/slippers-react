@@ -19,10 +19,8 @@ const Auth: React.FC<Props> = props => {
     const { search } = useLocation()
     const [isLoading, setIsLoading] = useState(false)
 
-    // useEffect(() => {
-    //     if (user) history.push("/")
+    useEffect(() => { if (user) history.replace("/") }, [user, history])
 
-    // }, [user, history])
     const switchPanelHandler = (e: React.MouseEvent) => {
         e.preventDefault()
         setIsSignup(prev => !prev)
