@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import classes from './Auth.module.css';
 import AuthForms from './AuthForms/AuthForms'
 import Overlay from './Overlay/Overlay';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryParamsSplitIntoArray from '../../helpers/queryParamsSplitIntoArray';
+import { FirebaseUserContext } from '../../App'
 
 interface Props {
 
 }
 
 const Auth: React.FC<Props> = props => {
-
+    const user = useContext(FirebaseUserContext)
     const [isSignup, setIsSignup] = useState(false)
     const windowWidth = useWindowWidth()
     const history = useHistory()
     const { search } = useLocation()
+    const [isLoading, setIsLoading] = useState(false)
 
     // useEffect(() => {
     //     if (user) history.push("/")
@@ -25,7 +27,6 @@ const Auth: React.FC<Props> = props => {
         e.preventDefault()
         setIsSignup(prev => !prev)
     }
-
     useEffect(() => {
         const paramsArr = queryParamsSplitIntoArray(search)
         paramsArr.forEach(([key, value]) => {
@@ -47,12 +48,22 @@ const Auth: React.FC<Props> = props => {
     return (
         <>
             <div className={classes.AuthContainer}>
-                <AuthForms isSignup={isSignup} switchPanelHandler={switchPanelHandler} formType="signup" />
-                <AuthForms isSignup={isSignup} switchPanelHandler={switchPanelHandler} formType="signin" />
+                {
+                    ["signup", "signin"].map(item => (
+                        <AuthForms
+                            key={item}
+                            switchPanelHandler={switchPanelHandler}
+                            setIsLoading={setIsLoading}
+                            isSignup={isSignup}
+                            isLoading={isLoading}
+                            formType={item as "signup" | "signin"}
+                        />
+                    ))
+                }
                 {
                     windowWidth && windowWidth > 500
                         ?
-                        <Overlay isSignup={isSignup} switchPanelHandler={switchPanelHandler} />
+                        <Overlay isLoading={isLoading} isSignup={isSignup} switchPanelHandler={switchPanelHandler} />
                         : null
                 }
             </div>
