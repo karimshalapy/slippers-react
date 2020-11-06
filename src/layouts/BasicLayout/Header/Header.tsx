@@ -5,6 +5,7 @@ import { reducer, initialState } from './HeaderReducer'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems'
 import SideNavMenu from './SideNavMenu/SideNavMenu'
+import UserPanel from './UserPanel/UserPanel'
 
 const Header: React.FC = () => {
 
@@ -27,6 +28,7 @@ const Header: React.FC = () => {
             </a>
             <HeaderNavItems openState={state} reset={resetState} clickHandler={changeDropDown} />
             <SideNavMenu />
+            <UserPanel />
         </header>
     )
 }

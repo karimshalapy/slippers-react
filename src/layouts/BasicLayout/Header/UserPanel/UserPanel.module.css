@@ -1,0 +1,26 @@
+.UserPanelContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: all 0.3s linear;
+}
+.UserPanelContainer.Hide {
+    transform: translate(100%, -50%);
+    transition: all 0.3s linear;
+}
+.UserIcon {
+    display: block;
+    width: 19px;
+    height: 19px;    
+}
+.UserIconContainer {
+    cursor: pointer;
+    padding: 50% 15px;
+}
+.UserIconContainer:hover {
+    opacity: 0.7;
+}
