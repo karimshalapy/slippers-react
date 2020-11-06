@@ -60,3 +60,7 @@ img, figure {
       background-position: 50vw 0
   }
 }
+button:disabled, input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
