@@ -1,3 +1,6 @@
+.UserPanelContainer, .UserPanelContainer *{
+    transition: all 0.3s ease;
+}
 .UserPanelContainer {
     display: inline-flex;
     justify-content: center;
@@ -7,24 +10,27 @@
     top: 50%;
     height: 100%;
     transform: translateY(-50%);
-    transition: all 0.3s linear;
 }
 .Icon {
     display: block;
     width: 19px;
     height: 19px;    
 }
+.Icon path {
+    stroke: white;
+    stroke-width: 10;
+}
 .IconContainer {
     cursor: pointer;
     max-width: 100px;
     padding: 25% 15px;
-    transition: all 0.3s ease;
 }
 .IconContainer.Hide {
     max-width: 0;
     padding: 0;
     overflow: hidden;
 }
-.IconContainer:hover {
-    opacity: 0.7;
+.IconContainer:hover .Icon path {
+    stroke: black;
+    stroke-width: 5;
 }
