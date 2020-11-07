@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import classes from './Auth.module.css';
 import AuthForms from './AuthForms/AuthForms'
 import Overlay from './Overlay/Overlay';
+import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import useWindowWidth from '../../hooks/useWindowWidth';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryParamsSplitIntoArray from '../../helpers/queryParamsSplitIntoArray';
@@ -45,6 +46,7 @@ const Auth: React.FC<Props> = props => {
 
     return (
         <>
+            <ScrollToTopOnPathChange />
             <div className={classes.AuthContainer}>
                 {
                     ["signup", "signin"].map(item => (
