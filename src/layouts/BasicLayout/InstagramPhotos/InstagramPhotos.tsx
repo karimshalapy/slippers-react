@@ -6,14 +6,14 @@ import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import { InstagramData } from './InstagramPhotosTypes'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
-import loading from '../../../assets/loading.gif'
+import CircleSpinner from '../../../components/CircleSpinner/CircleSpinner'
 
 const InstagramPhotos: React.FC = () => {
     //get instaData from redux store
     const instaData = useSelector((state: RootReducer) => state.mainResources.insta)
     //render loading gifs untill the async gallery data fetch resolves
     let renderedData: InstagramData[] = instaData ? instaData : new Array(4).fill({
-        imgUrl: loading,
+        imgUrl: "loading",
         imgAlt: "loading",
         url: "/"
     });
@@ -62,7 +62,13 @@ const InstagramPhotos: React.FC = () => {
                     renderedData.map(item => (
                         <li key={v4()} className={[classes.InstaItem, item.imgAlt === "loading" ? classes.Loading : ""].join(" ")}>
                             <Link to={item.url}>
-                                <img src={item.imgUrl} alt={item.imgAlt} className={classes.InstaPhoto} />
+                                {
+                                    item.imgAlt === "loading"
+                                        ?
+                                        <CircleSpinner size={30} />
+                                        :
+                                        <img src={item.imgUrl} alt={item.imgAlt} className={classes.InstaPhoto} />
+                                }
                             </Link>
                         </li>
                     ))

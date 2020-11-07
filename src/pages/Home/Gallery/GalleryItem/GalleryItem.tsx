@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import classes from './GalleryItem.module.css'
 import { GalleryData } from '../GalleryTypes'
+import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
 
 const GalleryItem: React.FC<GalleryData> =
     ({ imgAlt,
@@ -17,7 +18,9 @@ const GalleryItem: React.FC<GalleryData> =
                 }
 
                 if (imgUrl) {
-                    return (
+                    if (imgAlt === "loading") {
+                        return <CircleSpinner size={50} />
+                    } else return (
                         <>
                             <img src={imgUrl} alt={imgAlt} className={classes.GalleryMedia} />
                             <h2 dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></h2>

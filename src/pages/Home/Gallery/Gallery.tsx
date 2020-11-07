@@ -5,14 +5,13 @@ import { v4 } from 'uuid'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../store/rootReducer/reducersTypes'
 import { GalleryData } from './GalleryTypes'
-import loading from '../../../assets/loading.gif'
 
 const Gallery: React.FC = () => {
     //get galleryData from the redux store
     const galleryData = useSelector((state: RootReducer) => state.mainResources.galleryData)
     //render loading gifs untill the async gallery data fetch resolves
     let renderedData: GalleryData[] = galleryData ? galleryData : new Array(6).fill({
-        imgUrl: loading,
+        imgUrl: "loading",
         imgAlt: "loading",
         mainText: "",
         subText: ""
