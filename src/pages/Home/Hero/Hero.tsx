@@ -7,6 +7,7 @@ import 'swiper/swiper-bundle.min.css';
 import { v4 } from 'uuid';
 import Button from '../../../components/Button/Button';
 import SliderBtn from '../../../components/SliderBtn/SliderBtn';
+import TextToMarkup from '../../../helpers/TextToMarkup';
 import { RootReducer } from '../../../store/rootReducer/reducersTypes';
 import classes from './Hero.module.css';
 
@@ -55,7 +56,7 @@ const Hero: React.FC = () => {
                         }}
                     >
                         <div className={classes.SlideContentContainer}>
-                            <h2 dangerouslySetInnerHTML={{ __html: item.heroText }}></h2>
+                            <h2 dangerouslySetInnerHTML={new TextToMarkup(item.heroText)}></h2>
                             <Button hasLink><Link to="/slippers">SHOP NOW</Link></Button>
                         </div>
                     </SwiperSlide>

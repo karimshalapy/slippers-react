@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import classes from './GalleryItem.module.css'
 import { GalleryData } from '../GalleryTypes'
 import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
+import TextToMarkup from '../../../../helpers/TextToMarkup'
 
 const GalleryItem: React.FC<GalleryData> =
     ({ imgAlt,
@@ -13,9 +14,6 @@ const GalleryItem: React.FC<GalleryData> =
 
         const getGalleryItem = useCallback(
             () => {
-                const createTextMarkup = (string: string) => {
-                    return { __html: string }
-                }
 
                 if (imgUrl) {
                     if (imgAlt === "loading") {
@@ -23,8 +21,8 @@ const GalleryItem: React.FC<GalleryData> =
                     } else return (
                         <>
                             <img src={imgUrl} alt={imgAlt} className={classes.GalleryMedia} />
-                            <h2 dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></h2>
-                            <p dangerouslySetInnerHTML={createTextMarkup(subText)} className={classes.SubText}></p>
+                            <h2 dangerouslySetInnerHTML={new TextToMarkup(mainText)} className={classes.MainText}></h2>
+                            <p dangerouslySetInnerHTML={new TextToMarkup(subText)} className={classes.SubText}></p>
                         </>
                     )
                 }
@@ -39,8 +37,8 @@ const GalleryItem: React.FC<GalleryData> =
                                 autoPlay
                                 loop
                             />
-                            <h2 dangerouslySetInnerHTML={createTextMarkup(mainText)} className={classes.MainText}></h2>
-                            <p dangerouslySetInnerHTML={createTextMarkup(subText)} className={classes.SubText}></p>
+                            <h2 dangerouslySetInnerHTML={new TextToMarkup(mainText)} className={classes.MainText}></h2>
+                            <p dangerouslySetInnerHTML={new TextToMarkup(subText)} className={classes.SubText}></p>
                         </>
                     )
                 }

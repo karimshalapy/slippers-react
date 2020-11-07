@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import TextToMarkup from '../../../../helpers/TextToMarkup'
 import { isSlipperType } from '../../../../helpers/typeCheckers'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import classes from './ProductArticle.module.css'
@@ -25,7 +26,7 @@ const ProductArticle: React.FC<Props> = props => {
                     alt={productArticles ? productArticles[activeSlipper].imgAlt : ""}
                 />
             </div>
-            <p className={productArticles ? "" : "Loading"} dangerouslySetInnerHTML={{ __html: productArticles ? productArticles[activeSlipper].articleText : "&nbsp;<br/><br/><br/>" }}></p>
+            <p className={productArticles ? "" : "Loading"} dangerouslySetInnerHTML={new TextToMarkup(productArticles ? productArticles[activeSlipper].articleText : "&nbsp;<br/><br/><br/>")}></p>
         </article>
     )
 }

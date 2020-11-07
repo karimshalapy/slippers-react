@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
+import TextToMarkup from '../../../../helpers/TextToMarkup'
 import { resetFilterState } from '../../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
 import { SlippersProductData } from '../../SlippersTypes'
@@ -46,7 +47,7 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
                                 <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
                             </div>
                             <h3>mahabis {item.collection}</h3>
-                            <p dangerouslySetInnerHTML={{ __html: item.colorText }}></p>
+                            <p dangerouslySetInnerHTML={new TextToMarkup(item.colorText)}></p>
                             <data value={item.price.usd}>${item.price.usd}</data>
                         </Link>
                     </li>
