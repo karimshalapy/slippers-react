@@ -12,6 +12,8 @@ import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
 import { addToCartRemotely } from '../../../../store/actionsIndex/actions/cartActions'
 import { FirebaseUserContext } from '../../../../App'
 import { useHistory } from 'react-router-dom'
+import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
+import Button from '../../../../components/Button/Button'
 
 interface Props {
     slipper: SlippersTypes,
@@ -31,9 +33,12 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = props => {
 
-    const slipperFeaturesArray = useSelector((state: RootReducer) => {
-        return state.mainResources.slippersTypeSwiper
-            ?.filter(item => item.type === props.slipper)[0].features
+    const { slipperFeaturesArray, cartLoading } = useSelector((state: RootReducer) => {
+        return {
+            slipperFeaturesArray: state.mainResources.slippersTypeSwiper
+                ?.filter(item => item.type === props.slipper)[0].features,
+            cartLoading: state.cartData.cartLoading
+        }
     })
     const user = useContext(FirebaseUserContext)
     const history = useHistory()
@@ -79,7 +84,15 @@ const ProductDetails: React.FC<Props> = props => {
                     activeSlipperData={props.activeSlipperData}
                     PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
                 />
-                <button className={classes.addToCartBtn} disabled={!formIsValid()}> add to cart </button>
+                <div className={classes.ButtonContainer}>
+                    {
+                        cartLoading
+                            ?
+                            <CircleSpinner size={30} />
+                            :
+                            <Button classNames={[classes.addToCartBtn]} disabled={!formIsValid()}> add to cart </Button>
+                    }
+                </div>
                 {!formIsValid()
                     ?
                     <p>You have to select all fields above to add to cart</p>
