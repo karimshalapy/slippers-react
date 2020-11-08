@@ -11,6 +11,7 @@ import SoleColorsFieldset from './SoleColorsFieldset/SoleColorsFieldset'
 import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
 import { addToCartRemotely } from '../../../../store/actionsIndex/actions/cartActions'
 import { FirebaseUserContext } from '../../../../App'
+import { useHistory } from 'react-router-dom'
 
 interface Props {
     slipper: SlippersTypes,
@@ -35,6 +36,7 @@ const ProductDetails: React.FC<Props> = props => {
             ?.filter(item => item.type === props.slipper)[0].features
     })
     const user = useContext(FirebaseUserContext)
+    const history = useHistory()
     const dispatch = useDispatch()
     const formIsValid = () => {
         return !!(props.activeGender && props.activeSize && props.activeUpperColor && props.activeSoleColor)
@@ -43,6 +45,7 @@ const ProductDetails: React.FC<Props> = props => {
     const addToCart = (e: React.FormEvent) => {
         e.preventDefault()
         if (user) dispatch(addToCartRemotely(props.activeSlipperData!, props.activeGender!, props.activeSize!, user?.uid))
+        else history.push("/auth")
     }
 
     return (
