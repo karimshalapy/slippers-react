@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Auth.module.css'
 import AuthForms from './AuthForms/AuthForms'
 import Overlay from './Overlay/Overlay'
@@ -6,21 +6,19 @@ import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/Sc
 import useWindowWidth from '../../hooks/useWindowWidth'
 import { useHistory, useLocation } from 'react-router-dom'
 import queryParamsSplitIntoArray from '../../helpers/queryParamsSplitIntoArray'
-import { FirebaseUserContext } from '../../App'
+import useConditionalRedirect from '../../hooks/useConditionalRedirect'
 
 interface Props {
 
 }
 
 const Auth: React.FC<Props> = props => {
-    const user = useContext(FirebaseUserContext)
     const [isSignup, setIsSignup] = useState(false)
     const windowWidth = useWindowWidth()
     const history = useHistory()
     const { search } = useLocation()
     const [isLoading, setIsLoading] = useState(false)
-
-    useEffect(() => { if (user) history.replace("/") }, [user, history])
+    useConditionalRedirect(true)
 
     const switchPanelHandler = (e: React.MouseEvent) => {
         e.preventDefault()
