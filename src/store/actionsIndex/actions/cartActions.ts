@@ -25,7 +25,7 @@ export const addToCartRemotely = (itemToBeAdded: SlippersProductData, gender: Ge
         return (dispatch, getState) => {
             dispatch(addToCartLocally(itemToBeAdded, gender, size))
             dispatch(setCartLoadingState(true))
-            Axios.put<CartItems>(`https://slippers-react.firebaseio.com/cart/${uid}.json`, getState().cartData)
+            Axios.put<CartItems>(`https://slippers-react.firebaseio.com/cart/${uid}.json`, getState().cartData.cartItems)
                 .then(() => dispatch(setCartLoadingState(false)))
                 .catch(() => {
                     dispatch(setCartLoadingState(false))
