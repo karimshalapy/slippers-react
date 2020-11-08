@@ -10,6 +10,7 @@ import Slipper from './pages/Slipper/Slipper'
 import Slippers from './pages/Slippers/Slippers'
 import _404 from './pages/_404/_404'
 import { getResources } from './store/actionsIndex/actionIndex'
+import { getCartData, setCartData } from './store/actionsIndex/actions/cartActions'
 
 export const FirebaseUserContext = createContext<firebase.User | null>(null)
 
@@ -21,6 +22,10 @@ function App() {
     dispatch(getResources())
   }, [dispatch])
 
+  useEffect(() => {
+    if (user) dispatch(getCartData(user.uid))
+    else dispatch(setCartData({}))
+  }, [dispatch, user])
 
   return (
     <BrowserRouter>

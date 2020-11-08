@@ -7,6 +7,7 @@ import { sideNavMenusDataType } from './SideNavMenuTypes'
 import { HeroData } from './HeroTypes'
 import { SlipperImageSwiperData, SlipperSwiperAvatarData } from './SlippersSwiperTypes'
 import { SlipperFilterState, SlippersData, SlippersProductData } from './SlippersTypes'
+import { CartItems } from './CartTypes'
 
 
 export interface ResourcesState {
@@ -27,8 +28,15 @@ interface ProductsData {
     filteredProducts?: SlippersProductData[]
 }
 
+interface CartState {
+    cartItems: CartItems,
+    cartLoading: boolean,
+    cartError: boolean
+}
+
 interface RootReducer {
     mainResources: ResourcesState,
     filterState: SlipperFilterState,
-    productsData: ProductsData
+    productsData: ProductsData,
+    cartData: CartState,
 }

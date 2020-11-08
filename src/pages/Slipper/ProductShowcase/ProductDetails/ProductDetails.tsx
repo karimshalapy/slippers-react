@@ -1,5 +1,5 @@
-import React, { memo } from 'react'
-import { useSelector } from 'react-redux'
+import React, { FormEvent, memo, useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SlipperFeatures from '../../../../components/SlipperFeatures/SlipperFeatures'
 import { RootReducer } from '../../../../@types/reducersTypes'
 import { SlippersTypes } from '../../../../@types/SlippersSwiperTypes'
@@ -9,6 +9,8 @@ import ProductDetailsHeader from './ProductDetailsHeader/ProductDetailsHeader'
 import ProductSizes from './ProductSizes/ProductSizes'
 import SoleColorsFieldset from './SoleColorsFieldset/SoleColorsFieldset'
 import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
+import { addToCartRemotely } from '../../../../store/actionsIndex/actions/cartActions'
+import { FirebaseUserContext } from '../../../../App'
 
 interface Props {
     slipper: SlippersTypes,
@@ -32,8 +34,15 @@ const ProductDetails: React.FC<Props> = props => {
         return state.mainResources.slippersTypeSwiper
             ?.filter(item => item.type === props.slipper)[0].features
     })
+    const user = useContext(FirebaseUserContext)
+    const dispatch = useDispatch()
     const formIsValid = () => {
         return !!(props.activeGender && props.activeSize && props.activeUpperColor && props.activeSoleColor)
+    }
+
+    const addToCart = (e: React.FormEvent) => {
+        e.preventDefault()
+        if (user) dispatch(addToCartRemotely(props.activeSlipperData!, props.activeGender!, props.activeSize!, user?.uid))
     }
 
     return (
@@ -43,7 +52,7 @@ const ProductDetails: React.FC<Props> = props => {
                 activeSlipperData={props.activeSlipperData}
                 PerserveWidthWhenLoadingClass={classes.PerserveWidthWhenLoading} //passed down the class as props because it has shared styling accross upper, lower colors and the details header
             />
-            <form className={classes.ColorsForm} onSubmit={e => e.preventDefault()}>
+            <form className={classes.ColorsForm} onSubmit={addToCart}>
                 <UpperColorsFieldset
                     updateGlobalActiveColorState={props.updateGlobalActiveColorState}
                     upperColorsAvailable={props.upperColorsAvailable}

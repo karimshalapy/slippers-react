@@ -22,3 +22,19 @@ export const SET_PRODCUTS = "SET_PRODCUTS"
 
 export type FILTER = "FILTER"
 export const FILTER = "FILTER"
+
+//cart action names
+export type ADD_TO_CART = "ADD_TO_CART"
+export const ADD_TO_CART = "ADD_TO_CART"
+
+export type INCREMENT_OR_DECREMENT_CART = "INCREMENT_OR_DECREMENT_CART"
+export const INCREMENT_OR_DECREMENT_CART = "INCREMENT_OR_DECREMENT_CART"
+
+export type SET_CART_DATA = "SET_CART_DATA"
+export const SET_CART_DATA = "SET_CART_DATA"
+
+export type SET_CART_LOADING = "SET_CART_LOADING"
+export const SET_CART_LOADING = "SET_CART_LOADING"
+
+export type SET_CART_ERROR = "SET_CART_ERROR"
+export const SET_CART_ERROR = "SET_CART_ERROR"

@@ -1,9 +1,10 @@
 import { ResourcesState } from './reducersTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-import * as actionTypes from './actionNames'
-import { AvailableFilters, FilterSectionTypes, SlipperFilterState, SlippersData } from './SlippersTypes'
+import * as actionTypes from '../store/actionsIndex/actionNames'
+import { AvailableFilters, FilterSectionTypes, Gender, Size, SlipperFilterState, SlippersData, SlippersProductData } from './SlippersTypes'
 import * as H from 'history'
+import { CartItems } from './CartTypes'
 
 //resources action types
 export interface ResourcesAction {
@@ -30,4 +31,15 @@ export interface FilteredAction {
     products?: SlippersData,
     filterState?: SlipperFilterState,
     filterData?: AvailableFilters,
+}
+
+//cart action types
+export interface CartActions {
+    type: actionTypes.ADD_TO_CART | actionTypes.INCREMENT_OR_DECREMENT_CART | actionTypes.SET_CART_DATA | actionTypes.SET_CART_LOADING | actionTypes.SET_CART_ERROR,
+    itemToBeAdded?: SlippersProductData,
+    gender?: Gender,
+    size?: number,
+    cartItems?: CartItems,
+    loading?: boolean,
+    error?: boolean
 }
