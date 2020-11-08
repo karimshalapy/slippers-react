@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useContext, useEffect, useRef } from 'react'
 import { sideNavDataInfo, ImageBlock } from '../../../../../../@types/SideNavMenuTypes'
 import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
@@ -6,6 +6,7 @@ import classes from './MenuGenerator.module.css'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import disableScrollOnModalOpen from '../../../../../../helpers/disableScrollOnModalOpen'
+import { SideMenuContext } from '../../../Header'
 
 interface Props {
     data?: sideNavDataInfo[],
@@ -19,6 +20,7 @@ interface Props {
 
 const MainMenu: React.FC<Props> = props => {
 
+    const { toggleMenu } = useContext(SideMenuContext)
     useEffect(disableScrollOnModalOpen, [])
 
     const nodeRef = useRef<HTMLDivElement>(null)
@@ -64,7 +66,7 @@ const MainMenu: React.FC<Props> = props => {
                             ?
                             <div className={classes.imageBlocksContainer}>
                                 {props.imageBlocks.map(item => (
-                                    <Link to={item.url} key={v4()}>
+                                    <Link to={item.url} key={v4()} onClick={toggleMenu}>
                                         <img src={item.imgUrl} alt={item.imgAlt} />
                                         <span>{item.text}</span>
                                     </Link>

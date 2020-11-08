@@ -3,24 +3,24 @@ import classes from './SideNavMenuContainer.module.css'
 import DropdownTransition from '../../../../../components/hoc/DropdownTransition/DropdownTransition'
 import { MenuTypes } from '../../../../../@types/SideNavMenuTypes'
 import MenuGenerator from './MenuGenerator/MenuGenerator'
-import { SideMenuContext } from '../SideNavMenu'
+import { SideMenuContext } from '../../Header'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../../../@types/reducersTypes'
 
 interface Props {
-    open: boolean,
+
 }
 
 const SideNavMenuContainer: React.FC<Props> = props => {
     const sideNavData = useSelector((state: RootReducer) => state.mainResources.sideNav)
-    const { activeMenu } = useContext(SideMenuContext)
+    const { activeSideMenu, sideMenuOpen } = useContext(SideMenuContext)
 
     //a function to get the level for the "second & secondRev" leveled menus
     const getLevel = useCallback(() => {
-        if (activeMenu === "main") return "second"
-        else if (activeMenu === "discover") return "secondRev"
+        if (activeSideMenu === "main") return "second"
+        else if (activeSideMenu === "discover") return "secondRev"
         else return "first"
-    }, [activeMenu])
+    }, [activeSideMenu])
 
     //main logic function that maps the data to jsx elements array
     const getSideNavRenderData = useCallback(() => {
@@ -37,17 +37,17 @@ const SideNavMenuContainer: React.FC<Props> = props => {
                         imageBlocks={imageBlocks}
                         data={data}
                         level={level === "second & secondRev" ? getLevel() : level}
-                        enter={activeMenu === key || activeMenu === `${key}Back`}
+                        enter={activeSideMenu === key || activeSideMenu === `${key}Back`}
                     />
                 )
             }
         }
 
         return jsx
-    }, [activeMenu, getLevel, sideNavData])
+    }, [activeSideMenu, getLevel, sideNavData])
 
     return (
-        <DropdownTransition show={props.open}>
+        <DropdownTransition show={sideMenuOpen}>
             {nodeRef => (
                 <ul ref={nodeRef} className={classes.SideMenuContainer}>
                     { getSideNavRenderData()}

@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { SideMenuContext } from '../../Header'
 import classes from './SideMenuBtn.module.css'
 
 interface Props {
-    open: boolean,
-    clickHandler: () => void
+
 }
 
 const SideNavMenu: React.FC<Props> = props => {
 
-    const btnClasses = [classes.SideMenuBtn, props.open ? classes.Active : ""].join(" ")
+    const { sideMenuOpen, toggleMenu } = useContext(SideMenuContext)
+
+    const btnClasses = [classes.SideMenuBtn, sideMenuOpen ? classes.Active : ""].join(" ")
     return (
-        <div className={btnClasses} onClick={props.clickHandler}>
+        <div className={btnClasses} onClick={toggleMenu}>
             <span className={classes.Line}></span>
             <span className={classes.Line}></span>
             <span className={classes.Line}></span>

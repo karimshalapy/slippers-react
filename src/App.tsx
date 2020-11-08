@@ -11,6 +11,7 @@ import Slippers from './pages/Slippers/Slippers'
 import _404 from './pages/_404/_404'
 import { getResources } from './store/actionsIndex/actionIndex'
 import { getCartData, setCartData } from './store/actionsIndex/actions/cartActions'
+import Cart from './pages/Cart/Cart'
 
 export const FirebaseUserContext = createContext<firebase.User | null>(null)
 
@@ -39,6 +40,7 @@ function App() {
               <Route path="/slipper/:slipperType" exact component={Slipper} />
               <Route path="/404" exact component={_404} />
               <Route path="/auth" exact component={Auth} />
+              <Route path="/cart" exact component={Cart} />
               <Redirect from="/" to="/404" />
             </Switch>
           </BasicLayout>

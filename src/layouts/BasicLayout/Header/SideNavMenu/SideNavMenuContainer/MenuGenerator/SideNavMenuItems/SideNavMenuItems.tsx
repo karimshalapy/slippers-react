@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { sideNavDataInfo } from '../../../../../../../@types/SideNavMenuTypes'
-import { SideMenuContext } from '../../../SideNavMenu'
+import { SideMenuContext } from '../../../../Header'
 import { v4 } from 'uuid'
 import classes from './SideNavMenuItems.module.css'
 
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const SideNavMenuItems: React.FC<Props> = props => {
-    const { navigateMenuFunction, toggleMenu } = useContext(SideMenuContext)
+    const { navigateSideMenu, toggleMenu } = useContext(SideMenuContext)
 
     return (
         <>
@@ -20,7 +20,7 @@ const SideNavMenuItems: React.FC<Props> = props => {
                         return (
                             <li
                                 key={v4()}
-                                onClick={navigateMenuFunction.bind(null, item.goTo)}
+                                onClick={navigateSideMenu.bind(null, item.goTo)}
                                 className={classes.SideMenuItem}
                             >
                                 <span>{item.text}</span>
