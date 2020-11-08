@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetFilterState, updateFilterState } from '../../../../store/actionsIndex/actionIndex'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
-import { SlipperFilterState } from '../../SlippersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
+import { SlipperFilterState } from '../../../../@types/SlippersTypes'
 import classes from './FiltersSelected.module.css'
 
 interface Props {

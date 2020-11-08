@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
 import classes from './MobileFiltersButton.module.css'
 
 interface Props {

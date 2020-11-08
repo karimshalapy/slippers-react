@@ -1,6 +1,6 @@
 import * as actionTypes from '../actionNames'
-import { ResourcesAction } from '../actionTypes'
-import { ResourcesState } from '../../rootReducer/reducersTypes'
+import { ResourcesAction } from '../../../@types/actionTypes'
+import { ResourcesState } from '../../../@types/reducersTypes'
 import asyncThunkGet from '../../../helpers/asyncThunkGet'
 
 

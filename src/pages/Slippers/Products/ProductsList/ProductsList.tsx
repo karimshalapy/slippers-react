@@ -5,8 +5,8 @@ import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import TextToMarkup from '../../../../helpers/TextToMarkup'
 import { resetFilterState } from '../../../../store/actionsIndex/actionIndex'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
-import { SlippersProductData } from '../../SlippersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
+import { SlippersProductData } from '../../../../@types/SlippersTypes'
 import classes from './ProductsList.module.css'
 
 interface Props {

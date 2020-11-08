@@ -1,4 +1,4 @@
-import { HeaderState, HeaderReducer } from './HeaderTypes'
+import { HeaderState, HeaderReducer } from '../../../@types/HeaderTypes'
 
 //reducer definition
 export const initialState: HeaderState = {
@@ -6,7 +6,7 @@ export const initialState: HeaderState = {
     women: false,
     gift: false,
     discover: false,
-};
+}
 
 
 export const reducer: HeaderReducer = (state, action) => {
@@ -24,5 +24,5 @@ export const reducer: HeaderReducer = (state, action) => {
         default:
             throw new Error("Wrong action type")
     }
-};
+}
 

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import classes from './FooterNavItems.module.css'
-import { FooterData } from '../FooterTypes'
+import { FooterData } from '../../../../@types/FooterTypes'
 import SocialMediaIcon from '../../../../components/SocialMediaIcon/SocialMediaIcon'
 
 interface Props {

@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './HeaderNavItems.module.css'
 import HeaderNavItem from './HeaderNavItem/HeaderNavItem'
-import { HeaderClickHandler, HeaderState } from '../HeaderTypes'
+import { HeaderClickHandler, HeaderState } from '../../../../@types/HeaderTypes'
 
 interface Props {
     openState: HeaderState

@@ -3,8 +3,8 @@ import GalleryItem from './GalleryItem/GalleryItem'
 import classes from './Gallery.module.css'
 import { v4 } from 'uuid'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../store/rootReducer/reducersTypes'
-import { GalleryData } from './GalleryTypes'
+import { RootReducer } from '../../../@types/reducersTypes'
+import { GalleryData } from '../../../@types/GalleryTypes'
 
 const Gallery: React.FC = () => {
     //get galleryData from the redux store
@@ -15,7 +15,7 @@ const Gallery: React.FC = () => {
         imgAlt: "loading",
         mainText: "",
         subText: ""
-    });
+    })
 
     return (
         <section>

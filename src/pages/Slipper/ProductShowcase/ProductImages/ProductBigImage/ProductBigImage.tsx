@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import { v4 } from 'uuid'
 import FadeSwitchTransition from '../../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
-import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
+import { SlippersProductData } from '../../../../../@types/SlippersTypes'
 import classes from './ProductBigImage.module.css'
 
 interface Props {

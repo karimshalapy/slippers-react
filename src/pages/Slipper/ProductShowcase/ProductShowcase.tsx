@@ -6,9 +6,9 @@ import queryParamsFromEntries from '../../../helpers/queryParamsFromEntries'
 import queryParamsSplitIntoArray from '../../../helpers/queryParamsSplitIntoArray'
 import useWindowWidth from '../../../hooks/useWindowWidth'
 import { getProdcuts } from '../../../store/actionsIndex/actionIndex'
-import { RootReducer } from '../../../store/rootReducer/reducersTypes'
-import { SlippersTypes } from '../../Home/SlippersSwiper/SlippersSwiperTypes'
-import { SlippersProductData } from '../../Slippers/SlippersTypes'
+import { RootReducer } from '../../../@types/reducersTypes'
+import { SlippersTypes } from '../../../@types/SlippersSwiperTypes'
+import { SlippersProductData } from '../../../@types/SlippersTypes'
 import ProductDetails from './ProductDetails/ProductDetails'
 import ProductImages from './ProductImages/ProductImages'
 import ProductImagesSwiper from './ProductImagesSwiper/ProductImagesSwiper'
@@ -33,7 +33,7 @@ const ProductShowcase: React.FC<Props> = props => {
     const windowWidth = useWindowWidth()
     const history = useHistory()
 
-    const duplicatesSet = new Set(); //has to be axcluded from the useCallback deps because this is initiated each render cycle and it's only for the duplicates so no need for a state for that, in other words that's the expected behavior
+    const duplicatesSet = new Set() //has to be axcluded from the useCallback deps because this is initiated each render cycle and it's only for the duplicates so no need for a state for that, in other words that's the expected behavior
     //a function that filters and maps the full data array into a string array of available upper colors without duplicates using the set above
     const getUpperColorsAvailable = useCallback(() => {
         if (pageProductsData) {

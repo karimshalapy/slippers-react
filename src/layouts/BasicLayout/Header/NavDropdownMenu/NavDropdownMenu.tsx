@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './NavDropdownMenu.module.css'
 import DropdownTransition from '../../../../components/hoc/DropdownTransition/DropdownTransition'
-import { DropdownMenusTypes } from '../HeaderTypes'
+import { DropdownMenusTypes } from '../../../../@types/HeaderTypes'
 import DropdownContent from './DropdownContent/DropdownContent'
 
 interface Props {

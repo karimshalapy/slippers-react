@@ -1,6 +1,6 @@
-import { FilterSectionTypes } from "../../../pages/Slippers/SlippersTypes";
-import * as actions from "../actionNames";
-import { FilterAction } from "../actionTypes";
+import { FilterSectionTypes } from '../../../@types//SlippersTypes'
+import * as actions from '../actionNames'
+import { FilterAction } from '../../../@types/actionTypes'
 import * as H from 'history'
 
 export const updateFilterState = (filterSectionType: FilterSectionTypes, value: string): FilterAction => ({

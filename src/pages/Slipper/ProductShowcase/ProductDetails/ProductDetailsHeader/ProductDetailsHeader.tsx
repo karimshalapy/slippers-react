@@ -1,6 +1,6 @@
 import React from 'react'
-import { SlippersTypes } from '../../../../Home/SlippersSwiper/SlippersSwiperTypes'
-import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
+import { SlippersTypes } from '../../../../../@types/SlippersSwiperTypes'
+import { SlippersProductData } from '../../../../../@types/SlippersTypes'
 import classes from './ProductDetailsHeader.module.css'
 
 interface Props {

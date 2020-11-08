@@ -8,7 +8,7 @@ interface Props {
 
 const SideNavMenu: React.FC<Props> = props => {
 
-    const btnClasses = [classes.SideMenuBtn, props.open ? classes.Active : ""].join(" ");
+    const btnClasses = [classes.SideMenuBtn, props.open ? classes.Active : ""].join(" ")
     return (
         <div className={btnClasses} onClick={props.clickHandler}>
             <span className={classes.Line}></span>

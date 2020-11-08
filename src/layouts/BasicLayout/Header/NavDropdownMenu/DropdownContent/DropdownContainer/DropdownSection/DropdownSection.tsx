@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-import { DropdownSectionData, DropdownSectionTypes } from '../../../../HeaderTypes'
+import { DropdownSectionData, DropdownSectionTypes } from '../../../../../../../@types/HeaderTypes'
 import classes from './DropdownSection.module.css'
 
 interface Props {
@@ -65,7 +65,7 @@ const DropdownSection: React.FC<Props> = ({ type, reset, payload: { heading, dat
                     </li>
                 )
             default:
-                return null;
+                return null
         }
     }
     //main return statement

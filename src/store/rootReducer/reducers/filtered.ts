@@ -1,8 +1,8 @@
-import { ProductsData } from "../reducersTypes";
 import * as actions from '../../actionsIndex/actionNames'
-import { FilteredAction } from "../../actionsIndex/actionTypes";
-import { SlipperFilterState, SlippersProductData } from '../../../pages/Slippers/SlippersTypes.d'
-import { isSizesFilterSection } from "../../../helpers/typeCheckers";
+import { ProductsData } from '../../../@types/reducersTypes'
+import { FilteredAction } from '../../../@types/actionTypes'
+import { SlipperFilterState, SlippersProductData } from '../../../@types/SlippersTypes.d'
+import { isSizesFilterSection } from '../../../helpers/typeCheckers'
 
 const initialState: ProductsData = {}
 

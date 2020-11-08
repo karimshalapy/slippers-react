@@ -1,5 +1,5 @@
-import { SlippersTypes } from "../pages/Home/SlippersSwiper/SlippersSwiperTypes"
-import { FilterItemsTypes, GenderSizeFilterTypes } from "../pages/Slippers/SlippersTypes"
+import { SlippersTypes } from '../@types/SlippersSwiperTypes'
+import { FilterItemsTypes, GenderSizeFilterTypes } from '../@types/SlippersTypes'
 
 export const isSizesFilterSection = (filterItems: FilterItemsTypes): filterItems is GenderSizeFilterTypes => {
     return typeof filterItems[0] !== "string"

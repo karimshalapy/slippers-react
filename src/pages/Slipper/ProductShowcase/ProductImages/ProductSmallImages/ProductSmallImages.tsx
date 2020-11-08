@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { v4 } from 'uuid'
-import { ProductShowcase, SlippersTypes } from '../../../../Slippers/SlippersTypes'
+import { ProductShowcase, SlippersTypes } from '../../../../../@types/SlippersTypes'
 import classes from './ProductSmallImages.module.css'
 
 interface Props {

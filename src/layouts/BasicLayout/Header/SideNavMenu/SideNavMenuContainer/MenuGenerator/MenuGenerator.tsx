@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import { sideNavDataInfo, ImageBlock } from '../../SideNavMenuTypes'
+import { sideNavDataInfo, ImageBlock } from '../../../../../../@types/SideNavMenuTypes'
 import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
 import classes from './MenuGenerator.module.css'
@@ -44,7 +44,7 @@ const MainMenu: React.FC<Props> = props => {
                 }
         }
     },
-        [level]);
+        [level])
 
     return (
         <CSSTransition

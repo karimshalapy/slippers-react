@@ -3,7 +3,7 @@ import SideMenuBtn from './SideMenuBtn/SideMenuBtn'
 import GoBackBtn from './GoBackBtn/GoBackBtn'
 import SideNavMenuContainer from './SideNavMenuContainer/SideNavMenuContainer'
 import classes from './SideNavMenu.module.css'
-import { MenuTypes, sideNavContextValues } from './SideNavMenuTypes'
+import { MenuTypes, sideNavContextValues } from '../../../../@types/SideNavMenuTypes'
 
 interface Props {
 
@@ -21,7 +21,7 @@ const SideNavMenu: React.FC<Props> = props => {
 
     const navigateMenuFunction = (menu: MenuTypes) => {
         setActiveMenu(menu)
-    };
+    }
 
     const toggleBtn = () => {
         setOpen(prevOpen => !prevOpen)

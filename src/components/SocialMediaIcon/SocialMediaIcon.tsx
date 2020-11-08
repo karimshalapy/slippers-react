@@ -1,5 +1,5 @@
 import React from 'react'
-import { SocialMediaTypes } from '../../layouts/BasicLayout/Footer/FooterTypes'
+import { SocialMediaTypes } from '../../@types/FooterTypes'
 import classes from './SocialMediaIcon.module.css'
 import SocialMediaSVG from './SocialMediaSVG/SocialMediaSVG'
 

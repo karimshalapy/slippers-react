@@ -5,7 +5,7 @@ import { ReactComponent as Twitter } from '../../../assets/twitter.svg'
 import { ReactComponent as Github } from '../../../assets/github.svg'
 import { ReactComponent as Instagram } from '../../../assets/instagram.svg'
 import { ReactComponent as Google } from '../../../assets/google.svg'
-import { SocialMediaTypes } from '../../../layouts/BasicLayout/Footer/FooterTypes'
+import { SocialMediaTypes } from '../../../@types/FooterTypes'
 
 interface Props {
     type: SocialMediaTypes

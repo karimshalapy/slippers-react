@@ -1,8 +1,8 @@
-import queryParamsFromEntries from "../../../helpers/queryParamsFromEntries"
-import queryParamsSplitIntoArray from "../../../helpers/queryParamsSplitIntoArray"
-import { SlipperFilterState } from "../../../pages/Slippers/SlippersTypes"
+import queryParamsFromEntries from '../../../helpers/queryParamsFromEntries'
+import queryParamsSplitIntoArray from '../../../helpers/queryParamsSplitIntoArray'
+import { SlipperFilterState } from '../../../@types/SlippersTypes'
 import * as actions from '../../actionsIndex/actionNames'
-import { FilterAction } from "../../actionsIndex/actionTypes"
+import { FilterAction } from '../../../@types/actionTypes'
 
 const initialState: SlipperFilterState = {
     sizes: null,

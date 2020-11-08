@@ -1,6 +1,6 @@
 import React from 'react'
 import { v4 } from 'uuid'
-import { SlippersFeaturesType } from '../../pages/Home/SlippersSwiper/SlippersSwiperTypes'
+import { SlippersFeaturesType } from '../../@types/SlippersSwiperTypes'
 import classes from './SlipperFeatures.module.css'
 
 interface Props {

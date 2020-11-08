@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import classes from './SlipperFigureDismantle.module.css'
 import SlipperFigureLayer from './SlipperFigureLayer/SlipperFigureLayer'
-import { LayerData } from './SlipperFigureDismantleTypes.d'
+import { LayerData } from '../../../@types/SlipperFigureDismantleTypes.d'
 import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
 

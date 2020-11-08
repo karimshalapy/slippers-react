@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import SwiperCore, { Controller } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
 import classes from './SlipperImageSwiper.module.css'
 
 interface Props {

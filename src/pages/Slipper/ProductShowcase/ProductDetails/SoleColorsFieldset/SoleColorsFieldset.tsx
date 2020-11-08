@@ -1,6 +1,6 @@
 import React from 'react'
 import SoleColors from './SoleColors/SoleColors'
-import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
+import { SlippersProductData } from '../../../../../@types/SlippersTypes'
 
 interface Props {
     pageProductsData?: SlippersProductData[],

@@ -1,4 +1,4 @@
-import { DropdownMenusTypes } from '../HeaderTypes'
+import { DropdownMenusTypes } from './HeaderTypes'
 
 export type MenuTypes = DropdownMenusTypes | "main" | "discoverBack" | "help" | "about" | "customers"
 

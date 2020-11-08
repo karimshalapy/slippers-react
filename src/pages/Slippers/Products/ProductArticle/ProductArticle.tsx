@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import TextToMarkup from '../../../../helpers/TextToMarkup'
 import { isSlipperType } from '../../../../helpers/typeCheckers'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
 import classes from './ProductArticle.module.css'
 
 interface Props {

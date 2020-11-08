@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import classes from './GalleryItem.module.css'
-import { GalleryData } from '../GalleryTypes'
+import { GalleryData } from '../../../../@types/GalleryTypes'
 import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
 import TextToMarkup from '../../../../helpers/TextToMarkup'
 

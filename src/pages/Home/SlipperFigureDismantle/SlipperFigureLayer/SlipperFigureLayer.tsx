@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './SlipperFigureLayer.module.css'
-import { LayerData } from '../SlipperFigureDismantleTypes.d'
+import { LayerData } from '../../../../@types/SlipperFigureDismantleTypes.d'
 
 
 const SlipperFigureLayer: React.FC<LayerData> = props => {

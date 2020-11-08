@@ -1,6 +1,6 @@
-import Axios from "axios"
-import { Action } from "redux"
-import { AppThunk } from "../store/actionsIndex/actionTypes"
+import Axios from 'axios'
+import { Action } from 'redux'
+import { AppThunk } from '../@types/actionTypes'
 
 export const asyncThunkGet = <T, Y extends Action<string>>(path: string, dispatchFunc: (x: T) => Y) => {
     const asyncFunction: AppThunk<T> = () => {

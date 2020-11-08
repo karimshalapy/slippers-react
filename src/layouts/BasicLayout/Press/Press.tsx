@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { v4 } from 'uuid'
 import classes from './Press.module.css'
-import { RootReducer } from '../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../@types/reducersTypes'
 
 const Press: React.FC = () => {
     const pressData = useSelector((state: RootReducer) => state.mainResources.press)

@@ -1,11 +1,11 @@
 import React, { useCallback, useContext } from 'react'
 import classes from './SideNavMenuContainer.module.css'
 import DropdownTransition from '../../../../../components/hoc/DropdownTransition/DropdownTransition'
-import { MenuTypes } from '../SideNavMenuTypes'
+import { MenuTypes } from '../../../../../@types/SideNavMenuTypes'
 import MenuGenerator from './MenuGenerator/MenuGenerator'
 import { SideMenuContext } from '../SideNavMenu'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../../@types/reducersTypes'
 
 interface Props {
     open: boolean,
@@ -24,7 +24,7 @@ const SideNavMenuContainer: React.FC<Props> = props => {
 
     //main logic function that maps the data to jsx elements array
     const getSideNavRenderData = useCallback(() => {
-        let jsx = [];
+        let jsx = []
         if (sideNavData) {
             let key: MenuTypes
             for (key in sideNavData) {

@@ -3,7 +3,7 @@ import React from 'react'
 //header state in useReducer interface
 export type HeaderState = {
     [type in DropdownMenusTypes]: boolean
-};
+}
 
 //DropdownMenus types permitted
 export type DropdownMenusTypes = "men" | "women" | "discover" | "gift"

@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react'
 import { v4 } from 'uuid'
-import { DropdownSectionTypes, DropdownSectionData, DropdownSectionsData } from '../../../HeaderTypes'
+import { DropdownSectionTypes, DropdownSectionData, DropdownSectionsData } from '../../../../../../@types/HeaderTypes'
 import DropdownSection from './DropdownSection/DropdownSection'
 
 interface Props {
@@ -16,7 +16,7 @@ const DropdownContainer: React.FC<Props> = ({ dropdownSectionData, reset }) => {
     }, [])
 
     //get render data
-    const jsx = [];
+    const jsx = []
     //type guard to be sure the data is defined
     if (dropdownSectionData) {
         //looping on the data and mutating it into a jsx array

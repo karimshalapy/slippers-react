@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductSmallImages from './ProductSmallImages/ProductSmallImages'
 import classes from './ProductImages.module.css'
-import { SlippersProductData, SlippersTypes } from '../../../Slippers/SlippersTypes'
+import { SlippersProductData, SlippersTypes } from '../../../../@types/SlippersTypes'
 import ProductBigImage from './ProductBigImage/ProductBigImage'
 
 interface Props {

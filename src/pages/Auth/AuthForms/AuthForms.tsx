@@ -3,7 +3,7 @@ import InputWithLabelAsPlaceholder from '../../../components/InputWithLabelAsPla
 import Button from '../../../components/Button/Button'
 import classes from './AuthForms.module.css'
 import MobileSwitchPanelButton from '../MobileSwitchPanelButton/MobileSwitchPanelButton'
-import { SignupFormInputs, SigninFormInputs, AuthFormTypes, ProviderId } from '../AuthTypes'
+import { SignupFormInputs, SigninFormInputs, AuthFormTypes, ProviderId } from '../../../@types/AuthTypes'
 import { auth, EmailAuthProvider, getProviderId } from '../../../Firebase'
 import { DeepMap, FieldError, Resolver, useForm } from 'react-hook-form'
 import { singinSchema, singupSchema } from '../AuthFormsValidation'
@@ -53,12 +53,12 @@ const Signup: React.FC<Props> = props => {
                                     props.setIsLoading(false)
                                     setFormSubmitError("The email address is already in use by another account.")
                                 } else {
-                                    const provider = getProviderId(providers[0] as ProviderId);
+                                    const provider = getProviderId(providers[0] as ProviderId)
                                     const pendingCred = EmailAuthProvider.credential(data.email, data.password)
                                     auth.signInWithPopup(provider!)
                                         .then((result) => {
                                             if (result.user?.email === data.email) result.user?.linkWithCredential(pendingCred).then((usercred) => {
-                                                console.log("oauth linked");
+                                                console.log("oauth linked")
                                                 setFormSubmitError(undefined)
                                             })
                                             else throw new Error()

@@ -4,7 +4,7 @@ import classes from './DropdownTransition.module.css'
 
 interface Props {
     show: boolean,
-    children: (x: React.MutableRefObject<null>) => ReactElement;
+    children: (x: React.MutableRefObject<null>) => ReactElement
 }
 
 const NavDropdownMenu: React.FC<Props> = props => {

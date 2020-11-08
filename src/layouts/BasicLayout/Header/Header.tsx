@@ -1,6 +1,6 @@
 import React, { useReducer, useCallback } from 'react'
 import classes from './Header.module.css'
-import { HeaderReducer, HeaderClickHandler } from './HeaderTypes'
+import { HeaderReducer, HeaderClickHandler } from '../../../@types/HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems'

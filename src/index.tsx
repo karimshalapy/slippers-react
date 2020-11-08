@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
 import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 import { rootReducer } from './store/rootReducer/rootReducer'
 
 //delaring the type of redux dev tools extension to work with typescript
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
   }
 }
 
@@ -33,5 +33,5 @@ ReactDOM.render(
   </Provider>,
 
   document.getElementById('root')
-);
+)
 

@@ -8,7 +8,7 @@ import paypal from '../../../assets/paypal.png'
 import visa from '../../../assets/visa.png'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../@types/reducersTypes'
 
 const Footer: React.FC = props => {
     const [footerData, socialData] = useSelector((state: RootReducer) => [state.mainResources.footerNav, state.mainResources.socialNav])

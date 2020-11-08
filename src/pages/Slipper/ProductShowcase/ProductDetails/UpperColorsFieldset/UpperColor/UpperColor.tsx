@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { SlippersProductData } from '../../../../../Slippers/SlippersTypes';
+import { SlippersProductData } from '../../../../../../@types/SlippersTypes'
 import classes from './UpperColor.module.css'
 
 interface Props {

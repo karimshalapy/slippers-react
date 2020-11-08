@@ -1,6 +1,6 @@
 import React from 'react'
 import { v4 } from 'uuid'
-import { SlippersProductData } from '../../../../Slippers/SlippersTypes'
+import { SlippersProductData } from '../../../../../@types/SlippersTypes'
 import UpperColor from './UpperColor/UpperColor'
 
 interface Props {

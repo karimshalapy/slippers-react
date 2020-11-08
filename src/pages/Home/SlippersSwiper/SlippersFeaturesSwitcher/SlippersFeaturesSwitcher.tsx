@@ -4,7 +4,7 @@ import Button from '../../../../components/Button/Button'
 import FadeSwitchTransition from '../../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
 import SlipperFeatures from '../../../../components/SlipperFeatures/SlipperFeatures'
 
 interface Props {

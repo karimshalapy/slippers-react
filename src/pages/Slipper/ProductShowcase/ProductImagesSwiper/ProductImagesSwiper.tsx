@@ -3,8 +3,8 @@ import SwiperCore, { Pagination, Controller } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { v4 } from 'uuid'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
-import { SlippersTypes } from '../../../Home/SlippersSwiper/SlippersSwiperTypes'
-import { SlippersProductData } from '../../../Slippers/SlippersTypes'
+import { SlippersTypes } from '../../../../@types/SlippersSwiperTypes'
+import { SlippersProductData } from '../../../../@types/SlippersTypes'
 import classes from './ProductImagesSwiper.module.css'
 
 interface Props {

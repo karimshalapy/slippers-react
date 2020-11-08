@@ -1,6 +1,6 @@
 import *  as actionTypes from '../../actionsIndex/actionNames'
-import { ResourcesState } from '../reducersTypes'
-import { ResourcesAction } from '../../actionsIndex/actionTypes'
+import { ResourcesState } from '../../../@types/reducersTypes'
+import { ResourcesAction } from '../../../@types/actionTypes'
 
 
 const initialState: ResourcesState = {}

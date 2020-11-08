@@ -1,9 +1,9 @@
 import React from 'react'
-import { DropdownMenusTypes } from '../../HeaderTypes'
+import { DropdownMenusTypes } from '../../../../../@types/HeaderTypes'
 import DropdownContainer from './DropdownContainer/DropdownContainer'
 import classes from './DropdownContent.module.css'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../../@types/reducersTypes'
 
 interface Props {
     type: DropdownMenusTypes

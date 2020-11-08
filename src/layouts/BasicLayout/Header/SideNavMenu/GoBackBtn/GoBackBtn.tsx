@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { SideMenuContext } from '../SideNavMenu';
-import { MenuTypes } from '../SideNavMenuTypes';
-import classes from './GoBackBtn.module.css';
+import { SideMenuContext } from '../SideNavMenu'
+import { MenuTypes } from '../../../../../@types/SideNavMenuTypes'
+import classes from './GoBackBtn.module.css'
 
 interface Props {
     show: boolean

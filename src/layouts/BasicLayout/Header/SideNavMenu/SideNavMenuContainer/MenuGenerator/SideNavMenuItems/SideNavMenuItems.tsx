@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { sideNavDataInfo } from '../../../SideNavMenuTypes'
+import { sideNavDataInfo } from '../../../../../../../@types/SideNavMenuTypes'
 import { SideMenuContext } from '../../../SideNavMenu'
 import { v4 } from 'uuid'
 import classes from './SideNavMenuItems.module.css'

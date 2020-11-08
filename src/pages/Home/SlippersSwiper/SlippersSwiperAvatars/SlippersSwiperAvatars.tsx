@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore from 'swiper'
 import { v4 } from 'uuid'
-import { SlippersTypesEnum, AvatarNavTypes, SlippersTypes } from '../SlippersSwiperTypes.d'
+import { SlippersTypesEnum, AvatarNavTypes, SlippersTypes } from '../../../../@types/SlippersSwiperTypes.d'
 import classes from './SlippersSwiperAvatars.module.css'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../../@types/reducersTypes'
 
 interface Props {
     controlledSwiper: SwiperCore | undefined,

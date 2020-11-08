@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import classes from './InstagramPhotos.module.css'
 import { ReactComponent as Logo } from '../../../assets/mahabis-logo.svg'
-import { InstagramData } from './InstagramPhotosTypes'
+import { InstagramData } from '../../../@types/InstagramPhotosTypes'
 import { useSelector } from 'react-redux'
-import { RootReducer } from '../../../store/rootReducer/reducersTypes'
+import { RootReducer } from '../../../@types/reducersTypes'
 import CircleSpinner from '../../../components/CircleSpinner/CircleSpinner'
 
 const InstagramPhotos: React.FC = () => {
@@ -16,7 +16,7 @@ const InstagramPhotos: React.FC = () => {
         imgUrl: "loading",
         imgAlt: "loading",
         url: "/"
-    });
+    })
 
     //reference to the logo container div
     const logoContainerRef = useRef<HTMLDivElement>(null)
@@ -45,7 +45,7 @@ const InstagramPhotos: React.FC = () => {
 
     //useEffect to add scroll event listener to the window and remove it when this component unmounts
     useEffect(() => {
-        const current = logoContainerRef.current;
+        const current = logoContainerRef.current
 
         if (current) {
             window.addEventListener("scroll", scrollHandler)

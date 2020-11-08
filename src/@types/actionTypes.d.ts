@@ -1,8 +1,8 @@
-import { ResourcesState } from "../rootReducer/reducersTypes";
+import { ResourcesState } from './reducersTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import * as actionTypes from './actionNames'
-import { AvailableFilters, FilterSectionTypes, SlipperFilterState, SlippersData } from "../../pages/Slippers/SlippersTypes";
+import { AvailableFilters, FilterSectionTypes, SlipperFilterState, SlippersData } from './SlippersTypes'
 import * as H from 'history'
 
 //resources action types

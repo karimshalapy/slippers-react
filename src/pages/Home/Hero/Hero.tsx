@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import SwiperCore, { Navigation, EffectFade, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
-import { v4 } from 'uuid';
-import Button from '../../../components/Button/Button';
-import SliderBtn from '../../../components/SliderBtn/SliderBtn';
-import TextToMarkup from '../../../helpers/TextToMarkup';
-import { RootReducer } from '../../../store/rootReducer/reducersTypes';
-import classes from './Hero.module.css';
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import SwiperCore, { Navigation, EffectFade, Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.min.css'
+import { v4 } from 'uuid'
+import Button from '../../../components/Button/Button'
+import SliderBtn from '../../../components/SliderBtn/SliderBtn'
+import TextToMarkup from '../../../helpers/TextToMarkup'
+import { RootReducer } from '../../../@types/reducersTypes'
+import classes from './Hero.module.css'
 
-SwiperCore.use([Navigation, EffectFade, Autoplay]);
+SwiperCore.use([Navigation, EffectFade, Autoplay])
 
 const Hero: React.FC = () => {
     const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>()

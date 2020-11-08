@@ -1,11 +1,11 @@
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers'
-import { SigninFormInputs, SignupFormInputs } from './AuthTypes';
+import { SigninFormInputs, SignupFormInputs } from '../../@types/AuthTypes'
 
 class SchemaClass {
     constructor(public password: yup.StringSchema<string, object>, public name?: yup.StringSchema<string, object>) {
-        this.password = password;
-        if (name) this.name = name;
+        this.password = password
+        if (name) this.name = name
     }
 
     email = yup.string()

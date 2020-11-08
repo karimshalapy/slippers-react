@@ -2,8 +2,8 @@ import React, { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { v4 } from 'uuid'
 import { isSizesFilterSection } from '../../../../../helpers/typeCheckers'
-import { RootReducer } from '../../../../../store/rootReducer/reducersTypes'
-import { GenderSizes, SlippersProductData } from '../../../../Slippers/SlippersTypes.d'
+import { RootReducer } from '../../../../../@types/reducersTypes'
+import { GenderSizes, SlippersProductData } from '../../../../../@types/SlippersTypes.d'
 import classes from './ProductSizes.module.css'
 
 interface Props {
