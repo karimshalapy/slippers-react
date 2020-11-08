@@ -49,7 +49,7 @@ const Header: React.FC = () => {
             <SideMenuContext.Provider value={{ navigateSideMenu, sideMenuOpen, activeSideMenu, toggleMenu }}>
                 <SideNavMenu />
             </SideMenuContext.Provider>
-            <UserPanel />
+            <UserPanel hide={sideMenuOpen} />
         </header>
     )
 }
