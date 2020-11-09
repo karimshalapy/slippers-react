@@ -14,7 +14,7 @@
 .InfoContainer {
     display: flex;
     flex-direction: column;
-    padding: 20px 0 0 40px;
+    padding: 20px 0 20px 40px;
     width: 100%;
 }
 .InfoContainer a:link,
