@@ -1,0 +1,76 @@
+.CartItem {
+    display: flex;
+    position: relative;
+    border-top: 1px solid #f5f5f5;
+}
+/***************************Image Styling***************************/
+.ImageContainer {
+    width: 19%;
+}
+.ImageContainer img {
+    max-width: 100%;
+}
+/***************************Product Info Styling***************************/
+.InfoContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 40px;
+    width: 100%;
+}
+.InfoContainer a:link,
+.InfoContainer a:visited {
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: lowercase;
+    font-weight: 600;
+}
+.InfoContainer p{
+    margin: 0;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    line-height: 1.6;
+    color: #8a8a8a;
+}
+.PriceAndAmountContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+/*Increment and decrement buttons styling*/
+.IncrementDecrementContainer {
+    margin-top: 12px;
+    font-size: 12px;
+}
+.IncrementDecrementContainer * {
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 0;
+    margin-left: -1px;
+    line-height: 25px;
+    width: 26px;
+    height: 25px;
+    text-align: center;
+    vertical-align: top;
+    color: #8a8a8a;
+    user-select: none;
+}
+.IncrementDecrementContainer span {
+    border-left: none;
+    border-right: none;
+}
+.IncrementDecrementContainer button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+.IncrementDecrementContainer button:focus {
+    border: 1px solid #666;
+}
+.IncrementDecrementContainer button:first-child {
+    border-radius: 2px 0 0 2px;
+}
+.IncrementDecrementContainer button:last-child {
+    border-radius: 0 2px 2px 0;
+}
