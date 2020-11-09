@@ -4,9 +4,17 @@
     max-width: 1180px;
     padding: 15px 0 60px;
 }
+.CartInfoContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+}
 @media (min-width: 810px) {
     .CartContainer {
         width: 70%;
         padding: 60px 0;
+    }
+    .CartInfoContainer {
+        grid-template-columns: 2fr 1fr;
     }
 }
