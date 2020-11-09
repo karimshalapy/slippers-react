@@ -7,7 +7,7 @@ import { sideNavMenusDataType } from './SideNavMenuTypes'
 import { HeroData } from './HeroTypes'
 import { SlipperImageSwiperData, SlipperSwiperAvatarData } from './SlippersSwiperTypes'
 import { SlipperFilterState, SlippersData, SlippersProductData } from './SlippersTypes'
-import { CartItems } from './CartTypes'
+import { CartItemsInterface } from './CartTypes'
 
 
 export interface ResourcesState {
@@ -29,7 +29,7 @@ interface ProductsData {
 }
 
 interface CartState {
-    cartItems: CartItems,
+    cartItems: CartItemsInterface,
     cartLoading: boolean,
     cartError: boolean
 }

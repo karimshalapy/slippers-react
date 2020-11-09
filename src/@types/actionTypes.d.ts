@@ -4,7 +4,7 @@ import { Action } from 'redux'
 import * as actionTypes from '../store/actionsIndex/actionNames'
 import { AvailableFilters, FilterSectionTypes, Gender, Size, SlipperFilterState, SlippersData, SlippersProductData } from './SlippersTypes'
 import * as H from 'history'
-import { CartItems } from './CartTypes'
+import { CartItemsInterface } from './CartTypes'
 
 //resources action types
 export interface ResourcesAction {
@@ -39,7 +39,7 @@ export interface CartActions {
     itemToBeAdded?: SlippersProductData,
     gender?: Gender,
     size?: number,
-    cartItems?: CartItems,
+    cartItems?: CartItemsInterface,
     loading?: boolean,
     error?: boolean
 }
