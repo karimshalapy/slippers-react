@@ -9,7 +9,7 @@ interface Props {
     itemName: string,
     itemColor: string,
     sizeGenderText: string,
-    incrementOrDecrement: (e: React.MouseEvent) => void,
+    cartButtonsActions: (e: React.MouseEvent) => void,
     disabled?: boolean,
     totalPrice: number,
     productId: string,
@@ -33,20 +33,26 @@ const CartItem: React.FC<Props> = props => {
                 <div className={classes.PriceAndAmountContainer}>
                     <div className={classes.IncrementDecrementContainer}>
                         <button
-                            onClick={props.incrementOrDecrement}
+                            onClick={props.cartButtonsActions}
                             disabled={props.disabled}
                             data-item={props.productId}
                             data-type="decrement"
                         >-</button>
                         <span>{props.itemAmount}</span>
                         <button
-                            onClick={props.incrementOrDecrement}
+                            onClick={props.cartButtonsActions}
                             disabled={props.disabled}
                             data-item={props.productId}
                             data-type="increment"
                         >+</button>
                     </div>
                     <data value={props.totalPrice}>${props.totalPrice}</data>
+                    <button
+                        data-item={props.productId}
+                        data-type="remove"
+                        className={classes.RemoveBtn}
+                        onClick={props.cartButtonsActions}
+                    >x</button>
                 </div>
             </div>
         </li>

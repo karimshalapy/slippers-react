@@ -74,3 +74,13 @@
 .IncrementDecrementContainer button:last-child {
     border-radius: 0 2px 2px 0;
 }
+/*Remove item button styling*/
+.RemoveBtn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #999;
+}
