@@ -90,7 +90,7 @@ const ProductDetails: React.FC<Props> = props => {
                             ?
                             <CircleSpinner size={30} />
                             :
-                            <Button classNames={[classes.addToCartBtn]} disabled={!formIsValid()}> add to cart </Button>
+                            <Button tomato disabled={!formIsValid()}> add to cart </Button>
                     }
                 </div>
                 {!formIsValid()

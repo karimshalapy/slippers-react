@@ -1,4 +1,4 @@
-.ButtonOutlined, .ButtonPrimary {
+.Button {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -8,8 +8,6 @@
     border: none;
     border-radius: 2px;
     cursor: pointer;
-}
-.ButtonPrimary {
     color: #fafafa;
     background-color: black;
 }
@@ -18,13 +16,22 @@
     background-color: white;
     border: 1px solid black;
 }
+.ButtonTomato {
+    background: #F34C3F;
+    color: white;
+    transition: all .2s ease-in-out;
+}
+.ButtonTomato:hover {
+    background-color:#dd3a2d;
+}
+.ButtonTomato:disabled {
+    background-color: #F34C3F;
+}
 .NoLink {
     padding: 0 2em;
 }
-.ButtonOutlined a:link,
-.ButtonOutlined a:visited,
-.ButtonPrimary a:link,
-.ButtonPrimary a:visited {
+.Button a:link,
+.Button a:visited{
     padding: 0 2em;
     display: block;
     color: #fafafa;

@@ -5,19 +5,30 @@ interface Props {
     classNames?: string[],
     hasLink?: boolean
     clickHandler?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void,
-    outlined?: boolean
-    disabled?: boolean
+    outlined?: boolean,
+    tomato?: boolean
+    disabled?: boolean,
 }
 
-const HomePrimaryBtn: React.FC<Props> = ({ classNames, hasLink, clickHandler, children, outlined, disabled }) => {
+const HomePrimaryBtn: React.FC<Props> = ({
+    classNames,
+    hasLink,
+    clickHandler,
+    children,
+    outlined,
+    tomato,
+    disabled
+}) => {
 
     const getBtnClasses = useCallback(() => {
-        const classesArr = [outlined ? classes.ButtonOutlined : classes.ButtonPrimary]
+        const classesArr = [classes.Button]
+        if (outlined) classesArr.push(classes.ButtonOutlined)
+        if (tomato) classesArr.push(classes.ButtonTomato)
         if (!hasLink) classesArr.push(classes.NoLink)
         if (classNames) classesArr.push(...classNames)
 
         return classesArr.join(" ")
-    }, [classNames, hasLink, outlined])
+    }, [classNames, hasLink, outlined, tomato])
 
     return (
         <button className={getBtnClasses()} onClick={clickHandler} disabled={disabled} >
