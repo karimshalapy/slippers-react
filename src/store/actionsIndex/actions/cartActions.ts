@@ -60,9 +60,18 @@ export const cartButtonsActionsRemotely = (itemId: string, cartButtonType: CartB
     }
     return async()
 }
-export const setCartData = (cartItems: CartItemsInterface): CartActions => ({
+export const setCartDataLocally = (cartItems: CartItemsInterface): CartActions => ({
     type: actions.SET_CART_DATA,
     cartItems
 })
-
-export const getCartData = (uid: string) => asyncThunkGet<CartItemsInterface, CartActions>(`cart/${uid}.json`, setCartData)()
+export const setCartDataRemotely = (cartItems: CartItemsInterface, uid: string) => {
+    const async: AppThunk<RootReducer> = () => {
+        return (dispatch) => {
+            dispatch(setCartDataLocally(cartItems))
+            dispatch(setCartLoadingState(true))
+            thunkAxiosPutRequest(dispatch, uid, cartItems)
+        }
+    }
+    return async()
+}
+export const getCartData = (uid: string) => asyncThunkGet<CartItemsInterface, CartActions>(`cart/${uid}.json`, setCartDataLocally)()
