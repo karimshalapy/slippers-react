@@ -3,3 +3,8 @@
     padding: 0;
     list-style-type: none;
 }
+@media (min-width: 810px) {
+    .CartItemsContainer {
+        padding: 0 9% 0 0;
+    }
+}
