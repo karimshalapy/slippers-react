@@ -3,7 +3,7 @@ import classes from './CartDetails.module.css'
 import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setCartDataRemotely } from '../../../store/actionsIndex/actions/cartActions'
+import { setCartDataRemotely } from '../../../store/actionsIndex/actionIndex'
 
 interface Props {
     total: number,

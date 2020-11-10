@@ -4,7 +4,7 @@ import mapSizes from '../../../helpers/mapSizes'
 import { CartButtonDatasetType, CartItemInterface } from '../../../@types/CartTypes'
 import classes from './CartItems.module.css'
 import { useDispatch } from 'react-redux'
-import { cartButtonsActionsRemotely } from '../../../store/actionsIndex/actions/cartActions'
+import { cartButtonsActionsRemotely } from '../../../store/actionsIndex/actionIndex'
 
 interface Props {
     cartItemsEntries: [string, CartItemInterface][],
