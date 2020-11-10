@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { RootReducer } from '../../@types/reducersTypes'
 import { FirebaseUserContext } from '../../App'
 import CircleSpinner from '../../components/CircleSpinner/CircleSpinner'
+import EmptyPageTextWrapper from '../../components/EmptyPageTextWrapper/EmptyPageTextWrapper'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import classes from './Cart.module.css'
 import CartDetails from './CartDetails/CartDetails'
@@ -30,18 +32,26 @@ const Cart: React.FC<Props> = props => {
         <>
             <ScrollToTopOnPathChange />
             <section className={classes.CartContainer}>
-                <form>
-                    <h2>your cart</h2>
-                    {
-                        cartLoading ?
-                            <div className={classes.SpinnerContainer}><CircleSpinner size={25} /></div>
-                            : null
-                    }
-                    <div className={classes.CartInfoContainer}>
-                        <CartItems cartItemsEntries={cartItemsEntries} uid={user!.uid} loading={cartLoading} />
-                        <CartDetails total={subTotal} uid={user!.uid} />
-                    </div>
-                </form>
+                {
+                    cartItemsEntries.length > 0
+                        ?
+                        <form>
+                            <h2>your cart</h2>
+                            {
+                                cartLoading ?
+                                    <div className={classes.SpinnerContainer}><CircleSpinner size={25} /></div>
+                                    : null
+                            }
+                            <div className={classes.CartInfoContainer}>
+                                <CartItems cartItemsEntries={cartItemsEntries} uid={user!.uid} loading={cartLoading} />
+                                <CartDetails total={subTotal} uid={user!.uid} />
+                            </div>
+                        </form>
+                        :
+                        <EmptyPageTextWrapper>
+                            You don't have any items in your cart yet, <Link to="/slippers">continue shopping.</Link>
+                        </EmptyPageTextWrapper>
+                }
             </section>
         </>
     )
