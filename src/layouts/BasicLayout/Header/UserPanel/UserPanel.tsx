@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { ReactComponent as User } from '../../../../assets/user-regular.svg'
-import { ReactComponent as Cart } from '../../../../assets/shopping-cart.svg'
 import classes from './UserPanel.module.css'
 import UserPanelDropdown from './UserPanelDropdown/UserPanelDropdown'
-import { FirebaseUserContext } from '../../../../App'
+import CartIconContainer from './CartIconContainer/CartIconContainer'
 
 interface Props {
     hide: boolean
@@ -13,18 +12,16 @@ interface Props {
 const UserPanel: React.FC<Props> = ({ hide }) => {
     const [dropdownActive, setDropdownActive] = useState(false)
     const location = useLocation()
-    const user = useContext(FirebaseUserContext)
 
     useEffect(() => setDropdownActive(false), [location.pathname, hide])
 
     return (
         <div className={classes.UserPanelContainer}>
-            <Link
-                to="/cart"
-                className={`${classes.IconContainer} ${location.pathname === "/cart" || !user || hide ? classes.Hide : ""}`}
-            >
-                <Cart className={classes.Icon} />
-            </Link>
+            <CartIconContainer hide={hide}
+                iconClass={classes.Icon}
+                iconContainerClass={classes.IconContainer}
+                hideIconClass={classes.Hide}
+            />
             <div
                 onClick={() => setDropdownActive(prev => !prev)}
                 className={`${classes.IconContainer} ${location.pathname === "/auth" || hide ? classes.Hide : ""}`}
