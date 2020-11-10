@@ -8,7 +8,8 @@ import { cartButtonsActionsRemotely } from '../../../store/actionsIndex/actions/
 
 interface Props {
     cartItemsEntries: [string, CartItemInterface][],
-    uid: string
+    uid: string,
+    loading: boolean
 }
 
 const CartItems: React.FC<Props> = props => {
@@ -43,6 +44,7 @@ const CartItems: React.FC<Props> = props => {
                         totalPrice={value.amount * value.productData.price.usd}
                         productUrl={`/slipper/${value.productData.collection}?gender=${value.gender}&size=${value.size}&upper=${value.productData.upperColorShortened}&sole=${value.productData.soleColorShortened}`}
                         cartButtonsActions={cartButtonsActions}
+                        disabled={props.loading}
                     />
                 ))
             }

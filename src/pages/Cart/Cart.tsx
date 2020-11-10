@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../@types/reducersTypes'
 import { FirebaseUserContext } from '../../App'
+import CircleSpinner from '../../components/CircleSpinner/CircleSpinner'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import classes from './Cart.module.css'
 import CartDetails from './CartDetails/CartDetails'
@@ -13,7 +14,10 @@ interface Props {
 
 const Cart: React.FC<Props> = props => {
 
-    const cartItemsEntries = useSelector((state: RootReducer) => Object.entries(state.cartData.cartItems))
+    const { cartItemsEntries, cartLoading } = useSelector((state: RootReducer) => ({
+        cartItemsEntries: Object.entries(state.cartData.cartItems),
+        cartLoading: state.cartData.cartLoading
+    }))
     const user = useContext(FirebaseUserContext)
     const [subTotal, setSubTotal] = useState(0)
 
@@ -28,8 +32,13 @@ const Cart: React.FC<Props> = props => {
             <section className={classes.CartContainer}>
                 <form>
                     <h2>your cart</h2>
+                    {
+                        cartLoading ?
+                            <div className={classes.SpinnerContainer}><CircleSpinner size={25} /></div>
+                            : null
+                    }
                     <div className={classes.CartInfoContainer}>
-                        <CartItems cartItemsEntries={cartItemsEntries} uid={user!.uid} />
+                        <CartItems cartItemsEntries={cartItemsEntries} uid={user!.uid} loading={cartLoading} />
                         <CartDetails total={subTotal} />
                     </div>
                 </form>

@@ -18,6 +18,13 @@
     margin-bottom: 17px;
     font-size: 26px;
     font-weight: 500;
+    display: inline-block;
+}
+.SpinnerContainer {
+    display: inline-block;
+    position: relative;
+    width: 10%;
+    padding: 1% 0;
 }
 @media (min-width: 810px) {
     .CartContainer {
