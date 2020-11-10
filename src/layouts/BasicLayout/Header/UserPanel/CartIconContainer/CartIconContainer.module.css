@@ -1,0 +1,21 @@
+.CartItemsCounter {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    background-color: #F34C3F;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+@media (min-width: 810px) {
+    .CartItemsCounter{
+        top: 20px;
+    }
+}

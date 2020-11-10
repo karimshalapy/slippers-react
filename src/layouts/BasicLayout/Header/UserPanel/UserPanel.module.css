@@ -23,14 +23,28 @@
 .IconContainer {
     cursor: pointer;
     max-width: 100px;
-    padding: 25% 15px;
+    padding: 20.5px 15px;
+    position: relative;
 }
 .IconContainer.Hide {
     max-width: 0;
-    padding: 0;
+    padding: 20.5px 0;
     overflow: hidden;
+}
+.IconContainer.Hide span {
+    right: -16px;
 }
 .IconContainer:hover .Icon path {
     stroke: black;
     stroke-width: 5;
 }
+@media (min-width: 810px) {
+    .IconContainer {
+        padding: 25.5px 15px;
+    }
+.IconContainer.Hide {
+    padding: 25.5px 0;
+
+}
+}
+
