@@ -21,7 +21,7 @@ const CartItem: React.FC<Props> = props => {
     return (
         <li className={classes.CartItem}>
             <div className={classes.ImageContainer}>
-                <img src={props.imgUrl} alt={props.imgAlt} />
+                <Link to={props.productUrl}><img src={props.imgUrl} alt={props.imgAlt} /></Link>
             </div>
             <div className={classes.InfoContainer}>
                 <Link to={props.productUrl}>{props.itemName}</Link>

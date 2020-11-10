@@ -24,6 +24,8 @@
     font-size: 13px;
     text-transform: lowercase;
     font-weight: 600;
+    display: block;
+    width: max-content;
 }
 .InfoContainer p{
     margin: 0;
