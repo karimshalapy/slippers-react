@@ -27,8 +27,7 @@ const Cart: React.FC<Props> = props => {
             <ScrollToTopOnPathChange />
             <section className={classes.CartContainer}>
                 <form>
-                    <h2>welcome, {user?.displayName}!</h2> <span>not you?</span>
-                    <h3>your cart</h3>
+                    <h2>your cart</h2>
                     <div className={classes.CartInfoContainer}>
                         <CartItems cartItemsEntries={cartItemsEntries} />
                         <CartDetails total={subTotal} />

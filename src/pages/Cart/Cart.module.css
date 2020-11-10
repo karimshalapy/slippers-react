@@ -14,6 +14,11 @@
     font-weight: 600;
     font-size: 12px;
 }
+.CartContainer h2 {
+    margin-bottom: 17px;
+    font-size: 26px;
+    font-weight: 500;
+}
 @media (min-width: 810px) {
     .CartContainer {
         width: 70%;
