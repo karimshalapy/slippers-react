@@ -29,7 +29,7 @@ const Cart: React.FC<Props> = props => {
                 <form>
                     <h2>your cart</h2>
                     <div className={classes.CartInfoContainer}>
-                        <CartItems cartItemsEntries={cartItemsEntries} />
+                        <CartItems cartItemsEntries={cartItemsEntries} uid={user!.uid} />
                         <CartDetails total={subTotal} />
                     </div>
                 </form>
