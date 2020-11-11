@@ -12,6 +12,7 @@
     padding: 0;
     list-style-type: none;
     overflow: auto;
+    transition: all 300ms ease;
 }
 /*media query to hide it in big screens*/
 @media (min-width: 1025px) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './NavDropdownMenu.module.css'
-import DropdownTransition from '../../../../components/hoc/DropdownTransition/DropdownTransition'
+import Transitions from '../../../../components/hoc/Transitions/Transitions'
 import { DropdownMenusTypes } from '../../../../@types/HeaderTypes'
 import DropdownContent from './DropdownContent/DropdownContent'
 
@@ -12,7 +12,7 @@ interface Props {
 
 const NavDropdownMenu: React.FC<Props> = props => {
     return (
-        <DropdownTransition show={props.show}>
+        <Transitions show={props.show} type="slideDown">
             {(nodeRef) => (
                 <div className={classes.DropdownNav} ref={nodeRef}>
                     <div className={classes.Container}>
@@ -21,7 +21,7 @@ const NavDropdownMenu: React.FC<Props> = props => {
                     </div>
                 </div>
             )}
-        </DropdownTransition>
+        </Transitions>
     )
 }
 

@@ -1,0 +1,29 @@
+/*slide down transition styles*/
+.slideDown-enter {
+    opacity: 1 !important;
+    transform: translateY(-150%) !important;
+}
+.slideDown-enter-active {
+    transform: translateY(0) !important;
+}
+.slideDown-exit-active {
+    transform: translateY(-150%) !important;
+    transition: none !important;
+}
+.slideDown-exit {
+    opacity: 1 !important;
+    transition: none !important;
+}
+/*slide up transition styles*/
+.slideUp-enter {
+    transform: translate(-50%, 100%) !important;
+}
+.slideUp-enter-active {
+    transform: translate(-50%, -50%) !important;
+}
+.slideUp-exit {
+    opacity: 1 !important;
+}
+.slideUp-exit-active {
+    transform: translate(-50%, 100%) !important;
+}

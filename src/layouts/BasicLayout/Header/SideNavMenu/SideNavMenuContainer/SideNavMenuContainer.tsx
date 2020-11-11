@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react'
 import classes from './SideNavMenuContainer.module.css'
-import DropdownTransition from '../../../../../components/hoc/DropdownTransition/DropdownTransition'
+import Transitions from '../../../../../components/hoc/Transitions/Transitions'
 import { MenuTypes } from '../../../../../@types/SideNavMenuTypes'
 import MenuGenerator from './MenuGenerator/MenuGenerator'
 import { SideMenuContext } from '../../Header'
@@ -47,13 +47,13 @@ const SideNavMenuContainer: React.FC<Props> = props => {
     }, [activeSideMenu, getLevel, sideNavData])
 
     return (
-        <DropdownTransition show={sideMenuOpen}>
+        <Transitions show={sideMenuOpen} type="slideDown">
             {nodeRef => (
                 <ul ref={nodeRef} className={classes.SideMenuContainer}>
                     { getSideNavRenderData()}
                 </ul>
             )}
-        </DropdownTransition>
+        </Transitions>
     )
 }
 
