@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 } from 'uuid'
-import disableScrollOnModalOpen from '../../../helpers/disableScrollOnModalOpen'
 import { updateFilterState } from '../../../store/actionsIndex/actionIndex'
 import { RootReducer } from '../../../@types/reducersTypes'
 import { FilterSectionTypes } from '../../../@types/SlippersTypes'
 import FilterSection from './FilterSection/FilterSection'
 import classes from './FliterProducts.module.css'
+import useDisableScrollOnModalOpen from '../../../hooks/useDisableScrollOnModalOpen'
 
 interface Props {
     inSideBar?: boolean,
@@ -32,7 +32,7 @@ const FliterProducts: React.FC<Props> = props => {
         }
     }, [])
 
-    useEffect(props.inSideBar ? disableScrollOnModalOpen : () => { }, []) //this is needed to disable and enable scrolling ONLY if the FilterProducts is rendered in a sidebar not in main content
+    useDisableScrollOnModalOpen(!!props.inSideBar)//this is needed to disable and enable scrolling ONLY if the FilterProducts is rendered in a sidebar not in main content
 
     return (
         <form className={[classes.FilterSection, props.inSideBar ? classes.InSideBar : "", isAnimationDone ? classes.AnimationDone : ""].join(" ")}> {/*adding the class name with the styling for when it renders in a sidebar*/}

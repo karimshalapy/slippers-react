@@ -1,12 +1,12 @@
-import React, { useCallback, useContext, useEffect, useRef } from 'react'
+import React, { useCallback, useContext, useRef } from 'react'
 import { sideNavDataInfo, ImageBlock } from '../../../../../../@types/SideNavMenuTypes'
 import SideNavMenuItems from './SideNavMenuItems/SideNavMenuItems'
 import { CSSTransition } from 'react-transition-group'
 import classes from './MenuGenerator.module.css'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
-import disableScrollOnModalOpen from '../../../../../../helpers/disableScrollOnModalOpen'
 import { SideMenuContext } from '../../../Header'
+import useDisableScrollOnModalOpen from '../../../../../../hooks/useDisableScrollOnModalOpen'
 
 interface Props {
     data?: sideNavDataInfo[],
@@ -21,7 +21,7 @@ interface Props {
 const MainMenu: React.FC<Props> = props => {
 
     const { toggleMenu } = useContext(SideMenuContext)
-    useEffect(disableScrollOnModalOpen, [])
+    useDisableScrollOnModalOpen(true)
 
     const nodeRef = useRef<HTMLDivElement>(null)
     // destructuring the dependencies from Props
