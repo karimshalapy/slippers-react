@@ -2,20 +2,34 @@ import React, { forwardRef } from 'react'
 import classes from './CartDetails.module.css'
 import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
-import Modal from '../../../components/Modal/Modal'
+import OrderModal from './OrderModal/OrderModal'
 
 interface Props {
     total: number,
     uid: string,
     error?: string,
-    clearCart: (e: React.MouseEvent) => void
+    clearCart: (e: React.MouseEvent) => void,
+    showModal: boolean,
+    closeModalHandler: () => void,
+    orderLoading: boolean,
+    orderError: boolean,
+    orderSuccess: boolean,
+    resetOrder: (e: React.MouseEvent) => void
 }
 
 const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
 
     return (
         <div className={classes.ProductDetails}>
-            <Modal show backdropClickHandler={() => { }}><p>HELLO</p></Modal>
+            <OrderModal
+                show={props.showModal}
+                closeModalHandler={props.closeModalHandler}
+                orderLoading={props.orderLoading}
+                orderError={props.orderError}
+                orderSuccess={props.orderSuccess}
+                resetOrder={props.resetOrder}
+                clearCart={props.clearCart}
+            />
             <div className={classes.PriceDetailsContainer}>
                 <p className={classes.Label}>subtotal</p>
                 <data value={props.total}>${props.total}</data>
@@ -32,7 +46,7 @@ const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
                 />
                 <span className={classes.ErrorMessage}>{props.error}</span>
             </div>
-            <Button tomato>checkout</Button>
+            <Button tomato disabled={props.orderLoading}>checkout</Button>
             <button className={classes.ProductDetailsBtn}><Link to="/slippers">continue shopping</Link></button>
             <button className={classes.ProductDetailsBtn} onClick={props.clearCart}>clear cart</button>
         </div>

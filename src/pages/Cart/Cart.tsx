@@ -36,6 +36,10 @@ const Cart: React.FC<Props> = props => {
     }))
     const user = useContext(FirebaseUserContext)
     const [subTotal, setSubTotal] = useState(0)
+    const [showModal, setShowModal] = useState(false)
+    const [orderLoading, setOrderLoading] = useState(false)
+    const [orderError, setOrderError] = useState(false)
+    const [orderSuccess, setOrderSuccess] = useState(false)
     const cartItemsEntries = Object.entries(cartItems)
     const dispatch = useDispatch()
 
@@ -48,6 +52,15 @@ const Cart: React.FC<Props> = props => {
         dispatch(setCartDataRemotely({}, user!.uid))
     }
 
+    const toggleShowModal = !orderLoading ? () => setShowModal(prev => !prev) : () => { }
+
+    const resetOrder = (e?: React.MouseEvent) => {
+        e?.preventDefault()
+        setOrderLoading(false)
+        setOrderSuccess(false)
+        setOrderError(false)
+    }
+
     const cartFormSubmitHandler = (data: CartInputs) => {
         const order = {
             ...data,
@@ -55,10 +68,20 @@ const Cart: React.FC<Props> = props => {
             total: { usd: subTotal },
             timeOrdered: firebase.database.ServerValue.TIMESTAMP
         }
+        toggleShowModal()
+        resetOrder()
+        setOrderLoading(true)
         Axios.post(`https://slippers-react.firebaseio.com/orders/${user!.uid}.json`, order)
-            .then(() => clearCart())
-            .catch(err => console.log(err))
+            .then(() => {
+                setOrderLoading(false)
+                setOrderSuccess(true)
+            })
+            .catch(() => {
+                setOrderLoading(false)
+                setOrderError(true)
+            })
     }
+
 
     return (
         <>
@@ -86,6 +109,12 @@ const Cart: React.FC<Props> = props => {
                                     ref={register}
                                     error={errors.address?.message}
                                     clearCart={clearCart}
+                                    closeModalHandler={toggleShowModal}
+                                    showModal={showModal}
+                                    orderLoading={orderLoading}
+                                    orderError={orderError}
+                                    orderSuccess={orderSuccess}
+                                    resetOrder={resetOrder}
                                 />
                             </div>
                         </form>

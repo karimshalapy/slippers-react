@@ -60,7 +60,7 @@ input.Error:focus  {
     cursor: pointer;
 }
 
-.ProductDetailsBtn{
+.ProductDetails button{
     background-color: transparent;
     border: none;
     font-family: inherit;
@@ -69,14 +69,14 @@ input.Error:focus  {
     letter-spacing: .05em;
     text-transform: uppercase;
 }
-.ProductDetailsBtn a:link,
-.ProductDetailsBtn a:visited{
+.ProductDetails button a:link,
+.ProductDetails button a:visited{
     width: 100%;
     display: block;
     text-decoration: none;
     color: black;
 
 }
-.ProductDetailsBtn:hover {
+.ProductDetails button:hover {
     text-decoration: underline;
 }
