@@ -1,0 +1,10 @@
+
+.OrderModalContentContainer {
+    text-align: center;
+}
+.OrderModalContentContainer p{
+    margin: 16px 0 25px;
+}
+.OrderModalContentContainer button {
+    margin-bottom: 10px;
+}
