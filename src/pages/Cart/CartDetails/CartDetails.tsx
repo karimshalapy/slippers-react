@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import classes from './CartDetails.module.css'
 import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
+import Modal from '../../../components/Modal/Modal'
 
 interface Props {
     total: number,
@@ -14,6 +15,7 @@ const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
 
     return (
         <div className={classes.ProductDetails}>
+            <Modal show backdropClickHandler={() => { }}><p>HELLO</p></Modal>
             <div className={classes.PriceDetailsContainer}>
                 <p className={classes.Label}>subtotal</p>
                 <data value={props.total}>${props.total}</data>
