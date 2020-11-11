@@ -38,6 +38,20 @@
 .ProductDetails input::placeholder {
     color: #c9c9c9;
 }
+input.Error,
+input.Error:focus  {
+    border: 1px solid red;
+}
+.InputWithErrorContainer {
+    position: relative;
+}
+.ErrorMessage {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    font-size: 11px;
+    color: red;
+}
 /*Buttons styling*/
 .ProductDetails button {
     width: 100%;
