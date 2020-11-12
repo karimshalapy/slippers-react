@@ -5,9 +5,9 @@ import Button from '../../../components/Button/Button'
 import { useForm } from 'react-hook-form'
 import { Inputs, schema } from './newsletterValidation'
 import FadeSwitchTransition from '../../../components/hoc/FadeSwitchTransition/FadeSwitchTransition'
-import axios from 'axios'
 import NewsletterSubmitResult from './NewsletterSubmitResult/NewsletterSubmitResult'
 import CircleSpinner from '../../../components/CircleSpinner/CircleSpinner'
+import { database } from '../../../Firebase'
 
 const Newsletter: React.FC = () => {
     const [subscribed, setSubscribed] = useState(false)
@@ -26,14 +26,15 @@ const Newsletter: React.FC = () => {
     const submitHandler = useCallback((data: Inputs) => {
         setIsLoading(true)
         //patching newsletterSubscribers to add another key value pair to it if not duplicate and replacing all dots with _____dot_____ in the email in order to use it as a key in firebase database
-        axios.patch(`https://slippers-react.firebaseio.com/newsletterSubscribers.json`, { [data.newsletterMail.replace(/\./g, "_____dot_____")]: true })
+        database.ref("/newsletterSubscribers").update({ [data.newsletterMail.replace(/\./g, "_____dot_____")]: true })
             .then(() => {
                 setIsLoading(false)
                 setSubscribed(true)
             })
             .catch((err) => {
+                console.log(err.code)
                 setIsLoading(false)
-                if (err?.response?.status === 401) setAlreadySubscribed(true)
+                if (err.code === "PERMISSION_DENIED") setAlreadySubscribed(true)
                 else setError(true)
             })
     }, [])
