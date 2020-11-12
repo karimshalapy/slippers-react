@@ -59,6 +59,7 @@ const Cart: React.FC<Props> = props => {
         setOrderLoading(false)
         setOrderSuccess(false)
         setOrderError(false)
+        if (e) setShowModal(false)
     }
 
     const cartFormSubmitHandler = (data: CartInputs) => {
