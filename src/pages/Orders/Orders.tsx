@@ -1,9 +1,9 @@
-import Axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { OrderInterface, OrdersInterface } from '../../@types/OrdersTypes'
 import { FirebaseUserContext } from '../../App'
 import EmptyPageTextWrapper from '../../components/EmptyPageTextWrapper/EmptyPageTextWrapper'
+import { database } from '../../Firebase'
 import Order from './Order/Order'
 import classes from './Orders.module.css'
 
@@ -23,10 +23,11 @@ const Orders: React.FC<Props> = props => {
         setGetOrdersError(false)
         setGetOrdersLoading(true)
         if (user) {
-            Axios.get<OrdersInterface>(`https://slippers-react.firebaseio.com/orders/${user.uid}.json`)
-                .then(res => {
+            database.ref(`/orders/${user.uid}`).once("value")
+                .then(snapshot => {
                     setGetOrdersLoading(false)
-                    if (res.data && Object.entries(res.data).length > 0) setOrderData(Object.entries(res.data))
+                    const value = snapshot.val() as OrdersInterface
+                    if (value && Object.entries(value).length > 0) setOrderData(Object.entries(value))
                 })
                 .catch(() => {
                     setGetOrdersLoading(false)
@@ -45,6 +46,7 @@ const Orders: React.FC<Props> = props => {
                 {
                     [...Array(3)].map((_, i) => (
                         <Order
+                            key={i}
                             orderId=""
                             uid=""
                             address=""
