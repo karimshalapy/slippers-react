@@ -10,7 +10,8 @@ interface Props {
     cartItemsEntries: [string, CartItemInterface][],
     uid: string,
     loading?: boolean,
-    inCart?: boolean
+    inCart?: boolean,
+    classNames?: string
 }
 
 const CartItems: React.FC<Props> = props => {
@@ -30,7 +31,7 @@ const CartItems: React.FC<Props> = props => {
     }
 
     return (
-        <ul className={classes.CartItemsContainer}>
+        <ul className={`${classes.CartItemsContainer} ${props.classNames}`}>
             {
                 props.cartItemsEntries.map(([key, value]) => (
                     <CartItem
