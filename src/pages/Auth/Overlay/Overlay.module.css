@@ -66,8 +66,7 @@
 	transform: translateX(20%);
 }
 
-button.Ghost {
-	background-color: transparent;
+body button.Ghost {
 	border-color: #FFFFFF;
 	color: #fff;
 	font-weight: bold;

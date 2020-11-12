@@ -13,7 +13,7 @@ body button.Button {
 }
 body button.ButtonOutlined {
     color: black;
-    background-color: white;
+    background-color: transparent;
     border: 1px solid black;
 }
 body button.ButtonTomato {
