@@ -10,9 +10,24 @@ interface Props {
     total: number,
     timeOrdered: number,
     orderItems: CartItemsInterface,
+    loading?: boolean
 }
 
 const Order: React.FC<Props> = props => {
+    if (props.loading) return (
+        <li className={classes.Order}>
+            <ul>
+                <li className="Loading">&nbsp;</li>
+                <li className="Loading" style={{ width: "50%", margin: "auto" }}>
+                    <p>&nbsp;</p>
+                    <ul>&nbsp;</ul>
+                </li>
+                <li className="Loading">&nbsp;</li>
+                <li className="Loading">&nbsp;</li>
+                <li className="Loading">&nbsp;</li>
+            </ul>
+        </li>
+    )
     return (
         <li className={classes.Order}>
             <ul>
