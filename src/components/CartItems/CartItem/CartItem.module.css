@@ -3,9 +3,13 @@
     position: relative;
     border-top: 1px solid #f5f5f5;
 }
+.CartItem:first-of-type {
+    border: none;
+}
 /***************************Image Styling***************************/
 .ImageContainer {
-    width: 19%;
+    width: 35%;
+    max-width: 100px;
 }
 .ImageContainer img {
     max-width: 100%;
@@ -14,8 +18,16 @@
 .InfoContainer {
     display: flex;
     flex-direction: column;
-    padding: 20px 0 20px 40px;
     width: 100%;
+    padding: 20px 0 20px 20px;
+}
+@media (min-width: 810px){
+    .ImageContainer {
+        width: 19%;
+    }
+    .InfoContainer {
+        padding-left: 40px;
+    }
 }
 .InfoContainer a:link,
 .InfoContainer a:visited {

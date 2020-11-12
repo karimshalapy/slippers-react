@@ -3,6 +3,11 @@
     padding: 0;
     list-style-type: none;
 }
+.CartItemsContainer data{
+    color: #111;
+    font-weight: 600;
+    font-size: 12px;
+}
 @media (min-width: 810px) {
     .CartItemsContainer {
         padding: 0 9% 0 0;

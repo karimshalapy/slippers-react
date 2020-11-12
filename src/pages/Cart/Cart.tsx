@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 import { CartInputs } from '../../@types/CartTypes'
 import { RootReducer } from '../../@types/reducersTypes'
 import { FirebaseUserContext } from '../../App'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import CircleSpinner from '../../components/CircleSpinner/CircleSpinner'
 import EmptyPageTextWrapper from '../../components/EmptyPageTextWrapper/EmptyPageTextWrapper'
 import ScrollToTopOnPathChange from '../../components/ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import classes from './Cart.module.css'
 import CartDetails from './CartDetails/CartDetails'
-import CartItems from './CartItems/CartItems'
+import CartItems from '../../components/CartItems/CartItems'
 import cartSchema from './CartValidation'
 import { setCartDataRemotely } from '../../store/actionsIndex/actionIndex'
 
@@ -102,6 +102,7 @@ const Cart: React.FC<Props> = props => {
                                     cartItemsEntries={cartItemsEntries}
                                     uid={user!.uid}
                                     loading={cartLoading}
+                                    inCart
                                 />
                                 <CartDetails
                                     total={subTotal}

@@ -1,15 +1,16 @@
 import React from 'react'
 import CartItem from './CartItem/CartItem'
-import mapSizes from '../../../helpers/mapSizes'
-import { CartButtonDatasetType, CartItemInterface } from '../../../@types/CartTypes'
+import mapSizes from '../../helpers/mapSizes'
+import { CartButtonDatasetType, CartItemInterface } from '../../@types/CartTypes'
 import classes from './CartItems.module.css'
 import { useDispatch } from 'react-redux'
-import { cartButtonsActionsRemotely } from '../../../store/actionsIndex/actionIndex'
+import { cartButtonsActionsRemotely } from '../../store/actionsIndex/actionIndex'
 
 interface Props {
     cartItemsEntries: [string, CartItemInterface][],
     uid: string,
-    loading: boolean
+    loading?: boolean,
+    inCart?: boolean
 }
 
 const CartItems: React.FC<Props> = props => {
@@ -45,6 +46,7 @@ const CartItems: React.FC<Props> = props => {
                         productUrl={`/slipper/${value.productData.collection}?gender=${value.gender}&size=${value.size}&upper=${value.productData.upperColorShortened}&sole=${value.productData.soleColorShortened}`}
                         cartButtonsActions={cartButtonsActions}
                         disabled={props.loading}
+                        inCart={props.inCart}
                     />
                 ))
             }
