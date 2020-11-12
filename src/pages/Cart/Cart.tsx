@@ -1,4 +1,3 @@
-import Axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +14,7 @@ import CartDetails from './CartDetails/CartDetails'
 import CartItems from '../../components/CartItems/CartItems'
 import cartSchema from './CartValidation'
 import { setCartDataRemotely } from '../../store/actionsIndex/actionIndex'
+import { database } from '../../Firebase'
 
 interface Props {
 
@@ -71,7 +71,7 @@ const Cart: React.FC<Props> = props => {
         toggleShowModal()
         resetOrder()
         setOrderLoading(true)
-        Axios.post(`https://slippers-react.firebaseio.com/orders/${user!.uid}.json`, order)
+        database.ref(`/orders/${user!.uid}`).push(order)
             .then(() => {
                 setOrderLoading(false)
                 setOrderSuccess(true)
