@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react'
+import React, { memo, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
 import Transitions from '../../../../components/hoc/Transitions/Transitions'
