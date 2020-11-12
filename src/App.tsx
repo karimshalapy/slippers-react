@@ -12,6 +12,7 @@ import _404 from './pages/_404/_404'
 import { getResources } from './store/actionsIndex/actionIndex'
 import { getCartData, setCartDataLocally } from './store/actionsIndex/actionIndex'
 import Cart from './pages/Cart/Cart'
+import Orders from './pages/Orders/Orders'
 
 export const FirebaseUserContext = createContext<firebase.User | null>(null)
 
@@ -41,6 +42,7 @@ function App() {
               <Route path="/404" exact component={_404} />
               <Route path="/auth" exact component={Auth} />
               <Route path="/cart" exact component={Cart} />
+              <Route path="/orders" exact component={Orders} />
               <Redirect from="/" to="/404" />
             </Switch>
           </BasicLayout>
