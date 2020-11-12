@@ -1,6 +1,32 @@
 {
   "rules": {
-    ".read": true,
-    ".write": false
+    "resources": {
+      ".read": true,
+      ".write": false
+    },
+    "slippers": {
+      ".read": true,
+      ".write": false
+    },
+    "newsletterSubscribers": {
+      ".read": false,
+      "$email": {
+        ".write": "!data.exists() && newData.exists()"
+      }
+    },
+    "cart": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "orders": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        "$property": {
+          ".write": "$uid === auth.uid && !data.exists() && newData.exists()"
+        }
+      }
+    }
   }
 }
