@@ -1,0 +1,15 @@
+.Order ul.OrderedItemsList {
+    max-width: max-content;
+    margin: auto;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+}
+.Order ul.OrderedItemsList li {
+    padding: 0 20px;
+}
+.Order ul.OrderedItemsList li div:first-child {
+    width: 50%;
+}
+.Order ul.OrderedItemsList li div:last-child {
+    padding-left: 20px;
+}
