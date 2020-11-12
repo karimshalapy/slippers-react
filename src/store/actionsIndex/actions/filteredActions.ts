@@ -8,7 +8,7 @@ const setProducts: (x: SlippersData) => FilteredAction = (products) => ({
     products
 })
 
-export const getProdcuts = asyncThunkGet<SlippersData, FilteredAction>("slippers.json", setProducts)
+export const getProdcuts = asyncThunkGet<SlippersData, FilteredAction>("/slippers", setProducts)
 
 export const filterProducts = (filterState: SlipperFilterState, filterData: AvailableFilters) => ({
     type: actions.FILTER,

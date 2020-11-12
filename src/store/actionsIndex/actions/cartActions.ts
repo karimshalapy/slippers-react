@@ -76,4 +76,4 @@ export const setCartDataRemotely = (cartItems: CartItemsInterface, uid: string) 
     }
     return async()
 }
-export const getCartData = (uid: string) => asyncThunkGet<CartItemsInterface, CartActions>(`cart/${uid}.json`, setCartDataLocally)()
+export const getCartData = (uid: string) => asyncThunkGet<CartItemsInterface, CartActions>(`/cart/${uid}`, setCartDataLocally)()

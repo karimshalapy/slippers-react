@@ -9,4 +9,4 @@ const setResources: (x: ResourcesState) => ResourcesAction = (resources) => ({
     resources
 })
 
-export const getResources = asyncThunkGet<ResourcesState, ResourcesAction>("resources.json", setResources)
+export const getResources = asyncThunkGet<ResourcesState, ResourcesAction>("/resources", setResources)
