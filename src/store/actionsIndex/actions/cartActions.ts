@@ -1,15 +1,15 @@
-import Axios from 'axios'
 import { Action } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { AppThunk, CartActions } from '../../../@types/actionTypes'
 import { CartButtonDatasetType, CartItemsInterface } from '../../../@types/CartTypes'
 import { RootReducer } from '../../../@types/reducersTypes'
 import { Gender, SlippersProductData } from '../../../@types/SlippersTypes'
+import { database } from '../../../Firebase'
 import asyncThunkGet from '../../../helpers/asyncThunkGet'
 import * as actions from '../actionNames'
 
-const thunkAxiosPutRequest = (dispatch: ThunkDispatch<RootReducer, unknown, Action<string>>, uid: string, itemToBeSent: CartItemsInterface, fallbackItemsOnError?: CartItemsInterface) => {
-    Axios.put<CartItemsInterface>(`https://slippers-react.firebaseio.com/cart/${uid}.json`, itemToBeSent)
+const asyncThunkPutRequest = (dispatch: ThunkDispatch<RootReducer, unknown, Action<string>>, uid: string, itemToBeSent: CartItemsInterface, fallbackItemsOnError?: CartItemsInterface) => {
+    database.ref(`/cart/${uid}`).set(itemToBeSent)
         .then(() => dispatch(setCartLoadingState(false)))
         .catch(() => {
             dispatch(setCartLoadingState(false))
@@ -36,7 +36,7 @@ export const addToCartRemotely = (itemToBeAdded: SlippersProductData, gender: Ge
         return (dispatch, getState) => {
             dispatch(addToCartLocally(itemToBeAdded, gender, size))
             dispatch(setCartLoadingState(true))
-            thunkAxiosPutRequest(dispatch, uid, getState().cartData.cartItems)
+            asyncThunkPutRequest(dispatch, uid, getState().cartData.cartItems)
         }
     }
     return async()
@@ -57,7 +57,7 @@ export const cartButtonsActionsRemotely = (itemId: string, cartButtonType: CartB
             const oldCartItems = getState().cartData.cartItems
             dispatch(cartButtonsActionsLocally(itemId, cartButtonType))
             dispatch(setCartLoadingState(true))
-            thunkAxiosPutRequest(dispatch, uid, getState().cartData.cartItems, oldCartItems)
+            asyncThunkPutRequest(dispatch, uid, getState().cartData.cartItems, oldCartItems)
         }
     }
     return async()
@@ -71,7 +71,7 @@ export const setCartDataRemotely = (cartItems: CartItemsInterface, uid: string) 
         return (dispatch) => {
             dispatch(setCartDataLocally(cartItems))
             dispatch(setCartLoadingState(true))
-            thunkAxiosPutRequest(dispatch, uid, cartItems)
+            asyncThunkPutRequest(dispatch, uid, cartItems)
         }
     }
     return async()
