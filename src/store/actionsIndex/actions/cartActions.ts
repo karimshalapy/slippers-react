@@ -8,12 +8,13 @@ import { Gender, SlippersProductData } from '../../../@types/SlippersTypes'
 import asyncThunkGet from '../../../helpers/asyncThunkGet'
 import * as actions from '../actionNames'
 
-const thunkAxiosPutRequest = (dispatch: ThunkDispatch<RootReducer, unknown, Action<string>>, uid: string, itemToBeSent: CartItemsInterface) => {
+const thunkAxiosPutRequest = (dispatch: ThunkDispatch<RootReducer, unknown, Action<string>>, uid: string, itemToBeSent: CartItemsInterface, fallbackItemsOnError?: CartItemsInterface) => {
     Axios.put<CartItemsInterface>(`https://slippers-react.firebaseio.com/cart/${uid}.json`, itemToBeSent)
         .then(() => dispatch(setCartLoadingState(false)))
         .catch(() => {
             dispatch(setCartLoadingState(false))
             dispatch(setCartErrorState(true))
+            if (fallbackItemsOnError) dispatch(setCartDataLocally(fallbackItemsOnError))
         })
 }
 export const setCartLoadingState = (loadingState: boolean): CartActions => ({
@@ -53,9 +54,10 @@ export const cartButtonsActionsLocally = (itemId: string, cartButtonType: CartBu
 export const cartButtonsActionsRemotely = (itemId: string, cartButtonType: CartButtonDatasetType, uid: string) => {
     const async: AppThunk<RootReducer> = () => {
         return (dispatch, getState) => {
+            const oldCartItems = getState().cartData.cartItems
             dispatch(cartButtonsActionsLocally(itemId, cartButtonType))
             dispatch(setCartLoadingState(true))
-            thunkAxiosPutRequest(dispatch, uid, getState().cartData.cartItems)
+            thunkAxiosPutRequest(dispatch, uid, getState().cartData.cartItems, oldCartItems)
         }
     }
     return async()
