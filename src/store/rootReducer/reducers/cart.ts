@@ -8,7 +8,8 @@ const createCartItemId = (item: SlippersProductData, gender: Gender, size: numbe
 const initalState: CartState = {
     cartItems: {},
     cartLoading: false,
-    cartError: false
+    cartError: false,
+    cartSuccess: false
 }
 
 export default (state = initalState, action: CartActions): CartState => {
@@ -44,6 +45,19 @@ export default (state = initalState, action: CartActions): CartState => {
             return {
                 ...state,
                 cartError: !!action.error
+            }
+        case !!(action.type === actions.SET_CART_SUCCESS):
+            return {
+                ...state,
+                cartSuccess: !!action.success
+            }
+        case !!(action.type === actions.RESET_CART_LOADING_STATE):
+            return {
+                ...state,
+                cartSuccess: false,
+                cartLoading: false,
+                cartError: false,
+
             }
         case !!(action.type === actions.INCREMENT_CART && action.itemId):
             console.log("increment")

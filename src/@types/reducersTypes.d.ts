@@ -31,7 +31,8 @@ interface ProductsData {
 interface CartState {
     cartItems: CartItemsInterface,
     cartLoading: boolean,
-    cartError: boolean
+    cartError: boolean,
+    cartSuccess: boolean
 }
 
 interface RootReducer {

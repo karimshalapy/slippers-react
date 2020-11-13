@@ -10,21 +10,22 @@ import * as actions from '../actionNames'
 
 const asyncThunkPutRequest = (dispatch: ThunkDispatch<RootReducer, unknown, Action<string>>, uid: string, itemToBeSent: CartItemsInterface, fallbackItemsOnError?: CartItemsInterface) => {
     database.ref(`/cart/${uid}`).set(itemToBeSent)
-        .then(() => dispatch(setCartLoadingState(false)))
+        .then(() => {
+            dispatch(setCartState(false, "loading"))
+            dispatch(setCartState(true, "success"))
+        })
         .catch(() => {
-            dispatch(setCartLoadingState(false))
-            dispatch(setCartErrorState(true))
+            dispatch(setCartState(false, "loading"))
+            dispatch(setCartState(true, "error"))
             if (fallbackItemsOnError) dispatch(setCartDataLocally(fallbackItemsOnError))
         })
 }
-export const setCartLoadingState = (loadingState: boolean): CartActions => ({
-    type: actions.SET_CART_LOADING,
-    loading: loadingState
+export const setCartState = (state: boolean, stateType: "loading" | "success" | "error"): CartActions => ({
+    type: stateType === "loading" ? actions.SET_CART_LOADING : stateType === "error" ? actions.SET_CART_ERROR : actions.SET_CART_SUCCESS,
+    [stateType]: state
 })
-export const setCartErrorState = (errorState: boolean): CartActions => ({
-    type: actions.SET_CART_ERROR,
-    error: errorState
-})
+export const resetCartState = () => ({ type: actions.RESET_CART_LOADING_STATE })
+
 export const addToCartLocally = (itemToBeAdded: SlippersProductData, gender: Gender, size: number): CartActions => ({
     type: actions.ADD_TO_CART,
     itemToBeAdded,
@@ -35,7 +36,8 @@ export const addToCartRemotely = (itemToBeAdded: SlippersProductData, gender: Ge
     const async: AppThunk<RootReducer> = () => {
         return (dispatch, getState) => {
             dispatch(addToCartLocally(itemToBeAdded, gender, size))
-            dispatch(setCartLoadingState(true))
+            dispatch(resetCartState())
+            dispatch(setCartState(true, "loading"))
             asyncThunkPutRequest(dispatch, uid, getState().cartData.cartItems)
         }
     }
@@ -56,7 +58,8 @@ export const cartButtonsActionsRemotely = (itemId: string, cartButtonType: CartB
         return (dispatch, getState) => {
             const oldCartItems = getState().cartData.cartItems
             dispatch(cartButtonsActionsLocally(itemId, cartButtonType))
-            dispatch(setCartLoadingState(true))
+            dispatch(resetCartState())
+            dispatch(setCartState(true, "loading"))
             asyncThunkPutRequest(dispatch, uid, getState().cartData.cartItems, oldCartItems)
         }
     }
@@ -70,7 +73,8 @@ export const setCartDataRemotely = (cartItems: CartItemsInterface, uid: string) 
     const async: AppThunk<RootReducer> = () => {
         return (dispatch) => {
             dispatch(setCartDataLocally(cartItems))
-            dispatch(setCartLoadingState(true))
+            dispatch(resetCartState())
+            dispatch(setCartState(true, "loading"))
             asyncThunkPutRequest(dispatch, uid, cartItems)
         }
     }

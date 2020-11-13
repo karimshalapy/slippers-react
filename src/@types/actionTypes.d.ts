@@ -35,12 +35,13 @@ export interface FilteredAction {
 
 //cart action types
 export interface CartActions {
-    type: actionTypes.ADD_TO_CART | actionTypes.REMOVE_ITEM_CART | actionTypes.INCREMENT_CART | actionTypes.DECREMENT_CART | actionTypes.SET_CART_DATA | actionTypes.SET_CART_LOADING | actionTypes.SET_CART_ERROR,
+    type: actionTypes.ADD_TO_CART | actionTypes.REMOVE_ITEM_CART | actionTypes.RESET_CART_LOADING_STATE | actionTypes.SET_CART_SUCCESS | actionTypes.INCREMENT_CART | actionTypes.DECREMENT_CART | actionTypes.SET_CART_DATA | actionTypes.SET_CART_LOADING | actionTypes.SET_CART_ERROR,
     itemToBeAdded?: SlippersProductData,
     gender?: Gender,
     size?: number,
     cartItems?: CartItemsInterface,
     loading?: boolean,
     error?: boolean,
+    success?: boolean,
     itemId?: string,
 }
