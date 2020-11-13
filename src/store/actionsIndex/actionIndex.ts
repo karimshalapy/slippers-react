@@ -23,4 +23,5 @@ export {
     setCartDataLocally,
     setCartDataRemotely,
     setCartState,
+    resetCartState
 } from './actions/cartActions'

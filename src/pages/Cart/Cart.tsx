@@ -13,7 +13,7 @@ import classes from './Cart.module.css'
 import CartDetails from './CartDetails/CartDetails'
 import CartItems from '../../components/CartItems/CartItems'
 import cartSchema from './CartValidation'
-import { setCartDataRemotely } from '../../store/actionsIndex/actionIndex'
+import { setCartDataRemotely, resetCartState } from '../../store/actionsIndex/actionIndex'
 import { database } from '../../Firebase'
 
 interface Props {
@@ -56,9 +56,7 @@ const Cart: React.FC<Props> = props => {
 
     const resetOrder = (e?: React.MouseEvent) => {
         e?.preventDefault()
-        setOrderLoading(false)
-        setOrderSuccess(false)
-        setOrderError(false)
+        dispatch(resetCartState())
         if (e) setShowModal(false)
     }
 
