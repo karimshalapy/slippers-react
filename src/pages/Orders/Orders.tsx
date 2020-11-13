@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { OrderInterface, OrdersInterface } from '../../@types/OrdersTypes'
 import { FirebaseUserContext } from '../../App'
 import EmptyPageTextWrapper from '../../components/EmptyPageTextWrapper/EmptyPageTextWrapper'
@@ -67,22 +67,32 @@ const Orders: React.FC<Props> = props => {
     )
     return (
         <section className={classes.OrdersContainer}>
-            <h2>your previous orders</h2>
-            <ul className={classes.OrdersList}>
-                {
-                    orderData.map(([key, value]) => (
-                        <Order
-                            key={key}
-                            orderId={key}
-                            uid={user!.uid}
-                            address={value.address}
-                            total={value.total.usd}
-                            timeOrdered={value.timeOrdered}
-                            orderItems={value.orderItems}
-                        />
-                    ))
-                }
-            </ul>
+            {
+                orderData.length > 0
+                    ?
+                    <>
+                        <h2>your previous orders</h2>
+                        <ul className={classes.OrdersList}>
+                            {
+                                orderData.map(([key, value]) => (
+                                    <Order
+                                        key={key}
+                                        orderId={key}
+                                        uid={user!.uid}
+                                        address={value.address}
+                                        total={value.total.usd}
+                                        timeOrdered={value.timeOrdered}
+                                        orderItems={value.orderItems}
+                                    />
+                                ))
+                            }
+                        </ul>
+                    </>
+                    :
+                    <EmptyPageTextWrapper>
+                        You haven't ordered any items yet, What are you waiting for? <Link to="/slippers">go shopping now! </Link>
+                    </EmptyPageTextWrapper>
+            }
         </section>
     )
 }
