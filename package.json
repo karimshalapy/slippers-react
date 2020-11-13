@@ -8,7 +8,6 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^0.1.1",
-    "axios": "^0.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.8.6",

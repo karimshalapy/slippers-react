@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ReactComponent as User } from '../../../../assets/user-regular.svg'
 import classes from './UserPanel.module.css'
@@ -6,14 +6,15 @@ import UserPanelDropdown from './UserPanelDropdown/UserPanelDropdown'
 import CartIconContainer from './CartIconContainer/CartIconContainer'
 
 interface Props {
-    hide: boolean
+    hide: boolean,
+    setDropdownActive: React.Dispatch<React.SetStateAction<boolean>>,
+    dropdownActive: boolean
 }
 
-const UserPanel: React.FC<Props> = ({ hide }) => {
-    const [dropdownActive, setDropdownActive] = useState(false)
+const UserPanel: React.FC<Props> = ({ hide, dropdownActive, setDropdownActive }) => {
     const location = useLocation()
 
-    useEffect(() => setDropdownActive(false), [location.pathname, hide])
+    useEffect(() => setDropdownActive(false), [location.pathname, hide, setDropdownActive])
 
     return (
         <div className={classes.UserPanelContainer}>
@@ -23,7 +24,7 @@ const UserPanel: React.FC<Props> = ({ hide }) => {
                 hideIconClass={classes.Hide}
             />
             <div
-                onClick={() => setDropdownActive(prev => !prev)}
+                onClick={() => { setDropdownActive(prev => !prev) }}
                 className={`${classes.IconContainer} ${location.pathname === "/auth" || hide ? classes.Hide : ""}`}
             >
                 <User className={classes.Icon} />

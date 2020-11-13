@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useState, createContext } from 'react'
+import React, { useReducer, useCallback, useState, createContext, useEffect } from 'react'
 import classes from './Header.module.css'
 import { HeaderReducer, HeaderClickHandler } from '../../../@types/HeaderTypes'
 import { reducer, initialState } from './HeaderReducer'
@@ -21,6 +21,7 @@ const Header: React.FC = () => {
     const [state, dispatch] = useReducer<HeaderReducer>(reducer, initialState)
     const [sideMenuOpen, setSideMenuOpen] = useState(false)
     const [activeSideMenu, setActiveSideMenu] = useState<MenuTypes>("main")
+    const [userPaneldropdownActive, setUserPanelDropdownActive] = useState(false)
 
     const changeDropDown = useCallback<HeaderClickHandler>((actionType) => {
         dispatch({ type: actionType })
@@ -30,6 +31,8 @@ const Header: React.FC = () => {
         dispatch({ type: "init" })
     }, [])
 
+    useEffect(() => { if (userPaneldropdownActive) resetDropdownState() }, [userPaneldropdownActive, resetDropdownState])
+
     const navigateSideMenu = (menu: MenuTypes) => {
         setActiveSideMenu(menu)
     }
@@ -38,7 +41,6 @@ const Header: React.FC = () => {
         setSideMenuOpen(prevOpen => !prevOpen)
         setActiveSideMenu("main")
     }
-
     return (
         <header className={classes.MainNavHeader}>
             <a href="/" className={classes.LogoLink}>
@@ -49,7 +51,7 @@ const Header: React.FC = () => {
             <SideMenuContext.Provider value={{ navigateSideMenu, sideMenuOpen, activeSideMenu, toggleMenu }}>
                 <SideNavMenu />
             </SideMenuContext.Provider>
-            <UserPanel hide={sideMenuOpen} />
+            <UserPanel hide={sideMenuOpen} dropdownActive={userPaneldropdownActive} setDropdownActive={setUserPanelDropdownActive} />
         </header>
     )
 }
