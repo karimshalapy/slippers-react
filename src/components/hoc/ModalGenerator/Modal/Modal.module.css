@@ -1,9 +1,8 @@
 .Modal {
     background-color: white;
     width: 90%;
-    height: 50%;
     max-width: 500px;
-    max-height: 500px;
+    max-height: max-content;
     box-shadow: 0 0 5px 5px rgba(51, 51, 51, 0.3);
     border-radius: 5px;
     position: fixed;
@@ -18,16 +17,19 @@
 }
 .Modal section {
     text-align: center;
+    position: relative;
     display: flex;
     flex-direction: column;
+    margin: 35px;
 }
 .Modal section h2 {
     margin-top: 0;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 500;
 }
 .Modal section p {
     margin: 16px 0 25px;
+    font-size: 13px;
 }
 .Modal section button {
     margin-bottom: 10px;
