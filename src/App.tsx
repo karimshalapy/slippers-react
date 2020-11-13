@@ -1,6 +1,7 @@
 import React, { createContext, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { LastLocationProvider } from 'react-router-last-location'
 import useFirebaseAuth from './hooks/useFirebaseAuth'
 import firebase from 'firebase/app'
 import BasicLayout from './layouts/BasicLayout/BasicLayout'
@@ -31,23 +32,25 @@ function App() {
 
   return (
     <BrowserRouter>
-      <FirebaseUserContext.Provider value={user} >
-        <div className="App">
-          <BasicLayout>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/slippers" exact component={Slippers} />
-              <Route path="/slipper" exact component={Slipper} />
-              <Route path="/slipper/:slipperType" exact component={Slipper} />
-              <Route path="/404" exact component={_404} />
-              <Route path="/auth" exact component={Auth} />
-              <Route path="/cart" exact component={Cart} />
-              <Route path="/orders" exact component={Orders} />
-              <Redirect from="/" to="/404" />
-            </Switch>
-          </BasicLayout>
-        </div>
-      </FirebaseUserContext.Provider>
+      <LastLocationProvider>
+        <FirebaseUserContext.Provider value={user} >
+          <div className="App">
+            <BasicLayout>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/slippers" exact component={Slippers} />
+                <Route path="/slipper" exact component={Slipper} />
+                <Route path="/slipper/:slipperType" exact component={Slipper} />
+                <Route path="/404" exact component={_404} />
+                <Route path="/auth" exact component={Auth} />
+                <Route path="/cart" exact component={Cart} />
+                <Route path="/orders" exact component={Orders} />
+                <Redirect from="/" to="/404" />
+              </Switch>
+            </BasicLayout>
+          </div>
+        </FirebaseUserContext.Provider>
+      </LastLocationProvider>
     </BrowserRouter>
   )
 }
