@@ -14,7 +14,8 @@ const UserPanelDropdown: React.FC<Props> = ({ dropdownActive, setDropdownActive 
     const nodeRef = useRef(null)
 
     const documentClickHandler = useCallback((e: MouseEvent) => {
-        if (e.target !== nodeRef.current) setDropdownActive(false)
+        const target = e.target as HTMLElement
+        if (target.parentNode?.parentNode !== nodeRef.current) setDropdownActive(false)
     }, [setDropdownActive])
 
     useEffect(() => {
@@ -29,8 +30,9 @@ const UserPanelDropdown: React.FC<Props> = ({ dropdownActive, setDropdownActive 
                     user
                         ?
                         <>
-                            <li onClick={() => auth.signOut()}><Link to="/">Sign out</Link></li>
+                            <li><p>logged in as: <br /><span>{user.displayName}</span></p></li>
                             <li><Link to="/orders">Previous Orders</Link></li>
+                            <li onClick={() => auth.signOut()}><Link to="/">Sign out</Link></li>
                         </>
                         :
                         <>

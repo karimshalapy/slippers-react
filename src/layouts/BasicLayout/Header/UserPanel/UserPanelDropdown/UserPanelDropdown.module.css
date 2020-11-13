@@ -26,7 +26,7 @@
     user-select: none;
 }
 
-.UserPanelDropdown li a {
+.UserPanelDropdown li a, .UserPanelDropdown li p {
     font-size: 13px;
     color: #000;
     text-decoration: none;
@@ -43,4 +43,15 @@
 .UserPanelDropdown li a:hover,
 .UserPanelDropdown li a:focus{
     background-color: #f4f4f4;
+}
+.UserPanelDropdown li p {
+    margin: 0;
+    pointer-events: none;
+}
+.UserPanelDropdown li p span {
+    display: inline-block;
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
 }
