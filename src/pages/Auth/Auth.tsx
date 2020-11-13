@@ -31,6 +31,7 @@ const Auth: React.FC<Props> = props => {
 
     const switchPanelHandler = (e: React.MouseEvent) => {
         e.preventDefault()
+        setFormSubmitError(undefined)
         setIsSignup(prev => !prev)
     }
     useEffect(() => {
