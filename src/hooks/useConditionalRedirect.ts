@@ -15,7 +15,6 @@ export const useConditionalRedirect = (ifUser?: boolean) => {
     }, [lastLocation])
 
     useEffect(() => {
-        console.log(lastLocationBeforeAuth)
         if (ifUser) {
             if (user) {
                 if (lastLocationBeforeAuth) {

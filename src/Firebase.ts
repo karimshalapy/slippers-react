@@ -26,7 +26,6 @@ export const {
 } = firebase.auth
 
 export const getProviderId = (providerType: ProviderId) => {
-    console.log(providerType)
     if (providerType === "facebook.com") return new FacebookAuthProvider()
     if (providerType === "twitter.com") return new TwitterAuthProvider()
     if (providerType === "github.com") return new GithubAuthProvider()

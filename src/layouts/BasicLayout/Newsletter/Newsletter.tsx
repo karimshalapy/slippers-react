@@ -32,7 +32,6 @@ const Newsletter: React.FC = () => {
                 setSubscribed(true)
             })
             .catch((err) => {
-                console.log(err.code)
                 setIsLoading(false)
                 if (err.code === "PERMISSION_DENIED") setAlreadySubscribed(true)
                 else setError(true)

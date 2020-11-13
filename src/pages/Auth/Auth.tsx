@@ -47,7 +47,6 @@ const Auth: React.FC<Props> = props => {
     }, [])
 
     const linkAccountsSubmitHandler = (data: AuthFormInputs) => {
-        console.log(data)
         if (linkAccountPendingcreds && activeEmail) {
             auth.signInWithEmailAndPassword(activeEmail, data.password)
                 .then((user) => {

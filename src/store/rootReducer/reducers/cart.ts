@@ -60,7 +60,6 @@ export default (state = initalState, action: CartActions): CartState => {
 
             }
         case !!(action.type === actions.INCREMENT_CART && action.itemId):
-            console.log("increment")
             return {
                 ...state,
                 cartItems: {
@@ -74,7 +73,6 @@ export default (state = initalState, action: CartActions): CartState => {
         case !!((action.type === actions.DECREMENT_CART || action.type === actions.REMOVE_ITEM_CART) && action.itemId):
             const decrementResult = state.cartItems[action.itemId!].amount - 1
             if (action.type === actions.DECREMENT_CART && decrementResult > 0) {
-                console.log("decremented")
                 return {
                     ...state,
                     cartItems: {
@@ -86,7 +84,6 @@ export default (state = initalState, action: CartActions): CartState => {
                     }
                 }
             } else {
-                console.log("removed")
                 const newItems = { ...state.cartItems }
                 delete newItems[action.itemId!]
 
