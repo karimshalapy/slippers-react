@@ -7,6 +7,11 @@ import useWindowWidth from '../../hooks/useWindowWidth'
 import { useHistory, useLocation } from 'react-router-dom'
 import queryParamsSplitIntoArray from '../../helpers/queryParamsSplitIntoArray'
 import useConditionalRedirect from '../../hooks/useConditionalRedirect'
+import ModalGenerator from '../../components/hoc/ModalGenerator/ModalGenerator'
+import LinkAccountModalContent from './LinkAccountModalContent/LinkAccountModalContent'
+import firebase from 'firebase/app'
+import { AuthFormInputs } from '../../@types/AuthTypes'
+import { auth } from '../../Firebase'
 
 interface Props {
 
@@ -18,6 +23,10 @@ const Auth: React.FC<Props> = props => {
     const history = useHistory()
     const { search } = useLocation()
     const [isLoading, setIsLoading] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [linkAccountPendingcreds, setLinkAccountPendingCreds] = useState<firebase.auth.AuthCredential | null>(null)
+    const [activeEmail, setActiveEmail] = useState<string | null>(null)
+    const [formSubmitError, setFormSubmitError] = useState<string>()
     useConditionalRedirect(true)
 
     const switchPanelHandler = (e: React.MouseEvent) => {
@@ -36,6 +45,24 @@ const Auth: React.FC<Props> = props => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const linkAccountsSubmitHandler = (data: AuthFormInputs) => {
+        console.log(data)
+        if (linkAccountPendingcreds && activeEmail) {
+            auth.signInWithEmailAndPassword(activeEmail, data.password)
+                .then((user) => {
+                    setModalOpen(false)
+                    user.user?.linkWithCredential(linkAccountPendingcreds)
+                })
+                .then(() => {
+                    console.log("linked")
+                })
+                .catch(err => {
+                    setModalOpen(false)
+                    setFormSubmitError(err.message)
+                })
+        }
+
+    }
     useEffect(() => {
         history.replace({
             search: `?signup=${isSignup}`
@@ -55,6 +82,11 @@ const Auth: React.FC<Props> = props => {
                             isSignup={isSignup}
                             isLoading={isLoading}
                             formType={item as "signup" | "signin"}
+                            setActiveEmail={setActiveEmail}
+                            setLinkAccountPendingCreds={setLinkAccountPendingCreds}
+                            setModalOpen={setModalOpen}
+                            formSubmitError={formSubmitError}
+                            setFormSubmitError={setFormSubmitError}
                         />
                     ))
                 }
@@ -65,6 +97,11 @@ const Auth: React.FC<Props> = props => {
                         : null
                 }
             </div>
+            <ModalGenerator closeModalHandler={() => { }} show={modalOpen}>
+                <LinkAccountModalContent
+                    linkAccountsSubmitHandler={linkAccountsSubmitHandler}
+                />
+            </ModalGenerator>
         </>
     )
 }

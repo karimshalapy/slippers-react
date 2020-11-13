@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import InputWithLabelAsPlaceholder from '../../../components/InputWithLabelAsPlaceholder/InputWithLabelAsPlaceholder'
 import Button from '../../../components/Button/Button'
 import classes from './AuthForms.module.css'
 import MobileSwitchPanelButton from '../MobileSwitchPanelButton/MobileSwitchPanelButton'
 import { SignupFormInputs, SigninFormInputs, AuthFormTypes, ProviderId } from '../../../@types/AuthTypes'
 import { auth, EmailAuthProvider, getProviderId } from '../../../Firebase'
+import firebase from 'firebase/app'
 import { DeepMap, FieldError, Resolver, useForm } from 'react-hook-form'
 import { singinSchema, singupSchema } from '../AuthFormsValidation'
-import SocialSignin from '../SocialSignin/SocialSignin'
+import SocialSignin from './SocialSignin/SocialSignin'
 import CircleSpinner from '../../../components/CircleSpinner/CircleSpinner'
 
 interface Props {
@@ -15,25 +16,56 @@ interface Props {
     isSignup: boolean
     switchPanelHandler: (e: React.MouseEvent) => void
     isLoading: boolean,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setActiveEmail: React.Dispatch<React.SetStateAction<string | null>>,
+    setLinkAccountPendingCreds: React.Dispatch<React.SetStateAction<firebase.auth.AuthCredential | null>>
+    setModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setFormSubmitError: React.Dispatch<React.SetStateAction<string | undefined>>,
+    formSubmitError?: string,
 }
 
-const Signup: React.FC<Props> = props => {
-
-    const [formSubmitError, setFormSubmitError] = useState<string>()
+const AuthForms: React.FC<Props> = props => {
 
     const { register, handleSubmit, errors } = useForm<SignupFormInputs | SigninFormInputs>({
         mode: "onChange",
         resolver: (props.formType === "signup" ? singupSchema : singinSchema) as Resolver<SignupFormInputs | SigninFormInputs, object>
     })
 
+    const socialSigninHandler = (providerType: ProviderId) => {
+        const provider = getProviderId(providerType)
+        auth.signInWithPopup(provider!)
+            .catch((error) => {
+                if (error.code === 'auth/account-exists-with-different-credential') {
+
+                    const pendingCred = error.credential as firebase.auth.AuthCredential
+                    const email = error.email
+                    props.setLinkAccountPendingCreds(pendingCred)
+                    props.setActiveEmail(email)
+                    // Get sign-in methods for this email.
+                    auth.fetchSignInMethodsForEmail(email)
+                        .then((methods) => {
+                            if (methods[0] === 'password') {
+                                props.setModalOpen(true)
+                            } else {
+                                const provider = getProviderId(methods[0] as ProviderId)
+                                auth.signInWithPopup(provider!)
+                                    .then((result) => {
+                                        result.user?.linkWithCredential(pendingCred).then((usercred) => {
+                                            console.log("oauth linked")
+                                        })
+                                    })
+                            }
+                        })
+                }
+            })
+    }
     const formSubmitHandler = (data: SignupFormInputs | SigninFormInputs) => {
         if (props.formType === "signin") {
             props.setIsLoading(true)
             auth.signInWithEmailAndPassword(data.email, data.password)
                 .catch(err => {
                     props.setIsLoading(false)
-                    setFormSubmitError(err.message)
+                    props.setFormSubmitError(err.message)
                 })
 
         } else if (props.formType === "signup" && "name" in data) {
@@ -42,7 +74,7 @@ const Signup: React.FC<Props> = props => {
             auth.createUserWithEmailAndPassword(data.email, data.password)
                 .then(userData => { //setting display name for account after successfully creating it
                     userData.user?.updateProfile({ displayName: data.name })
-                    setFormSubmitError(undefined)
+                    props.setFormSubmitError(undefined)
                     props.setIsLoading(false)
                 })
                 .catch(err => { //handling the error incase the Email is in use
@@ -51,7 +83,7 @@ const Signup: React.FC<Props> = props => {
                             .then(providers => {
                                 if (providers.includes("password")) {
                                     props.setIsLoading(false)
-                                    setFormSubmitError("The email address is already in use by another account.")
+                                    props.setFormSubmitError("The email address is already in use by another account.")
                                 } else {
                                     const provider = getProviderId(providers[0] as ProviderId)
                                     const pendingCred = EmailAuthProvider.credential(data.email, data.password)
@@ -59,19 +91,19 @@ const Signup: React.FC<Props> = props => {
                                         .then((result) => {
                                             if (result.user?.email === data.email) result.user?.linkWithCredential(pendingCred).then((usercred) => {
                                                 console.log("oauth linked")
-                                                setFormSubmitError(undefined)
+                                                props.setFormSubmitError(undefined)
                                             })
                                             else throw new Error()
                                         })
                                         .catch(() => {
                                             props.setIsLoading(false)
-                                            setFormSubmitError("Account Link Failed.")
+                                            props.setFormSubmitError("Account Link Failed.")
                                         })
                                 }
                             })
                     } else {
                         props.setIsLoading(false)
-                        setFormSubmitError(err.messasge)
+                        props.setFormSubmitError(err.messasge)
                     }
                 })
         }
@@ -92,7 +124,7 @@ const Signup: React.FC<Props> = props => {
                     :
                     <form onSubmit={handleSubmit(formSubmitHandler)}>
                         <h1>{isSignupForm() ? "Create Account" : "Sign in"}</h1>
-                        <SocialSignin />
+                        <SocialSignin socialSigninHandler={socialSigninHandler} />
                         <span>{isSignupForm() ? "or use your email for registration" : "or use your account"}</span>
                         {
                             isSignupForm() && isSignupErrorsType(errors)
@@ -120,7 +152,7 @@ const Signup: React.FC<Props> = props => {
                             error={errors.password?.message}
                             ref={register}
                         />
-                        {formSubmitError ? <p className={classes.SubmitErrorMessage}>{formSubmitError}</p> : null}
+                        {props.formSubmitError ? <p className={classes.SubmitErrorMessage}>{props.formSubmitError}</p> : null}
                         {isSignupForm() ? null : <a href="#forgot">Forgot your password?</a>}
                         <Button>{isSignupForm() ? "Sign Up" : "Sign In"}</Button>
                         <MobileSwitchPanelButton switchPanelHandler={props.switchPanelHandler} panelType={isSignupForm() ? "signup" : "signin"} />
@@ -130,4 +162,4 @@ const Signup: React.FC<Props> = props => {
     )
 }
 
-export default Signup
+export default AuthForms
