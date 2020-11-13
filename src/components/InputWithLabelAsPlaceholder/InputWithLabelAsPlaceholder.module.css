@@ -4,8 +4,16 @@
     margin: 5px 0;
 }
 .InputField {
-    padding: 0 .2em;
     outline: none;
+    margin: 5px 0;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    font-size: 11px;
+    line-height: 22px;
+    color: #666;
+    transition: all 0.5s ease;
 }
 .InputField:focus {
     border: 1px solid black;
