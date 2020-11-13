@@ -1,4 +1,4 @@
-import React, { FormEvent, memo, useContext } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SlipperFeatures from '../../../../components/SlipperFeatures/SlipperFeatures'
 import { RootReducer } from '../../../../@types/reducersTypes'
@@ -9,11 +9,13 @@ import ProductDetailsHeader from './ProductDetailsHeader/ProductDetailsHeader'
 import ProductSizes from './ProductSizes/ProductSizes'
 import SoleColorsFieldset from './SoleColorsFieldset/SoleColorsFieldset'
 import UpperColorsFieldset from './UpperColorsFieldset/UpperColorsFieldset'
-import { addToCartRemotely } from '../../../../store/actionsIndex/actionIndex'
+import { addToCartRemotely, resetCartState, setCartState } from '../../../../store/actionsIndex/actionIndex'
 import { FirebaseUserContext } from '../../../../App'
 import { useHistory } from 'react-router-dom'
 import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
 import Button from '../../../../components/Button/Button'
+import ModalGenerator from '../../../../components/hoc/ModalGenerator/ModalGenerator'
+import SlipperModalContent from './SlipperModalContent/SlipperModalContent'
 
 interface Props {
     slipper: SlippersTypes,
@@ -33,23 +35,35 @@ interface Props {
 
 const ProductDetails: React.FC<Props> = props => {
 
-    const { slipperFeaturesArray, cartLoading } = useSelector((state: RootReducer) => {
+    const { slipperFeaturesArray, cartLoading, cartError, cartSuccess } = useSelector((state: RootReducer) => {
         return {
             slipperFeaturesArray: state.mainResources.slippersTypeSwiper
                 ?.filter(item => item.type === props.slipper)[0].features,
-            cartLoading: state.cartData.cartLoading
+            cartLoading: state.cartData.cartLoading,
+            cartError: state.cartData.cartError,
+            cartSuccess: state.cartData.cartSuccess
         }
     })
     const user = useContext(FirebaseUserContext)
     const history = useHistory()
     const dispatch = useDispatch()
+    const [modalOpen, setModalOpen] = useState(false)
     const formIsValid = () => {
         return !!(props.activeGender && props.activeSize && props.activeUpperColor && props.activeSoleColor)
     }
-
+    const toggleModal = (e?: MouseEvent) => {
+        e?.preventDefault()
+        setModalOpen(prev => !prev)
+        dispatch(resetCartState())
+    }
     const addToCart = (e: React.FormEvent) => {
         e.preventDefault()
-        if (user) dispatch(addToCartRemotely(props.activeSlipperData!, props.activeGender!, props.activeSize!, user?.uid))
+        if (user) {
+            toggleModal()
+            dispatch(resetCartState())
+            setCartState(true, "loading")
+            dispatch(addToCartRemotely(props.activeSlipperData!, props.activeGender!, props.activeSize!, user?.uid))
+        }
         else history.push("/auth")
     }
 
@@ -93,6 +107,14 @@ const ProductDetails: React.FC<Props> = props => {
                             <Button tomato disabled={!formIsValid()}> add to cart </Button>
                     }
                 </div>
+                <ModalGenerator closeModalHandler={toggleModal} show={modalOpen}>
+                    <SlipperModalContent
+                        closeModalHandler={toggleModal}
+                        cartError={cartError}
+                        cartSuccess={cartSuccess}
+                        cartLoading={cartLoading}
+                    />
+                </ModalGenerator>
                 {!formIsValid()
                     ?
                     <p>You have to select all fields above to add to cart</p>
