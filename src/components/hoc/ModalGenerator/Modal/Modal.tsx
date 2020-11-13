@@ -1,12 +1,12 @@
-import React, { forwardRef, ReactElement } from 'react'
-import useDisableScrollOnModalOpen from '../../hooks/useDisableScrollOnModalOpen'
-import Backdrop from '../Backdrop/Backdrop'
+import React, { forwardRef, ReactNode } from 'react'
+import useDisableScrollOnModalOpen from '../../../../hooks/useDisableScrollOnModalOpen'
+import Backdrop from '../../../Backdrop/Backdrop'
 import classes from './Modal.module.css'
 
 interface Props {
     show: boolean,
     closeModalHandler: () => void,
-    children?: ReactElement | null | never[]
+    children?: ReactNode | null | never[]
 }
 
 const Modal = forwardRef<HTMLDivElement, Props>((props, nodeRef) => {

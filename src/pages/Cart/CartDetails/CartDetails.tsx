@@ -2,7 +2,8 @@ import React, { forwardRef } from 'react'
 import classes from './CartDetails.module.css'
 import Button from '../../../components/Button/Button'
 import { Link } from 'react-router-dom'
-import OrderModal from './OrderModal/OrderModal'
+import OrderModalContent from './OrderModalContent/OrderModalContent'
+import ModalGenerator from '../../../components/hoc/ModalGenerator/ModalGenerator'
 
 interface Props {
     total: number,
@@ -21,15 +22,15 @@ const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
 
     return (
         <div className={classes.ProductDetails}>
-            <OrderModal
-                show={props.showModal}
-                closeModalHandler={props.closeModalHandler}
-                orderLoading={props.orderLoading}
-                orderError={props.orderError}
-                orderSuccess={props.orderSuccess}
-                resetOrder={props.resetOrder}
-                clearCart={props.clearCart}
-            />
+            <ModalGenerator show={props.showModal} closeModalHandler={props.closeModalHandler}>
+                <OrderModalContent
+                    orderLoading={props.orderLoading}
+                    orderError={props.orderError}
+                    orderSuccess={props.orderSuccess}
+                    resetOrder={props.resetOrder}
+                    clearCart={props.clearCart}
+                />
+            </ModalGenerator>
             <div className={classes.PriceDetailsContainer}>
                 <p className={classes.Label}>subtotal</p>
                 <data value={props.total}>${props.total}</data>
