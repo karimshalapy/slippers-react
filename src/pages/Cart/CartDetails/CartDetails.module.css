@@ -55,28 +55,6 @@ input.Error:focus  {
 /*Buttons styling*/
 .ProductDetails button {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 0;
-    cursor: pointer;
-}
-
-.ProductDetails button{
-    background-color: transparent;
-    border: none;
-    font-family: inherit;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-.ProductDetails button a:link,
-.ProductDetails button a:visited{
-    width: 100%;
-    display: block;
-    text-decoration: none;
-    color: black;
-
-}
-.ProductDetails button:hover {
-    text-decoration: underline;
 }

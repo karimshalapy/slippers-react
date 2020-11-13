@@ -39,11 +39,11 @@ const FilterSidebar: React.FC<Props> = props => {
                 <div className={classes.FilterButtonsContainer}>
                     <Button
                         outlined
-                        classNames={[classes.WideBtn]}
+                        classNames={classes.WideBtn}
                         clickHandler={clearFilters}
                     >CLEAR</Button>
                     <Button
-                        classNames={[classes.WideBtn]}
+                        classNames={classes.WideBtn}
                         clickHandler={props.changeOpen}
                     >APPLY</Button>
                 </div>

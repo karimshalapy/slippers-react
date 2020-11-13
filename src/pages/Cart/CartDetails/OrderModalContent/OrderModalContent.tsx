@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import CircleSpinner from '../../../../components/CircleSpinner/CircleSpinner'
+import Button from '../../../../components/Button/Button'
 import classes from './OrderModalContent.module.css'
 
 interface Props {
@@ -31,15 +32,15 @@ const OrderModal: React.FC<Props> = ({
         <section className={classes.OrderModalContentContainer}>
             <h2>Order Success</h2>
             <p>Thank you for buying from us <span role="img" aria-label="love">&#10084;&#65039;</span></p>
-            <button onClick={clearCartAndRedirect}>continue shopping &amp; clear cart</button>
-            <button><Link to="/slippers">continue shopping without clearing cart</Link></button>
+            <Button ghost clickHandler={clearCartAndRedirect}>continue shopping &amp; clear cart</Button>
+            <Button ghost ><Link to="/slippers">continue shopping without clearing cart</Link></Button>
         </section>
     )
     if (orderError) return (
         <section className={classes.OrderModalContentContainer}>
             <h2>Order Failed"</h2>
             <p>something went wrong. Please try again later</p>
-            <button onClick={resetOrder}>try again</button>
+            <Button ghost clickHandler={resetOrder}>try again</Button>
         </section>
     )
     return null

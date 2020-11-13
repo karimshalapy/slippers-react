@@ -1,18 +1,11 @@
 .FiltersButton {
     width: max-content;
-    margin: 0 15px;
+    margin: 0 15px 0 auto;
     padding: 10px 0;
-    font-family: inherit;
     font-size: 14px;
-    font-weight: 500;
-    line-height: 25px;
-    color: #222;
-    background-color: white;
-    border: none;
-    margin-left: auto;
-    cursor: pointer;
     display: flex;
     align-items: center;
+    text-transform: lowercase;
 }
 .FiltersButton div {
     display: flex;

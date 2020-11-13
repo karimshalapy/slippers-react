@@ -48,8 +48,8 @@ const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
                 <span className={classes.ErrorMessage}>{props.error}</span>
             </div>
             <Button tomato disabled={props.orderLoading}>checkout</Button>
-            <button className={classes.ProductDetailsBtn}><Link to="/slippers">continue shopping</Link></button>
-            <button className={classes.ProductDetailsBtn} onClick={props.clearCart}>clear cart</button>
+            <Button ghost hasLink classNames={classes.ProductDetailsBtn}><Link to="/slippers">continue shopping</Link></Button>
+            <Button ghost classNames={classes.ProductDetailsBtn} clickHandler={props.clearCart}>clear cart</Button>
         </div>
     )
 })

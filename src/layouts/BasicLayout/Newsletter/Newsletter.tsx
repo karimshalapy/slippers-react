@@ -77,7 +77,7 @@ const Newsletter: React.FC = () => {
                                         />
                                         {errors.newsletterMail ? <p className={classes.ErrorMessage}>{errors.newsletterMail.message}</p> : null}
                                     </div>
-                                    <Button classNames={[classes.NewsletterBtn]} disabled={isLoading}>sign up</Button>
+                                    <Button classNames={classes.NewsletterBtn} disabled={isLoading}>sign up</Button>
                                     {isLoading ? <div className={classes.LoadingSinnerContainer}><CircleSpinner size={20} /></div> : null}
                                 </form>
                                 <p className={classes.Disclaimer}>by signing up to our newsletter you are agreeing to our <Link to="/privacy" target="_blank">privacy policy</Link><br />please note: only new subscribers and customers will receive an email</p>

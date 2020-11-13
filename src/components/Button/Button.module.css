@@ -1,4 +1,5 @@
-body button.Button {
+.Button {
+    font-family: inherit;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -11,30 +12,47 @@ body button.Button {
     color: #fafafa;
     background-color: black;
 }
-body button.ButtonOutlined {
+.ButtonOutlined {
     color: black;
     background-color: transparent;
     border: 1px solid black;
 }
-body button.ButtonTomato {
+.ButtonTomato {
     background: #F34C3F;
     color: white;
     transition: all .2s ease-in-out;
 }
-body button.ButtonTomato:hover {
+.ButtonGhost {
+    background-color: transparent;
+    border: none;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.4;
+}
+.ButtonTomato:hover {
     background-color:#dd3a2d;
     text-decoration: none;
 }
-body button.ButtonTomato:disabled {
+.ButtonTomato:disabled {
     background-color: #F34C3F;
 }
-body button.NoLink {
+.ButtonGhost:hover {
+    text-decoration: underline;
+}
+.NoLink {
     padding: 0 2em;
 }
-body button.Button a:link,
-body button.Button a:visited{
+.Button a:link,
+.Button a:visited{
     padding: 0 2em;
     display: block;
     color: #fafafa;
     text-decoration: none;
+}
+.ButtonGhost a:link,
+.ButtonGhost a:visited {
+    color: black;
 }

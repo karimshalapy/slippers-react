@@ -16,12 +16,12 @@ const Overlay: React.FC<Props> = props => {
                 <div className={`${classes.OverlayPanel} ${classes.OverlayLeft}`}>
                     <h1>Hello there!</h1>
                     <p>Do you already have an account?  <br />Click Sign in and enter your credentials to start shopping</p>
-                    <Button disabled={props.isLoading} classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign In</Button>
+                    <Button disabled={props.isLoading} classNames={classes.Ghost} outlined clickHandler={props.switchPanelHandler}>Sign In</Button>
                 </div>
                 <div className={`${classes.OverlayPanel} ${classes.OverlayRight}`}>
                     <h1>Hello, Friend!</h1>
                     <p>Don't have an account?  <br />What are you waiting for? Click sign up and Enter your personal details and start journey with us</p>
-                    <Button disabled={props.isLoading} classNames={[classes.Ghost]} outlined clickHandler={props.switchPanelHandler}>Sign Up</Button>
+                    <Button disabled={props.isLoading} classNames={classes.Ghost} outlined clickHandler={props.switchPanelHandler}>Sign Up</Button>
                 </div>
             </div>
         </div>

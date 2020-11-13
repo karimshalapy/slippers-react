@@ -1,5 +1,6 @@
 import React from 'react'
 import useWindowWidth from '../../../hooks/useWindowWidth'
+import Button from '../../../components/Button/Button'
 import classes from './MobileSwitchPanelButton.module.css'
 
 interface Props {
@@ -12,9 +13,10 @@ const MobileSwitchPanelButton: React.FC<Props> = props => {
     return (
         windowWidth && windowWidth < 500
             ?
-            <button
-                onClick={props.switchPanelHandler}
-                className={[classes.Switch, props.panelType === "signup" ? classes.Signup : classes.Signin].join(" ")}
+            <Button
+                ghost
+                clickHandler={props.switchPanelHandler}
+                classNames={[classes.Switch, props.panelType === "signup" ? classes.Signup : classes.Signin].join(" ")}
             >
                 {
                     props.panelType === "signup"
@@ -23,7 +25,7 @@ const MobileSwitchPanelButton: React.FC<Props> = props => {
                         :
                         "don't have an account? Sign up"
                 }
-            </button>
+            </Button>
             :
             null
     )
