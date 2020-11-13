@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Navigation, EffectFade, Autoplay } from 'swiper'
@@ -10,17 +10,19 @@ import SliderBtn from '../../../components/SliderBtn/SliderBtn'
 import TextToMarkup from '../../../helpers/TextToMarkup'
 import { RootReducer } from '../../../@types/reducersTypes'
 import classes from './Hero.module.css'
+import { FirebaseUserContext } from '../../../App'
 
 SwiperCore.use([Navigation, EffectFade, Autoplay])
 
 const Hero: React.FC = () => {
     const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>()
     const heroData = useSelector((state: RootReducer) => state.mainResources.hero)
+    const user = useContext(FirebaseUserContext)
 
     //useEffect to update the swiper component every time the heroData changes
     useEffect(() => {
         controlledSwiper?.update()
-    }, [controlledSwiper, heroData])
+    }, [controlledSwiper, heroData, user])
 
     return (
         <Swiper
