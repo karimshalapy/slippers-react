@@ -16,3 +16,20 @@
     align-items: center;
     transition: all 200ms ease;
 }
+.Modal section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.Modal section h2 {
+    margin-top: 0;
+    font-size: 25px;
+    font-weight: 500;
+}
+.Modal section p {
+    margin: 16px 0 25px;
+}
+.Modal section button {
+    margin-bottom: 10px;
+
+}
