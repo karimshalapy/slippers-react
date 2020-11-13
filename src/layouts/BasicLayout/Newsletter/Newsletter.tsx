@@ -72,6 +72,7 @@ const Newsletter: React.FC = () => {
                                             name="newsletterMail"
                                             type="email"
                                             placeholder="Enter Email Address"
+                                            autoComplete="email"
                                             className={[classes.NewsletterInput, errors.newsletterMail ? classes.IsError : ""].join(" ")}
                                         />
                                         {errors.newsletterMail ? <p className={classes.ErrorMessage}>{errors.newsletterMail.message}</p> : null}

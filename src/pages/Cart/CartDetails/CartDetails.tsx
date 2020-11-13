@@ -42,6 +42,7 @@ const CartDetails = forwardRef<HTMLInputElement, Props>((props, nodeRef) => {
                     name="address"
                     id="address"
                     placeholder="input your delivery address"
+                    autoComplete="street-address"
                     ref={nodeRef}
                     className={props.error ? classes.Error : ""}
                 />

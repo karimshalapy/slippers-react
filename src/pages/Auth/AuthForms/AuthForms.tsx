@@ -133,6 +133,7 @@ const AuthForms: React.FC<Props> = props => {
                                     inputType="text"
                                     labelText="Name"
                                     inputName="name"
+                                    autocomplete="name"
                                     error={errors.name?.message}
                                     ref={register}
                                 />
@@ -142,6 +143,7 @@ const AuthForms: React.FC<Props> = props => {
                             inputType="email"
                             labelText="Email"
                             inputName="email"
+                            autocomplete="email"
                             error={errors.email?.message}
                             ref={register}
                         />
@@ -149,6 +151,7 @@ const AuthForms: React.FC<Props> = props => {
                             inputType="password"
                             labelText="Password"
                             inputName="password"
+                            autocomplete={isSignupForm() ? "new-password" : "current-password"}
                             error={errors.password?.message}
                             ref={register}
                         />
