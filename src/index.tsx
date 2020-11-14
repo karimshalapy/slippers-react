@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
+import 'swiper/swiper-bundle.min.css'
 import App from './App'
 import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
