@@ -70,19 +70,17 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
 
     return (
 
-        <ul className={classes.ProductsList}>
+        <FadeSwitchTransition transitionKey={`products-${v4()}-filtered`} fast>
             {
-                <FadeSwitchTransition transitionKey={`products-${v4()}-filtered`} fast>
-                    {
-                        (nodeRef) => (
-                            <div ref={nodeRef} className={[classes.ProductsContainer, productsData?.length === 0 ? classes.NoProducts : ""].join(" ")}>
-                                { getRenderData()}
-                            </div>
-                        )
-                    }
-                </FadeSwitchTransition>
+                (nodeRef) => (
+                    <div ref={nodeRef}>
+                        <ul className={[classes.ProductsList, productsData?.length === 0 ? classes.NoProducts : ""].join(" ")}>
+                            {getRenderData()}
+                        </ul>
+                    </div>
+                )
             }
-        </ul>
+        </FadeSwitchTransition>
     )
 }
 

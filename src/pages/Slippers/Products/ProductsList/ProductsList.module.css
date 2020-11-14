@@ -1,12 +1,10 @@
 .ProductsList {
     padding: 0;
-}
-.ProductsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 }
 @media(max-width: 600px) {
-    .ProductsContainer {
+    .ProductsList {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 }
