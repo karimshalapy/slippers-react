@@ -1,5 +1,7 @@
-.InstaContainer {
+.InstaWrapper {
     position: relative;
+}
+.InstaContainer {
     margin: 50px 0 30px 0;
     padding: 0;
     list-style-type: none;

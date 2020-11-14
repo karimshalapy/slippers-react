@@ -57,26 +57,28 @@ const InstagramPhotos: React.FC = () => {
 
     return (
         <section>
-            <ul className={classes.InstaContainer}>
-                {
-                    renderedData.map(item => (
-                        <li key={v4()} className={[classes.InstaItem, item.imgAlt === "loading" ? classes.Loading : ""].join(" ")}>
-                            <Link to={item.url}>
-                                {
-                                    item.imgAlt === "loading"
-                                        ?
-                                        <CircleSpinner size={30} />
-                                        :
-                                        <img src={item.imgUrl} alt={item.imgAlt} className={classes.InstaPhoto} />
-                                }
-                            </Link>
-                        </li>
-                    ))
-                }
+            <div className={classes.InstaWrapper}>
+                <ul className={classes.InstaContainer}>
+                    {
+                        renderedData.map(item => (
+                            <li key={v4()} className={[classes.InstaItem, item.imgAlt === "loading" ? classes.Loading : ""].join(" ")}>
+                                <Link to={item.url}>
+                                    {
+                                        item.imgAlt === "loading"
+                                            ?
+                                            <CircleSpinner size={30} />
+                                            :
+                                            <img src={item.imgUrl} alt={item.imgAlt} className={classes.InstaPhoto} />
+                                    }
+                                </Link>
+                            </li>
+                        ))
+                    }
+                </ul>
                 <div className={classes.LogoContainer} ref={logoContainerRef}>
                     <Logo className={classes.LogoImg} />
                 </div>
-            </ul>
+            </div>
         </section>
     )
 }
