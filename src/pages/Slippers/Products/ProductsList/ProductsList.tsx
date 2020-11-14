@@ -46,7 +46,7 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
                                 <img src={item.mainImageUrl} alt={item.mainImageAlt} className={classes.MainImage} />
                                 <img src={item.secondaryImageUrl} alt={item.secondaryImageAlt} className={classes.SecondaryImage} />
                             </div>
-                            <h3>mahabis {item.collection}</h3>
+                            <h2>mahabis {item.collection}</h2>
                             <p dangerouslySetInnerHTML={new TextToMarkup(item.colorText)}></p>
                             <data value={item.price.usd}>${item.price.usd}</data>
                         </Link>
@@ -58,7 +58,7 @@ const ProductsList: React.FC<Props> = ({ productsData }) => {
             return [...Array(10)].map(() => (
                 <li className={`${classes.Product} ${classes.PerserveWidthWhileLoading}`} key={v4()}>
                     <div className="Loading"></div>
-                    <h3 className="Loading">&nbsp; </h3>
+                    <h2 className="Loading">&nbsp; </h2>
                     <p className="Loading">&nbsp; </p>
                     <span className="Loading">&nbsp; </span>
                 </li>

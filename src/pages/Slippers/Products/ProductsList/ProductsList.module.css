@@ -17,8 +17,9 @@
     margin: 0;
     max-width: 100%;
 }
-.Product h3 {
+.Product h2 {
     margin-top: -15px;
+    font-size: 15px;
 }
 .Product a:link,
 .Product a:visited{
@@ -93,7 +94,7 @@
     padding: 50% 0;
     margin-bottom: 20px;
 }
-.PerserveWidthWhileLoading h3{
+.PerserveWidthWhileLoading h2{
     width:70%
 }
 .PerserveWidthWhileLoading p {
