@@ -1,5 +1,6 @@
 import React from 'react'
 import CircleSpinner from '../CircleSpinner/CircleSpinner'
+import ScrollToTopOnPathChange from '../ScrollToTopOnPathChange/ScrollToTopOnPathChange'
 import classes from './SuspenseFallback.module.css'
 
 interface Props {
@@ -8,9 +9,12 @@ interface Props {
 
 const SuspenseFallback: React.FC<Props> = props => {
     return (
-        <div className={classes.FallbackContainer}>
-            <CircleSpinner size={100} />
-        </div>
+        <>
+            <ScrollToTopOnPathChange />
+            <div className={classes.FallbackContainer}>
+                <CircleSpinner size={100} />
+            </div>
+        </>
     )
 }
 
