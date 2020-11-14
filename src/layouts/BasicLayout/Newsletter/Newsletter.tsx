@@ -8,6 +8,7 @@ import FadeSwitchTransition from '../../../components/hoc/FadeSwitchTransition/F
 import NewsletterSubmitResult from './NewsletterSubmitResult/NewsletterSubmitResult'
 import CircleSpinner from '../../../components/CircleSpinner/CircleSpinner'
 import { database } from '../../../Firebase'
+import InputWithLabelAsPlaceholder from '../../../components/InputWithLabelAsPlaceholder/InputWithLabelAsPlaceholder'
 
 const Newsletter: React.FC = () => {
     const [subscribed, setSubscribed] = useState(false)
@@ -67,18 +68,17 @@ const Newsletter: React.FC = () => {
                                 <p className={classes.SubscribeText}>subscribe to our newsletter to hear about the latest news, promotions and more</p>
                                 <form className={classes.NewsletterForm} onSubmit={handleSubmit(submitHandler)} noValidate>
                                     <div className={classes.InputContainer}>
-                                        <input
+                                        <InputWithLabelAsPlaceholder
                                             ref={register}
-                                            name="newsletterMail"
-                                            type="email"
-                                            placeholder="Enter Email Address"
-                                            autoComplete="email"
-                                            className={[classes.NewsletterInput, errors.newsletterMail ? classes.IsError : ""].join(" ")}
+                                            inputName="newsletterMail"
+                                            inputType="email"
+                                            labelText="Enter Email Address"
+                                            autocomplete="email"
+                                            error={errors.newsletterMail?.message}
                                         />
-                                        {errors.newsletterMail ? <p className={classes.ErrorMessage}>{errors.newsletterMail.message}</p> : null}
+                                        <Button classNames={classes.NewsletterBtn} disabled={isLoading}>sign up</Button>
+                                        {isLoading ? <div className={classes.LoadingSinnerContainer}><CircleSpinner size={20} /></div> : null}
                                     </div>
-                                    <Button classNames={classes.NewsletterBtn} disabled={isLoading}>sign up</Button>
-                                    {isLoading ? <div className={classes.LoadingSinnerContainer}><CircleSpinner size={20} /></div> : null}
                                 </form>
                                 <p className={classes.Disclaimer}>by signing up to our newsletter you are agreeing to our <Link to="/privacy" target="_blank">privacy policy</Link><br />please note: only new subscribers and customers will receive an email</p>
                             </div>

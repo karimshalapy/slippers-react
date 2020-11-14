@@ -37,20 +37,6 @@
     color: #8a8a8a;
     text-decoration: none;
 }
-.NewsletterInput {
-    outline: none;
-    padding: 9px 12px;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid #eee;
-    min-width: 215px;
-    font-size: 11px;
-    line-height: 22px;
-    color: #666;
-    transition: all 0.5s ease;
-}
-.NewsletterInput::placeholder {
-    color: #c2c2c2;
-}
 .NewsletterBtn {
     border-radius: 0 5px 5px 0 !important;
 }
@@ -58,23 +44,46 @@
 /*Error message styling*/
 .InputContainer {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0;
+    width: max-content;
+    margin: auto
 }
-.ErrorMessage {
+
+.InputContainer input{
+    border-radius: 5px 0 0 5px;
     margin: 0;
-    font-size: 9px;
-    font-weight: 400;
-    color: red;
+    border: 1px solid #eee;
+    min-width: 215px;
+    font-size: 11px;
+    line-height: 22px;
+    color: #666;
+    transition: all 0.5s ease;
+}
+.InputContainer span {
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 13px;
 }
-.IsError {
-    border: 1px solid red;
+.InputContainer button {
+    min-width: 110px;
+}
+@media(max-width: 400px) {
+    .InputContainer input{
+        min-width: 150px;
+        font-size: 10px;
+    }
+    .InputContainer button {
+        min-width: 85px;
+        font-size: 9px;
+    }
 }
 .LoadingSinnerContainer {
     display: inline-block;
     position: absolute;
+    right: -35px;
     min-width: 35px;
     min-height: 100%;
     pointer-events: none;
