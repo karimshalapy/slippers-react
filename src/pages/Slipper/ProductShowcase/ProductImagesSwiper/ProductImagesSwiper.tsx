@@ -1,23 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react'
-import SwiperCore, { Pagination, Controller } from 'swiper'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import SwiperCore, { Pagination, Controller, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { v4 } from 'uuid'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
 import { SlippersTypes } from '../../../../@types/SlippersSwiperTypes'
 import { SlippersProductData } from '../../../../@types/SlippersTypes'
 import classes from './ProductImagesSwiper.module.css'
+import { FirebaseUserContext } from '../../../../App'
 
 interface Props {
     activeSlipperData?: SlippersProductData
     slipper: SlippersTypes
 }
 
-SwiperCore.use([Pagination, Controller])
+SwiperCore.use([Pagination, Controller, Navigation])
 
 const ProductImagesSwiper: React.FC<Props> = ({ activeSlipperData, slipper }) => {
     const [controlledSwiper, setControlledSwiper] = useState<SwiperCore | undefined>(undefined)
     const [activeSlide, setActiveSlide] = useState(0)
     const nodeRef = useRef<HTMLVideoElement>(null)
+    const user = useContext(FirebaseUserContext)
 
     //useEffect to play video when its slide is in viewport
     useEffect(() => {
@@ -30,7 +32,7 @@ const ProductImagesSwiper: React.FC<Props> = ({ activeSlipperData, slipper }) =>
             }
         }
     }, [activeSlide, controlledSwiper])
-    useEffect(() => { controlledSwiper?.update() }, [controlledSwiper, activeSlipperData])
+    useEffect(() => { controlledSwiper?.update() }, [controlledSwiper, activeSlipperData, user])
 
     return (
         <>

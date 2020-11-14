@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import SwiperCore, { Controller } from 'swiper'
+import SwiperCore, { Controller, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderBtn from '../../../../components/SliderBtn/SliderBtn'
 import { RootReducer } from '../../../../@types/reducersTypes'
@@ -12,7 +12,7 @@ interface Props {
     setActiveSlide: React.Dispatch<React.SetStateAction<number>>
 }
 
-SwiperCore.use([Controller])
+SwiperCore.use([Controller, Navigation])
 
 const SlipperImageSwiper: React.FC<Props> = props => {
 
