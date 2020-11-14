@@ -15,7 +15,7 @@
 .sliderNextElBtn, .sliderPrevElBtn {
     color: black;
 }
-.ActiveBullet{
+span.ActiveBullet{
     background-color: #F34C3F;
     opacity: 1;
     transform: scale(1.2);
