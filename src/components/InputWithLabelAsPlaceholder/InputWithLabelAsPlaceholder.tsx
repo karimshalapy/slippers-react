@@ -6,6 +6,7 @@ interface Props {
     labelText: string,
     inputName: string,
     autocomplete: string,
+    id: string,
     error?: string
 }
 
@@ -18,10 +19,11 @@ const InputWithLabelAsPlaceholder = forwardRef<HTMLInputElement, Props>((props, 
                     type={props.inputType}
                     ref={nodeRef}
                     name={props.inputName}
+                    id={props.id}
                     placeholder=" "
                     autoComplete={props.autocomplete}
                 />
-                <label className={classes.Label}>{props.labelText}</label>
+                <label htmlFor={props.id} className={classes.Label}>{props.labelText}</label>
             </div>
             <span className={classes.ErrorMessage}>{props.error}</span>
         </>

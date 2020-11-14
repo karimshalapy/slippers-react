@@ -133,6 +133,7 @@ const AuthForms: React.FC<Props> = props => {
                                     inputType="text"
                                     labelText="Name"
                                     inputName="name"
+                                    id={"signup-full-name"}
                                     autocomplete="name"
                                     error={errors.name?.message}
                                     ref={register}
@@ -144,6 +145,7 @@ const AuthForms: React.FC<Props> = props => {
                             labelText="Email"
                             inputName="email"
                             autocomplete="email"
+                            id={`${isSignupForm() ? "signup" : "signin"}-email`}
                             error={errors.email?.message}
                             ref={register}
                         />
@@ -152,6 +154,7 @@ const AuthForms: React.FC<Props> = props => {
                             labelText="Password"
                             inputName="password"
                             autocomplete={isSignupForm() ? "new-password" : "current-password"}
+                            id={`${isSignupForm() ? "signup" : "signin"}-password`}
                             error={errors.password?.message}
                             ref={register}
                         />

@@ -27,6 +27,7 @@ const LinkAccountModalContent: React.FC<Props> = props => {
                         inputType="password"
                         labelText="Password"
                         autocomplete="current-password"
+                        id={"link-accounts-password"}
                         error={errors.password?.message}
                         ref={register}
                     />

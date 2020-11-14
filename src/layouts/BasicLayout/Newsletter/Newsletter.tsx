@@ -71,6 +71,7 @@ const Newsletter: React.FC = () => {
                                         <InputWithLabelAsPlaceholder
                                             ref={register}
                                             inputName="newsletterMail"
+                                            id="newsletterMail"
                                             inputType="email"
                                             labelText="Enter Email Address"
                                             autocomplete="email"
