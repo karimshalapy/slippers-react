@@ -1,19 +1,20 @@
-import React, { useCallback, useContext } from 'react'
+import React, { useCallback, useContext, forwardRef } from 'react'
 import classes from './SideNavMenuContainer.module.css'
-import Transitions from '../../../../../components/hoc/Transitions/Transitions'
 import { MenuTypes } from '../../../../../@types/SideNavMenuTypes'
 import MenuGenerator from './MenuGenerator/MenuGenerator'
 import { SideMenuContext } from '../../Header'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../../../@types/reducersTypes'
+import useDisableScrollOnModalOpen from '../../../../../hooks/useDisableScrollOnModalOpen'
 
 interface Props {
 
 }
 
-const SideNavMenuContainer: React.FC<Props> = props => {
+const SideNavMenuContainer = forwardRef<HTMLUListElement, Props>((props, nodeRef) => {
     const sideNavData = useSelector((state: RootReducer) => state.mainResources.sideNav)
-    const { activeSideMenu, sideMenuOpen } = useContext(SideMenuContext)
+    const { activeSideMenu } = useContext(SideMenuContext)
+    useDisableScrollOnModalOpen(true)
 
     //a function to get the level for the "second & secondRev" leveled menus
     const getLevel = useCallback(() => {
@@ -47,14 +48,10 @@ const SideNavMenuContainer: React.FC<Props> = props => {
     }, [activeSideMenu, getLevel, sideNavData])
 
     return (
-        <Transitions show={sideMenuOpen} type="slideDown">
-            {nodeRef => (
-                <ul ref={nodeRef} className={classes.SideMenuContainer}>
-                    { getSideNavRenderData()}
-                </ul>
-            )}
-        </Transitions>
+        <ul ref={nodeRef} className={classes.SideMenuContainer}>
+            { getSideNavRenderData()}
+        </ul>
     )
-}
+})
 
 export default SideNavMenuContainer

@@ -6,7 +6,6 @@ import classes from './MenuGenerator.module.css'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import { SideMenuContext } from '../../../Header'
-import useDisableScrollOnModalOpen from '../../../../../../hooks/useDisableScrollOnModalOpen'
 
 interface Props {
     data?: sideNavDataInfo[],
@@ -21,7 +20,6 @@ interface Props {
 const MainMenu: React.FC<Props> = props => {
 
     const { toggleMenu } = useContext(SideMenuContext)
-    useDisableScrollOnModalOpen(true)
 
     const nodeRef = useRef<HTMLDivElement>(null)
     // destructuring the dependencies from Props

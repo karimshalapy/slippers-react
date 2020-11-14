@@ -30,6 +30,7 @@ const Transitions: React.FC<Props> = props => {
             nodeRef={nodeRef}
             in={props.show}
             classNames={transitionClasses}
+            timeout={300}
             mountOnEnter
             unmountOnExit
             addEndListener={(done: () => void) => {
